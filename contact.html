@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>聯絡我們 — 鴻匠工程</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .contact-items { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .contact-item:first-child { padding-top: 0; }
+    .contact-item:last-child { border-bottom: none; }
+    .c-icon {
+      width: 40px; height: 40px; background: var(--primary-light);
+      border: 1px solid var(--primary-mid); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--primary);
+    }
+    .c-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 4px; font-weight: 600; }
+    .c-value { font-size: 15px; color: var(--text); line-height: 1.6; }
+
+    .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .highlight-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+    .hl-icon { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; color: var(--primary); line-height: 1; letter-spacing: -0.02em; }
+    .hl-label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; margin-top: 4px; }
+
+    /* Form */
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+    .form-input, .form-textarea, .form-select {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text); padding: 13px 15px;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,115,232,0.1); }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-subtle); }
+    .form-textarea { min-height: 120px; resize: vertical; }
+    .form-select { cursor: pointer; }
+    .form-select option { background: var(--card); }
+    .form-submit {
+      background: var(--primary); color: #fff; border: none;
+      border-radius: var(--radius-pill);
+      padding: 14px 36px; font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+      cursor: pointer; transition: background 0.2s, box-shadow 0.2s; align-self: flex-start;
+      box-shadow: 0 1px 3px rgba(26,115,232,.4);
+    }
+    .form-submit:hover { background: var(--primary-dark); box-shadow: 0 4px 12px rgba(26,115,232,.4); }
+    .form-submit:disabled { background: var(--border-mid); cursor: default; box-shadow: none; }
+
+    @media (max-width: 1024px) { .contact-grid { grid-template-columns: 1fr; gap: 56px; } }
+    @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } .highlights { grid-template-columns: 1fr 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav"><div class="container"><div class="nav-inner">
+  <a href="index.html" class="logo">鴻匠<span>工程</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">首頁</a></li>
+    <li class="has-dropdown"><a href="#">服務項目</a>
+      <ul class="dropdown">
+        <li><a href="service-water.html">水電工程</a></li><li><a href="service-interior.html">室內裝修</a></li>
+        <li><a href="service-design.html">設計規劃</a></li><li><a href="service-maintenance.html">維修保固</a></li>
+      </ul>
+    </li>
+    <li><a href="gallery.html">作品相冊</a></li>
+    <li><a href="about.html">關於我們</a></li>
+    <li class="nav-cta"><a href="contact.html" class="active">免費諮詢</a></li>
+    <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工登入</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</div></div></nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html">首頁</a>
+  <a href="service-water.html" class="mobile-sub">水電工程</a><a href="service-interior.html" class="mobile-sub">室內裝修</a>
+  <a href="service-design.html" class="mobile-sub">設計規劃</a><a href="service-maintenance.html" class="mobile-sub">維修保固</a>
+  <a href="gallery.html">作品相冊</a><a href="about.html">關於我們</a><a href="contact.html" class="active">免費諮詢</a>
+  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工後台登入</a>
+</div>
+
+<section class="page-hero"><div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><span>聯絡我們</span></div>
+    <div class="label page-hero-label">CONTACT / 聯絡我們</div>
+    <h1 class="page-hero-title">開始您的<br /><span class="blue">裝修計畫</span></h1>
+    <p class="page-hero-desc">歡迎透過電話、LINE 或填寫表單與我們聯繫，免費到府估價，透明合理收費。</p>
+  </div>
+</section>
+
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: Contact info -->
+      <div class="reveal">
+        <div class="label" style="margin-bottom:20px;">聯絡資訊</div>
+        <h2 style="font-size:clamp(28px,3vw,40px); font-weight:600; margin-bottom:12px; line-height:1.15;">立即與我們<br /><span class="blue">展開對話</span></h2>
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.8; font-weight:300; margin-bottom:32px;">
+          我們將在一個工作日內回覆，並安排免費到府勘查服務。
+        </p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.97 2.18 2 2 0 012.95 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+            </div>
+            <div><div class="c-label">電話 / LINE</div><div class="c-value">(02) 2345-6789<br />0912-345-678</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><div class="c-label">電子郵件</div><div class="c-value">service@hongjiang.com.tw</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><div class="c-label">服務地區</div><div class="c-value">台北・新北・桃園・台中・全台接洽</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div><div class="c-label">服務時間</div><div class="c-value">週一至週六 08:00 — 18:00</div></div>
+          </div>
+        </div>
+
+        <div class="highlights">
+          <div class="highlight-item"><div class="hl-icon">免費</div><div class="hl-label">到府估價</div></div>
+          <div class="highlight-item"><div class="hl-icon">透明</div><div class="hl-label">公開報價</div></div>
+          <div class="highlight-item"><div class="hl-icon">2年</div><div class="hl-label">工程保固</div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="reveal reveal-delay-2">
+        <div class="label" style="margin-bottom:20px;">填寫諮詢表單</div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">姓名 *</label>
+              <input type="text" class="form-input" placeholder="王先生 / 陳小姐" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">聯絡電話 *</label>
+              <input type="tel" class="form-input" placeholder="0912-345-678" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">電子郵件</label>
+            <input type="email" class="form-input" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">服務需求 *</label>
+            <select class="form-select form-input" required>
+              <option value="">請選擇服務類型</option>
+              <option>水電工程</option>
+              <option>室內裝修</option>
+              <option>設計規劃</option>
+              <option>維修保固</option>
+              <option>廚房改造</option>
+              <option>衛浴改造</option>
+              <option>全室翻新</option>
+              <option>商業空間</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">地址 / 坪數</label>
+            <input type="text" class="form-input" placeholder="例：台北市大安區，約 35 坪" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">詳細需求說明</label>
+            <textarea class="form-textarea" placeholder="請描述您的裝修需求，例如想要的風格、特別注意事項、施工時程等…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">送出諮詢申請 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">
+  <div class="footer-top">
+    <div><a href="index.html" class="footer-logo">鴻匠<span>工程</span></a><p class="footer-tagline">二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。</p><div class="footer-social"><a href="#" class="social-btn">fb</a><a href="#" class="social-btn">L</a><a href="#" class="social-btn">ig</a></div></div>
+    <div><h4>服務項目</h4><ul class="footer-links"><li><a href="service-water.html">水電工程</a></li><li><a href="service-interior.html">室內裝修</a></li><li><a href="service-design.html">設計規劃</a></li><li><a href="service-maintenance.html">維修保固</a></li></ul></div>
+    <div><h4>快速連結</h4><ul class="footer-links"><li><a href="gallery.html">作品相冊</a></li><li><a href="about.html">關於我們</a></li><li><a href="contact.html">聯絡我們</a></li></ul></div>
+    <div><h4>聯絡資訊</h4><ul class="footer-links"><li><a href="tel:0223456789">(02) 2345-6789</a></li><li><a href="tel:0912345678">0912-345-678</a></li><li><a href="mailto:service@hongjiang.com.tw">service@hongjiang.com.tw</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p class="footer-copy">© 2024 鴻匠工程有限公司</p><ul class="footer-legal"><li><a href="#">隱私政策</a></li><li><a href="#">服務條款</a></li></ul></div>
+</div></footer>
+
+<div id="lightbox" class="lightbox"><div class="lightbox-inner">
+  <button class="lightbox-close">✕</button><img class="lightbox-img" src="" alt="" />
+  <div class="lightbox-info"><div class="lightbox-meta"><strong class="lb-title"></strong><span class="lb-meta"></span></div><div class="lightbox-counter"></div></div>
+  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+</div></div>
+<script src="js/cms.js"></script>
+<script src="js/main.js"></script>
+</body></html>

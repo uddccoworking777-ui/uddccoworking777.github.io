@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>水電工程 — 鴻匠工程</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 72px;
+    }
+    .overview-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .overview-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .overview-icon { width: 40px; height: 40px; color: var(--primary); margin: 0 auto 14px; }
+    .overview-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .overview-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    .gallery-section { background: var(--surface); }
+    .gallery-section .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .gallery-section .gallery-item { aspect-ratio: 4/3; }
+
+    @media (max-width: 768px) {
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-section .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">鴻匠<span>工程</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html">首頁</a></li>
+        <li class="has-dropdown">
+          <a href="#" class="active">服務項目</a>
+          <ul class="dropdown">
+            <li><a href="service-water.html" class="active">水電工程</a></li>
+            <li><a href="service-interior.html">室內裝修</a></li>
+            <li><a href="service-design.html">設計規劃</a></li>
+            <li><a href="service-maintenance.html">維修保固</a></li>
+          </ul>
+        </li>
+        <li><a href="gallery.html">作品相冊</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li class="nav-cta"><a href="contact.html">免費諮詢</a></li>
+        <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工登入</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html">首頁</a>
+  <a href="service-water.html" class="mobile-sub active">水電工程</a>
+  <a href="service-interior.html" class="mobile-sub">室內裝修</a>
+  <a href="service-design.html" class="mobile-sub">設計規劃</a>
+  <a href="service-maintenance.html" class="mobile-sub">維修保固</a>
+  <a href="gallery.html">作品相冊</a>
+  <a href="about.html">關於我們</a>
+  <a href="contact.html">免費諮詢</a>
+  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工後台登入</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">首頁</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">服務項目</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>水電工程</span>
+    </div>
+    <div class="label page-hero-label">SERVICE 01 / 水電工程</div>
+    <h1 class="page-hero-title">專業水電<br /><span class="blue">配管工程</span></h1>
+    <p class="page-hero-desc">給排水系統規劃配管、電氣迴路設計、弱電系統整合，確保每一處管線安全耐用、符合建築法規標準。</p>
+  </div>
+</section>
+
+<!-- OVERVIEW CARDS -->
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">服務範疇</div>
+        <h2 class="section-title">四大核心<br /><span class="blue">水電服務</span></h2>
+      </div>
+      <p class="section-desc">從規劃、施工到驗收，提供完整的水電工程解決方案，確保每一處細節安全可靠。</p>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card reveal">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 40V24a12 12 0 1124 0v16M12 32h24M18 40v-8M30 40v-8"/>
+        </svg>
+        <h3>給排水配管</h3>
+        <p>自來水管全室更換、熱水管路安裝、廚衛排水配管、管路防漏處理</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-1">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8v8M24 32v8M8 24h8M32 24h8"/>
+          <circle cx="24" cy="24" r="8"/>
+          <path d="M14 14l6 6M28 28l6 6M14 34l6-6M28 14l6-6"/>
+        </svg>
+        <h3>電氣迴路配線</h3>
+        <p>全室電氣迴路設計、配電箱更換、插座開關更新、照明迴路安裝</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-2">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="8" y="8" width="32" height="32" rx="2"/>
+          <path d="M8 20h32M20 20v20M8 32h12"/>
+        </svg>
+        <h3>弱電系統整合</h3>
+        <p>網路線佈設、電視天線、門禁對講機、監視系統、智能家居配線</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-3">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8l4 8h8l-6 6 2 10-8-4-8 4 2-10-6-6h8z"/>
+        </svg>
+        <h3>消防緊急系統</h3>
+        <p>消防灑水管配管、緊急照明配線、火警感知器、避雷針接地工程</p>
+      </div>
+    </div>
+
+    <!-- ACCORDION -->
+    <div class="reveal">
+      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="accordion">
+        <div class="accordion-item open">
+          <div class="accordion-head">
+            <h3>給水排水系統規劃與配管</h3>
+            <span class="accordion-icon">−</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li>自來水管全室更換（PPR / PVC 管材）</li>
+              <li>熱水器管路安裝與更新</li>
+              <li>廚房廁所排水配管</li>
+              <li>管路防漏處理與測試</li>
+              <li>水壓測試與品質驗收</li>
+              <li>給水加壓馬達安裝</li>
+              <li>衛生設備安裝（馬桶/浴缸/洗手台）</li>
+              <li>鑄鐵管汰換為新式管材</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head">
+            <h3>電氣迴路規劃與配線</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li>全室電氣迴路設計規劃</li>
+              <li>配電箱更換（無熔絲開關）</li>
+              <li>插座 / 開關全室更新</li>
+              <li>照明迴路規劃安裝</li>
+              <li>空調電源迴路配線</li>
+              <li>廚房大功率設備迴路</li>
+              <li>接地線施工</li>
+              <li>用電安全檢查報告</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head">
+            <h3>弱電系統整合佈設</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li>網路線（Cat6）全室佈設</li>
+              <li>電視天線 / 有線電視</li>
+              <li>門禁對講機系統</li>
+              <li>保全監視系統配線</li>
+              <li>智能家居系統整合</li>
+              <li>音響系統佈線</li>
+              <li>弱電箱彙整美化</li>
+              <li>光纖入戶配線</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head">
+            <h3>消防與緊急系統</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li>消防灑水頭配管</li>
+              <li>緊急照明電源配線</li>
+              <li>消防廣播系統</li>
+              <li>火警感知器安裝</li>
+              <li>避雷針接地工程</li>
+              <li>備用電源 UPS 配置</li>
+              <li>緊急出口指示燈</li>
+              <li>消防系統年度維護</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">相關案例</div>
+        <h2 class="section-title">水電工程<br /><span class="blue">實績展示</span></h2>
+      </div>
+      <a href="gallery.html" class="btn-outline">查看全部相冊 →</a>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="商辦大樓全棟水電更新" data-meta="新北市・680坪・2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/600" alt="商辦大樓水電更新" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">商辦大樓全棟水電更新</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-6/1200/800" data-title="老公寓水電全面更新" data-meta="台北市萬華區・24坪・2023.05">
+        <img src="https://picsum.photos/seed/hj06/800/600" alt="老公寓水電更新" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">老公寓水電全面更新</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-11/1200/800" data-title="社區管線整體汰換" data-meta="新北市新店區・2022.10">
+        <img src="https://picsum.photos/seed/hj11/800/600" alt="社區管線汰換" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">社區管線整體汰換</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title">水電工程免費估價<br /><em>今天就聯繫我們</em></h2>
+        <p class="cta-sub">到府勘查 · 透明報價 · 二年保固</p>
+      </div>
+      <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">鴻匠<span>工程</span></a>
+        <p class="footer-tagline">二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。</p>
+        <div class="footer-social"><a href="#" class="social-btn">fb</a><a href="#" class="social-btn">L</a><a href="#" class="social-btn">ig</a></div>
+      </div>
+      <div><h4>服務項目</h4><ul class="footer-links">
+        <li><a href="service-water.html">水電工程</a></li>
+        <li><a href="service-interior.html">室內裝修</a></li>
+        <li><a href="service-design.html">設計規劃</a></li>
+        <li><a href="service-maintenance.html">維修保固</a></li>
+      </ul></div>
+      <div><h4>快速連結</h4><ul class="footer-links">
+        <li><a href="gallery.html">作品相冊</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+      </ul></div>
+      <div><h4>聯絡資訊</h4><ul class="footer-links">
+        <li><a href="tel:0223456789">(02) 2345-6789</a></li>
+        <li><a href="tel:0912345678">0912-345-678</a></li>
+        <li><a href="mailto:service@hongjiang.com.tw">service@hongjiang.com.tw</a></li>
+        <li><a href="#">台北・新北・桃園・台中</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 鴻匠工程有限公司 · 統一編號：12345678</p>
+      <ul class="footer-legal"><li><a href="#">隱私政策</a></li><li><a href="#">服務條款</a></li></ul>
+    </div>
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close">✕</button>
+    <img class="lightbox-img" src="" alt="" />
+    <div class="lightbox-info">
+      <div class="lightbox-meta"><strong class="lb-title"></strong><span class="lb-meta"></span></div>
+      <div class="lightbox-counter"></div>
+    </div>
+    <button class="lightbox-prev">‹</button>
+    <button class="lightbox-next">›</button>
+  </div>
+</div>
+
+<script src="js/cms.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

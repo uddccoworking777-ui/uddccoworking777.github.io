@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>後台管理 — 鴻匠工程</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f1f3f4; overflow: hidden; height: 100vh; -webkit-font-smoothing: antialiased; }
+    button { cursor: pointer; font: inherit; }
+    input, textarea, select { font: inherit; }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: #dadce0; border-radius: 3px; }
+    ::selection { background: #d2e3fc; color: #1250c4; }
+    :focus-visible { outline: 2px solid #1a73e8; outline-offset: 2px; border-radius: 4px; }
+
+    /* ── Tokens ── */
+    :root {
+      --primary: #1a73e8; --primary-dark: #1250c4; --primary-light: #e8f0fe; --primary-mid: #d2e3fc;
+      --sidebar-bg: #1e2433; --sidebar-w: 240px;
+      --topbar-h: 60px;
+      --green: #1e8e3e; --green-light: #e6f4ea; --red: #d93025; --red-light: #fce8e6; --orange: #e67e22; --orange-light: #fef3e2;
+      --text: #111827; --text-muted: #5f6368; --text-subtle: #9aa0a6;
+      --border: #e8eaed; --surface: #f8f9fa; --card: #ffffff;
+      --shadow-1: 0 1px 3px rgba(60,64,67,.12); --shadow-2: 0 2px 8px rgba(60,64,67,.1); --shadow-3: 0 4px 16px rgba(60,64,67,.12);
+      --ease: 200ms cubic-bezier(.4,0,.2,1); --ease-slow: 320ms cubic-bezier(.4,0,.2,1);
+      --radius: 8px; --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 100px;
+    }
+
+    /* ── Layout Shell ── */
+    .admin-shell { display: flex; height: 100vh; overflow: hidden; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-w); flex-shrink: 0;
+      background: var(--sidebar-bg);
+      display: flex; flex-direction: column;
+      transition: transform var(--ease-slow), width var(--ease-slow);
+      z-index: 100; overflow: hidden;
+    }
+    .sidebar-brand {
+      display: flex; align-items: center; gap: 10px;
+      padding: 20px 16px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .brand-icon {
+      width: 36px; height: 36px; background: var(--primary);
+      border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(26,115,232,.4);
+    }
+    .brand-icon svg { width: 18px; height: 18px; color: #fff; }
+    .brand-text { overflow: hidden; }
+    .brand-name { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: -0.03em; white-space: nowrap; }
+    .brand-sub  { font-size: 11px; color: rgba(255,255,255,.4); font-weight: 500; white-space: nowrap; }
+
+    .sidebar-nav { flex: 1; padding: 12px 10px; overflow-y: auto; }
+    .nav-section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.25); padding: 12px 8px 6px; margin-top: 4px;
+    }
+    .nav-item {
+      display: flex; align-items: center; gap: 11px;
+      padding: 10px 12px; border-radius: var(--radius);
+      color: rgba(255,255,255,.55); font-size: 13.5px; font-weight: 600;
+      background: none; border: none; width: 100%; text-align: left;
+      transition: background var(--ease), color var(--ease);
+      cursor: pointer; white-space: nowrap;
+    }
+    .nav-item svg { width: 17px; height: 17px; flex-shrink: 0; opacity: .7; transition: opacity var(--ease); }
+    .nav-item:hover { background: rgba(255,255,255,.07); color: rgba(255,255,255,.85); }
+    .nav-item:hover svg { opacity: 1; }
+    .nav-item.active { background: rgba(26,115,232,.2); color: #4da3ff; }
+    .nav-item.active svg { opacity: 1; color: #4da3ff; }
+    .nav-badge {
+      margin-left: auto; background: var(--primary);
+      color: #fff; font-size: 10px; font-weight: 700;
+      padding: 2px 7px; border-radius: var(--radius-pill); min-width: 20px; text-align: center;
+    }
+
+    .sidebar-bottom {
+      padding: 12px 10px 16px;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .user-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 10px; border-radius: var(--radius);
+    }
+    .user-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(26,115,232,.3); border: 2px solid rgba(26,115,232,.5);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #4da3ff; flex-shrink: 0;
+    }
+    .user-info { overflow: hidden; flex: 1; }
+    .user-name  { font-size: 13px; font-weight: 700; color: rgba(255,255,255,.85); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-email { font-size: 11px; color: rgba(255,255,255,.35); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .logout-btn {
+      padding: 8px 12px; width: 100%;
+      background: rgba(255,255,255,.06); border: none;
+      border-radius: var(--radius); color: rgba(255,255,255,.45);
+      font-size: 12px; font-weight: 600;
+      transition: background var(--ease), color var(--ease);
+      display: flex; align-items: center; gap: 8px; justify-content: center;
+      margin-top: 4px;
+    }
+    .logout-btn:hover { background: rgba(217,48,37,.15); color: #ff6b6b; }
+    .logout-btn svg { width: 14px; height: 14px; }
+
+    /* ── Main Body ── */
+    .main-body { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    /* Topbar */
+    .topbar {
+      height: var(--topbar-h); background: #fff;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 16px;
+      padding: 0 24px; flex-shrink: 0;
+      box-shadow: var(--shadow-1);
+    }
+    .sidebar-toggle {
+      display: none; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: var(--radius);
+      background: none; border: none; color: var(--text-muted);
+      transition: background var(--ease);
+    }
+    .sidebar-toggle:hover { background: var(--surface); }
+    .sidebar-toggle svg { width: 20px; height: 20px; }
+
+    .topbar-title { font-size: 17px; font-weight: 700; color: var(--text); flex: 1; }
+    .topbar-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-frontend {
+      display: flex; align-items: center; gap: 6px;
+      padding: 6px 14px; border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border); background: var(--surface);
+      font-size: 12px; font-weight: 700; color: var(--text-muted);
+      text-decoration: none; transition: border-color .2s, color .2s, background .2s;
+      white-space: nowrap;
+    }
+    .btn-frontend:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .topbar-chip {
+      display: flex; align-items: center; gap: 7px;
+      padding: 6px 14px; border-radius: var(--radius-pill);
+      background: var(--surface); border: 1px solid var(--border);
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+    }
+    .topbar-chip .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+
+    /* Main Content Split */
+    .content-split { flex: 1; display: flex; overflow: hidden; }
+    .panels-area { flex: 1; overflow-y: auto; padding: 24px 28px; min-width: 0; }
+
+    /* ── Right Preview Pane ── */
+    .preview-pane {
+      width: 420px; flex-shrink: 0;
+      border-left: 1px solid var(--border);
+      background: var(--surface);
+      display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .preview-pane-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 9px 12px;
+      background: var(--card); border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .preview-pane-bar label {
+      font-size: 10px; font-weight: 700; color: var(--text-muted);
+      letter-spacing: .07em; text-transform: uppercase; white-space: nowrap;
+    }
+    .preview-pane-bar select {
+      flex: 1; min-width: 0;
+      padding: 5px 10px; border: 1.5px solid var(--border);
+      border-radius: var(--radius-pill); font-size: 12px; font-weight: 600;
+      background: var(--surface); color: var(--text); outline: none;
+      transition: border-color .2s;
+    }
+    .preview-pane-bar select:focus { border-color: var(--primary); }
+    .btn-pane-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 28px; height: 28px; flex-shrink: 0; border-radius: var(--radius);
+      background: var(--surface); border: 1.5px solid var(--border);
+      color: var(--text-muted); cursor: pointer;
+      transition: all var(--ease);
+    }
+    .btn-pane-icon:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .btn-pane-icon svg { width: 12px; height: 12px; }
+    .btn-pane-icon.blue { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .btn-pane-icon.blue:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+    .btn-pane-icon.active-mode { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .preview-pane-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+      color: var(--text-subtle); padding: 6px 12px 4px; border-bottom: 1px solid var(--border);
+      background: var(--card); flex-shrink: 0;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .preview-pane-label .live-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+      box-shadow: 0 0 0 2px var(--green-light);
+    }
+    /* Preview iframe wrapper — used to apply mobile-mode phone frame */
+    .preview-iframe-wrap {
+      flex: 1; overflow: hidden; display: flex; flex-direction: column;
+      background: #fff; position: relative;
+    }
+    #preview-iframe {
+      flex: 1; width: 100%; border: none; display: block; background: #fff;
+    }
+    /* Mobile mode: grey bg, iframe constrained to phone width */
+    .preview-pane.mobile-mode .preview-iframe-wrap {
+      background: #d1d5db;
+      align-items: center;
+      padding: 12px;
+    }
+    .preview-pane.mobile-mode #preview-iframe {
+      max-width: 390px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.25), 0 0 0 2px rgba(0,0,0,.15);
+    }
+
+    /* ── Panel System ── */
+    .panel { display: none; animation: panelIn .2s ease; }
+    .panel.active { display: block; }
+    @keyframes panelIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Cards & Surfaces ── */
+    .card { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); }
+    .card-header {
+      padding: 18px 20px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .card-header h3 { font-size: 15px; font-weight: 700; flex: 1; }
+    .card-body { padding: 20px; }
+
+    /* ── Overview Panel ── */
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+    .stat-card {
+      background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border);
+      padding: 20px 22px; display: flex; align-items: center; gap: 16px;
+    }
+    .stat-icon {
+      width: 44px; height: 44px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .stat-icon svg { width: 20px; height: 20px; }
+    .stat-num { font-size: 28px; font-weight: 800; color: var(--text); letter-spacing: -0.04em; line-height: 1; }
+    .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 600; margin-top: 3px; letter-spacing: .02em; }
+
+    .quick-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+    .quick-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 18px; text-align: center; cursor: pointer;
+      transition: box-shadow var(--ease), transform var(--ease), border-color var(--ease);
+    }
+    .quick-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); border-color: var(--primary-mid); }
+    .quick-card-icon { font-size: 28px; margin-bottom: 8px; }
+    .quick-card-label { font-size: 13px; font-weight: 700; color: var(--text); }
+    .quick-card-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .toolbar-left { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; flex: 1; }
+    .toolbar-right { display: flex; align-items: center; gap: 8px; }
+
+    .filter-chip {
+      padding: 7px 16px; border-radius: var(--radius-pill);
+      background: #fff; border: 1.5px solid var(--border);
+      font-size: 12px; font-weight: 700; color: var(--text-muted);
+      cursor: pointer; transition: all var(--ease);
+    }
+    .filter-chip:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+    .filter-chip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+    .search-box {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 14px; border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border); background: #fff;
+      font-size: 13px; color: var(--text);
+      transition: border-color var(--ease), box-shadow var(--ease);
+    }
+    .search-box:focus-within { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,115,232,.1); }
+    .search-box svg { width: 14px; height: 14px; color: var(--text-subtle); flex-shrink: 0; }
+    .search-box input { border: none; outline: none; background: transparent; font-size: 13px; width: 160px; }
+
+    .btn-add {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 9px 20px; border-radius: var(--radius-pill);
+      background: var(--primary); color: #fff; border: none;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 1px 3px rgba(26,115,232,.4);
+      transition: background var(--ease), box-shadow var(--ease), transform var(--ease);
+    }
+    .btn-add:hover { background: var(--primary-dark); box-shadow: 0 4px 12px rgba(26,115,232,.38); transform: translateY(-1px); }
+    .btn-add svg { width: 15px; height: 15px; }
+
+    /* ── Gallery Admin Grid ── */
+    .admin-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+    .admin-gcard {
+      background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border);
+      overflow: hidden; transition: box-shadow var(--ease), transform var(--ease);
+    }
+    .admin-gcard:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .admin-gcard-img {
+      position: relative; aspect-ratio: 4/3; overflow: hidden; background: var(--surface);
+    }
+    .admin-gcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; display: block; }
+    .admin-gcard:hover .admin-gcard-img img { transform: scale(1.05); }
+    .admin-gcard-img .cat-badge {
+      position: absolute; top: 8px; left: 8px;
+      background: rgba(0,0,0,.7); color: #fff;
+      font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: var(--radius-pill);
+      backdrop-filter: blur(4px);
+    }
+    .hidden-badge {
+      position: absolute; top: 8px; right: 8px;
+      background: rgba(217,48,37,.85); color: #fff;
+      font-size: 10px; font-weight: 700; padding: 3px 9px; border-radius: var(--radius-pill);
+    }
+    .admin-gcard-body { padding: 12px 14px; }
+    .admin-gcard-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .admin-gcard-meta  { font-size: 11px; color: var(--text-subtle); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .admin-gcard-actions {
+      display: flex; align-items: center; gap: 6px;
+      padding: 10px 14px; border-top: 1px solid var(--border);
+    }
+    .toggle-label {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 12px; font-weight: 600; color: var(--text-muted); cursor: pointer;
+    }
+    .toggle-wrap { position: relative; width: 32px; height: 18px; flex-shrink: 0; }
+    .toggle-wrap input { position: absolute; opacity: 0; width: 0; height: 0; }
+    .toggle-track {
+      position: absolute; inset: 0; background: #dadce0; border-radius: var(--radius-pill);
+      transition: background .2s;
+    }
+    .toggle-wrap input:checked + .toggle-track { background: var(--green); }
+    .toggle-thumb {
+      position: absolute; top: 2px; left: 2px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.2);
+      transition: transform .2s;
+    }
+    .toggle-wrap input:checked ~ .toggle-thumb { transform: translateX(14px); }
+    .btn-icon {
+      width: 30px; height: 30px; border-radius: var(--radius);
+      border: 1px solid var(--border); background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--ease), border-color var(--ease), color var(--ease);
+      color: var(--text-muted); flex-shrink: 0; margin-left: auto;
+    }
+    .btn-icon svg { width: 14px; height: 14px; }
+    .btn-icon.edit:hover  { background: var(--primary-light); border-color: var(--primary); color: var(--primary); }
+    .btn-icon.del:hover   { background: var(--red-light, #fce8e6); border-color: var(--red); color: var(--red); }
+
+    /* ── News List ── */
+    .news-list { display: flex; flex-direction: column; gap: 10px; }
+    .news-item {
+      background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border);
+      padding: 16px 18px; display: flex; align-items: flex-start; gap: 14px;
+      transition: box-shadow var(--ease);
+    }
+    .news-item:hover { box-shadow: var(--shadow-1); }
+    .news-item-main { flex: 1; min-width: 0; }
+    .news-item-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .news-item-meta  { font-size: 12px; color: var(--text-subtle); display: flex; gap: 10px; flex-wrap: wrap; }
+    .news-item-excerpt { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-top: 6px; }
+    .news-item-actions { display: flex; gap: 6px; flex-shrink: 0; align-items: center; }
+
+    /* ── Content Sections ── */
+    .content-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    .ctab {
+      padding: 10px 16px; border: none; background: none;
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color var(--ease), border-color var(--ease);
+      border-radius: var(--radius) var(--radius) 0 0;
+      cursor: pointer;
+    }
+    .ctab:hover { color: var(--text); background: var(--surface); }
+    .ctab.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .ctab-panel { display: none; }
+    .ctab-panel.active { display: block; animation: panelIn .18s ease; }
+
+    /* Form fields */
+    .f-group { margin-bottom: 18px; }
+    .f-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 7px; display: block; }
+    .f-input, .f-textarea, .f-select {
+      width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+      border-radius: var(--radius); background: var(--surface);
+      color: var(--text); font-size: 14px; outline: none;
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+    .f-input:focus, .f-textarea:focus, .f-select:focus {
+      border-color: var(--primary); background: #fff;
+      box-shadow: 0 0 0 3px rgba(26,115,232,.1);
+    }
+    .f-textarea { min-height: 100px; resize: vertical; }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .f-hint { font-size: 11px; color: var(--text-subtle); margin-top: 5px; }
+
+    .save-btn {
+      padding: 10px 24px; border-radius: var(--radius-pill);
+      background: var(--primary); color: #fff; border: none;
+      font-size: 13px; font-weight: 700;
+      box-shadow: 0 1px 3px rgba(26,115,232,.4);
+      transition: background var(--ease), box-shadow var(--ease), transform var(--ease);
+      display: inline-flex; align-items: center; gap: 7px;
+    }
+    .save-btn:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .save-btn.saved { background: var(--green); }
+
+    /* (preview panel styles moved to inline preview-pane section above) */
+
+    /* ── Accounts Panel ── */
+    .accounts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .user-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+    .user-row-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 14px; border-radius: var(--radius-lg);
+      border: 1px solid var(--border); background: var(--card);
+      transition: box-shadow var(--ease);
+    }
+    .user-row-item:hover { box-shadow: var(--shadow-1); }
+    .uavatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--primary-light); color: var(--primary);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; flex-shrink: 0;
+    }
+    .u-name  { font-size: 13px; font-weight: 700; color: var(--text); }
+    .u-email { font-size: 11px; color: var(--text-subtle); }
+    .u-role { margin-left: auto; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-pill); }
+    .u-role.admin { background: var(--primary-light); color: var(--primary); }
+    .u-role.staff { background: var(--surface); color: var(--text-muted); border: 1px solid var(--border); }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      background: #303134; color: #fff;
+      padding: 12px 20px; border-radius: var(--radius-lg);
+      font-size: 13px; font-weight: 600;
+      box-shadow: 0 4px 20px rgba(0,0,0,.3);
+      display: flex; align-items: center; gap: 10px;
+      transform: translateY(80px); opacity: 0;
+      transition: transform .3s ease, opacity .3s ease;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success::before { content: '✓'; background: var(--green); width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .toast.error::before   { content: '✕'; background: var(--red); width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.45);
+      z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.open { display: flex; animation: fadeIn .2s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .modal-box {
+      background: var(--card); border-radius: var(--radius-xl);
+      width: 100%; max-width: 580px; max-height: 90vh;
+      overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      animation: slideUp .25s ease;
+    }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(16px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .modal-header {
+      padding: 20px 22px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .modal-header h3 { font-size: 16px; font-weight: 700; flex: 1; }
+    .modal-close {
+      width: 32px; height: 32px; border-radius: var(--radius-pill);
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text-muted); font-size: 16px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--ease);
+    }
+    .modal-close:hover { background: var(--border); }
+    .modal-body { padding: 22px; }
+    .modal-footer {
+      padding: 16px 22px; border-top: 1px solid var(--border);
+      display: flex; justify-content: flex-end; gap: 10px;
+    }
+    .btn-cancel {
+      padding: 9px 20px; border-radius: var(--radius-pill);
+      background: var(--surface); border: 1.5px solid var(--border);
+      font-size: 13px; font-weight: 700; color: var(--text-muted);
+      transition: all var(--ease);
+    }
+    .btn-cancel:hover { border-color: var(--border-mid, #dadce0); background: var(--border); }
+
+    /* Image preview in modal */
+    .img-preview-wrap {
+      width: 100%; aspect-ratio: 16/9;
+      background: var(--surface); border: 2px dashed var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px; transition: border-color .2s;
+    }
+    .img-preview-wrap.has-img { border-style: solid; border-color: var(--border); }
+    .img-preview-wrap img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .img-preview-wrap img.loaded { display: block; }
+    .img-placeholder { text-align: center; color: var(--text-subtle); font-size: 13px; }
+    .img-placeholder svg { width: 32px; height: 32px; margin: 0 auto 8px; display: block; }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center; padding: 60px 20px;
+      color: var(--text-subtle);
+    }
+    .empty-state svg { width: 48px; height: 48px; margin: 0 auto 12px; display: block; opacity: .4; }
+    .empty-state h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--text-muted); }
+    .empty-state p { font-size: 13px; line-height: 1.6; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .preview-pane { width: 360px; }
+    }
+    @media (max-width: 1000px) {
+      .preview-pane { display: none; }
+    }
+    @media (max-width: 900px) {
+      .sidebar { position: fixed; top: 0; left: 0; bottom: 0; transform: translateX(-100%); z-index: 200; }
+      .sidebar.open { transform: translateX(0); box-shadow: 4px 0 32px rgba(0,0,0,.3); }
+      .sidebar-toggle { display: flex; }
+      .sidebar-backdrop { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.3); z-index: 199; }
+      .sidebar-backdrop.open { display: block; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .quick-grid { grid-template-columns: 1fr 1fr 1fr; }
+      .accounts-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .panels-area { padding: 16px; }
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .quick-grid { grid-template-columns: 1fr 1fr; }
+      .f-row { grid-template-columns: 1fr; }
+      .admin-gallery { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="admin-shell">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <div class="brand-name">鴻匠後台</div>
+        <div class="brand-sub">管理系統</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <button class="nav-item active" data-panel="overview" onclick="switchPanel('overview')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        總覽
+      </button>
+      <div class="nav-section-label">內容管理</div>
+      <button class="nav-item" data-panel="gallery" onclick="switchPanel('gallery')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        相冊管理
+        <span class="nav-badge" id="nav-gallery-cnt">0</span>
+      </button>
+      <button class="nav-item" data-panel="news" onclick="switchPanel('news')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        最新消息
+        <span class="nav-badge" id="nav-news-cnt" style="background:var(--orange);display:none;">0</span>
+      </button>
+      <button class="nav-item" data-panel="content" onclick="switchPanel('content')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        頁面內容
+      </button>
+      <div class="nav-section-label">工具</div>
+      <a href="../index.html" target="_blank" class="nav-item" style="text-decoration:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        回前台
+      </a>
+      <button class="nav-item" id="nav-preview-toggle" onclick="togglePreviewPane()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        隱藏預覽
+      </button>
+      <button class="nav-item" data-panel="accounts" onclick="switchPanel('accounts')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        帳號管理
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="user-row">
+        <div class="user-avatar" id="user-avatar">A</div>
+        <div class="user-info">
+          <div class="user-name" id="user-name-sidebar">管理員</div>
+          <div class="user-email" id="user-email-sidebar">-</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="logout()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        登出系統
+      </button>
+    </div>
+  </aside>
+
+  <!-- Sidebar backdrop (mobile) -->
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="closeSidebar()"></div>
+
+  <!-- ── Main Body ── -->
+  <div class="main-body">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="sidebar-toggle" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="topbar-title" id="topbar-title">總覽</div>
+      <div class="topbar-actions">
+        <a href="../index.html" target="_blank" class="btn-frontend" id="btn-frontend">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          回前台
+        </a>
+        <div class="topbar-chip">
+          <div class="dot"></div>
+          <span id="topbar-user">管理員</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Split (left panels + right preview) -->
+    <div class="content-split">
+    <div class="panels-area" id="main-content">
+
+      <!-- ── Panel: Overview ── -->
+      <div class="panel active" id="panel-overview">
+        <div class="stats-row" id="overview-stats">
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--primary-light);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div>
+              <div class="stat-num" id="ov-gallery-cnt">-</div>
+              <div class="stat-label">相冊圖片</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--orange-light, #fef3e2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div>
+              <div class="stat-num" id="ov-news-cnt">-</div>
+              <div class="stat-label">最新消息</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:var(--green-light);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="stat-num" id="ov-visible-cnt">-</div>
+              <div class="stat-label">已顯示圖片</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background:#fce8e6;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <div>
+              <div class="stat-num" id="ov-hidden-cnt">-</div>
+              <div class="stat-label">已隱藏圖片</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-grid">
+          <div class="quick-card" onclick="switchPanel('gallery'); openGalleryModal()">
+            <div class="quick-card-icon">🖼</div>
+            <div class="quick-card-label">新增圖片</div>
+            <div class="quick-card-sub">上傳至相冊</div>
+          </div>
+          <div class="quick-card" onclick="switchPanel('news'); openNewsModal()">
+            <div class="quick-card-icon">📝</div>
+            <div class="quick-card-label">發布消息</div>
+            <div class="quick-card-sub">最新公告或活動</div>
+          </div>
+          <div class="quick-card" onclick="switchPanel('content')">
+            <div class="quick-card-icon">✏️</div>
+            <div class="quick-card-label">編輯內容</div>
+            <div class="quick-card-sub">修改聯絡資訊</div>
+          </div>
+          <div class="quick-card" onclick="togglePreviewPane()">
+            <div class="quick-card-icon">👁</div>
+            <div class="quick-card-label">即時預覽</div>
+            <div class="quick-card-sub">切換右側預覽欄</div>
+          </div>
+          <div class="quick-card" onclick="switchPanel('accounts')">
+            <div class="quick-card-icon">👤</div>
+            <div class="quick-card-label">帳號管理</div>
+            <div class="quick-card-sub">新增或管理員工</div>
+          </div>
+          <div class="quick-card" onclick="exportData()">
+            <div class="quick-card-icon">💾</div>
+            <div class="quick-card-label">匯出備份</div>
+            <div class="quick-card-sub">下載 JSON 備份檔</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel: Gallery ── -->
+      <div class="panel" id="panel-gallery">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button class="filter-chip active" data-cat="all" onclick="filterGallery('all', this)">全部</button>
+            <button class="filter-chip" data-cat="interior" onclick="filterGallery('interior', this)">室內裝修</button>
+            <button class="filter-chip" data-cat="water"    onclick="filterGallery('water', this)">水電工程</button>
+            <button class="filter-chip" data-cat="design"   onclick="filterGallery('design', this)">設計規劃</button>
+            <button class="filter-chip" data-cat="commercial" onclick="filterGallery('commercial', this)">商業空間</button>
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="搜尋標題…" id="gallery-search" oninput="renderGallery()" />
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-add" onclick="openGalleryModal()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              新增圖片
+            </button>
+          </div>
+        </div>
+        <div class="admin-gallery" id="gallery-grid"></div>
+      </div>
+
+      <!-- ── Panel: News ── -->
+      <div class="panel" id="panel-news">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button class="filter-chip active" data-news-filter="all" onclick="filterNews('all', this)">全部</button>
+            <button class="filter-chip" data-news-filter="true" onclick="filterNews('true', this)">顯示中</button>
+            <button class="filter-chip" data-news-filter="false" onclick="filterNews('false', this)">已隱藏</button>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-add" onclick="openNewsModal()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              新增消息
+            </button>
+          </div>
+        </div>
+        <div class="news-list" id="news-list"></div>
+      </div>
+
+      <!-- ── Panel: Content ── -->
+      <div class="panel" id="panel-content">
+        <div class="card" style="margin-bottom:20px;">
+          <div class="card-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <h3>頁面內容編輯</h3>
+          </div>
+          <div class="card-body">
+            <div class="content-tabs">
+              <button class="ctab active" onclick="switchCtab('contact', this)">聯絡資訊</button>
+              <button class="ctab" onclick="switchCtab('gallery-count', this)">作品相冊</button>
+            </div>
+
+            <!-- Contact Tab -->
+            <div class="ctab-panel active" id="ctab-contact">
+              <div class="f-row">
+                <div class="f-group">
+                  <label class="f-label">電話 / LINE（主）</label>
+                  <input type="text" class="f-input" id="c-phone1" placeholder="(02) 2345-6789" />
+                </div>
+                <div class="f-group">
+                  <label class="f-label">手機號碼</label>
+                  <input type="text" class="f-input" id="c-phone2" placeholder="0912-345-678" />
+                </div>
+              </div>
+              <div class="f-group">
+                <label class="f-label">電子郵件</label>
+                <input type="email" class="f-input" id="c-email" placeholder="service@hongjiang.com.tw" />
+              </div>
+              <div class="f-group">
+                <label class="f-label">服務地區</label>
+                <input type="text" class="f-input" id="c-region" placeholder="台北・新北・桃園・台中・全台接洽" />
+              </div>
+              <div class="f-group">
+                <label class="f-label">服務時間</label>
+                <input type="text" class="f-input" id="c-hours" placeholder="週一至週六 08:00 — 18:00" />
+              </div>
+              <button class="save-btn" onclick="saveContact()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                儲存聯絡資訊
+              </button>
+            </div>
+
+            <!-- Gallery Count Tab -->
+            <div class="ctab-panel" id="ctab-gallery-count">
+              <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
+                相冊頁面顯示的圖片數量及篩選標籤，由「相冊管理」面板中各項目的顯示/隱藏狀態自動決定。請前往「相冊管理」新增、編輯或隱藏圖片。
+              </p>
+              <button class="btn-add" onclick="switchPanel('gallery')">前往相冊管理 →</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Import/Export -->
+        <div class="card">
+          <div class="card-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <h3>資料備份與還原</h3>
+          </div>
+          <div class="card-body">
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
+              定期匯出 JSON 備份，在更換電腦或瀏覽器前可匯入還原所有內容。
+            </p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="save-btn" onclick="exportData()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                匯出備份
+              </button>
+              <label class="save-btn" style="background:var(--surface);color:var(--text-muted);border:1.5px solid var(--border);box-shadow:none;cursor:pointer;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                匯入備份
+                <input type="file" accept=".json" style="display:none;" onchange="importData(event)" />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Panel: Accounts ── -->
+      <div class="panel" id="panel-accounts">
+        <div class="accounts-grid">
+          <!-- User List -->
+          <div class="card">
+            <div class="card-header">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              <h3>員工帳號</h3>
+            </div>
+            <div class="card-body">
+              <div class="user-list" id="user-list"></div>
+            </div>
+          </div>
+
+          <!-- Right: Add User + Change Password -->
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <!-- Add User -->
+            <div class="card">
+              <div class="card-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+                <h3>新增員工帳號</h3>
+              </div>
+              <div class="card-body">
+                <div class="f-group">
+                  <label class="f-label">姓名</label>
+                  <input type="text" class="f-input" id="new-name" placeholder="員工姓名" />
+                </div>
+                <div class="f-group">
+                  <label class="f-label">電子郵件</label>
+                  <input type="email" class="f-input" id="new-email" placeholder="employee@hongjiang.com" />
+                </div>
+                <div class="f-row">
+                  <div class="f-group">
+                    <label class="f-label">密碼</label>
+                    <input type="password" class="f-input" id="new-pwd" placeholder="至少 8 字元" />
+                  </div>
+                  <div class="f-group">
+                    <label class="f-label">角色</label>
+                    <select class="f-input f-select" id="new-role">
+                      <option value="staff">一般員工</option>
+                      <option value="admin">管理員</option>
+                    </select>
+                  </div>
+                </div>
+                <button class="save-btn" onclick="addUser()">新增帳號</button>
+              </div>
+            </div>
+
+            <!-- Change Password -->
+            <div class="card">
+              <div class="card-header">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <h3>修改密碼</h3>
+              </div>
+              <div class="card-body">
+                <div class="f-group">
+                  <label class="f-label">目前密碼</label>
+                  <input type="password" class="f-input" id="cur-pwd" placeholder="輸入目前密碼" />
+                </div>
+                <div class="f-group">
+                  <label class="f-label">新密碼</label>
+                  <input type="password" class="f-input" id="new-pwd2" placeholder="至少 8 字元" />
+                </div>
+                <div class="f-group">
+                  <label class="f-label">確認新密碼</label>
+                  <input type="password" class="f-input" id="confirm-pwd" placeholder="再次輸入新密碼" />
+                </div>
+                <button class="save-btn" onclick="changePassword()">確認修改密碼</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.panels-area -->
+
+    <!-- ── Right: Permanent Preview Pane ── -->
+    <div class="preview-pane" id="preview-pane">
+      <div class="preview-pane-bar">
+        <label>預覽</label>
+        <select id="preview-page" onchange="loadPreview()">
+          <option value="../index.html">首頁</option>
+          <option value="../gallery.html">作品相冊</option>
+          <option value="../service-water.html">水電工程</option>
+          <option value="../service-interior.html">室內裝修</option>
+          <option value="../service-design.html">設計規劃</option>
+          <option value="../service-maintenance.html">維修保固</option>
+          <option value="../about.html">關於我們</option>
+          <option value="../contact.html">聯絡我們</option>
+        </select>
+        <!-- Device mode toggle -->
+        <button class="btn-pane-icon active-mode" id="btn-mode-desktop" title="桌面版" onclick="setPreviewMode('desktop')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </button>
+        <button class="btn-pane-icon" id="btn-mode-mobile" title="手機版" onclick="setPreviewMode('mobile')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </button>
+        <button class="btn-pane-icon" id="btn-reload-preview" title="重新整理" onclick="reloadPreview()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 11-2.12-9.36L23 10"/></svg>
+        </button>
+        <button class="btn-pane-icon blue" id="btn-open-tab" title="新分頁開啟" onclick="openPreviewInTab()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </button>
+      </div>
+      <div class="preview-pane-label">
+        <span class="live-dot"></span>
+        <span id="preview-mode-label">即時前台預覽</span>
+      </div>
+      <div class="preview-iframe-wrap">
+        <iframe id="preview-iframe" src="../index.html?pv=1" title="前台預覽"></iframe>
+      </div>
+    </div>
+
+    </div><!-- /.content-split -->
+  </div><!-- /.main-body -->
+</div><!-- /.admin-shell -->
+
+<!-- ── Gallery Modal ── -->
+<div class="modal-overlay" id="gallery-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="gallery-modal-title">新增圖片</h3>
+      <button class="modal-close" onclick="closeModal('gallery-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="img-preview-wrap" id="modal-img-wrap">
+        <img id="modal-img-preview" src="" alt="" />
+        <div class="img-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          輸入圖片網址後預覽
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">圖片網址 *</label>
+        <input type="url" class="f-input" id="g-src" placeholder="https://example.com/image.jpg" oninput="previewModalImg()" />
+        <p class="f-hint">支援 JPG、PNG、WebP 等格式。可使用 Imgur、Google 相簿等免費圖床服務。</p>
+      </div>
+      <div class="f-row">
+        <div class="f-group">
+          <label class="f-label">標題 *</label>
+          <input type="text" class="f-input" id="g-title" placeholder="例：現代簡約三房公寓" />
+        </div>
+        <div class="f-group">
+          <label class="f-label">類別 *</label>
+          <select class="f-input f-select" id="g-category">
+            <option value="interior">室內裝修</option>
+            <option value="water">水電工程</option>
+            <option value="design">設計規劃</option>
+            <option value="commercial">商業空間</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">說明（地點・坪數・時間）</label>
+        <input type="text" class="f-input" id="g-meta" placeholder="例：台北市大安區・40坪・2024.03" />
+      </div>
+      <label class="toggle-label" style="margin-top:4px;">
+        <div class="toggle-wrap">
+          <input type="checkbox" id="g-visible" checked />
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </div>
+        公開顯示此圖片
+      </label>
+      <input type="hidden" id="g-edit-id" value="" />
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('gallery-modal')">取消</button>
+      <button class="save-btn" onclick="saveGalleryItem()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        儲存
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── News Modal ── -->
+<div class="modal-overlay" id="news-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="news-modal-title">新增消息</h3>
+      <button class="modal-close" onclick="closeModal('news-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="f-group">
+        <label class="f-label">標題 *</label>
+        <input type="text" class="f-input" id="n-title" placeholder="消息標題" />
+      </div>
+      <div class="f-row">
+        <div class="f-group">
+          <label class="f-label">日期</label>
+          <input type="date" class="f-input" id="n-date" />
+        </div>
+        <div class="f-group">
+          <label class="f-label">類別</label>
+          <select class="f-input f-select" id="n-category">
+            <option value="最新消息">最新消息</option>
+            <option value="工程案例">工程案例</option>
+            <option value="促銷活動">促銷活動</option>
+            <option value="公司公告">公司公告</option>
+          </select>
+        </div>
+      </div>
+      <div class="f-group">
+        <label class="f-label">內容</label>
+        <textarea class="f-textarea" id="n-content" placeholder="消息內容…"></textarea>
+      </div>
+      <label class="toggle-label" style="margin-top:4px;">
+        <div class="toggle-wrap">
+          <input type="checkbox" id="n-visible" checked />
+          <div class="toggle-track"></div>
+          <div class="toggle-thumb"></div>
+        </div>
+        公開顯示此消息
+      </label>
+      <input type="hidden" id="n-edit-id" value="" />
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeModal('news-modal')">取消</button>
+      <button class="save-btn" onclick="saveNewsItem()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        儲存
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div class="toast" id="toast"></div>
+
+<!-- JS 診斷橫幅（JS 正常執行時顯示綠色；如果看不到代表 JS 未執行）-->
+<div id="js-diag" style="display:none;position:fixed;top:0;left:0;right:0;z-index:99999;background:#1e8e3e;color:#fff;font-size:12px;font-weight:700;text-align:center;padding:4px 8px;letter-spacing:.05em;">
+  ✓ JavaScript 正常執行 — 如果按鈕還是沒反應，請在瀏覽器按 F12 查看 Console 錯誤
+</div>
+
+<script>
+/* ── 全域錯誤捕捉（獨立 script block，在主 script 之前執行）── */
+window.onerror = function(msg, src, line, col) {
+  var t = document.getElementById('toast');
+  if (t) {
+    t.textContent = 'JS錯誤第' + line + '行: ' + msg;
+    t.className   = 'toast error';
+    t.style.opacity = '1';
+    t.style.transform = 'translateY(0)';
+  }
+  var diag = document.getElementById('js-diag');
+  if (diag) {
+    diag.style.background = '#d93025';
+    diag.textContent = '⚠ JS錯誤第' + line + '行: ' + msg;
+    diag.style.display = 'block';
+  }
+  return false;
+};
+</script>
+
+<script>
+/* ════════════════════════════════════════════
+   Constants & State
+════════════════════════════════════════════ */
+const CMS_KEY     = 'hj_cms_v1';
+const AUTH_KEY    = 'hj_auth_v2';
+const SESSION_KEY = 'hj_session';
+
+const CAT_LABELS = {
+  water: '水電工程', interior: '室內裝修',
+  design: '設計規劃', commercial: '商業空間'
+};
+
+let cmsData  = null;  // { gallery: [], news: [], contact: {} }
+let authData = null;  // { users: [] }
+let session  = null;  // { email, name, role, ts }
+let galleryFilter = 'all';
+let newsFilter    = 'all';
+
+/* ════════════════════════════════════════════
+   Init
+════════════════════════════════════════════ */
+// Pure-JS hash — no crypto.subtle, works on any protocol
+function hashPwd(str) {
+  const input = 'hj2024:' + str;
+  let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+  for (let i = 0; i < input.length; i++) {
+    const c = input.charCodeAt(i);
+    h1 = Math.imul(h1 ^ c, 0x9e3779b9);
+    h2 = Math.imul(h2 ^ c, 0x5f4a0bc5);
+  }
+  h1 ^= Math.imul(h1 ^ (h2 >>> 15), 0x1b873593);
+  h2 ^= Math.imul(h2 ^ (h1 >>> 13), 0xce4b5ce3);
+  h1 ^= (h2 >>> 16); h2 ^= (h1 >>> 16);
+  return (h1 >>> 0).toString(16).padStart(8,'0') + (h2 >>> 0).toString(16).padStart(8,'0');
+}
+
+function checkSession() {
+  try {
+    const raw = sessionStorage.getItem(SESSION_KEY);
+    if (!raw) return false;
+    const s = JSON.parse(raw);
+    if (!s || !s.email || Date.now() - s.ts > 8 * 60 * 60 * 1000) return false;
+    session = s;
+    return true;
+  } catch (e) { return false; }
+}
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(CMS_KEY);
+    cmsData = raw ? JSON.parse(raw) : { gallery: [], news: [], contact: {} };
+    if (!Array.isArray(cmsData.gallery)) cmsData.gallery = [];
+    if (!Array.isArray(cmsData.news))    cmsData.news    = [];
+    if (!cmsData.contact)               cmsData.contact  = {};
+  } catch (e) {
+    cmsData = { gallery: [], news: [], contact: {} };
+  }
+}
+
+function saveData() {
+  localStorage.setItem(CMS_KEY, JSON.stringify(cmsData));
+}
+
+function loadAuth() {
+  try {
+    const raw = localStorage.getItem(AUTH_KEY);
+    authData = raw ? JSON.parse(raw) : { users: [] };
+    if (!Array.isArray(authData.users)) authData.users = [];
+  } catch (e) { authData = { users: [] }; }
+}
+
+function saveAuth() {
+  localStorage.setItem(AUTH_KEY, JSON.stringify(authData));
+}
+
+function genId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
+/* ════════════════════════════════════════════
+   Main Entry
+════════════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', function() {
+  // 顯示 JS 診斷橫幅（確認 JS 有正常執行）
+  var diagBanner = document.getElementById('js-diag');
+  if (diagBanner) diagBanner.style.display = 'block';
+
+  // Auth guard
+  if (!checkSession()) {
+    location.replace('login.html');
+    return;
+  }
+
+  loadData();
+  loadAuth();
+
+  // Seed defaults if no gallery data
+  if (!cmsData.gallery.length) seedDefaultGallery();
+
+  // Update UI
+  updateUserUI();
+  updateStats();
+  renderGallery();
+  renderNews();
+  loadContactForm();
+  renderUserList();
+
+  // Set today's date for news modal
+  document.getElementById('n-date').valueAsDate = new Date();
+});
+
+function seedDefaultGallery() {
+  cmsData.gallery = [
+    { id: '1',  src: 'https://picsum.photos/seed/hj01/800/600', title: '現代簡約三房公寓',    category: 'interior',   meta: '台北市大安區・40坪・2024.03', visible: true },
+    { id: '2',  src: 'https://picsum.photos/seed/hj02/800/600', title: '商辦大樓全棟水電更新', category: 'water',      meta: '新北市・680坪・2024.01',   visible: true },
+    { id: '3',  src: 'https://picsum.photos/seed/hj03/800/600', title: '廚房衛浴全面翻新',    category: 'interior',   meta: '台中市・28坪・2023.11',    visible: true },
+    { id: '4',  src: 'https://picsum.photos/seed/hj04/800/600', title: '透天厝全屋翻修設計',  category: 'design',     meta: '台北市士林區・65坪・2023.09', visible: true },
+    { id: '5',  src: 'https://picsum.photos/seed/hj05/800/600', title: '餐飲店面空間改造',    category: 'commercial', meta: '桃園市・35坪・2023.07',    visible: true },
+    { id: '6',  src: 'https://picsum.photos/seed/hj06/800/600', title: '老公寓水電全面更新',  category: 'water',      meta: '台北市萬華區・24坪・2023.05', visible: true },
+    { id: '7',  src: 'https://picsum.photos/seed/hj07/800/600', title: '北歐風格兩房裝修',    category: 'interior',   meta: '新北市板橋區・32坪・2023.04', visible: true },
+    { id: '8',  src: 'https://picsum.photos/seed/hj08/800/600', title: '小坪數機能空間設計',  category: 'design',     meta: '台北市中山區・18坪・2023.03', visible: true },
+    { id: '9',  src: 'https://picsum.photos/seed/hj09/800/600', title: '辦公室空間整體翻新',  category: 'commercial', meta: '台北市內湖區・80坪・2023.01', visible: true },
+    { id: '10', src: 'https://picsum.photos/seed/hj10/800/600', title: '電梯大廈全室裝修',    category: 'interior',   meta: '桃園市・45坪・2022.12',    visible: true },
+    { id: '11', src: 'https://picsum.photos/seed/hj11/800/600', title: '社區管線整體汰換',    category: 'water',      meta: '新北市新店區・120坪・2022.10', visible: true },
+    { id: '12', src: 'https://picsum.photos/seed/hj12/800/600', title: '精品風格主臥套房設計', category: 'design',     meta: '台北市大安區・25坪・2022.08', visible: true }
+  ];
+  saveData();
+}
+
+function updateUserUI() {
+  if (!session) return;
+  const initial = (session.name || session.email || 'A')[0].toUpperCase();
+  document.getElementById('user-avatar').textContent       = initial;
+  document.getElementById('user-name-sidebar').textContent = session.name || session.email;
+  document.getElementById('user-email-sidebar').textContent= session.email;
+  document.getElementById('topbar-user').textContent       = session.name || '管理員';
+}
+
+function updateStats() {
+  const total   = cmsData.gallery.length;
+  const visible = cmsData.gallery.filter(i => i.visible !== false).length;
+  const hidden  = total - visible;
+  const news    = cmsData.news.length;
+
+  document.getElementById('ov-gallery-cnt').textContent  = total;
+  document.getElementById('ov-visible-cnt').textContent  = visible;
+  document.getElementById('ov-hidden-cnt').textContent   = hidden;
+  document.getElementById('ov-news-cnt').textContent     = news;
+  document.getElementById('nav-gallery-cnt').textContent = total;
+
+  const newsBadge = document.getElementById('nav-news-cnt');
+  if (news > 0) { newsBadge.textContent = news; newsBadge.style.display = ''; }
+  else newsBadge.style.display = 'none';
+}
+
+/* ════════════════════════════════════════════
+   Panel Navigation
+════════════════════════════════════════════ */
+const PANEL_TITLES = {
+  overview: '總覽', gallery: '相冊管理', news: '最新消息',
+  content: '頁面內容', accounts: '帳號管理'
+};
+
+function switchPanel(name) {
+  if (name === 'preview') { togglePreviewPane(); return; }
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item[data-panel]').forEach(n => n.classList.remove('active'));
+  var _pEl = document.getElementById('panel-' + name); if (_pEl) _pEl.classList.add('active');
+  var _nEl = document.querySelector('[data-panel="' + name + '"]'); if (_nEl) _nEl.classList.add('active');
+  document.getElementById('topbar-title').textContent = PANEL_TITLES[name] || name;
+  closeSidebar();
+  if (name === 'preview') loadPreview();
+  if (name === 'accounts') renderUserList();
+}
+
+/* ════════════════════════════════════════════
+   Sidebar (mobile)
+════════════════════════════════════════════ */
+function toggleSidebar() {
+  const sb  = document.getElementById('sidebar');
+  const bd  = document.getElementById('sidebar-backdrop');
+  const open = sb.classList.contains('open');
+  sb.classList.toggle('open', !open);
+  bd.classList.toggle('open', !open);
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-backdrop').classList.remove('open');
+}
+
+/* ════════════════════════════════════════════
+   Gallery
+════════════════════════════════════════════ */
+function filterGallery(cat, btn) {
+  galleryFilter = cat;
+  document.querySelectorAll('.filter-chip[data-cat]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderGallery();
+}
+
+function renderGallery() {
+  const search = (document.getElementById('gallery-search')?.value || '').toLowerCase();
+  const grid   = document.getElementById('gallery-grid');
+  if (!grid) return;
+
+  const filtered = cmsData.gallery.filter(item => {
+    const catOk    = galleryFilter === 'all' || item.category === galleryFilter;
+    const searchOk = !search || item.title.toLowerCase().includes(search) || (item.meta || '').toLowerCase().includes(search);
+    return catOk && searchOk;
+  });
+
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <h3>沒有符合的圖片</h3>
+      <p>嘗試更換篩選條件，或新增圖片</p>
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(item => `
+    <div class="admin-gcard" id="gcard-${item.id}">
+      <div class="admin-gcard-img">
+        <img src="${esc(item.src)}" alt="${esc(item.title)}" loading="lazy"
+          onerror="this.style.display='none'" />
+        <span class="cat-badge">${CAT_LABELS[item.category] || item.category}</span>
+        ${item.visible === false ? '<span class="hidden-badge">隱藏</span>' : ''}
+      </div>
+      <div class="admin-gcard-body">
+        <div class="admin-gcard-title">${esc(item.title)}</div>
+        <div class="admin-gcard-meta">${esc(item.meta || '—')}</div>
+      </div>
+      <div class="admin-gcard-actions">
+        <label class="toggle-label">
+          <div class="toggle-wrap">
+            <input type="checkbox" ${item.visible !== false ? 'checked' : ''}
+              onchange="toggleGalleryItem('${item.id}', this.checked)" />
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </div>
+          ${item.visible !== false ? '顯示中' : '已隱藏'}
+        </label>
+        <button class="btn-icon edit" title="編輯" onclick="openGalleryModal('${item.id}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button class="btn-icon del" title="刪除" onclick="deleteGalleryItem('${item.id}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+        </button>
+      </div>
+    </div>`).join('');
+}
+
+function openGalleryModal(id = '') {
+  const modal = document.getElementById('gallery-modal');
+  const title = document.getElementById('gallery-modal-title');
+
+  // Reset form
+  document.getElementById('g-src').value       = '';
+  document.getElementById('g-title').value     = '';
+  document.getElementById('g-category').value  = 'interior';
+  document.getElementById('g-meta').value      = '';
+  document.getElementById('g-visible').checked = true;
+  document.getElementById('g-edit-id').value   = '';
+  document.getElementById('modal-img-preview').src = '';
+  document.getElementById('modal-img-preview').classList.remove('loaded');
+  document.getElementById('modal-img-wrap').classList.remove('has-img');
+  document.querySelector('#modal-img-wrap .img-placeholder').style.display = '';
+
+  if (id) {
+    const item = cmsData.gallery.find(i => i.id === id);
+    if (item) {
+      title.textContent = '編輯圖片';
+      document.getElementById('g-src').value       = item.src;
+      document.getElementById('g-title').value     = item.title;
+      document.getElementById('g-category').value  = item.category;
+      document.getElementById('g-meta').value      = item.meta || '';
+      document.getElementById('g-visible').checked = item.visible !== false;
+      document.getElementById('g-edit-id').value   = item.id;
+      previewModalImg();
+    }
+  } else {
+    title.textContent = '新增圖片';
+  }
+
+  modal.classList.add('open');
+  document.getElementById('g-src').focus();
+}
+
+function previewModalImg() {
+  const src = document.getElementById('g-src').value.trim();
+  const img = document.getElementById('modal-img-preview');
+  const wrap = document.getElementById('modal-img-wrap');
+  const ph   = document.querySelector('#modal-img-wrap .img-placeholder');
+  if (src) {
+    img.src = src;
+    img.onload = () => { img.classList.add('loaded'); wrap.classList.add('has-img'); ph.style.display = 'none'; };
+    img.onerror = () => { img.classList.remove('loaded'); wrap.classList.remove('has-img'); ph.style.display = ''; };
+  } else {
+    img.classList.remove('loaded');
+    wrap.classList.remove('has-img');
+    ph.style.display = '';
+  }
+}
+
+function saveGalleryItem() {
+  const src      = document.getElementById('g-src').value.trim();
+  const title    = document.getElementById('g-title').value.trim();
+  const category = document.getElementById('g-category').value;
+  const meta     = document.getElementById('g-meta').value.trim();
+  const visible  = document.getElementById('g-visible').checked;
+  const editId   = document.getElementById('g-edit-id').value;
+
+  if (!src)   return showToast('請輸入圖片網址', 'error');
+  if (!title) return showToast('請輸入圖片標題', 'error');
+
+  if (editId) {
+    const idx = cmsData.gallery.findIndex(i => i.id === editId);
+    if (idx >= 0) cmsData.gallery[idx] = { ...cmsData.gallery[idx], src, title, category, meta, visible };
+  } else {
+    cmsData.gallery.push({ id: genId(), src, title, category, meta, visible });
+  }
+
+  saveData();
+  closeModal('gallery-modal');
+  renderGallery();
+  updateStats();
+  showToast(editId ? '圖片已更新' : '圖片已新增');
+}
+
+function deleteGalleryItem(id) {
+  if (!confirm('確定要刪除這張圖片嗎？此操作無法復原。')) return;
+  cmsData.gallery = cmsData.gallery.filter(i => i.id !== id);
+  saveData();
+  renderGallery();
+  updateStats();
+  showToast('圖片已刪除');
+}
+
+function toggleGalleryItem(id, visible) {
+  const item = cmsData.gallery.find(i => i.id === id);
+  if (item) { item.visible = visible; saveData(); updateStats(); }
+  const card = document.getElementById('gcard-' + id);
+  if (card) {
+    const lbl = card.querySelector('.toggle-label');
+    if (lbl) lbl.lastChild.textContent = visible ? '顯示中' : '已隱藏';
+    const badge = card.querySelector('.hidden-badge');
+    if (badge) badge.remove();
+    if (!visible) {
+      const imgWrap = card.querySelector('.admin-gcard-img');
+      if (imgWrap && !imgWrap.querySelector('.hidden-badge')) {
+        const b = document.createElement('span');
+        b.className = 'hidden-badge'; b.textContent = '隱藏';
+        imgWrap.appendChild(b);
+      }
+    }
+  }
+  showToast(visible ? '已設為顯示' : '已隱藏');
+}
+
+/* ════════════════════════════════════════════
+   News
+════════════════════════════════════════════ */
+function filterNews(f, btn) {
+  newsFilter = f;
+  document.querySelectorAll('.filter-chip[data-news-filter]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderNews();
+}
+
+function renderNews() {
+  const list = document.getElementById('news-list');
+  if (!list) return;
+
+  const filtered = cmsData.news.filter(n => {
+    if (newsFilter === 'all') return true;
+    return newsFilter === 'true' ? n.visible !== false : n.visible === false;
+  });
+
+  if (!filtered.length) {
+    list.innerHTML = `<div class="empty-state">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <h3>尚無消息</h3>
+      <p>點擊「新增消息」發布公司最新動態</p>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map(n => `
+    <div class="news-item">
+      <div class="news-item-main">
+        <div class="news-item-title">${esc(n.title)}</div>
+        <div class="news-item-meta">
+          <span>${esc(n.category || '最新消息')}</span>
+          ${n.date ? `<span>📅 ${esc(n.date)}</span>` : ''}
+          <span style="color:${n.visible !== false ? 'var(--green)' : 'var(--red)'};">
+            ${n.visible !== false ? '● 顯示中' : '● 已隱藏'}
+          </span>
+        </div>
+        ${n.content ? `<div class="news-item-excerpt">${esc(n.content.slice(0, 100))}${n.content.length > 100 ? '…' : ''}</div>` : ''}
+      </div>
+      <div class="news-item-actions">
+        <label class="toggle-label">
+          <div class="toggle-wrap">
+            <input type="checkbox" ${n.visible !== false ? 'checked' : ''} onchange="toggleNewsItem('${n.id}', this.checked)" />
+            <div class="toggle-track"></div>
+            <div class="toggle-thumb"></div>
+          </div>
+        </label>
+        <button class="btn-icon edit" title="編輯" onclick="openNewsModal('${n.id}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </button>
+        <button class="btn-icon del" title="刪除" onclick="deleteNewsItem('${n.id}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+        </button>
+      </div>
+    </div>`).join('');
+}
+
+function openNewsModal(id = '') {
+  document.getElementById('n-title').value     = '';
+  document.getElementById('n-date').valueAsDate = new Date();
+  document.getElementById('n-category').value  = '最新消息';
+  document.getElementById('n-content').value   = '';
+  document.getElementById('n-visible').checked = true;
+  document.getElementById('n-edit-id').value   = '';
+  document.getElementById('news-modal-title').textContent = id ? '編輯消息' : '新增消息';
+
+  if (id) {
+    const item = cmsData.news.find(n => n.id === id);
+    if (item) {
+      document.getElementById('n-title').value     = item.title;
+      document.getElementById('n-date').value      = item.date || '';
+      document.getElementById('n-category').value  = item.category || '最新消息';
+      document.getElementById('n-content').value   = item.content || '';
+      document.getElementById('n-visible').checked = item.visible !== false;
+      document.getElementById('n-edit-id').value   = item.id;
+    }
+  }
+  document.getElementById('news-modal').classList.add('open');
+  document.getElementById('n-title').focus();
+}
+
+function saveNewsItem() {
+  const title    = document.getElementById('n-title').value.trim();
+  const date     = document.getElementById('n-date').value;
+  const category = document.getElementById('n-category').value;
+  const content  = document.getElementById('n-content').value.trim();
+  const visible  = document.getElementById('n-visible').checked;
+  const editId   = document.getElementById('n-edit-id').value;
+
+  if (!title) return showToast('請輸入消息標題', 'error');
+
+  if (editId) {
+    const idx = cmsData.news.findIndex(n => n.id === editId);
+    if (idx >= 0) cmsData.news[idx] = { ...cmsData.news[idx], title, date, category, content, visible };
+  } else {
+    cmsData.news.unshift({ id: genId(), title, date, category, content, visible });
+  }
+
+  saveData();
+  closeModal('news-modal');
+  renderNews();
+  updateStats();
+  showToast(editId ? '消息已更新' : '消息已發布');
+}
+
+function deleteNewsItem(id) {
+  if (!confirm('確定要刪除這則消息嗎？')) return;
+  cmsData.news = cmsData.news.filter(n => n.id !== id);
+  saveData();
+  renderNews();
+  updateStats();
+  showToast('消息已刪除');
+}
+
+function toggleNewsItem(id, visible) {
+  const item = cmsData.news.find(n => n.id === id);
+  if (item) { item.visible = visible; saveData(); updateStats(); showToast(visible ? '已設為顯示' : '已隱藏'); }
+}
+
+/* ════════════════════════════════════════════
+   Content (Contact)
+════════════════════════════════════════════ */
+function loadContactForm() {
+  const c = cmsData.contact || {};
+  document.getElementById('c-phone1').value  = c.phone1  || '(02) 2345-6789';
+  document.getElementById('c-phone2').value  = c.phone2  || '0912-345-678';
+  document.getElementById('c-email').value   = c.email   || 'service@hongjiang.com.tw';
+  document.getElementById('c-region').value  = c.region  || '台北・新北・桃園・台中・全台接洽';
+  document.getElementById('c-hours').value   = c.hours   || '週一至週六 08:00 — 18:00';
+}
+
+function saveContact() {
+  cmsData.contact = {
+    phone1:  document.getElementById('c-phone1').value.trim(),
+    phone2:  document.getElementById('c-phone2').value.trim(),
+    email:   document.getElementById('c-email').value.trim(),
+    region:  document.getElementById('c-region').value.trim(),
+    hours:   document.getElementById('c-hours').value.trim()
+  };
+  saveData();
+  const btn = event.target;
+  btn.classList.add('saved');
+  btn.textContent = '✓ 已儲存';
+  setTimeout(() => {
+    btn.classList.remove('saved');
+    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 儲存聯絡資訊`;
+  }, 2000);
+  showToast('聯絡資訊已儲存');
+}
+
+function switchCtab(name, btn) {
+  document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.ctab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  var _ctEl = document.getElementById('ctab-' + name); if (_ctEl) _ctEl.classList.add('active');
+}
+
+/* ════════════════════════════════════════════
+   Preview Pane (right-side permanent)
+════════════════════════════════════════════ */
+var previewPaneVisible = true;
+var currentPreviewMode = 'desktop'; // 'desktop' | 'mobile'
+
+// Sync SELECT to match the iframe's actual current page after navigation.
+function syncPreviewSelect() {
+  var sel   = document.getElementById('preview-page');
+  var frame = document.getElementById('preview-iframe');
+  if (!sel || !frame) return;
+  try {
+    var href = frame.contentWindow.location.href;
+    var filename = href.split('?')[0].split('/').pop() || 'index.html';
+    var opts = sel.options;
+    for (var i = 0; i < opts.length; i++) {
+      if (opts[i].value.indexOf(filename) !== -1) {
+        sel.selectedIndex = i;
+        break;
+      }
+    }
+  } catch (e) { /* cross-origin: skip sync */ }
+}
+
+function setPreviewMode(mode) {
+  currentPreviewMode = mode;
+  document.getElementById('btn-mode-desktop').classList.toggle('active-mode', mode === 'desktop');
+  document.getElementById('btn-mode-mobile').classList.toggle('active-mode',  mode === 'mobile');
+  // Toggle phone-frame class on pane
+  var pane = document.getElementById('preview-pane');
+  if (pane) pane.classList.toggle('mobile-mode', mode === 'mobile');
+  // Update label
+  var lbl = document.getElementById('preview-mode-label');
+  if (lbl) lbl.textContent = mode === 'mobile' ? '手機版預覽（390px）' : '即時前台預覽';
+  loadPreview();
+}
+
+function togglePreviewPane() {
+  var pane   = document.getElementById('preview-pane');
+  var toggle = document.getElementById('nav-preview-toggle');
+  if (!pane) return;
+  previewPaneVisible = !previewPaneVisible;
+  pane.style.display = previewPaneVisible ? 'flex' : 'none';
+  if (toggle) {
+    var text = toggle.childNodes[toggle.childNodes.length - 1];
+    if (text && text.nodeType === 3) {
+      text.textContent = previewPaneVisible ? '\n        隱藏預覽\n      ' : '\n        顯示預覽\n      ';
+    }
+  }
+}
+
+function loadPreview() {
+  var sel   = document.getElementById('preview-page');
+  var frame = document.getElementById('preview-iframe');
+  if (!frame || !sel) return;
+  var suffix = currentPreviewMode === 'desktop' ? '?pv=1' : '?t=' + Date.now();
+  frame.src = sel.value + suffix;
+}
+function reloadPreview() {
+  var frame = document.getElementById('preview-iframe');
+  if (frame) {
+    try { frame.contentWindow.location.reload(); }
+    catch (e) { frame.src = frame.src; }
+  }
+}
+function openPreviewInTab() {
+  var sel = document.getElementById('preview-page');
+  if (sel) window.open(sel.value, '_blank');
+}
+
+// Wire up preview pane controls via addEventListener (avoids CSP inline-handler issues).
+(function initPreviewPane() {
+  var sel      = document.getElementById('preview-page');
+  var frame    = document.getElementById('preview-iframe');
+  var btnDesk  = document.getElementById('btn-mode-desktop');
+  var btnMob   = document.getElementById('btn-mode-mobile');
+  var btnRld   = document.getElementById('btn-reload-preview');
+  var btnTab   = document.getElementById('btn-open-tab');
+
+  if (sel)     sel.addEventListener('change', loadPreview);
+  if (sel)     sel.addEventListener('input',  loadPreview);  // belt-and-suspenders
+  if (btnDesk) btnDesk.addEventListener('click', function() { setPreviewMode('desktop'); });
+  if (btnMob)  btnMob.addEventListener('click',  function() { setPreviewMode('mobile'); });
+  if (btnRld)  btnRld.addEventListener('click',  reloadPreview);
+  if (btnTab)  btnTab.addEventListener('click',  openPreviewInTab);
+
+  // When the iframe navigates (user clicked a nav link inside it),
+  // sync the SELECT dropdown to reflect the new page.
+  if (frame) {
+    frame.addEventListener('load', syncPreviewSelect);
+  }
+}());
+
+
+/* ════════════════════════════════════════════
+   Accounts
+════════════════════════════════════════════ */
+function renderUserList() {
+  loadAuth();
+  const list = document.getElementById('user-list');
+  if (!list) return;
+
+  if (!authData.users.length) {
+    list.innerHTML = '<p style="font-size:13px;color:var(--text-subtle);padding:12px 0;">尚無帳號</p>';
+    return;
+  }
+
+  list.innerHTML = authData.users.map(u => `
+    <div class="user-row-item">
+      <div class="uavatar">${(u.name || u.email)[0].toUpperCase()}</div>
+      <div style="flex:1;min-width:0;">
+        <div class="u-name">${esc(u.name || '—')}</div>
+        <div class="u-email">${esc(u.email)}</div>
+      </div>
+      <span class="u-role ${u.role === 'admin' ? 'admin' : 'staff'}">${u.role === 'admin' ? '管理員' : '員工'}</span>
+      ${u.email !== (session && session.email) ? `<button class="btn-icon del" onclick="deleteUser('${esc(u.email)}')" title="刪除">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
+      </button>` : ''}
+    </div>`).join('');
+}
+
+function addUser() {
+  const name  = document.getElementById('new-name').value.trim();
+  const email = document.getElementById('new-email').value.trim().toLowerCase();
+  const pwd   = document.getElementById('new-pwd').value;
+  const role  = document.getElementById('new-role').value;
+
+  if (!email) return showToast('請輸入電子郵件', 'error');
+  if (pwd.length < 8) return showToast('密碼至少需要 8 個字元', 'error');
+  if (authData.users.find(u => u.email.toLowerCase() === email)) return showToast('此電子郵件已存在', 'error');
+
+  const hash = hashPwd(pwd);
+  authData.users.push({ email, name, hash, role });
+  saveAuth();
+  renderUserList();
+  document.getElementById('new-name').value  = '';
+  document.getElementById('new-email').value = '';
+  document.getElementById('new-pwd').value   = '';
+  showToast('帳號已新增');
+}
+
+function deleteUser(email) {
+  if (!confirm(`確定要刪除帳號 ${email} 嗎？`)) return;
+  authData.users = authData.users.filter(u => u.email.toLowerCase() !== email.toLowerCase());
+  saveAuth();
+  renderUserList();
+  showToast('帳號已刪除');
+}
+
+function changePassword() {
+  const cur     = document.getElementById('cur-pwd').value;
+  const newPwd  = document.getElementById('new-pwd2').value;
+  const confirm = document.getElementById('confirm-pwd').value;
+
+  if (!cur)  return showToast('請輸入目前密碼', 'error');
+  if (newPwd.length < 8) return showToast('新密碼至少需要 8 個字元', 'error');
+  if (newPwd !== confirm) return showToast('兩次輸入的密碼不一致', 'error');
+
+  const curHash = hashPwd(cur);
+  const user    = authData.users.find(u => u.email.toLowerCase() === session.email.toLowerCase() && u.hash === curHash);
+  if (!user) return showToast('目前密碼錯誤', 'error');
+
+  user.hash = hashPwd(newPwd);
+  saveAuth();
+  document.getElementById('cur-pwd').value  = '';
+  document.getElementById('new-pwd2').value = '';
+  document.getElementById('confirm-pwd').value = '';
+  showToast('密碼已成功更新');
+}
+
+/* ════════════════════════════════════════════
+   Export / Import
+════════════════════════════════════════════ */
+function exportData() {
+  const blob = new Blob([JSON.stringify(cmsData, null, 2)], { type: 'application/json' });
+  const a    = document.createElement('a');
+  a.href     = URL.createObjectURL(blob);
+  a.download = `hj-cms-backup-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast('備份檔案已下載');
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const d = JSON.parse(e.target.result);
+      if (!d.gallery && !d.news && !d.contact) throw new Error('格式不正確');
+      if (!confirm('確定要匯入備份資料嗎？這將覆蓋目前所有內容。')) return;
+      cmsData = {
+        gallery: Array.isArray(d.gallery) ? d.gallery : [],
+        news:    Array.isArray(d.news)    ? d.news    : [],
+        contact: d.contact || {}
+      };
+      saveData();
+      renderGallery();
+      renderNews();
+      loadContactForm();
+      updateStats();
+      showToast('備份已成功匯入');
+    } catch (err) {
+      showToast('匯入失敗：' + err.message, 'error');
+    }
+    event.target.value = '';
+  };
+  reader.readAsText(file);
+}
+
+/* ════════════════════════════════════════════
+   Modal
+════════════════════════════════════════════ */
+function closeModal(id) {
+  var _mEl = document.getElementById(id); if (_mEl) _mEl.classList.remove('open');
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+});
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+});
+
+/* ════════════════════════════════════════════
+   Toast
+════════════════════════════════════════════ */
+let toastTimer = null;
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className   = `toast ${type}`;
+  void t.offsetHeight; // reflow
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ════════════════════════════════════════════
+   Auth
+════════════════════════════════════════════ */
+function logout() {
+  if (!confirm('確定要登出嗎？')) return;
+  sessionStorage.removeItem(SESSION_KEY);
+  location.replace('login.html');
+}
+
+/* ════════════════════════════════════════════
+   Helpers
+════════════════════════════════════════════ */
+function esc(str) {
+  return String(str || '').replace(/[&<>"']/g, m =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[m]
+  );
+}
+</script>
+</body>
+</html>

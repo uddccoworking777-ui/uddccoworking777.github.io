@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>鴻匠工程 — 水電・室內裝修</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      padding-top: var(--nav-h);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    /* Google-style colorful blob shapes */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+    .blob-1 { width: 500px; height: 500px; background: rgba(26,115,232,0.08); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: rgba(232,116,0,0.06); bottom: 50px; right: 200px; }
+    .blob-3 { width: 200px; height: 200px; background: rgba(30,142,62,0.05); top: 200px; right: 400px; }
+    /* Dot grid */
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(26,115,232,0.1) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 60% 80% at 75% 50%, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 80% at 75% 50%, black 0%, transparent 70%);
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    /* Left content */
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+    }
+    .hero-title {
+      font-size: clamp(42px, 5.5vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.25s forwards;
+    }
+    .hero-title .blue { color: var(--primary); }
+    .hero-title .orange { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+      opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 48px;
+      opacity: 0; animation: fadeUp 0.6s 0.55s forwards;
+    }
+
+    /* Hero stats chips */
+    .hero-stats {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.6s 0.7s forwards;
+    }
+    .hero-stat-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+    }
+    .hero-stat-num { font-size: 18px; font-weight: 800; color: var(--primary); }
+    .hero-stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+    /* Right visual */
+    .hero-visual {
+      position: relative;
+      opacity: 0; animation: fadeIn 0.8s 0.4s forwards;
+    }
+    .hero-card-stack {
+      position: relative; width: 100%; aspect-ratio: 1.05;
+    }
+    /* Main card */
+    .hero-main-card {
+      background: #fff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-3);
+      padding: 28px;
+      overflow: hidden;
+    }
+    .hmc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .hmc-icon {
+      width: 44px; height: 44px;
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+    }
+    .hmc-title { font-size: 16px; font-weight: 700; }
+    .hmc-sub { font-size: 12px; color: var(--text-muted); }
+    .hmc-bar { height: 6px; background: var(--surface); border-radius: 3px; margin-bottom: 8px; overflow: hidden; }
+    .hmc-bar-fill { height: 100%; border-radius: 3px; }
+    .hmc-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .hmc-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+
+    /* Floating cards */
+    .float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-2);
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .fc-icon {
+      width: 36px; height: 36px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .fc-1 { top: -16px; right: 20px; }
+    .fc-2 { bottom: 20px; left: -24px; }
+    .fc-num { font-size: 18px; font-weight: 800; color: var(--text); line-height: 1; }
+    .fc-label { font-size: 12px; color: var(--text-muted); }
+
+    /* ── SERVICE CARDS ── */
+    .services-section { background: var(--surface); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .svc-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .svc-card-top {
+      width: 52px; height: 52px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .svc-icon { width: 26px; height: 26px; }
+    .svc-num {
+      position: absolute; bottom: 16px; right: 20px;
+      font-size: 48px; font-weight: 800;
+      color: rgba(0,0,0,0.04);
+      line-height: 1;
+    }
+    .svc-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .svc-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; flex: 1; }
+    .svc-link { font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 4px; margin-top: auto; }
+    .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+
+    /* ── GALLERY PREVIEW ── */
+    .gallery-preview { background: #fff; }
+    .gallery-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 12px;
+    }
+    .gallery-preview-grid .gallery-item:first-child { grid-column: span 2; }
+    .gallery-cta-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 28px; gap: 16px; flex-wrap: wrap;
+    }
+    .gallery-cta-text { font-size: 15px; color: var(--text-muted); }
+
+    /* ── ABOUT TEASER ── */
+    .about-teaser { background: var(--surface); }
+    .about-teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-visual-wrap {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary-light) 0%, #fff 100%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-mid);
+      padding: 40px;
+      aspect-ratio: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+    }
+    .about-visual-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(26,115,232,0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+      border-radius: var(--radius-xl);
+    }
+    .about-big-num {
+      font-size: clamp(80px, 14vw, 140px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--primary);
+      opacity: 0.15;
+      position: absolute;
+      bottom: 20px; right: 24px;
+    }
+    .about-visual-content { position: relative; z-index: 2; }
+    .about-visual-content h3 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .about-visual-content p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .about-badge {
+      position: absolute; top: 20px; right: 20px;
+      background: var(--primary); color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 12px 16px; text-align: center;
+    }
+    .ab-num { font-size: 28px; font-weight: 800; line-height: 1; }
+    .ab-text { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 2px; }
+    .about-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+    .about-feat {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13.5px; color: var(--text-muted); line-height: 1.55;
+    }
+    .feat-check {
+      width: 18px; height: 18px; background: var(--primary-light);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .feat-check svg { width: 10px; height: 10px; color: var(--primary); }
+
+    /* ── TESTIMONIALS ── */
+    .testi-section { background: #fff; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .testi-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 28px;
+      transition: box-shadow 0.2s;
+    }
+    .testi-card:hover { box-shadow: var(--shadow-2); }
+    .stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .star { color: #fbbc04; font-size: 15px; }
+    .testi-text {
+      font-size: 15px; line-height: 1.7; color: var(--text);
+      margin-bottom: 20px; font-style: italic;
+    }
+    .testi-text::before { content: '\201C'; color: var(--primary); font-size: 20px; font-style: normal; }
+    .testi-text::after  { content: '\201D'; color: var(--primary); font-size: 20px; font-style: normal; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: var(--radius-pill);
+      background: var(--primary-light); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: var(--primary); flex-shrink: 0;
+    }
+    .testi-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .testi-role { font-size: 12px; color: var(--text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-teaser-grid { grid-template-columns: 1fr; gap: 48px; }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-preview-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-preview-grid .gallery-item:first-child { grid-column: span 2; }
+      .gallery-preview-grid .gallery-item { aspect-ratio: 4/3; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .about-feats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">鴻匠<span>工程</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">首頁</a></li>
+        <li class="has-dropdown">
+          <a href="#">服務項目</a>
+          <ul class="dropdown">
+            <li><a href="service-water.html">水電工程</a></li>
+            <li><a href="service-interior.html">室內裝修</a></li>
+            <li><a href="service-design.html">設計規劃</a></li>
+            <li><a href="service-maintenance.html">維修保固</a></li>
+          </ul>
+        </li>
+        <li><a href="gallery.html">作品相冊</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li class="nav-cta"><a href="contact.html">免費諮詢</a></li>
+        <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工登入</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html" class="active">首頁</a>
+  <a href="service-water.html" class="mobile-sub">水電工程</a>
+  <a href="service-interior.html" class="mobile-sub">室內裝修</a>
+  <a href="service-design.html" class="mobile-sub">設計規劃</a>
+  <a href="service-maintenance.html" class="mobile-sub">維修保固</a>
+  <a href="gallery.html">作品相冊</a>
+  <a href="about.html">關於我們</a>
+  <a href="contact.html">免費諮詢</a>
+  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工後台登入</a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-blob blob-3"></div>
+    <div class="hero-dots"></div>
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left -->
+      <div>
+        <div class="hero-eyebrow">
+          <span class="chip chip-blue">台灣水電・室內裝修專家</span>
+        </div>
+        <h1 class="hero-title">
+          打造您的<br />
+          <span class="blue">理想空間</span><br />
+          <span style="font-weight:300; font-size:0.65em; color:var(--text-muted); letter-spacing:-0.01em;">水電・裝修・設計 一站搞定</span>
+        </h1>
+        <p class="hero-sub">
+          專業水電配管、全室裝修、室內設計，二十年工藝傳承，
+          每一細節精工打造，讓您安心託付。
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">
+            立即免費諮詢
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="gallery.html" class="btn-outline">瀏覽作品相冊</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-chip">
+            <div class="hero-stat-num">20+</div>
+            <div class="hero-stat-label">年專業經驗</div>
+          </div>
+          <div class="hero-stat-chip">
+            <div class="hero-stat-num">800+</div>
+            <div class="hero-stat-label">完成案件</div>
+          </div>
+          <div class="hero-stat-chip">
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">客戶滿意度</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Dashboard Card -->
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hero-main-card">
+            <div class="hmc-header">
+              <div class="hmc-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div>
+                <div class="hmc-title">工程進度追蹤</div>
+                <div class="hmc-sub">台北市大安區 40坪 裝修案</div>
+              </div>
+            </div>
+            <!-- Progress bars -->
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>水電配管</span><span style="color:var(--green);font-weight:600;">完成 100%</span></div>
+            <div class="hmc-bar"><div class="hmc-bar-fill" style="width:100%;background:var(--green);"></div></div>
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>泥作工程</span><span style="color:var(--primary);font-weight:600;">進行中 75%</span></div>
+            <div class="hmc-bar"><div class="hmc-bar-fill" style="width:75%;background:var(--primary);"></div></div>
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>木作工程</span><span style="color:var(--text-subtle);font-weight:600;">待開工 0%</span></div>
+            <div class="hmc-bar"><div class="hmc-bar-fill" style="width:0%;background:var(--border);"></div></div>
+            <div class="hmc-tag-row">
+              <span class="chip chip-green" style="font-size:11px;">準時交屋</span>
+              <span class="chip chip-blue" style="font-size:11px;">透明報價</span>
+              <span class="chip chip-orange" style="font-size:11px;">二年保固</span>
+            </div>
+          </div>
+          <!-- Float cards -->
+          <div class="float-card fc-1">
+            <div class="fc-icon" style="background:var(--green-light);">
+              <svg width="18" height="18" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <div><div class="fc-num">98%</div><div class="fc-label">客戶滿意</div></div>
+          </div>
+          <div class="float-card fc-2">
+            <div class="fc-icon" style="background:var(--primary-light);">
+              <svg width="18" height="18" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div><div class="fc-num">2年</div><div class="fc-label">工程保固</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services-section section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:12px;">專業服務</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title">完整的工程<br /><span class="blue">解決方案</span></h2>
+      </div>
+      <p class="section-desc">從基礎水電到精緻裝修，提供全方位的居家工程服務，讓您的空間煥然一新。</p>
+    </div>
+    <div class="services-grid">
+      <a href="service-water.html" class="svc-card reveal">
+        <div class="svc-card-top" style="background:var(--primary-light);">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--primary)" stroke-width="2">
+            <path d="M12 36V20M24 36V14M36 36V24"/><circle cx="12" cy="14" r="4"/><circle cx="24" cy="8" r="4"/><circle cx="36" cy="18" r="4"/><path d="M6 36h36"/>
+          </svg>
+        </div>
+        <div class="svc-num">01</div>
+        <h3 class="svc-title">水電工程</h3>
+        <p class="svc-desc">給排水系統規劃、電氣配線、弱電佈設，確保管線安全耐用，符合法規標準。</p>
+        <span class="svc-link">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <div class="svc-tags">
+          <span class="tag">給排水</span><span class="tag">電氣配線</span><span class="tag">弱電系統</span>
+        </div>
+      </a>
+      <a href="service-interior.html" class="svc-card reveal reveal-delay-1">
+        <div class="svc-card-top" style="background:var(--accent-light);">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="2">
+            <rect x="6" y="10" width="36" height="28" rx="2"/><path d="M6 22h36M18 22v16"/>
+          </svg>
+        </div>
+        <div class="svc-num">02</div>
+        <h3 class="svc-title">室內裝修</h3>
+        <p class="svc-desc">客廳、廚房、衛浴全室翻新，結合美觀與實用，打造符合生活需求的理想空間。</p>
+        <span class="svc-link" style="color:var(--accent);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <div class="svc-tags">
+          <span class="tag">全室翻新</span><span class="tag">廚衛改造</span><span class="tag">舊屋整建</span>
+        </div>
+      </a>
+      <a href="service-design.html" class="svc-card reveal reveal-delay-2">
+        <div class="svc-card-top" style="background:var(--green-light);">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--green)" stroke-width="2">
+            <path d="M8 40V16l16-8 16 8v24"/><rect x="18" y="28" width="12" height="12" rx="1"/>
+          </svg>
+        </div>
+        <div class="svc-num">03</div>
+        <h3 class="svc-title">設計規劃</h3>
+        <p class="svc-desc">專業室內設計師量身訂製空間規劃，3D效果圖呈現，施工前掌握完整藍圖。</p>
+        <span class="svc-link" style="color:var(--green);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <div class="svc-tags">
+          <span class="tag">平面規劃</span><span class="tag">3D 效果圖</span><span class="tag">材料建議</span>
+        </div>
+      </a>
+      <a href="service-maintenance.html" class="svc-card reveal reveal-delay-3">
+        <div class="svc-card-top" style="background:#fce8e6;">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--red)" stroke-width="2">
+            <path d="M30 8l-4 4-6-2-4 4 2 6-4 4 2 6 6 2 4-4 6 2 4-4-2-6 4-4-2-6z"/><circle cx="24" cy="24" r="5"/>
+          </svg>
+        </div>
+        <div class="svc-num">04</div>
+        <h3 class="svc-title">維修保固</h3>
+        <p class="svc-desc">完工後提供兩年工程保固，24小時緊急維修專線，售後問題快速回應處理。</p>
+        <span class="svc-link" style="color:var(--red);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        <div class="svc-tags">
+          <span class="tag">兩年保固</span><span class="tag">緊急維修</span><span class="tag">定期檢查</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-number" data-target="20" data-suffix="+">20<span class="stat-unit">+</span></div><div class="stat-label">年專業經驗</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="800" data-suffix="+">800<span class="stat-unit">+</span></div><div class="stat-label">完成案件</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">98<span class="stat-unit">%</span></div><div class="stat-label">客戶滿意度</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="2" data-suffix="年">2<span class="stat-unit">年</span></div><div class="stat-label">工程保固</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── GALLERY PREVIEW ── -->
+<section class="gallery-preview section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:12px;">作品相冊</div>
+        <div class="section-divider" style="background:linear-gradient(90deg,var(--accent),#fbbc04);"></div>
+        <h2 class="section-title">精選案例<br /><span class="orange">實景展示</span></h2>
+      </div>
+      <p class="section-desc">每個案件都是我們用心投入的成果，見證空間轉變的無限可能。</p>
+    </div>
+    <div class="gallery-preview-grid reveal">
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-1/1200/800" data-title="現代簡約三房公寓" data-meta="台北市大安區・40坪・2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/540" alt="現代簡約公寓" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">室內裝修</div><div class="gallery-item-title">現代簡約三房公寓</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="商辦大樓水電更新" data-meta="新北市・680坪・2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/540" alt="商辦水電" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">商辦大樓水電更新</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-3/1200/800" data-title="廚房衛浴全面翻新" data-meta="台中市・28坪・2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/540" alt="廚衛翻新" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">廚衛改造</div><div class="gallery-item-title">廚房衛浴全面翻新</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-4/1200/800" data-title="透天厝全屋設計翻修" data-meta="台北士林・65坪・2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/540" alt="透天厝設計" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">透天厝全屋設計翻修</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj-full-5/1200/800" data-title="餐飲店面空間改造" data-meta="桃園市・35坪・2023.07">
+        <img src="https://picsum.photos/seed/hj05/800/540" alt="餐飲改造" loading="lazy" />
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">商業空間</div><div class="gallery-item-title">餐飲店面空間改造</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+    </div>
+    <div class="gallery-cta-row reveal">
+      <p class="gallery-cta-text">已有 <strong style="color:var(--text);">800+</strong> 件完工案例等您探索</p>
+      <a href="gallery.html" class="btn-primary">查看全部相冊 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT TEASER ── -->
+<section class="about-teaser section-gap">
+  <div class="container">
+    <div class="about-teaser-grid">
+      <div class="reveal">
+        <div class="about-visual-wrap">
+          <div class="about-visual-bg"></div>
+          <div class="about-big-num">20</div>
+          <div class="about-badge">
+            <div class="ab-num">20</div>
+            <div class="ab-text">年工藝傳承</div>
+          </div>
+          <div class="about-visual-content">
+            <h3>鴻匠工程</h3>
+            <p>成立於 2004 年・台北市<br />持牌水電 + 室內裝修工程公司</p>
+            <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="chip chip-blue" style="font-size:11px;">乙級水電技術士</span>
+              <span class="chip chip-green" style="font-size:11px;">甲級室內裝修</span>
+              <span class="chip chip-orange" style="font-size:11px;">30+ 名師傅</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="label" style="margin-bottom:12px;">關於鴻匠工程</div>
+        <div class="section-divider"></div>
+        <h2 style="font-size:clamp(26px,3vw,40px); font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin-bottom:16px;">
+          精工細作<br /><span class="blue">每一細節皆是承諾</span>
+        </h2>
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.85; margin-bottom:24px;">
+          鴻匠工程成立於 2004 年，專注住宅及商業空間的水電工程與室內裝修服務。
+          我們擁有一支由資深師傅組成的施工團隊，秉持「品質第一、客戶至上」的核心理念，
+          二十年來累積逾八百件完成案例，深獲客戶信賴。
+        </p>
+        <div class="about-feats">
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></div>
+            <span>政府認證乙級技術士證照</span>
+          </div>
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></div>
+            <span>全程施工透明化進度回報</span>
+          </div>
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></div>
+            <span>優質建材嚴選，拒絕偷工減料</span>
+          </div>
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></div>
+            <span>完工後兩年工程品質保固</span>
+          </div>
+        </div>
+        <a href="about.html" class="btn-primary">深入了解我們 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testi-section section-gap">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;" class="reveal">
+      <div class="label" style="justify-content:center; margin-bottom:12px;">客戶見證</div>
+      <div class="section-divider" style="margin:12px auto 0; background:linear-gradient(90deg,#fbbc04,var(--accent));"></div>
+      <h2 class="section-title" style="margin-top:16px;">口碑，是最好的<span class="blue"> 名片</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text">鴻匠的師傅非常專業，施工期間整潔有序，完全不影響正常生活作息。完工後效果遠超預期！</p>
+        <div class="testi-author"><div class="testi-avatar">陳</div><div><div class="testi-name">陳小姐</div><div class="testi-role">台北市・全室裝修客戶</div></div></div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text">水電工程做得非常仔細，配管走線整齊美觀，師傅還主動提醒了幾個安全隱患，令人放心。</p>
+        <div class="testi-author"><div class="testi-avatar">林</div><div><div class="testi-name">林先生</div><div class="testi-role">新北市・水電工程客戶</div></div></div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text">報價透明，沒有隱藏費用，施工過程全程拍照回報。完工後小問題，立刻安排師傅回來處理。</p>
+        <div class="testi-author"><div class="testi-avatar">王</div><div><div class="testi-name">王先生</div><div class="testi-role">台中市・廚衛改造客戶</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title">開始您的裝修計畫<br />今天就聯繫我們</h2>
+        <p class="cta-sub">免費到府估價 · 透明報價 · 二年保固 · 全台服務</p>
+      </div>
+      <a href="contact.html" class="btn-white">
+        立即免費諮詢
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">鴻匠<span>工程</span></a>
+        <p class="footer-tagline">二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">fb</a>
+          <a href="#" class="social-btn">L</a>
+          <a href="#" class="social-btn">ig</a>
+        </div>
+      </div>
+      <div>
+        <h4>服務項目</h4>
+        <ul class="footer-links">
+          <li><a href="service-water.html">水電工程</a></li>
+          <li><a href="service-interior.html">室內裝修</a></li>
+          <li><a href="service-design.html">設計規劃</a></li>
+          <li><a href="service-maintenance.html">維修保固</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul class="footer-links">
+          <li><a href="gallery.html">作品相冊</a></li>
+          <li><a href="about.html">關於我們</a></li>
+          <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>聯絡資訊</h4>
+        <ul class="footer-links">
+          <li><a href="tel:0223456789">(02) 2345-6789</a></li>
+          <li><a href="tel:0912345678">0912-345-678</a></li>
+          <li><a href="mailto:service@hongjiang.com.tw">service@hongjiang.com.tw</a></li>
+          <li><a href="#">台北・新北・桃園・台中</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 鴻匠工程有限公司 · 統一編號：12345678</p>
+      <ul class="footer-legal">
+        <li><a href="#">隱私政策</a></li>
+        <li><a href="#">服務條款</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close">✕</button>
+    <img class="lightbox-img" src="" alt="" />
+    <div class="lightbox-info">
+      <div class="lightbox-meta"><strong class="lb-title"></strong><span class="lb-meta"></span></div>
+      <div class="lightbox-counter"></div>
+    </div>
+    <button class="lightbox-prev">‹</button>
+    <button class="lightbox-next">›</button>
+  </div>
+</div>
+
+<script src="js/cms.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
