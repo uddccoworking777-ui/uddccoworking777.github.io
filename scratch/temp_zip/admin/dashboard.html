@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>後台管理 — 鴻匠工程</title>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     /* ── Reset ── */
@@ -546,236 +543,6 @@
       .f-row { grid-template-columns: 1fr; }
       .admin-gallery { grid-template-columns: 1fr 1fr; }
     }
-
-    /* ── Services Grid (Dark Theme) ── */
-    #ctab-services {
-      background: #0a0f1a;
-      color: #e8edf5;
-      padding: 24px;
-      border-radius: 12px;
-      margin-top: 16px;
-    }
-    .faces-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
-    .face-card { background: #0e1520; border: 1px solid rgba(0,200,200,0.1); border-radius: 12px; overflow: hidden; transition: border-color 0.3s; }
-    .face-card:hover { border-color: rgba(0,200,200,0.22); }
-    .face-card-header { padding: 14px 18px; background: #131d2e; border-bottom: 1px solid rgba(0,200,200,0.1); display: flex; align-items: center; justify-content: space-between; }
-    .face-card-num { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.3em; color: #00c8c8; opacity: 0.65; }
-    .face-card-id { font-size: 12px; font-weight: 600; color: #e8edf5; }
-    .face-card-body { padding: 18px; display: flex; flex-direction: column; gap: 14px; }
-    .face-image-wrap { position: relative; aspect-ratio: 16/9; border-radius: 6px; overflow: hidden; border: 1px solid rgba(0,200,200,0.1); cursor: pointer; }
-    .face-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .face-image-wrap:hover img { transform: scale(1.05); }
-    .face-image-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
-    .face-image-wrap:hover .face-image-overlay { opacity: 1; }
-    .change-btn { background: #00c8c8; color: #020408; border: none; border-radius: 6px; padding: 8px 16px; font-size: 12px; font-weight: 600; cursor: pointer; }
-    
-    .be-bilingual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .be-bi-col { display: flex; flex-direction: column; gap: 6px; }
-    .be-label { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(232,237,245,0.48); letter-spacing: 0.05em; margin-bottom: 2px; margin-top: 6px; }
-    .be-lang-zh { background: rgba(0,200,200,0.15); color: #00c8c8; padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; }
-    .be-lang-en { background: rgba(0,128,255,0.15); color: #5ba8ff; padding: 1px 6px; border-radius: 3px; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; }
-    
-    .be-input, .be-textarea {
-      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); border-radius: 6px;
-      padding: 9px 12px; color: #e8edf5; font-size: 13px; outline: none; transition: border-color 0.3s; width: 100%;
-    }
-    .be-textarea { resize: vertical; min-height: 70px; }
-    .be-input:focus, .be-textarea:focus { border-color: #00c8c8; }
-    
-    .be-group { display: flex; flex-direction: column; gap: 4px; margin-bottom: 4px; }
-    .color-row { display: flex; align-items: center; gap: 12px; }
-    .color-row input[type="color"] { width: 38px; height: 38px; border: 1px solid rgba(255,255,255,0.07); border-radius: 6px; background: transparent; cursor: pointer; padding: 2px; }
-    .color-row span { font-size: 12px; color: rgba(232,237,245,0.48); font-family: 'Inter', sans-serif; }
-
-    /* ── Admin Page Nav Wrapper (Frontpage Header Style) ── */
-    .admin-page-nav-wrapper {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 0 24px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      box-shadow: var(--shadow-1);
-    }
-    
-    .admin-page-logo {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.04em;
-    }
-    .admin-page-logo span {
-      color: var(--primary);
-    }
-    
-    .admin-page-nav-links {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      height: 100%;
-    }
-    
-    .nav-item-wrap {
-      position: relative;
-      height: 100%;
-      display: flex;
-      align-items: center;
-    }
-    
-    .nav-link-item {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      color: var(--text-muted);
-      font-size: 13.5px;
-      font-weight: 600;
-      padding: 8px 14px;
-      border-radius: var(--radius);
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      position: relative;
-      transition: color var(--ease), background var(--ease);
-    }
-    .nav-link-item::after {
-      content: '';
-      position: absolute;
-      bottom: 8px;
-      left: 14px;
-      right: 14px;
-      height: 2px;
-      background: var(--primary);
-      border-radius: 2px;
-      transform: scaleX(0);
-      transform-origin: center;
-      transition: transform var(--ease);
-    }
-    .nav-link-item:hover {
-      background: var(--surface);
-      color: var(--text);
-    }
-    .nav-link-item.active {
-      color: var(--primary);
-      font-weight: 700;
-    }
-    .nav-link-item.active::after {
-      transform: scaleX(1);
-    }
-    
-    /* Dropdown Chevron */
-    .nav-link-item .nav-chevron {
-      display: inline-block;
-      width: 0;
-      height: 0;
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 5px solid currentColor;
-      transition: transform var(--ease);
-      margin-left: 4px;
-    }
-    .has-dropdown:hover .nav-chevron {
-      transform: rotate(180deg);
-    }
-    
-    /* Dropdown menu */
-    .nav-item-wrap.has-dropdown {
-      cursor: default;
-    }
-    .dropdown-menu {
-      position: absolute;
-      top: calc(100% - 6px);
-      left: 50%;
-      transform: translateX(-50%) translateY(-8px) scale(0.97);
-      transform-origin: top center;
-      min-width: 160px;
-      background: #ffffff;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-3);
-      list-style: none;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity var(--ease), transform var(--ease), visibility var(--ease);
-      z-index: 1000;
-      padding: 6px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .has-dropdown:hover .dropdown-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateX(-50%) translateY(0) scale(1);
-    }
-    
-    .sub-link-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      width: 100%;
-      padding: 8px 12px;
-      background: transparent;
-      border: none;
-      color: var(--text-muted);
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: var(--radius);
-      cursor: pointer;
-      text-align: left;
-      transition: background var(--ease), color var(--ease);
-    }
-    .sub-link-item:hover {
-      background: var(--surface);
-      color: var(--text);
-    }
-    .sub-link-item.active {
-      color: var(--primary);
-      background: var(--primary-light);
-      font-weight: 700;
-    }
-    .sub-link-item .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--text-subtle);
-      flex-shrink: 0;
-      transition: background var(--ease);
-    }
-    .sub-link-item:hover .dot,
-    .sub-link-item.active .dot {
-      background: var(--primary);
-    }
-    
-    /* Nav CTA styled like frontpage */
-    .nav-cta .nav-link-item {
-      background: var(--primary) !important;
-      color: #ffffff !important;
-      font-weight: 700 !important;
-      padding: 8px 18px !important;
-      border-radius: var(--radius-pill) !important;
-      box-shadow: 0 2px 6px rgba(26,115,232,0.25);
-      transition: background var(--ease), transform var(--ease-fast) !important;
-    }
-    .nav-cta .nav-link-item:hover {
-      background: var(--primary-dark) !important;
-      transform: translateY(-1px);
-    }
-    .nav-cta .nav-link-item::after {
-      display: none;
-    }
-    
-    /* Highlight parent item when sub-item is active */
-    .has-dropdown.active-parent > .nav-link-item {
-      color: var(--primary);
-      font-weight: 700;
-    }
-    .has-dropdown.active-parent > .nav-link-item::after {
-      transform: scaleX(1);
-    }
   </style>
 </head>
 <body>
@@ -1002,7 +769,6 @@
           <div class="card-body">
             <div class="content-tabs">
               <button class="ctab active" onclick="switchCtab('contact', this)">聯絡資訊</button>
-              <button class="ctab" onclick="switchCtab('pages', this)">各頁面文字</button>
               <button class="ctab" onclick="switchCtab('gallery-count', this)">作品相冊</button>
             </div>
 
@@ -1033,79 +799,6 @@
               <button class="save-btn" onclick="saveContact()">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                 儲存聯絡資訊
-              </button>
-            </div>
-
-            <!-- Pages Tab -->
-            <div class="ctab-panel" id="ctab-pages">
-              <div class="f-group" style="display: none;">
-                <label class="f-label">選擇要編輯的頁面</label>
-                <select class="f-select" id="page-select" onchange="loadPageContentForm()"></select>
-              </div>
-
-              <!-- Website Menu Style Page Navigation -->
-              <div class="admin-page-nav-wrapper">
-                <!-- Mock Nav Logo -->
-                <div class="admin-page-logo">鴻匠<span>工程</span></div>
-                
-                <!-- Navigation Links -->
-                <div class="admin-page-nav-links">
-                  <!-- Item: 首頁 -->
-                  <div class="nav-item-wrap">
-                    <button type="button" class="nav-link-item" data-page="index.html">首頁</button>
-                  </div>
-                  
-                  <!-- Item: 服務項目 with dropdown -->
-                  <div class="nav-item-wrap has-dropdown">
-                    <span class="nav-link-item">
-                      服務項目
-                      <span class="nav-chevron"></span>
-                    </span>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <button type="button" class="sub-link-item" data-page="service-water.html">
-                          <span class="dot"></span>水電工程
-                        </button>
-                      </li>
-                      <li>
-                        <button type="button" class="sub-link-item" data-page="service-interior.html">
-                          <span class="dot"></span>室內裝修
-                        </button>
-                      </li>
-                      <li>
-                        <button type="button" class="sub-link-item" data-page="service-design.html">
-                          <span class="dot"></span>設計規劃
-                        </button>
-                      </li>
-                      <li>
-                        <button type="button" class="sub-link-item" data-page="service-maintenance.html">
-                          <span class="dot"></span>維修保固
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <!-- Item: 作品相冊 -->
-                  <div class="nav-item-wrap">
-                    <button type="button" class="nav-link-item" data-page="gallery.html">作品相冊</button>
-                  </div>
-                  
-                  <!-- Item: 關於我們 -->
-                  <div class="nav-item-wrap">
-                    <button type="button" class="nav-link-item" data-page="about.html">關於我們</button>
-                  </div>
-                  
-                  <!-- Item: 免費諮詢 (maps to contact.html) -->
-                  <div class="nav-item-wrap nav-cta">
-                    <button type="button" class="nav-link-item" data-page="contact.html">免費諮詢</button>
-                  </div>
-                </div>
-              </div>
-
-              <div id="dynamic-form-fields"></div>
-              <button class="save-btn" onclick="savePageContent(event)" style="position: sticky; bottom: 20px; z-index: 100; box-shadow: 0 4px 16px rgba(0,0,0,0.2);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                儲存頁面文字
               </button>
             </div>
 
@@ -1379,7 +1072,6 @@
   ✓ JavaScript 正常執行 — 如果按鈕還是沒反應，請在瀏覽器按 F12 查看 Console 錯誤
 </div>
 
-<script src="../js/cms.js?v=5"></script>
 <script>
 /* ── 全域錯誤捕捉（獨立 script block，在主 script 之前執行）── */
 window.onerror = function(msg, src, line, col) {
@@ -1451,13 +1143,12 @@ function checkSession() {
 function loadData() {
   try {
     const raw = localStorage.getItem(CMS_KEY);
-    cmsData = raw ? JSON.parse(raw) : { gallery: [], news: [], contact: {}, pages: {} };
+    cmsData = raw ? JSON.parse(raw) : { gallery: [], news: [], contact: {} };
     if (!Array.isArray(cmsData.gallery)) cmsData.gallery = [];
     if (!Array.isArray(cmsData.news))    cmsData.news    = [];
     if (!cmsData.contact)               cmsData.contact  = {};
-    if (!cmsData.pages)                 cmsData.pages    = {};
   } catch (e) {
-    cmsData = { gallery: [], news: [], contact: {}, pages: {} };
+    cmsData = { gallery: [], news: [], contact: {} };
   }
 }
 
@@ -1508,55 +1199,9 @@ window.addEventListener('DOMContentLoaded', function() {
   renderNews();
   loadContactForm();
   renderUserList();
-  initPageSelect();
-  loadPageContentForm();
 
   // Set today's date for news modal
   document.getElementById('n-date').valueAsDate = new Date();
-
-  // Realtime Preview Sync for Pages
-  document.getElementById('dynamic-form-fields').addEventListener('input', function(e) {
-    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-      const sel = document.getElementById('page-select').value;
-      const schema = CMS_SCHEMA[sel];
-      if (!schema) return;
-      if (!cmsData.pages[sel]) cmsData.pages[sel] = {};
-      schema.items.forEach(item => {
-        const el = document.getElementById('dyn-' + item.key);
-        if (el) cmsData.pages[sel][item.key] = el.value.trim();
-      });
-      saveData();
-    }
-  });
-
-  // Realtime Preview Sync for Contact
-  document.getElementById('ctab-contact').addEventListener('input', function(e) {
-    if (e.target.tagName === 'INPUT') {
-      cmsData.contact = {
-        phone1: document.getElementById('c-phone1').value.trim(),
-        phone2: document.getElementById('c-phone2').value.trim(),
-        email:  document.getElementById('c-email').value.trim(),
-        region: document.getElementById('c-region').value.trim(),
-        hours:  document.getElementById('c-hours').value.trim()
-      };
-      saveData();
-    }
-  });
-
-  // Initialize Page Nav clicks (mimics frontpage top navbar)
-  document.querySelectorAll('.admin-page-nav-links button').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      const page = this.getAttribute('data-page');
-      if (page) {
-        const select = document.getElementById('page-select');
-        if (select) {
-          select.value = page;
-          loadPageContentForm();
-        }
-      }
-    });
-  });
 });
 
 function seedDefaultGallery() {
@@ -1929,261 +1574,8 @@ function toggleNewsItem(id, visible) {
 }
 
 /* ════════════════════════════════════════════
-   Content (Contact & Pages)
+   Content (Contact)
 ════════════════════════════════════════════ */
-function initPageSelect() {
-  const sel = document.getElementById('page-select');
-  if (!sel) return;
-  sel.innerHTML = '';
-  for (const page in CMS_SCHEMA) {
-    const opt = document.createElement('option');
-    opt.value = page;
-    opt.textContent = CMS_SCHEMA[page].name + ' (' + page + ')';
-    sel.appendChild(opt);
-  }
-}
-
-function loadPageContentForm() {
-  const p = cmsData.pages || {};
-  const sel = document.getElementById('page-select').value;
-  const data = p[sel] || {};
-  const schema = CMS_SCHEMA[sel];
-  
-  const container = document.getElementById('dynamic-form-fields');
-  if (!container || !schema) return;
-  container.innerHTML = '';
-
-  // Update admin page nav active styles to follow the current selection
-  document.querySelectorAll('.admin-page-nav-links button').forEach(el => {
-    el.classList.remove('active');
-  });
-  document.querySelectorAll('.admin-page-nav-links .nav-item-wrap').forEach(el => {
-    el.classList.remove('active-parent');
-  });
-
-  const activeBtn = document.querySelector(`.admin-page-nav-links [data-page="${sel}"]`);
-  if (activeBtn) {
-    activeBtn.classList.add('active');
-    const parentMenu = activeBtn.closest('.nav-item-wrap.has-dropdown');
-    if (parentMenu) {
-      parentMenu.classList.add('active-parent');
-    }
-  }
-
-  // Sync preview iframe to follow the editor
-  const prevSel = document.getElementById('preview-page');
-  const targetVal = '../' + sel;
-  if (prevSel && prevSel.value !== targetVal) {
-    for (let i = 0; i < prevSel.options.length; i++) {
-      if (prevSel.options[i].value === targetVal) {
-        prevSel.value = targetVal;
-        if (typeof loadPreview === 'function') loadPreview();
-        break;
-      }
-    }
-  }
-
-  if (sel.startsWith('service-')) {
-    return loadServicePageForm(sel, data, schema, container);
-  }
-
-  let currentGroup = null;
-
-  schema.items.forEach(item => {
-    if (item.group && item.group !== currentGroup) {
-      currentGroup = item.group;
-      const groupHeader = document.createElement('h4');
-      groupHeader.style.margin = '24px 0 12px 0';
-      groupHeader.style.color = 'var(--primary-dark)';
-      groupHeader.style.borderBottom = '1px solid var(--border)';
-      groupHeader.style.paddingBottom = '6px';
-      groupHeader.style.fontSize = '15px';
-      groupHeader.textContent = currentGroup;
-      container.appendChild(groupHeader);
-    }
-
-    const div = document.createElement('div');
-    div.className = 'f-group';
-    
-    const label = document.createElement('label');
-    label.className = 'f-label';
-    label.textContent = item.label;
-    div.appendChild(label);
-
-    const val = data[item.key] !== undefined ? data[item.key] : item.default;
-
-    if (item.type === 'textarea') {
-      const ta = document.createElement('textarea');
-      ta.className = 'f-textarea';
-      ta.id = 'dyn-' + item.key;
-      ta.value = val;
-      div.appendChild(ta);
-    } else {
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.className = 'f-input';
-      input.id = 'dyn-' + item.key;
-      input.value = val;
-      div.appendChild(input);
-    }
-    
-    container.appendChild(div);
-  });
-}
-
-function loadServicePageForm(sel, data, schema, container) {
-  // CSS for service grid layout
-  if (!document.getElementById('service-grid-styles')) {
-    const style = document.createElement('style');
-    style.id = 'service-grid-styles';
-    style.textContent = `
-      .svc-section { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-      .svc-title { font-size: 16px; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; border-bottom: 2px solid rgba(0,86,179,0.1); padding-bottom: 8px; }
-      .svc-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .svc-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .svc-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-      .svc-card-head { font-size: 14px; font-weight: bold; color: var(--text); display: flex; align-items: center; gap: 8px; }
-      .svc-card-head span { background: rgba(0,86,179,0.1); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 12px; }
-      .svc-acc-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-      .svc-acc-table th, .svc-acc-table td { border: 1px solid var(--border); padding: 12px; text-align: left; vertical-align: top; }
-      .svc-acc-table th { background: rgba(0,0,0,0.02); font-weight: 600; font-size: 13px; color: var(--text); width: 25%; }
-      .svc-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-      @media (max-width: 768px) {
-        .svc-hero-grid, .svc-cards-grid, .svc-list-grid { grid-template-columns: 1fr; }
-        .svc-acc-table th, .svc-acc-table td { display: block; width: 100%; }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  // Helper to render a field
-  const renderField = (key, type, defaultVal, placeholder = '') => {
-    const val = data[key] !== undefined ? data[key] : defaultVal;
-    if (type === 'textarea') {
-      return `<textarea class="f-textarea" id="dyn-${key}" placeholder="${placeholder}" style="min-height:80px;">${esc(val)}</textarea>`;
-    }
-    return `<input type="text" class="f-input" id="dyn-${key}" value="${esc(val)}" placeholder="${placeholder}">`;
-  };
-  
-  // Extract defaults for quick lookup
-  const defaults = {};
-  schema.items.forEach(i => defaults[i.key] = i.default);
-
-  // 1. Hero Section
-  let html = `
-    <div class="svc-section">
-      <div class="svc-title">主視覺與統計標語 (Hero & Stats)</div>
-      <div class="svc-hero-grid">
-        <div class="f-group">
-          <label class="f-label">大標題</label>
-          ${renderField('hero.title', 'text', defaults['hero.title'])}
-        </div>
-        <div class="f-group">
-          <label class="f-label">專業經驗標語 (如: 20年專業經驗)</label>
-          ${renderField('hero.experience', 'text', defaults['hero.experience'])}
-        </div>
-        <div class="f-group" style="grid-column: 1 / -1;">
-          <label class="f-label">副標題 / 引言</label>
-          ${renderField('hero.desc', 'textarea', defaults['hero.desc'])}
-        </div>
-      </div>
-    </div>
-  `;
-
-  // 2. Cards Section (4 small grids)
-  html += `
-    <div class="svc-section">
-      <div class="svc-title">服務範疇 (核心四小格)</div>
-      <div class="svc-cards-grid">
-  `;
-  for (let i = 1; i <= 4; i++) {
-    if (defaults[`card.${i}.title`]) {
-      html += `
-        <div class="svc-card">
-          <div class="svc-card-head"><span>卡片 ${i}</span></div>
-          <div class="f-group" style="margin:0;">
-            <label class="f-label" style="font-size:12px;">標題</label>
-            ${renderField(`card.${i}.title`, 'text', defaults[`card.${i}.title`])}
-          </div>
-          <div class="f-group" style="margin:0;">
-            <label class="f-label" style="font-size:12px;">內文</label>
-            ${renderField(`card.${i}.desc`, 'textarea', defaults[`card.${i}.desc`])}
-          </div>
-        </div>
-      `;
-    }
-  }
-  html += `</div></div>`;
-
-  // 3. Accordion Details Section
-  html += `
-    <div class="svc-section" style="overflow-x:auto;">
-      <div class="svc-title">細項服務項目 (Accordion)</div>
-      <table class="svc-acc-table">
-        <thead>
-          <tr>
-            <th>項目標題</th>
-            <th>細項條列 (最多 8 項)</th>
-          </tr>
-        </thead>
-        <tbody>
-  `;
-  for (let i = 1; i <= 5; i++) {
-    if (defaults[`acc.${i}.title`]) {
-      let lisHTML = '';
-      for (let j = 1; j <= 8; j++) {
-        if (defaults[`acc.${i}.li.${j}`]) {
-          lisHTML += `<div>${renderField(`acc.${i}.li.${j}`, 'text', defaults[`acc.${i}.li.${j}`], `項目 ${j}`)}</div>`;
-        }
-      }
-      html += `
-        <tr>
-          <td>
-            <div class="f-group" style="margin:0;">
-              ${renderField(`acc.${i}.title`, 'text', defaults[`acc.${i}.title`])}
-            </div>
-          </td>
-          <td>
-            <div class="svc-list-grid">
-              ${lisHTML}
-            </div>
-          </td>
-        </tr>
-      `;
-    }
-  }
-  html += `</tbody></table></div>`;
-
-  container.innerHTML = html;
-}
-
-function savePageContent(event) {
-  if (!cmsData.pages) cmsData.pages = {};
-  const sel = document.getElementById('page-select').value;
-  const schema = CMS_SCHEMA[sel];
-  if (!schema) return;
-
-  if (!cmsData.pages[sel]) cmsData.pages[sel] = {};
-  
-  schema.items.forEach(item => {
-    const el = document.getElementById('dyn-' + item.key);
-    if (el) {
-      cmsData.pages[sel][item.key] = el.value.trim();
-    }
-  });
-
-  saveData();
-  const btn = event.currentTarget;
-  const originalHtml = btn.innerHTML;
-  btn.classList.add('saved');
-  btn.innerHTML = '✓ 已儲存';
-  setTimeout(() => {
-    btn.classList.remove('saved');
-    btn.innerHTML = originalHtml;
-  }, 2000);
-  showToast('頁面文字已儲存');
-}
-
 function loadContactForm() {
   const c = cmsData.contact || {};
   document.getElementById('c-phone1').value  = c.phone1  || '(02) 2345-6789';
@@ -2274,7 +1666,7 @@ function loadPreview() {
   var sel   = document.getElementById('preview-page');
   var frame = document.getElementById('preview-iframe');
   if (!frame || !sel) return;
-  var suffix = '?t=' + Date.now();
+  var suffix = currentPreviewMode === 'desktop' ? '?pv=1' : '?t=' + Date.now();
   frame.src = sel.value + suffix;
 }
 function reloadPreview() {
@@ -2420,8 +1812,6 @@ function importData(event) {
       renderGallery();
       renderNews();
       loadContactForm();
-      initPageSelect();
-      loadPageContentForm();
       updateStats();
       showToast('備份已成功匯入');
     } catch (err) {

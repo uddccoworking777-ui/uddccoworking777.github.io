@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>員工登入 — 鴻匠工程後台</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #1a73e8;
+      --primary-dark: #1250c4;
+      --primary-light: #e8f0fe;
+      --text: #111827;
+      --text-muted: #5f6368;
+      --border: #e8eaed;
+      --surface: #f8f9fa;
+      --red: #d93025;
+      --shadow-3: 0 4px 12px rgba(60,64,67,.12), 0 2px 4px rgba(60,64,67,.08);
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: #f1f3f4;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .login-brand {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .login-brand .logo-mark {
+      width: 56px; height: 56px;
+      background: var(--primary);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+      box-shadow: 0 4px 16px rgba(26,115,232,.35);
+    }
+    .login-brand .logo-mark svg { width: 28px; height: 28px; color: #fff; }
+    .login-brand h1 {
+      font-size: 22px; font-weight: 800; color: var(--text);
+      letter-spacing: -0.04em;
+    }
+    .login-brand h1 span { color: var(--primary); }
+    .login-brand p {
+      font-size: 13px; color: var(--text-muted); margin-top: 4px; font-weight: 500;
+    }
+
+    .login-card {
+      width: 100%; max-width: 420px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: var(--shadow-3), 0 0 0 1px rgba(0,0,0,.04);
+      padding: 40px 36px;
+    }
+    .login-card h2 {
+      font-size: 20px; font-weight: 700; color: var(--text);
+      margin-bottom: 6px; letter-spacing: -0.03em;
+    }
+    .login-card p.sub {
+      font-size: 13px; color: var(--text-muted); margin-bottom: 28px;
+    }
+
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 7px;
+    }
+    .field input {
+      width: 100%; padding: 13px 15px;
+      border: 1.5px solid var(--border); border-radius: 10px;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: var(--text);
+      background: var(--surface); outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .field input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(26,115,232,.12);
+      background: #fff;
+    }
+    .field input::placeholder { color: #bdc1c6; }
+
+    .error-msg {
+      background: #fce8e6; border: 1px solid #f5c6c3;
+      border-radius: 8px; padding: 10px 14px;
+      font-size: 13px; color: var(--red); font-weight: 500;
+      margin-bottom: 18px; display: none;
+      align-items: center; gap: 8px;
+    }
+    .error-msg.show { display: flex; }
+
+    .login-btn {
+      width: 100%; padding: 14px;
+      background: var(--primary); color: #fff;
+      border: none; border-radius: 100px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 1px 3px rgba(26,115,232,.45);
+      transition: background .2s, box-shadow .2s, transform .15s;
+      margin-top: 6px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .login-btn:hover { background: var(--primary-dark); box-shadow: 0 4px 14px rgba(26,115,232,.38); transform: translateY(-1px); }
+    .login-btn:active { transform: translateY(0); }
+    .login-btn:disabled { background: #dadce0; box-shadow: none; cursor: default; transform: none; }
+    .login-btn .spinner {
+      width: 16px; height: 16px;
+      border: 2px solid rgba(255,255,255,.35);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+      display: none;
+    }
+    .login-btn.loading .spinner { display: block; }
+    .login-btn.loading .btn-label { opacity: .7; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .login-footer {
+      text-align: center; margin-top: 28px;
+      font-size: 12px; color: #9aa0a6;
+    }
+    .login-footer a { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .login-footer a:hover { text-decoration: underline; }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 600; color: var(--text-muted);
+      text-decoration: none; margin-bottom: 24px;
+      transition: color .2s;
+    }
+    .back-link:hover { color: var(--primary); }
+    .back-link svg { width: 14px; height: 14px; }
+  </style>
+</head>
+<body>
+
+<div class="login-brand">
+  <div class="logo-mark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <polyline points="9 22 9 12 15 12 15 22"/>
+    </svg>
+  </div>
+  <h1>鴻匠<span>工程</span></h1>
+  <p>後台管理系統</p>
+</div>
+
+<div class="login-card">
+  <h2>員工登入</h2>
+  <p class="sub">此系統僅限授權員工存取</p>
+
+  <div class="error-msg" id="error-msg">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span id="error-text">帳號或密碼錯誤，請重試</span>
+  </div>
+
+  <form id="login-form" autocomplete="on">
+    <div class="field">
+      <label for="email">電子郵件</label>
+      <input type="email" id="email" name="email" placeholder="admin@hongjiang.com" autocomplete="email" required />
+    </div>
+    <div class="field">
+      <label for="password">密碼</label>
+      <input type="password" id="password" name="password" placeholder="••••••••" autocomplete="current-password" required />
+    </div>
+    <button class="login-btn" type="submit" id="login-btn">
+      <div class="spinner"></div>
+      <span class="btn-label">登入後台</span>
+    </button>
+  </form>
+</div>
+
+<div class="login-footer">
+  <a href="../index.html">← 返回網站前台</a>
+  <br /><br />
+  © 2024 鴻匠工程有限公司 · 後台管理系統
+</div>
+
+<script>
+  const AUTH_KEY    = 'hj_auth_v2';
+  const SESSION_KEY = 'hj_session';
+
+  // Pure-JS password hash (no crypto.subtle required — works on any protocol)
+  function hashPwd(str) {
+    const input = 'hj2024:' + str;
+    let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (let i = 0; i < input.length; i++) {
+      const c = input.charCodeAt(i);
+      h1 = Math.imul(h1 ^ c, 0x9e3779b9);
+      h2 = Math.imul(h2 ^ c, 0x5f4a0bc5);
+    }
+    h1 ^= Math.imul(h1 ^ (h2 >>> 15), 0x1b873593);
+    h2 ^= Math.imul(h2 ^ (h1 >>> 13), 0xce4b5ce3);
+    h1 ^= (h2 >>> 16); h2 ^= (h1 >>> 16);
+    return (h1 >>> 0).toString(16).padStart(8,'0') + (h2 >>> 0).toString(16).padStart(8,'0');
+  }
+
+  // If already logged in, redirect to dashboard
+  (function checkSession() {
+    try {
+      const s = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+      if (s && s.email && Date.now() - s.ts < 8 * 60 * 60 * 1000) {
+        location.replace('dashboard.html');
+      }
+    } catch (e) {}
+  })();
+
+  // Seed default admin account on first run
+  (function seedAuth() {
+    if (!localStorage.getItem(AUTH_KEY)) {
+      localStorage.setItem(AUTH_KEY, JSON.stringify({
+        users: [{ email: 'admin@hongjiang.com', name: '系統管理員', hash: hashPwd('HongJiang2024'), role: 'admin' }]
+      }));
+    }
+  })();
+
+  function showError(msg) {
+    const el = document.getElementById('error-msg');
+    document.getElementById('error-text').textContent = msg;
+    el.classList.add('show');
+  }
+  function hideError() {
+    document.getElementById('error-msg').classList.remove('show');
+  }
+
+  document.getElementById('login-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideError();
+
+    const btn      = document.getElementById('login-btn');
+    const email    = document.getElementById('email').value.trim().toLowerCase();
+    const password = document.getElementById('password').value;
+
+    if (!email || !password) { showError('請填寫帳號與密碼'); return; }
+
+    btn.classList.add('loading');
+    btn.disabled = true;
+
+    try {
+      const authRaw = localStorage.getItem(AUTH_KEY);
+      if (!authRaw) {
+        // Re-seed and retry
+        seedAuth();
+        showError('初始化完成，請重新登入');
+        btn.classList.remove('loading'); btn.disabled = false;
+        return;
+      }
+
+      const auth = JSON.parse(authRaw);
+      const hash = hashPwd(password);
+      const user = auth.users.find(function(u) {
+        return u.email.toLowerCase() === email && u.hash === hash;
+      });
+
+      if (!user) {
+        showError('帳號或密碼錯誤，請重試');
+        document.getElementById('password').value = '';
+        document.getElementById('password').focus();
+        btn.classList.remove('loading');
+        btn.disabled = false;
+        return;
+      }
+
+      // Create session (8 hours)
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({
+        email: user.email, name: user.name, role: user.role, ts: Date.now()
+      }));
+
+      btn.querySelector('.btn-label').textContent = '登入成功，跳轉中…';
+      setTimeout(function() { location.replace('dashboard.html'); }, 400);
+    } catch (err) {
+      showError('系統錯誤：' + err.message);
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  });
+
+  document.getElementById('email').focus();
+</script>
+</body>
+</html>

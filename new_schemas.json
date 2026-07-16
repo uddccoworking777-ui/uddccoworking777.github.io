@@ -1,0 +1,1261 @@
+{
+    "service-water.html": {
+        "name": "服務：水電工程",
+        "items": [
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.title",
+                "label": "大標題",
+                "type": "text",
+                "default": "專業水電<br /><span class=\"blue\">配管工程</span>"
+            },
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.desc",
+                "label": "副標題/引言",
+                "type": "textarea",
+                "default": "給排水系統規劃配管、電氣迴路設計、弱電系統整合，確保每一處管線安全耐用、符合建築法規標準。"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.1.title",
+                "label": "卡片1 標題",
+                "type": "text",
+                "default": "給排水配管"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.1.desc",
+                "label": "卡片1 內文",
+                "type": "textarea",
+                "default": "自來水管全室更換、熱水管路安裝、廚衛排水配管、管路防漏處理"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.2.title",
+                "label": "卡片2 標題",
+                "type": "text",
+                "default": "電氣迴路配線"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.2.desc",
+                "label": "卡片2 內文",
+                "type": "textarea",
+                "default": "全室電氣迴路設計、配電箱更換、插座開關更新、照明迴路安裝"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.3.title",
+                "label": "卡片3 標題",
+                "type": "text",
+                "default": "弱電系統整合"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.3.desc",
+                "label": "卡片3 內文",
+                "type": "textarea",
+                "default": "網路線佈設、電視天線、門禁對講機、監視系統、智能家居配線"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.4.title",
+                "label": "卡片4 標題",
+                "type": "text",
+                "default": "消防緊急系統"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.4.desc",
+                "label": "卡片4 內文",
+                "type": "textarea",
+                "default": "消防灑水管配管、緊急照明配線、火警感知器、避雷針接地工程"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.title",
+                "label": "項目1 標題",
+                "type": "text",
+                "default": "給水排水系統規劃與配管"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "自來水管全室更換（PPR / PVC 管材）"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "熱水器管路安裝與更新"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "廚房廁所排水配管"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "管路防漏處理與測試"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "水壓測試與品質驗收"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "給水加壓馬達安裝"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "衛生設備安裝（馬桶/浴缸/洗手台）"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "鑄鐵管汰換為新式管材"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.title",
+                "label": "項目2 標題",
+                "type": "text",
+                "default": "電氣迴路規劃與配線"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "全室電氣迴路設計規劃"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "配電箱更換（無熔絲開關）"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "插座 / 開關全室更新"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "照明迴路規劃安裝"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "空調電源迴路配線"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "廚房大功率設備迴路"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "接地線施工"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "用電安全檢查報告"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.title",
+                "label": "項目3 標題",
+                "type": "text",
+                "default": "弱電系統整合佈設"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "網路線（Cat6）全室佈設"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "電視天線 / 有線電視"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "門禁對講機系統"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "保全監視系統配線"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "智能家居系統整合"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "音響系統佈線"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "弱電箱彙整美化"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "光纖入戶配線"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.title",
+                "label": "項目4 標題",
+                "type": "text",
+                "default": "消防與緊急系統"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "消防灑水頭配管"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "緊急照明電源配線"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "消防廣播系統"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "火警感知器安裝"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "避雷針接地工程"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "備用電源 UPS 配置"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "緊急出口指示燈"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "消防系統年度維護"
+            }
+        ]
+    },
+    "service-interior.html": {
+        "name": "服務：室內裝修",
+        "items": [
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.title",
+                "label": "大標題",
+                "type": "text",
+                "default": "精緻室內<br /><span class=\"blue\">裝修工程</span>"
+            },
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.desc",
+                "label": "副標題/引言",
+                "type": "textarea",
+                "default": "客廳、廚房、衛浴到全室翻新，融合美學設計與工藝施工，打造符合您生活品味的理想居家。"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.1.title",
+                "label": "卡片1 標題",
+                "type": "text",
+                "default": "客廳・餐廳"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.1.desc",
+                "label": "卡片1 內文",
+                "type": "textarea",
+                "default": "天花板、地板、牆面、造型電視牆、間接照明、隔間牆施工"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.2.title",
+                "label": "卡片2 標題",
+                "type": "text",
+                "default": "廚房改造"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.2.desc",
+                "label": "卡片2 內文",
+                "type": "textarea",
+                "default": "系統廚具、流理台面材、磁磚鋪設、抽油煙機管路配合"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.3.title",
+                "label": "卡片3 標題",
+                "type": "text",
+                "default": "衛浴改造"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.3.desc",
+                "label": "卡片3 內文",
+                "type": "textarea",
+                "default": "防水工程、磁磚鋪設、馬桶浴缸安裝、乾濕分離施工"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.4.title",
+                "label": "卡片4 標題",
+                "type": "text",
+                "default": "全室翻新"
+            },
+            {
+                "group": "核心服務卡片",
+                "key": "card.4.desc",
+                "label": "卡片4 內文",
+                "type": "textarea",
+                "default": "舊屋整建、壁癌處理、管線汰換、全室粉刷一次到位"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.title",
+                "label": "項目1 標題",
+                "type": "text",
+                "default": "客廳・餐廳施工"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "天花板輕鋼架 / 矽酸鈣板工程"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "造型天花板設計施作"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "地板鋪設（磁磚 / 木地板 / 石材）"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "牆面粉刷與裝飾"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "電視牆造型設計"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "間接照明施工"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "窗簾盒施作"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "隔間牆施工"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.title",
+                "label": "項目2 標題",
+                "type": "text",
+                "default": "廚房裝修工程"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "廚房系統廚具安裝"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "流理台面材鋪設"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "廚房磁磚拆除重鋪"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "抽油煙機管路配合"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "嵌入式廚具安裝"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "廚房水電配合施工"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "廚房防水工程"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "廚房門更換"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.title",
+                "label": "項目3 標題",
+                "type": "text",
+                "default": "衛浴改造工程"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "衛浴全室防水工程"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "磁磚拆除及重新鋪設"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "馬桶 / 浴缸 / 淋浴拉門安裝"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "浴室鏡櫃 / 收納安裝"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "乾濕分離施工"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "排風設備安裝"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "浴室暖風機安裝"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "五金配件更換"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.title",
+                "label": "項目4 標題",
+                "type": "text",
+                "default": "臥室・書房工程"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "系統衣櫃規劃安裝"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "書桌書架客製製作"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "臥室地板鋪設"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "滑門拉門安裝"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "臥室燈光規劃"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "更衣間規劃施作"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "窗戶氣密施工"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "窗簾軌道安裝"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.title",
+                "label": "項目5 標題",
+                "type": "text",
+                "default": "舊屋翻新整合"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "壁癌處理與防水補強"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "管線全室汰換"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "隔間牆調整拆除"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "門窗框更換"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "外牆防水施工"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "地板底層整平"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "全室粉刷翻新"
+            },
+            {
+                "group": "詳細服務項目 5",
+                "key": "acc.5.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "陽台外推 / 整修"
+            }
+        ]
+    },
+    "service-design.html": {
+        "name": "服務：設計規劃",
+        "items": [
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.title",
+                "label": "大標題",
+                "type": "text",
+                "default": "空間設計<br /><span class=\"blue\">量身規劃</span>"
+            },
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.desc",
+                "label": "副標題/引言",
+                "type": "textarea",
+                "default": "由專業室內設計師主導，從風格定義到施工圖面，全程陪伴您完成理想空間的每一個細節。"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.title",
+                "label": "項目1 標題",
+                "type": "text",
+                "default": "風格定義與概念規劃"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "風格喜好分析"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "生活動線規劃"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "空間機能需求評估"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "色彩計畫提案"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "材質板製作"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "燈光氛圍規劃"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "家具配置建議"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "預算分配規劃"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.title",
+                "label": "項目2 標題",
+                "type": "text",
+                "default": "平面配置與 3D 效果圖"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "現況丈量與平面繪製"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "平面配置方案比較"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "3D 空間模擬效果圖"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "材料選色 3D 呈現"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "各場域施工透視圖"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "視角調整與修改確認"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "鳥瞰全室配置圖"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "夜間燈光效果模擬"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.title",
+                "label": "項目3 標題",
+                "type": "text",
+                "default": "施工圖面與材料規格"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "詳細施工平面圖"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "天花板施工圖"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "立面施工圖"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "水電整合圖"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "材料規格書製作"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "建材樣品確認"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "建材代購服務"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "施工規格說明書"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.title",
+                "label": "項目4 標題",
+                "type": "text",
+                "default": "工程監造與施工管理"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "工程進度排程管理"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "施工廠商協調溝通"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "現場施工品質監督"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "設計變更處理"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "驗收前品質確認"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "完工後缺失清查"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "材料進場驗收"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "施工照片記錄"
+            }
+        ]
+    },
+    "service-maintenance.html": {
+        "name": "服務：維修保固",
+        "items": [
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.title",
+                "label": "大標題",
+                "type": "text",
+                "default": "完工之後<br /><span class=\"blue\">全程守護</span>"
+            },
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.desc",
+                "label": "副標題/引言",
+                "type": "textarea",
+                "default": "完工不是終點，兩年保固是我們的承諾。24小時緊急維修專線，讓您安心享受理想空間。"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.title",
+                "label": "項目1 標題",
+                "type": "text",
+                "default": "兩年工程保固服務"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "水電工程保固兩年"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "結構施工保固兩年"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "防水工程保固兩年"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "系統傢具保固兩年"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "保固範圍透明說明"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "保固申請快速回應"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "到府檢修不加收費用"
+            },
+            {
+                "group": "詳細服務項目 1",
+                "key": "acc.1.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "維修記錄完整建檔"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.title",
+                "label": "項目2 標題",
+                "type": "text",
+                "default": "緊急維修服務"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "24小時維修專線"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "水管漏水緊急搶修"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "電路跳電故障排除"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "排水堵塞疏通"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "緊急門窗修復"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "颱風後損害修繕"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "優先排程不等待"
+            },
+            {
+                "group": "詳細服務項目 2",
+                "key": "acc.2.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "夜間假日均可出勤"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.title",
+                "label": "項目3 標題",
+                "type": "text",
+                "default": "定期維護保養"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "年度水電安全檢查"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "管線使用狀況評估"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "電氣設備安全測試"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "空調系統定期保養"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "防水層定期檢查"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "維修保養記錄建檔"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "老化零件提前更換建議"
+            },
+            {
+                "group": "詳細服務項目 3",
+                "key": "acc.3.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "用電效率評估報告"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.title",
+                "label": "項目4 標題",
+                "type": "text",
+                "default": "舊屋診斷服務"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.1",
+                "label": "條列 1",
+                "type": "text",
+                "default": "免費到府現況評估"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.2",
+                "label": "條列 2",
+                "type": "text",
+                "default": "壁癌原因診斷"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.3",
+                "label": "條列 3",
+                "type": "text",
+                "default": "漏水源頭追蹤"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.4",
+                "label": "條列 4",
+                "type": "text",
+                "default": "管線老化評估"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.5",
+                "label": "條列 5",
+                "type": "text",
+                "default": "用電安全檢查"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.6",
+                "label": "條列 6",
+                "type": "text",
+                "default": "裝修工程需求評估"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.7",
+                "label": "條列 7",
+                "type": "text",
+                "default": "改善方案建議"
+            },
+            {
+                "group": "詳細服務項目 4",
+                "key": "acc.4.li.8",
+                "label": "條列 8",
+                "type": "text",
+                "default": "費用估算報告"
+            }
+        ]
+    }
+}
