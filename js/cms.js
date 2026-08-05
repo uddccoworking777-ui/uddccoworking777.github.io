@@ -29,6 +29,20 @@
 
   const CMS_SCHEMA = {
 
+    "global": {
+        "name": "全站共用設定",
+        "items": [
+            { "group": "頁尾 (Footer)", "key": "footer.tagline", "label": "品牌標語", "type": "textarea", "default": "二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。" },
+            { "group": "頁尾 (Footer)", "key": "footer.phone1", "label": "聯絡電話 1", "type": "text", "default": "(02) 2345-6789" },
+            { "group": "頁尾 (Footer)", "key": "footer.phone2", "label": "聯絡電話 2", "type": "text", "default": "0912-345-678" },
+            { "group": "頁尾 (Footer)", "key": "footer.email", "label": "電子郵件", "type": "text", "default": "service@hongjiang.com.tw" },
+            { "group": "頁尾 (Footer)", "key": "footer.address", "label": "服務區域", "type": "text", "default": "台北・新北・桃園・台中" },
+            { "group": "頁尾 (Footer)", "key": "footer.copyright", "label": "版權宣告", "type": "text", "default": "© 2024 鴻匠工程有限公司 · 統一編號：12345678" },
+            { "group": "頁尾 (Footer)", "key": "footer.privacy", "label": "隱私政策文字", "type": "text", "default": "隱私政策" },
+            { "group": "頁尾 (Footer)", "key": "footer.terms", "label": "服務條款文字", "type": "text", "default": "服務條款" }
+        ]
+    },
+
     "service-water.html": {
         "name": "服務：水電工程",
         "items": [
@@ -3093,17 +3107,25 @@
       } catch(e) { console.warn('CMS gallery apply error:', e); }
 
       /* Generic data-cms binding for ANY page */
-      if (d.pages && d.pages[page]) {
-        const pData = d.pages[page];
+      if (d.pages) {
         document.querySelectorAll('[data-cms]').forEach(el => {
           const attr = el.getAttribute('data-cms');
-          if (attr && attr.startsWith(page + '.')) {
-            const key = attr.slice(page.length + 1);
-            if (pData[key] !== undefined) {
+          if (attr) {
+            let key = null;
+            let pageData = null;
+            if (attr.startsWith(page + '.')) {
+              key = attr.slice(page.length + 1);
+              pageData = d.pages[page];
+            } else if (attr.startsWith('global.')) {
+              key = attr.slice(7);
+              pageData = d.pages['global'];
+            }
+            
+            if (key && pageData && pageData[key] !== undefined) {
               if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                el.value = pData[key];
+                el.value = pageData[key];
               } else {
-                el.innerHTML = pData[key];
+                el.innerHTML = pageData[key];
               }
             }
           }
