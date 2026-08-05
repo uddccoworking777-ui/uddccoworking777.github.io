@@ -1418,10 +1418,25 @@ let authData = null;  // { users: [] }
 let session  = null;  // { email, name, role, ts }
 let galleryFilter = 'all';
 let newsFilter    = 'all';
+let storageAvailable = true;
 
 /* ════════════════════════════════════════════
    Init
 ════════════════════════════════════════════ */
+
+// Check if localStorage & sessionStorage are available
+(function testStorage() {
+  try {
+    const testKey = '__hj_storage_test__';
+    localStorage.setItem(testKey, '1');
+    localStorage.removeItem(testKey);
+    sessionStorage.setItem(testKey, '1');
+    sessionStorage.removeItem(testKey);
+  } catch (e) {
+    storageAvailable = false;
+  }
+})();
+
 // Pure-JS hash — no crypto.subtle, works on any protocol
 function hashPwd(str) {
   const input = 'hj2024:' + str;
@@ -1438,6 +1453,7 @@ function hashPwd(str) {
 }
 
 function checkSession() {
+  if (!storageAvailable) return false;
   try {
     const raw = sessionStorage.getItem(SESSION_KEY);
     if (!raw) return false;
@@ -1449,6 +1465,10 @@ function checkSession() {
 }
 
 function loadData() {
+  if (!storageAvailable) {
+    cmsData = { gallery: [], news: [], contact: {}, pages: {} };
+    return;
+  }
   try {
     const raw = localStorage.getItem(CMS_KEY);
     cmsData = raw ? JSON.parse(raw) : { gallery: [], news: [], contact: {}, pages: {} };
@@ -1462,10 +1482,22 @@ function loadData() {
 }
 
 function saveData() {
-  localStorage.setItem(CMS_KEY, JSON.stringify(cmsData));
+  if (!storageAvailable) {
+    showToast('無法儲存：瀏覽器已封鎖本地儲存功能。', 'error');
+    return;
+  }
+  try {
+    localStorage.setItem(CMS_KEY, JSON.stringify(cmsData));
+  } catch (e) {
+    showToast('儲存失敗：' + e.message, 'error');
+  }
 }
 
 function loadAuth() {
+  if (!storageAvailable) {
+    authData = { users: [] };
+    return;
+  }
   try {
     const raw = localStorage.getItem(AUTH_KEY);
     authData = raw ? JSON.parse(raw) : { users: [] };
@@ -1474,7 +1506,15 @@ function loadAuth() {
 }
 
 function saveAuth() {
-  localStorage.setItem(AUTH_KEY, JSON.stringify(authData));
+  if (!storageAvailable) {
+    showToast('無法儲存帳號資訊：瀏覽器已封鎖本地儲存功能。', 'error');
+    return;
+  }
+  try {
+    localStorage.setItem(AUTH_KEY, JSON.stringify(authData));
+  } catch (e) {
+    showToast('帳號資訊儲存失敗：' + e.message, 'error');
+  }
 }
 
 function genId() {
@@ -1491,6 +1531,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Auth guard
   if (!checkSession()) {
+    if (!storageAvailable) {
+      alert('瀏覽器已封鎖本地儲存功能，請改用 Chrome 開啟，或透過本機 HTTP 伺服器存取此頁面。');
+    }
     location.replace('login.html');
     return;
   }

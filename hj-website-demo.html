@@ -1,0 +1,3352 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鴻匠工程 — 完整展示 Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+/* ═══ Global CSS (style.css) ═══ */
+/* ═══════════════════════════════════════════════════
+   鴻匠工程 — Design System v2.0
+   ═══════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img, video { max-width: 100%; display: block; }
+button { cursor: pointer; font: inherit; }
+a { text-decoration: none; }
+
+/* ── Design Tokens ── */
+:root {
+  --primary:         #1a73e8;
+  --primary-dark:    #1250c4;
+  --primary-hover:   #1765cc;
+  --primary-light:   #e8f0fe;
+  --primary-mid:     #d2e3fc;
+  --accent:          #e67e22;
+  --accent-dark:     #c0631a;
+  --accent-light:    #fef3e2;
+  --green:           #1e8e3e;
+  --green-light:     #e6f4ea;
+  --red:             #d93025;
+  --red-light:       #fce8e6;
+
+  --bg:              #ffffff;
+  --surface:         #f8f9fa;
+  --surface-2:       #f1f3f4;
+  --card:            #ffffff;
+  --border:          #e8eaed;
+  --border-mid:      #dadce0;
+  --border-strong:   #bdc1c6;
+
+  --text:            #111827;
+  --text-secondary:  #374151;
+  --text-muted:      #5f6368;
+  --text-subtle:     #9aa0a6;
+  --text-blue:       #1a73e8;
+
+  /* Layered shadows — more depth than before */
+  --shadow-1:   0 1px 2px rgba(60,64,67,.15), 0 1px 3px rgba(60,64,67,.1);
+  --shadow-2:   0 2px 6px rgba(60,64,67,.12), 0 1px 2px rgba(60,64,67,.08);
+  --shadow-3:   0 4px 12px rgba(60,64,67,.12), 0 2px 4px rgba(60,64,67,.08);
+  --shadow-4:   0 8px 24px rgba(60,64,67,.12), 0 4px 8px rgba(60,64,67,.08);
+  --shadow-hover:   0 8px 24px rgba(26,115,232,.18), 0 2px 8px rgba(26,115,232,.1);
+  --shadow-btn:     0 1px 3px rgba(26,115,232,.45);
+  --shadow-btn-hover: 0 4px 14px rgba(26,115,232,.38);
+
+  /* Shape */
+  --radius-xs:  4px;
+  --radius-sm:  6px;
+  --radius:     8px;
+  --radius-lg:  12px;
+  --radius-xl:  20px;
+  --radius-2xl: 28px;
+  --radius-pill:100px;
+
+  /* Easing */
+  --ease:       200ms cubic-bezier(0.4,0,0.2,1);
+  --ease-fast:  140ms cubic-bezier(0.4,0,0.2,1);
+  --ease-slow:  300ms cubic-bezier(0.4,0,0.2,1);
+  --ease-spring:400ms cubic-bezier(0.34,1.56,0.64,1);
+
+  --nav-h: 64px;
+}
+
+/* ── Base ── */
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', 'Roboto', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--primary-light); color: var(--primary-dark); }
+:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+/* ── Typography ── */
+h1,h2,h3,h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  color: var(--text);
+}
+
+/* ── Layout ── */
+.container      { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.section-gap    { padding: 96px 0; }
+.section-gap-sm { padding: 64px 0; }
+
+/* ── Label ── */
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.label::before {
+  content: '';
+  width: 24px; height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Section Divider ── */
+.section-divider {
+  width: 40px; height: 3px;
+  background: linear-gradient(90deg, var(--primary), #4285f4);
+  border-radius: 2px;
+  margin: 14px 0;
+}
+
+/* ── Chips ── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.chip-blue   { background: var(--primary-light); color: var(--primary-dark); }
+.chip-orange { background: var(--accent-light);  color: var(--accent-dark); }
+.chip-green  { background: var(--green-light);   color: var(--green); }
+
+/* ── Tags ── */
+.tag {
+  display: inline-flex;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--surface);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+/* ══════════════════════════════
+   SCROLL PROGRESS
+══════════════════════════════ */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, #4285f4 60%, #60a5fa 100%);
+  z-index: 1001;
+  transition: width .1s linear;
+  border-radius: 0 3px 3px 0;
+}
+
+/* ══════════════════════════════
+   BUTTONS
+══════════════════════════════ */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--primary); color: #fff;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 700; letter-spacing: .01em;
+  border: none; cursor: pointer;
+  transition: background var(--ease), box-shadow var(--ease), transform var(--ease-fast);
+  box-shadow: var(--shadow-btn);
+  white-space: nowrap;
+}
+.btn-primary:hover   { background: var(--primary-hover); box-shadow: var(--shadow-btn-hover); transform: translateY(-1px); }
+.btn-primary:active  { transform: translateY(0); box-shadow: var(--shadow-btn); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: var(--primary);
+  padding: 11px 26px;
+  border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 700;
+  border: 2px solid var(--primary);
+  cursor: pointer;
+  transition: background var(--ease), box-shadow var(--ease), transform var(--ease-fast);
+}
+.btn-outline:hover   { background: var(--primary-light); box-shadow: var(--shadow-1); transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--primary); font-size: 14px; font-weight: 700;
+  padding: 8px 4px;
+  transition: gap var(--ease);
+}
+.btn-ghost:hover { gap: 14px; }
+
+.btn-white {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--primary);
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 700;
+  border: none; cursor: pointer;
+  transition: box-shadow var(--ease), transform var(--ease-fast);
+  box-shadow: var(--shadow-2);
+}
+.btn-white:hover { box-shadow: var(--shadow-3); transform: translateY(-1px); }
+
+/* ══════════════════════════════
+   CARDS
+══════════════════════════════ */
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: box-shadow var(--ease), transform var(--ease), border-color var(--ease);
+}
+.card:hover {
+  box-shadow: var(--shadow-3);
+  transform: translateY(-2px);
+  border-color: var(--border-mid);
+}
+
+/* ══════════════════════════════
+   NAVIGATION
+══════════════════════════════ */
+#main-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid transparent;
+  z-index: 1000;
+  transition: border-color var(--ease-slow), box-shadow var(--ease-slow);
+}
+#main-nav.scrolled {
+  border-bottom-color: var(--border);
+  box-shadow: 0 1px 12px rgba(60,64,67,.08);
+}
+
+.nav-inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px; font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  flex-shrink: 0;
+}
+.logo span { color: var(--primary); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+  height: 100%;
+}
+.nav-links > li { position: relative; height: 100%; display: flex; align-items: center; }
+
+.nav-links > li > a {
+  display: flex; align-items: center; gap: 4px;
+  color: var(--text-muted);
+  font-size: 14px; font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  transition: color var(--ease-fast), background var(--ease-fast);
+  position: relative;
+}
+.nav-links > li > a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 12px; right: 12px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform var(--ease);
+}
+.nav-links > li > a:hover   { background: var(--surface); color: var(--text); }
+.nav-links > li > a.active  { color: var(--primary); font-weight: 700; }
+.nav-links > li > a.active::after { transform: scaleX(1); }
+
+/* Chevron */
+.nav-links .has-dropdown > a .nav-chevron {
+  display: inline-block;
+  width: 0; height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform var(--ease);
+  margin-left: 2px;
+}
+.nav-links .has-dropdown:hover > a .nav-chevron { transform: rotate(180deg); }
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px); left: 0;
+  min-width: 210px;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-4);
+  list-style: none;
+  opacity: 0; visibility: hidden;
+  transform: translateY(-8px) scale(.97);
+  transform-origin: top left;
+  transition: opacity var(--ease-slow), transform var(--ease-slow), visibility var(--ease-slow);
+  z-index: 100;
+  padding: 8px;
+}
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  opacity: 1; visibility: visible; transform: translateY(0) scale(1);
+}
+.dropdown li a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  color: var(--text-muted); font-size: 14px; font-weight: 600;
+  border-radius: var(--radius);
+  transition: background var(--ease-fast), color var(--ease-fast);
+}
+.dropdown li a:hover   { background: var(--surface); color: var(--text); }
+.dropdown li a.active  { color: var(--primary); background: var(--primary-light); font-weight: 700; }
+.dropdown .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border-mid);
+  flex-shrink: 0;
+  transition: background var(--ease-fast);
+}
+.dropdown li a:hover .dot,
+.dropdown li a.active .dot { background: var(--primary); }
+
+/* Nav CTA */
+.nav-links .nav-cta > a {
+  background: var(--primary) !important;
+  color: #fff !important; font-weight: 700 !important;
+  padding: 8px 20px !important;
+  border-radius: var(--radius-pill) !important;
+  margin-left: 8px;
+  box-shadow: var(--shadow-btn);
+  transition: background var(--ease), box-shadow var(--ease), transform var(--ease-fast) !important;
+}
+.nav-links .nav-cta > a:hover {
+  background: var(--primary-hover) !important;
+  box-shadow: var(--shadow-btn-hover) !important;
+  transform: translateY(-1px);
+}
+.nav-links .nav-cta > a::after { display: none; }
+
+/* Nav Login Button */
+.nav-links .nav-login > a {
+  display: flex !important; align-items: center !important; gap: 5px !important;
+  padding: 7px 14px !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: var(--radius-pill) !important;
+  margin-left: 6px;
+  font-size: 12px !important; font-weight: 600 !important;
+  color: var(--text-subtle) !important;
+  background: transparent !important;
+  transition: border-color var(--ease), color var(--ease), background var(--ease) !important;
+}
+.nav-links .nav-login > a:hover {
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+  background: var(--primary-light) !important;
+}
+.nav-links .nav-login > a::after { display: none; }
+
+/* Mobile Login Link */
+.mobile-login {
+  display: flex !important; align-items: center !important; gap: 8px !important;
+  font-size: 14px !important; font-weight: 600 !important;
+  color: var(--text-subtle) !important;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+  padding-top: 16px !important;
+  padding-bottom: 8px !important;
+}
+.mobile-login:hover {
+  color: var(--primary) !important;
+  background: var(--primary-light) !important;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 8px;
+  background: none; border: none; border-radius: var(--radius);
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform var(--ease), opacity var(--ease);
+  transform-origin: center;
+}
+.hamburger:hover { background: var(--surface); }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ══════════════════════════════
+   MOBILE MENU — slide in from right
+══════════════════════════════ */
+.mobile-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 997;
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--ease-slow);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.mobile-overlay.open { opacity: 1; pointer-events: all; }
+
+.mobile-menu {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: min(320px, 85vw);
+  background: #fff;
+  z-index: 998;
+  display: flex; flex-direction: column;
+  align-items: flex-start;
+  padding: 72px 28px 40px;
+  gap: 2px;
+  transform: translateX(100%);
+  transition: transform var(--ease-slow);
+  overflow-y: auto;
+  box-shadow: var(--shadow-4);
+}
+.mobile-menu.open { transform: translateX(0); }
+
+.mobile-menu a {
+  font-size: 17px; font-weight: 700;
+  color: var(--text-muted);
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  transition: color var(--ease-fast), background var(--ease-fast);
+  width: 100%;
+  display: block;
+}
+.mobile-menu a:hover, .mobile-menu a.active { color: var(--primary); background: var(--primary-light); }
+
+.mobile-sub {
+  font-size: 15px !important; font-weight: 600 !important;
+  padding-left: 24px !important;
+  color: var(--text-subtle) !important;
+}
+.mobile-sub:hover { color: var(--primary) !important; background: var(--primary-light) !important; }
+
+.mobile-close {
+  position: absolute; top: 18px; right: 18px;
+  background: var(--surface); border: 1px solid var(--border);
+  color: var(--text); font-size: 18px; cursor: pointer;
+  width: 40px; height: 40px; border-radius: var(--radius-pill);
+  display: flex; align-items: center; justify-content: center;
+  transition: background var(--ease-fast), border-color var(--ease-fast);
+}
+.mobile-close:hover { background: var(--surface-2); border-color: var(--border-mid); }
+
+/* ══════════════════════════════
+   PAGE HERO (sub-pages)
+══════════════════════════════ */
+.page-hero {
+  padding-top: calc(var(--nav-h) + 72px);
+  padding-bottom: 72px;
+  position: relative; overflow: hidden;
+  background: var(--bg);
+}
+.page-hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 65% 90% at 95% 50%, rgba(26,115,232,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 5% 80%,  rgba(230,126,34,.04)  0%, transparent 50%);
+  pointer-events: none;
+}
+.page-hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(26,115,232,.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse 65% 80% at 90% 40%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 80% at 90% 40%, black 0%, transparent 70%);
+  pointer-events: none;
+}
+.page-hero-content { position: relative; z-index: 2; }
+
+.breadcrumb {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--text-subtle); margin-bottom: 24px;
+}
+.breadcrumb a { color: var(--text-muted); font-weight: 500; transition: color var(--ease-fast); }
+.breadcrumb a:hover { color: var(--primary); }
+.breadcrumb-sep { color: var(--text-subtle); }
+
+.page-hero-label { margin-bottom: 16px; }
+
+.page-hero-title {
+  font-size: clamp(38px, 5.5vw, 72px);
+  font-weight: 800; line-height: 1.06; letter-spacing: -0.04em;
+  color: var(--text); margin-bottom: 20px;
+}
+.page-hero-title .blue   { color: var(--primary); }
+.page-hero-title .orange { color: var(--accent); }
+
+.page-hero-desc {
+  font-size: 16px; color: var(--text-muted);
+  max-width: 560px; line-height: 1.75;
+}
+
+/* ══════════════════════════════
+   SECTION HEADER
+══════════════════════════════ */
+.section-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 52px; gap: 32px; flex-wrap: wrap;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 800; letter-spacing: -0.04em; line-height: 1.1;
+}
+.section-title .blue   { color: var(--primary); }
+.section-title .orange { color: var(--accent); }
+.section-title .gold   { color: var(--accent); }
+.section-desc { max-width: 380px; color: var(--text-muted); font-size: 15px; line-height: 1.75; }
+
+/* ══════════════════════════════
+   STATS BAR
+══════════════════════════════ */
+.stats-bar {
+  background: linear-gradient(135deg, #1a73e8 0%, #1250c4 100%);
+  position: relative; overflow: hidden;
+}
+.stats-bar::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size: 24px 24px; pointer-events: none;
+}
+.stats-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  position: relative; z-index: 1;
+}
+.stat-item {
+  padding: 48px 32px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,.12);
+  transition: background var(--ease);
+}
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: rgba(255,255,255,.06); }
+.stat-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(44px, 5vw, 64px);
+  font-weight: 800; color: #fff;
+  line-height: 1; letter-spacing: -0.04em;
+}
+.stat-unit { font-size: clamp(20px, 2.5vw, 28px); font-weight: 400; color: rgba(255,255,255,.75); }
+.stat-label {
+  font-size: 12px; color: rgba(255,255,255,.65);
+  letter-spacing: .08em; text-transform: uppercase;
+  font-weight: 700; margin-top: 10px;
+}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 72px 0 40px; }
+.footer-top {
+  display: grid; grid-template-columns: 2.5fr 1fr 1fr 1.2fr;
+  gap: 48px; margin-bottom: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid var(--border);
+}
+.footer-logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px; font-weight: 800;
+  color: var(--text); letter-spacing: -0.04em;
+  display: block; margin-bottom: 14px;
+}
+.footer-logo span { color: var(--primary); }
+.footer-tagline {
+  font-size: 13.5px; color: var(--text-muted);
+  line-height: 1.75; max-width: 280px; margin-bottom: 20px;
+}
+.footer-social { display: flex; gap: 8px; }
+.social-btn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border); border-radius: var(--radius-pill);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 12px; font-weight: 700;
+  background: #fff;
+  transition: background var(--ease-fast), border-color var(--ease-fast), color var(--ease-fast), transform var(--ease-fast);
+}
+.social-btn:hover {
+  background: var(--primary-light); border-color: var(--primary); color: var(--primary);
+  transform: translateY(-2px);
+}
+.footer-col h4 {
+  font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text); font-weight: 700; margin-bottom: 18px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 10px; list-style: none; }
+.footer-links a {
+  font-size: 14px; color: var(--text-muted);
+  transition: color var(--ease-fast), padding-left var(--ease);
+  display: flex; align-items: center; gap: 6px;
+}
+.footer-links a:hover { color: var(--primary); padding-left: 4px; }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; flex-wrap: wrap;
+}
+.footer-copy { font-size: 13px; color: var(--text-subtle); }
+.footer-legal { display: flex; gap: 24px; list-style: none; }
+.footer-legal a { font-size: 13px; color: var(--text-subtle); transition: color var(--ease-fast); }
+.footer-legal a:hover { color: var(--primary); }
+
+/* ══════════════════════════════
+   GALLERY
+══════════════════════════════ */
+.gallery-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+.filter-btn {
+  padding: 8px 20px; font-size: 13px; font-weight: 700;
+  cursor: pointer; background: #fff;
+  border: 1.5px solid var(--border); color: var(--text-muted);
+  border-radius: var(--radius-pill);
+  transition: all var(--ease); font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.filter-btn:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; box-shadow: var(--shadow-btn); }
+
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+
+.gallery-item {
+  position: relative; overflow: hidden;
+  aspect-ratio: 4/3; cursor: pointer;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  transition: opacity .3s ease, transform .3s ease, box-shadow var(--ease);
+}
+/* Filter animations */
+.gallery-item.is-hiding {
+  opacity: 0 !important; transform: scale(.94) !important;
+  pointer-events: none;
+}
+.gallery-item.is-hidden { display: none !important; }
+.gallery-item.is-showing {
+  animation: galleryIn .35s ease forwards;
+}
+@keyframes galleryIn {
+  from { opacity: 0; transform: scale(.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.gallery-item:hover { box-shadow: var(--shadow-3); }
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .55s ease; display: block;
+}
+.gallery-item:hover img { transform: scale(1.07); }
+
+.gallery-item-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(17,24,39,.82) 0%, rgba(17,24,39,.15) 55%, transparent 80%);
+  opacity: 0; transition: opacity var(--ease-slow);
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px; border-radius: var(--radius-lg);
+}
+.gallery-item:hover .gallery-item-overlay { opacity: 1; }
+.gallery-item-cat {
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: 4px;
+}
+.gallery-item-title { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.3; }
+
+.gallery-zoom {
+  position: absolute; top: 12px; right: 12px;
+  width: 36px; height: 36px;
+  background: rgba(255,255,255,.92);
+  border-radius: var(--radius-pill);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: scale(.75);
+  transition: opacity var(--ease-slow), transform var(--ease-spring);
+  color: var(--primary);
+}
+.gallery-item:hover .gallery-zoom { opacity: 1; transform: scale(1); }
+
+/* ══════════════════════════════
+   LIGHTBOX
+══════════════════════════════ */
+.lightbox {
+  position: fixed; inset: 0;
+  background: rgba(17,24,39,.95);
+  z-index: 10000;
+  display: none; align-items: center; justify-content: center;
+  padding: 32px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.lightbox.open { display: flex; animation: lbFadeIn .25s ease; }
+@keyframes lbFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.lightbox-inner {
+  position: relative; max-width: 1000px; width: 100%; max-height: 90vh;
+  animation: lbSlide .28s ease;
+}
+@keyframes lbSlide {
+  from { opacity: 0; transform: scale(.96) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.lightbox-img {
+  width: 100%; max-height: 80vh; object-fit: contain;
+  display: block; border-radius: var(--radius);
+  box-shadow: 0 24px 64px rgba(0,0,0,.5);
+}
+.lightbox-info {
+  margin-top: 16px; display: flex;
+  align-items: center; justify-content: space-between; gap: 16px;
+}
+.lightbox-meta { font-size: 14px; color: rgba(255,255,255,.6); }
+.lightbox-meta strong { color: #fff; font-weight: 700; margin-right: 8px; }
+.lightbox-counter { font-size: 12px; color: rgba(255,255,255,.4); font-variant-numeric: tabular-nums; }
+
+.lightbox-close {
+  position: absolute; top: -52px; right: 0;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+  color: #fff; width: 40px; height: 40px; border-radius: var(--radius-pill);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 18px; transition: background var(--ease);
+}
+.lightbox-close:hover { background: rgba(255,255,255,.2); }
+
+.lightbox-prev, .lightbox-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15);
+  color: #fff; width: 48px; height: 48px; border-radius: var(--radius-pill);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; font-size: 22px;
+  transition: background var(--ease), transform var(--ease);
+}
+.lightbox-prev:hover { background: rgba(255,255,255,.2); transform: translateY(-50%) translateX(-2px); }
+.lightbox-next:hover { background: rgba(255,255,255,.2); transform: translateY(-50%) translateX(2px); }
+.lightbox-prev { left: -68px; }
+.lightbox-next { right: -68px; }
+
+/* ══════════════════════════════
+   ACCORDION — smooth animation
+══════════════════════════════ */
+.accordion { border-top: 1px solid var(--border); }
+.accordion-item { border-bottom: 1px solid var(--border); }
+
+.accordion-head {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 20px 0; cursor: pointer; gap: 16px;
+  user-select: none;
+}
+.accordion-head h3 {
+  font-size: 16px; font-weight: 700; color: var(--text);
+  transition: color var(--ease-fast);
+}
+.accordion-head:hover h3 { color: var(--primary); }
+
+.accordion-icon {
+  width: 32px; height: 32px;
+  border-radius: var(--radius-pill);
+  background: var(--surface); border: 1.5px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; font-size: 20px; font-weight: 300;
+  color: var(--text-muted); line-height: 1;
+  transition: background var(--ease), border-color var(--ease), color var(--ease);
+}
+.accordion-item.open .accordion-icon {
+  background: var(--primary); border-color: var(--primary); color: #fff;
+}
+
+/* Smooth max-height accordion */
+.accordion-body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .38s cubic-bezier(0.4,0,0.2,1),
+              padding-bottom .38s cubic-bezier(0.4,0,0.2,1);
+  padding-bottom: 0;
+}
+.accordion-item.open .accordion-body {
+  max-height: 700px;
+  padding-bottom: 24px;
+}
+
+.accordion-list {
+  list-style: none; display: grid;
+  grid-template-columns: 1fr 1fr; gap: 10px 24px;
+}
+.accordion-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--text-muted); line-height: 1.65;
+}
+.accordion-list li::before {
+  content: ''; width: 6px; height: 6px;
+  background: var(--primary); border-radius: 50%;
+  margin-top: 8px; flex-shrink: 0;
+}
+
+/* ══════════════════════════════
+   ANIMATIONS & REVEAL
+══════════════════════════════ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+/* ══════════════════════════════
+   CTA BANNER (shared)
+══════════════════════════════ */
+.cta-banner {
+  background: linear-gradient(135deg, var(--primary) 0%, #4285f4 50%, #1557b0 100%);
+  padding: 80px 0; position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none;
+}
+.cta-inner {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.cta-title {
+  font-size: clamp(26px, 3.5vw, 44px); font-weight: 800;
+  color: #fff; line-height: 1.15; letter-spacing: -0.025em;
+}
+.cta-title em { font-style: normal; opacity: .85; }
+.cta-sub { font-size: 15px; color: rgba(255,255,255,.75); margin-top: 8px; }
+.btn-dark {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--primary);
+  padding: 13px 28px; border-radius: var(--radius-pill);
+  font-size: 14px; font-weight: 700;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+  flex-shrink: 0; white-space: nowrap;
+  transition: box-shadow var(--ease), transform var(--ease-fast);
+  border: none; cursor: pointer;
+}
+.btn-dark:hover { box-shadow: 0 4px 16px rgba(0,0,0,.2); transform: translateY(-1px); }
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 1024px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .lightbox-prev { left: -54px; }
+  .lightbox-next { right: -54px; }
+}
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .section-gap { padding: 64px 0; }
+  .section-gap-sm { padding: 48px 0; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .accordion-list { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .section-header { flex-direction: column; align-items: flex-start; }
+  .lightbox { padding: 16px; }
+  .lightbox-prev { left: 0; bottom: -64px; top: auto; transform: none; }
+  .lightbox-next { right: 0; bottom: -64px; top: auto; transform: none; }
+  .lightbox-prev:hover,.lightbox-next:hover { transform: none; }
+}
+@media (max-width: 480px) {
+  .gallery-grid { grid-template-columns: 1fr; }
+  .page-hero-title { font-size: 32px; }
+  .stats-row { grid-template-columns: 1fr; }
+}
+
+/* ── Admin Preview Mode (?pv=1) ──────────────────
+   Force desktop nav when viewed inside admin preview pane.
+   Triggered by main.js adding .pv-mode to <html>.
+─────────────────────────────────────────────────── */
+html.pv-mode #main-nav .nav-links { display: flex !important; }
+html.pv-mode #main-nav .hamburger { display: none !important; }
+html.pv-mode .mobile-menu        { display: none !important; }
+html.pv-mode .mobile-overlay     { display: none !important; }
+
+
+/* ═══ Page-specific CSS ═══ */
+
+/* ── 首頁 (index.html) ── */
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      padding-top: var(--nav-h);
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    /* Google-style colorful blob shapes */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+    .blob-1 { width: 500px; height: 500px; background: rgba(26,115,232,0.08); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: rgba(232,116,0,0.06); bottom: 50px; right: 200px; }
+    .blob-3 { width: 200px; height: 200px; background: rgba(30,142,62,0.05); top: 200px; right: 400px; }
+    /* Dot grid */
+    .hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(26,115,232,0.1) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 60% 80% at 75% 50%, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 80% at 75% 50%, black 0%, transparent 70%);
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    /* Left content */
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
+    }
+    .hero-title {
+      font-size: clamp(42px, 5.5vw, 72px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 20px;
+      opacity: 0; animation: fadeUp 0.6s 0.25s forwards;
+    }
+    .hero-title .blue { color: var(--primary); }
+    .hero-title .orange { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 460px;
+      opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
+    }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 48px;
+      opacity: 0; animation: fadeUp 0.6s 0.55s forwards;
+    }
+
+    /* Hero stats chips */
+    .hero-stats {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.6s 0.7s forwards;
+    }
+    .hero-stat-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-pill);
+      padding: 8px 16px;
+    }
+    .hero-stat-num { font-size: 18px; font-weight: 800; color: var(--primary); }
+    .hero-stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+
+    /* Right visual */
+    .hero-visual {
+      position: relative;
+      opacity: 0; animation: fadeIn 0.8s 0.4s forwards;
+    }
+    .hero-card-stack {
+      position: relative; width: 100%; aspect-ratio: 1.05;
+    }
+    /* Main card */
+    .hero-main-card {
+      background: #fff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-3);
+      padding: 28px;
+      overflow: hidden;
+    }
+    .hmc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+    .hmc-icon {
+      width: 44px; height: 44px;
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+    }
+    .hmc-title { font-size: 16px; font-weight: 700; }
+    .hmc-sub { font-size: 12px; color: var(--text-muted); }
+    .hmc-bar { height: 6px; background: var(--surface); border-radius: 3px; margin-bottom: 8px; overflow: hidden; }
+    .hmc-bar-fill { height: 100%; border-radius: 3px; }
+    .hmc-row { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .hmc-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 16px; }
+
+    /* Floating cards */
+    .float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-2);
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .fc-icon {
+      width: 36px; height: 36px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .fc-1 { top: -16px; right: 20px; }
+    .fc-2 { bottom: 20px; left: -24px; }
+    .fc-num { font-size: 18px; font-weight: 800; color: var(--text); line-height: 1; }
+    .fc-label { font-size: 12px; color: var(--text-muted); }
+
+    /* ── SERVICE CARDS ── */
+    .services-section { background: var(--surface); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .svc-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
+    .svc-card-top {
+      width: 52px; height: 52px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .svc-icon { width: 26px; height: 26px; }
+    .svc-num {
+      position: absolute; bottom: 16px; right: 20px;
+      font-size: 48px; font-weight: 800;
+      color: rgba(0,0,0,0.04);
+      line-height: 1;
+    }
+    .svc-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .svc-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; margin-bottom: 18px; flex: 1; }
+    .svc-link { font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 4px; margin-top: auto; }
+    .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+
+    /* ── GALLERY PREVIEW ── */
+    .gallery-preview { background: #fff; }
+    .gallery-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 240px 240px;
+      gap: 12px;
+    }
+    .gallery-preview-grid .gallery-item:first-child { grid-column: span 2; }
+    .gallery-cta-row {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 28px; gap: 16px; flex-wrap: wrap;
+    }
+    .gallery-cta-text { font-size: 15px; color: var(--text-muted); }
+
+    /* ── ABOUT TEASER ── */
+    .about-teaser { background: var(--surface); }
+    .about-teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .about-visual-wrap {
+      position: relative;
+      background: linear-gradient(135deg, var(--primary-light) 0%, #fff 100%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-mid);
+      padding: 40px;
+      aspect-ratio: 1;
+      display: flex; flex-direction: column; justify-content: center;
+      overflow: hidden;
+    }
+    .about-visual-bg {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image: radial-gradient(circle, rgba(26,115,232,0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
+      border-radius: var(--radius-xl);
+    }
+    .about-big-num {
+      font-size: clamp(80px, 14vw, 140px);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--primary);
+      opacity: 0.15;
+      position: absolute;
+      bottom: 20px; right: 24px;
+    }
+    .about-visual-content { position: relative; z-index: 2; }
+    .about-visual-content h3 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
+    .about-visual-content p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .about-badge {
+      position: absolute; top: 20px; right: 20px;
+      background: var(--primary); color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 12px 16px; text-align: center;
+    }
+    .ab-num { font-size: 28px; font-weight: 800; line-height: 1; }
+    .ab-text { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 2px; }
+    .about-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+    .about-feat {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 13.5px; color: var(--text-muted); line-height: 1.55;
+    }
+    .feat-check {
+      width: 18px; height: 18px; background: var(--primary-light);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .feat-check svg { width: 10px; height: 10px; color: var(--primary); }
+
+    /* ── TESTIMONIALS ── */
+    .testi-section { background: #fff; }
+    .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .testi-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 28px;
+      transition: box-shadow 0.2s;
+    }
+    .testi-card:hover { box-shadow: var(--shadow-2); }
+    .stars { display: flex; gap: 3px; margin-bottom: 16px; }
+    .star { color: #fbbc04; font-size: 15px; }
+    .testi-text {
+      font-size: 15px; line-height: 1.7; color: var(--text);
+      margin-bottom: 20px; font-style: italic;
+    }
+    .testi-text::before { content: '\201C'; color: var(--primary); font-size: 20px; font-style: normal; }
+    .testi-text::after  { content: '\201D'; color: var(--primary); font-size: 20px; font-style: normal; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: var(--radius-pill);
+      background: var(--primary-light); display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: var(--primary); flex-shrink: 0;
+    }
+    .testi-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+    .testi-role { font-size: 12px; color: var(--text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-teaser-grid { grid-template-columns: 1fr; gap: 48px; }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-preview-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gallery-preview-grid .gallery-item:first-child { grid-column: span 2; }
+      .gallery-preview-grid .gallery-item { aspect-ratio: 4/3; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .about-feats { grid-template-columns: 1fr; }
+    }
+  
+
+/* ── 水電工程 (service-water.html) ── */
+
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 72px;
+    }
+    .overview-card {
+      background: var(--card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .overview-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .overview-icon { width: 40px; height: 40px; color: var(--primary); margin: 0 auto 14px; }
+    .overview-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .overview-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+    .gallery-section { background: var(--surface); }
+    .gallery-section .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .gallery-section .gallery-item { aspect-ratio: 4/3; }
+
+    @media (max-width: 768px) {
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-section .gallery-grid { grid-template-columns: 1fr; }
+    }
+  
+
+/* ── 室內裝修 (service-interior.html) ── */
+
+    .overview-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; margin-bottom: 72px;
+    }
+    .overview-card {
+      background: var(--card); border-radius: var(--radius-lg);
+      border: 1px solid var(--border); padding: 32px 24px;
+      text-align: center; transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .overview-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .overview-icon { width: 40px; height: 40px; color: var(--primary); margin: 0 auto 14px; }
+    .overview-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .overview-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+    .gallery-section { background: var(--surface); }
+    .gallery-section .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .gallery-section .gallery-item { aspect-ratio: 4/3; }
+    @media (max-width: 768px) {
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-section .gallery-grid { grid-template-columns: 1fr; }
+    }
+  
+
+/* ── 設計規劃 (service-design.html) ── */
+
+    .design-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 72px; }
+    .design-step { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 36px 28px; transition: box-shadow 0.2s, transform 0.2s; }
+    .design-step:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .step-badge { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 48px; font-weight: 800; color: var(--primary-mid); line-height: 1; margin-bottom: 12px; letter-spacing: -0.03em; }
+    .design-step h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .design-step p { font-size: 13.5px; color: var(--text-muted); line-height: 1.8; }
+    .gallery-section { background: var(--surface); }
+    .gallery-section .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    .gallery-section .gallery-item { aspect-ratio: 4/3; }
+    @media (max-width: 768px) { .design-steps { grid-template-columns: 1fr; } .gallery-section .gallery-grid { grid-template-columns: 1fr; } }
+  
+
+/* ── 維修保固 (service-maintenance.html) ── */
+
+    .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 72px; }
+    .promise-card { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 40px 28px; transition: box-shadow 0.2s, transform 0.2s; }
+    .promise-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .promise-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 64px; font-weight: 800; color: var(--primary); line-height: 1; margin-bottom: 4px; letter-spacing: -0.03em; }
+    .promise-unit { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 28px; font-weight: 400; color: var(--text-muted); }
+    .promise-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+    .promise-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.8; }
+    .hotline-banner { background: var(--primary-light); border: 1px solid var(--primary-mid); border-radius: var(--radius-lg); padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 56px; flex-wrap: wrap; }
+    .hotline-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; font-weight: 600; }
+    .hotline-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 52px; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; line-height: 1; }
+    .hotline-sub { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    @media (max-width: 768px) { .promise-grid { grid-template-columns: 1fr; } }
+  
+
+/* ── 作品相冊 (gallery.html) ── */
+
+    /* ── Gallery Stats Bar ── */
+    .gallery-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 52px;
+    }
+    .gallery-stat-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .gs-num {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+    .gs-unit {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+    .gs-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .gs-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .gs-sub {
+      font-size: 12px;
+      color: var(--text-subtle);
+    }
+
+    /* ── Filter row ── */
+    .gallery-filters-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    .filter-count {
+      font-size: 13px;
+      color: var(--text-subtle);
+      letter-spacing: 0.03em;
+    }
+    .filter-count span {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* ── Gallery section bg ── */
+    .gallery-section { background: var(--bg); }
+
+    /* ── Responsive adjustments ── */
+    @media (max-width: 768px) {
+      .gallery-stats { grid-template-columns: 1fr; }
+      .gallery-stat-item { padding: 20px 24px; }
+      .gs-num { font-size: 40px; }
+      .gallery-filters-row { flex-direction: column; align-items: flex-start; }
+    }
+  
+
+/* ── 關於我們 (about.html) ── */
+
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .story-year-wrap { position: relative; }
+    .story-year-bg {
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(120px, 18vw, 200px);
+      font-weight: 800; color: rgba(26,115,232,0.07); line-height: 1; letter-spacing: -0.04em;
+      user-select: none;
+    }
+    .story-year-label {
+      position: absolute; bottom: 0; left: 0;
+      font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--primary); padding-bottom: 8px;
+      border-bottom: 1px solid rgba(26,115,232,0.25);
+      font-weight: 600;
+    }
+    .story-line { width: 60px; height: 3px; background: linear-gradient(90deg, var(--primary), transparent); margin: 24px 0; border-radius: 2px; }
+    .story-quote {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-style: italic; font-size: clamp(20px, 2.8vw, 32px);
+      font-weight: 300; color: var(--text-muted); line-height: 1.55;
+    }
+
+    .story-text { font-size: 15px; color: var(--text-muted); line-height: 1.95; margin-bottom: 20px; }
+
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .value-card { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 40px 32px; transition: box-shadow 0.2s, transform 0.2s; }
+    .value-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .value-icon { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 32px; font-weight: 800; color: var(--primary); opacity: 0.3; margin-bottom: 12px; line-height: 1; letter-spacing: -0.02em; }
+    .value-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .value-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+
+    .cert-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .cert-item { display: flex; align-items: center; gap: 12px; padding: 16px 20px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); }
+    .cert-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; flex-shrink: 0; }
+    .cert-text { font-size: 14px; color: var(--text-muted); }
+
+    .team-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .team-item { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 32px 24px; text-align: center; transition: box-shadow 0.2s, transform 0.2s; }
+    .team-item:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .team-num { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 52px; font-weight: 800; color: var(--primary); line-height: 1; letter-spacing: -0.03em; }
+    .team-unit { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; font-weight: 400; color: var(--text-muted); }
+    .team-label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 6px; }
+
+    @media (max-width: 1024px) { .story-grid { grid-template-columns: 1fr; gap: 48px; } .team-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; } .cert-list { grid-template-columns: 1fr; } .team-row { grid-template-columns: 1fr 1fr; } }
+  
+
+/* ── 聯絡我們 (contact.html) ── */
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .contact-items { display: flex; flex-direction: column; gap: 0; margin-bottom: 40px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+    .contact-item:first-child { padding-top: 0; }
+    .contact-item:last-child { border-bottom: none; }
+    .c-icon {
+      width: 40px; height: 40px; background: var(--primary-light);
+      border: 1px solid var(--primary-mid); border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--primary);
+    }
+    .c-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 4px; font-weight: 600; }
+    .c-value { font-size: 15px; color: var(--text); line-height: 1.6; }
+
+    .highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .highlight-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+    .hl-icon { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 22px; font-weight: 800; color: var(--primary); line-height: 1; letter-spacing: -0.02em; }
+    .hl-label { font-size: 12px; color: var(--text-muted); letter-spacing: 0.04em; margin-top: 4px; }
+
+    /* Form */
+    .contact-form { display: flex; flex-direction: column; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+    .form-input, .form-textarea, .form-select {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text); padding: 13px 15px;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+      -webkit-appearance: none;
+    }
+    .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,115,232,0.1); }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-subtle); }
+    .form-textarea { min-height: 120px; resize: vertical; }
+    .form-select { cursor: pointer; }
+    .form-select option { background: var(--card); }
+    .form-submit {
+      background: var(--primary); color: #fff; border: none;
+      border-radius: var(--radius-pill);
+      padding: 14px 36px; font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+      cursor: pointer; transition: background 0.2s, box-shadow 0.2s; align-self: flex-start;
+      box-shadow: 0 1px 3px rgba(26,115,232,.4);
+    }
+    .form-submit:hover { background: var(--primary-dark); box-shadow: 0 4px 12px rgba(26,115,232,.4); }
+    .form-submit:disabled { background: var(--border-mid); cursor: default; box-shadow: none; }
+
+    @media (max-width: 1024px) { .contact-grid { grid-template-columns: 1fr; gap: 56px; } }
+    @media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } .highlights { grid-template-columns: 1fr 1fr 1fr; } }
+  
+
+
+/* ═══ SPA Page Container ═══ */
+.spa-page { min-height: 0; }
+  </style>
+</head>
+<body>
+
+<nav id="main-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">鴻匠<span>工程</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">首頁</a></li>
+        <li class="has-dropdown">
+          <a href="#">服務項目</a>
+          <ul class="dropdown">
+            <li><a href="service-water.html">水電工程</a></li>
+            <li><a href="service-interior.html">室內裝修</a></li>
+            <li><a href="service-design.html">設計規劃</a></li>
+            <li><a href="service-maintenance.html">維修保固</a></li>
+          </ul>
+        </li>
+        <li><a href="gallery.html">作品相冊</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li class="nav-cta"><a href="contact.html">免費諮詢</a></li>
+        <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>員工登入</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html" class="active">首頁</a>
+  <a href="service-water.html" class="mobile-sub">水電工程</a>
+  <a href="service-interior.html" class="mobile-sub">室內裝修</a>
+  <a href="service-design.html" class="mobile-sub">設計規劃</a>
+  <a href="service-maintenance.html" class="mobile-sub">維修保固</a>
+  <a href="gallery.html">作品相冊</a>
+  <a href="about.html">關於我們</a>
+  <a href="contact.html">免費諮詢</a>
+  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>員工後台登入</a>
+</div>
+
+
+
+<!-- ═══ SPA Page Containers ═══ -->
+
+<!-- ═══ PAGE: 首頁 ═══ -->
+<div class="spa-page" data-page="index" style="display:block;">
+<!-- ── NAV ── -->
+
+
+<!-- Mobile Menu -->
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-blob blob-3"></div>
+    <div class="hero-dots"></div>
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left -->
+      <div>
+        <div class="hero-eyebrow">
+          <span class="chip chip-blue">台灣水電・室內裝修專家</span>
+        </div>
+        <h1 class="hero-title" data-cms="index.html.hero.title">
+          打造您的<br>
+          <span class="blue">理想空間</span><br>
+          <span style="font-weight:300; font-size:0.65em; color:var(--text-muted); letter-spacing:-0.01em;">水電・裝修・設計 一站搞定</span>
+        </h1>
+        <p class="hero-sub" data-cms="index.html.hero.desc">
+          專業水電配管、全室裝修、室內設計，二十年工藝傳承，
+          每一細節精工打造，讓您安心託付。
+        </p>
+        <div class="hero-actions">
+          <a href="contact.html" class="btn-primary">
+            <span data-cms="index.html.cta.btn">立即免費諮詢</span>
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+          </a>
+          <a href="gallery.html" class="btn-outline">瀏覽作品相冊</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-chip">
+            <div class="hero-stat-num">20+</div>
+            <div class="hero-stat-label">年專業經驗</div>
+          </div>
+          <div class="hero-stat-chip">
+            <div class="hero-stat-num">800+</div>
+            <div class="hero-stat-label">完成案件</div>
+          </div>
+          <div class="hero-stat-chip">
+            <div class="hero-stat-num">98%</div>
+            <div class="hero-stat-label">客戶滿意度</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Dashboard Card -->
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+          <div class="hero-main-card">
+            <div class="hmc-header">
+              <div class="hmc-icon">
+                <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+              </div>
+              <div>
+                <div class="hmc-title">工程進度追蹤</div>
+                <div class="hmc-sub">台北市大安區 40坪 裝修案</div>
+              </div>
+            </div>
+            <!-- Progress bars -->
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>水電配管</span><span style="color:var(--green);font-weight:600;">完成 100%</span></div>
+            <div class="hmc-bar"><div class="hmc-bar-fill" style="width:100%;background:var(--green);"></div></div>
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>泥作工程</span><span style="color:var(--primary);font-weight:600;">進行中 75%</span></div>
+            <div class="hmc-bar"><div class="hmc-bar-fill" style="width:75%;background:var(--primary);"></div></div>
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>木作工程</span><span style="color:var(--text-subtle);font-weight:600;">待開工 0%</span></div>
+            <div class="hmc-bar"><div class="hmc-bar-fill" style="width:0%;background:var(--border);"></div></div>
+            <div class="hmc-tag-row">
+              <span class="chip chip-green" style="font-size:11px;">準時交屋</span>
+              <span class="chip chip-blue" style="font-size:11px;">透明報價</span>
+              <span class="chip chip-orange" style="font-size:11px;">二年保固</span>
+            </div>
+          </div>
+          <!-- Float cards -->
+          <div class="float-card fc-1">
+            <div class="fc-icon" style="background:var(--green-light);">
+              <svg width="18" height="18" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <div><div class="fc-num">98%</div><div class="fc-label">客戶滿意</div></div>
+          </div>
+          <div class="float-card fc-2">
+            <div class="fc-icon" style="background:var(--primary-light);">
+              <svg width="18" height="18" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <div><div class="fc-num">2年</div><div class="fc-label">工程保固</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section class="services-section section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:12px;">專業服務</div>
+        <div class="section-divider"></div>
+        <h2 class="section-title" data-cms="index.html.about.title">完整的工程<br><span class="blue">解決方案</span></h2>
+      </div>
+      <p class="section-desc" data-cms="index.html.about.desc">從基礎水電到精緻裝修，提供全方位的居家工程服務，讓您的空間煥然一新。</p>
+    </div>
+    <div class="services-grid">
+      <a href="service-water.html" class="svc-card reveal">
+        <div class="svc-card-top" style="background:var(--primary-light);">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--primary)" stroke-width="2">
+            <path d="M12 36V20M24 36V14M36 36V24"></path><circle cx="12" cy="14" r="4"></circle><circle cx="24" cy="8" r="4"></circle><circle cx="36" cy="18" r="4"></circle><path d="M6 36h36"></path>
+          </svg>
+        </div>
+        <div class="svc-num">01</div>
+        <h3 class="svc-title">水電工程</h3>
+        <p class="svc-desc">給排水系統規劃、電氣配線、弱電佈設，確保管線安全耐用，符合法規標準。</p>
+        <span class="svc-link">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <div class="svc-tags">
+          <span class="tag">給排水</span><span class="tag">電氣配線</span><span class="tag">弱電系統</span>
+        </div>
+      </a>
+      <a href="service-interior.html" class="svc-card reveal reveal-delay-1">
+        <div class="svc-card-top" style="background:var(--accent-light);">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--accent)" stroke-width="2">
+            <rect x="6" y="10" width="36" height="28" rx="2"></rect><path d="M6 22h36M18 22v16"></path>
+          </svg>
+        </div>
+        <div class="svc-num">02</div>
+        <h3 class="svc-title">室內裝修</h3>
+        <p class="svc-desc">客廳、廚房、衛浴全室翻新，結合美觀與實用，打造符合生活需求的理想空間。</p>
+        <span class="svc-link" style="color:var(--accent);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <div class="svc-tags">
+          <span class="tag">全室翻新</span><span class="tag">廚衛改造</span><span class="tag">舊屋整建</span>
+        </div>
+      </a>
+      <a href="service-design.html" class="svc-card reveal reveal-delay-2">
+        <div class="svc-card-top" style="background:var(--green-light);">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--green)" stroke-width="2">
+            <path d="M8 40V16l16-8 16 8v24"></path><rect x="18" y="28" width="12" height="12" rx="1"></rect>
+          </svg>
+        </div>
+        <div class="svc-num">03</div>
+        <h3 class="svc-title">設計規劃</h3>
+        <p class="svc-desc">專業室內設計師量身訂製空間規劃，3D效果圖呈現，施工前掌握完整藍圖。</p>
+        <span class="svc-link" style="color:var(--green);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <div class="svc-tags">
+          <span class="tag">平面規劃</span><span class="tag">3D 效果圖</span><span class="tag">材料建議</span>
+        </div>
+      </a>
+      <a href="service-maintenance.html" class="svc-card reveal reveal-delay-3">
+        <div class="svc-card-top" style="background:#fce8e6;">
+          <svg class="svc-icon" viewBox="0 0 48 48" fill="none" stroke="var(--red)" stroke-width="2">
+            <path d="M30 8l-4 4-6-2-4 4 2 6-4 4 2 6 6 2 4-4 6 2 4-4-2-6 4-4-2-6z"></path><circle cx="24" cy="24" r="5"></circle>
+          </svg>
+        </div>
+        <div class="svc-num">04</div>
+        <h3 class="svc-title">維修保固</h3>
+        <p class="svc-desc">完工後提供兩年工程保固，24小時緊急維修專線，售後問題快速回應處理。</p>
+        <span class="svc-link" style="color:var(--red);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <div class="svc-tags">
+          <span class="tag">兩年保固</span><span class="tag">緊急維修</span><span class="tag">定期檢查</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS ── -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-number" data-target="20" data-suffix="+">20<span class="stat-unit">+</span></div><div class="stat-label">年專業經驗</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="800" data-suffix="+">800<span class="stat-unit">+</span></div><div class="stat-label">完成案件</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">98<span class="stat-unit">%</span></div><div class="stat-label">客戶滿意度</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="2" data-suffix="年">2<span class="stat-unit">年</span></div><div class="stat-label">工程保固</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── GALLERY PREVIEW ── -->
+<section class="gallery-preview section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:12px;">作品相冊</div>
+        <div class="section-divider" style="background:linear-gradient(90deg,var(--accent),#fbbc04);"></div>
+        <h2 class="section-title">精選案例<br><span class="orange">實景展示</span></h2>
+      </div>
+      <p class="section-desc">每個案件都是我們用心投入的成果，見證空間轉變的無限可能。</p>
+    </div>
+    <div class="gallery-preview-grid reveal">
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-1/1200/800" data-title="現代簡約三房公寓" data-meta="台北市大安區・40坪・2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/540" alt="現代簡約公寓" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">室內裝修</div><div class="gallery-item-title">現代簡約三房公寓</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="商辦大樓水電更新" data-meta="新北市・680坪・2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/540" alt="商辦水電" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">商辦大樓水電更新</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-3/1200/800" data-title="廚房衛浴全面翻新" data-meta="台中市・28坪・2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/540" alt="廚衛翻新" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">廚衛改造</div><div class="gallery-item-title">廚房衛浴全面翻新</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-4/1200/800" data-title="透天厝全屋設計翻修" data-meta="台北士林・65坪・2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/540" alt="透天厝設計" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">透天厝全屋設計翻修</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj-full-5/1200/800" data-title="餐飲店面空間改造" data-meta="桃園市・35坪・2023.07">
+        <img src="https://picsum.photos/seed/hj05/800/540" alt="餐飲改造" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">商業空間</div><div class="gallery-item-title">餐飲店面空間改造</div></div>
+        <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+    </div>
+    <div class="gallery-cta-row reveal">
+      <p class="gallery-cta-text">已有 <strong style="color:var(--text);">800+</strong> 件完工案例等您探索</p>
+      <a href="gallery.html" class="btn-primary">查看全部相冊 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT TEASER ── -->
+<section class="about-teaser section-gap">
+  <div class="container">
+    <div class="about-teaser-grid">
+      <div class="reveal">
+        <div class="about-visual-wrap">
+          <div class="about-visual-bg"></div>
+          <div class="about-big-num">20</div>
+          <div class="about-badge">
+            <div class="ab-num">20</div>
+            <div class="ab-text">年工藝傳承</div>
+          </div>
+          <div class="about-visual-content">
+            <h3>鴻匠工程</h3>
+            <p>成立於 2004 年・台北市<br>持牌水電 + 室內裝修工程公司</p>
+            <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;">
+              <span class="chip chip-blue" style="font-size:11px;">乙級水電技術士</span>
+              <span class="chip chip-green" style="font-size:11px;">甲級室內裝修</span>
+              <span class="chip chip-orange" style="font-size:11px;">30+ 名師傅</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="label" style="margin-bottom:12px;">關於鴻匠工程</div>
+        <div class="section-divider"></div>
+        <h2 style="font-size:clamp(26px,3vw,40px); font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin-bottom:16px;">
+          精工細作<br><span class="blue">每一細節皆是承諾</span>
+        </h2>
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.85; margin-bottom:24px;">
+          鴻匠工程成立於 2004 年，專注住宅及商業空間的水電工程與室內裝修服務。
+          我們擁有一支由資深師傅組成的施工團隊，秉持「品質第一、客戶至上」的核心理念，
+          二十年來累積逾八百件完成案例，深獲客戶信賴。
+        </p>
+        <div class="about-feats">
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
+            <span>政府認證乙級技術士證照</span>
+          </div>
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
+            <span>全程施工透明化進度回報</span>
+          </div>
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
+            <span data-cms="index.html.about.feat3">優質建材嚴選，拒絕偷工減料</span>
+          </div>
+          <div class="about-feat">
+            <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
+            <span data-cms="index.html.about.feat4">完工後兩年工程品質保固</span>
+          </div>
+        </div>
+        <a href="about.html" class="btn-primary">深入了解我們 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testi-section section-gap">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;" class="reveal">
+      <div class="label" style="justify-content:center; margin-bottom:12px;">客戶見證</div>
+      <div class="section-divider" style="margin:12px auto 0; background:linear-gradient(90deg,#fbbc04,var(--accent));"></div>
+      <h2 class="section-title" style="margin-top:16px;">口碑，是最好的<span class="blue"> 名片</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text" data-cms="index.html.testi.1.text">鴻匠的師傅非常專業，施工期間整潔有序，完全不影響正常生活作息。完工後效果遠超預期！</p>
+        <div class="testi-author"><div class="testi-avatar">陳</div><div><div class="testi-name" data-cms="index.html.testi.1.author">陳小姐</div><div class="testi-role" data-cms="index.html.testi.1.role">台北市・全室裝修客戶</div></div></div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text" data-cms="index.html.testi.2.text">水電工程做得非常仔細，配管走線整齊美觀，師傅還主動提醒了幾個安全隱患，令人放心。</p>
+        <div class="testi-author"><div class="testi-avatar">林</div><div><div class="testi-name" data-cms="index.html.testi.2.author">林先生</div><div class="testi-role" data-cms="index.html.testi.2.role">新北市・水電工程客戶</div></div></div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text" data-cms="index.html.testi.3.text">報價透明，沒有隱藏費用，施工過程全程拍照回報。完工後小問題，立刻安排師傅回來處理。</p>
+        <div class="testi-author"><div class="testi-avatar">王</div><div><div class="testi-name" data-cms="index.html.testi.3.author">王先生</div><div class="testi-role" data-cms="index.html.testi.3.role">台中市・廚衛改造客戶</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ── -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title" data-cms="index.html.cta.title">開始您的裝修計畫<br>今天就聯繫我們</h2>
+        <p class="cta-sub">免費到府估價 · 透明報價 · 二年保固 · 全台服務</p>
+      </div>
+      <a href="contact.html" class="btn-white">
+        <span data-cms="index.html.cta.btn">立即免費諮詢</span>
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+
+
+<!-- Lightbox -->
+
+    <button class="lightbox-prev">‹</button>
+    <button class="lightbox-next">›</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE: 水電工程 ═══ -->
+<div class="spa-page" data-page="service-water" style="display:none;">
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">首頁</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">服務項目</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>水電工程</span>
+    </div>
+    <div class="label page-hero-label">SERVICE 01 / 水電工程</div>
+    <h1 class="page-hero-title" data-cms="service-water.html.hero.title">專業水電<br><span class="blue">配管工程</span></h1>
+    <p class="page-hero-desc" data-cms="service-water.html.hero.desc">給排水系統規劃配管、電氣迴路設計、弱電系統整合，確保每一處管線安全耐用、符合建築法規標準。</p>
+    <div class="exp-badge" data-cms="service-water.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+  </div>
+</section>
+
+<!-- OVERVIEW CARDS -->
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">服務範疇</div>
+        <h2 class="section-title">四大核心<br><span class="blue">水電服務</span></h2>
+      </div>
+      <p class="section-desc">從規劃、施工到驗收，提供完整的水電工程解決方案，確保每一處細節安全可靠。</p>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card reveal">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 40V24a12 12 0 1124 0v16M12 32h24M18 40v-8M30 40v-8"></path>
+        </svg>
+        <h3 data-cms="service-water.html.card.1.title">給排水配管</h3>
+        <p data-cms="service-water.card.1.desc">自來水管全室更換、熱水管路安裝、廚衛排水配管、管路防漏處理</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-1">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8v8M24 32v8M8 24h8M32 24h8"></path>
+          <circle cx="24" cy="24" r="8"></circle>
+          <path d="M14 14l6 6M28 28l6 6M14 34l6-6M28 14l6-6"></path>
+        </svg>
+        <h3 data-cms="service-water.html.card.2.title">電氣迴路配線</h3>
+        <p data-cms="service-water.card.2.desc">全室電氣迴路設計、配電箱更換、插座開關更新、照明迴路安裝</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-2">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="8" y="8" width="32" height="32" rx="2"></rect>
+          <path d="M8 20h32M20 20v20M8 32h12"></path>
+        </svg>
+        <h3 data-cms="service-water.html.card.3.title">弱電系統整合</h3>
+        <p data-cms="service-water.card.3.desc">網路線佈設、電視天線、門禁對講機、監視系統、智能家居配線</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-3">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 8l4 8h8l-6 6 2 10-8-4-8 4 2-10-6-6h8z"></path>
+        </svg>
+        <h3 data-cms="service-water.html.card.4.title">消防緊急系統</h3>
+        <p data-cms="service-water.card.4.desc">消防灑水管配管、緊急照明配線、火警感知器、避雷針接地工程</p>
+      </div>
+    </div>
+
+    <!-- ACCORDION -->
+    <div class="reveal">
+      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="accordion">
+        <div class="accordion-item open">
+          <div class="accordion-head">
+            <h3 data-cms="service-water.html.acc.1.title">給水排水系統規劃與配管</h3>
+            <span class="accordion-icon">−</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-water.html.acc.1.li.1">自來水管全室更換（PPR / PVC 管材）</li>
+              <li data-cms="service-water.html.acc.1.li.2">熱水器管路安裝與更新</li>
+              <li data-cms="service-water.html.acc.1.li.3">廚房廁所排水配管</li>
+              <li data-cms="service-water.html.acc.1.li.4">管路防漏處理與測試</li>
+              <li data-cms="service-water.html.acc.1.li.5">水壓測試與品質驗收</li>
+              <li data-cms="service-water.html.acc.1.li.6">給水加壓馬達安裝</li>
+              <li data-cms="service-water.html.acc.1.li.7">衛生設備安裝（馬桶/浴缸/洗手台）</li>
+              <li data-cms="service-water.html.acc.1.li.8">鑄鐵管汰換為新式管材</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head">
+            <h3 data-cms="service-water.html.acc.2.title">電氣迴路規劃與配線</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-water.html.acc.2.li.1">全室電氣迴路設計規劃</li>
+              <li data-cms="service-water.html.acc.2.li.2">配電箱更換（無熔絲開關）</li>
+              <li data-cms="service-water.html.acc.2.li.3">插座 / 開關全室更新</li>
+              <li data-cms="service-water.html.acc.2.li.4">照明迴路規劃安裝</li>
+              <li data-cms="service-water.html.acc.2.li.5">空調電源迴路配線</li>
+              <li data-cms="service-water.html.acc.2.li.6">廚房大功率設備迴路</li>
+              <li data-cms="service-water.html.acc.2.li.7">接地線施工</li>
+              <li data-cms="service-water.html.acc.2.li.8">用電安全檢查報告</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head">
+            <h3 data-cms="service-water.html.acc.3.title">弱電系統整合佈設</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-water.html.acc.3.li.1">網路線（Cat6）全室佈設</li>
+              <li data-cms="service-water.html.acc.3.li.2">電視天線 / 有線電視</li>
+              <li data-cms="service-water.html.acc.3.li.3">門禁對講機系統</li>
+              <li data-cms="service-water.html.acc.3.li.4">保全監視系統配線</li>
+              <li data-cms="service-water.html.acc.3.li.5">智能家居系統整合</li>
+              <li data-cms="service-water.html.acc.3.li.6">音響系統佈線</li>
+              <li data-cms="service-water.html.acc.3.li.7">弱電箱彙整美化</li>
+              <li data-cms="service-water.html.acc.3.li.8">光纖入戶配線</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head">
+            <h3 data-cms="service-water.html.acc.4.title">消防與緊急系統</h3>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-water.html.acc.4.li.1">消防灑水頭配管</li>
+              <li data-cms="service-water.html.acc.4.li.2">緊急照明電源配線</li>
+              <li data-cms="service-water.html.acc.4.li.3">消防廣播系統</li>
+              <li data-cms="service-water.html.acc.4.li.4">火警感知器安裝</li>
+              <li data-cms="service-water.html.acc.4.li.5">避雷針接地工程</li>
+              <li data-cms="service-water.html.acc.4.li.6">備用電源 UPS 配置</li>
+              <li data-cms="service-water.html.acc.4.li.7">緊急出口指示燈</li>
+              <li data-cms="service-water.html.acc.4.li.8">消防系統年度維護</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">相關案例</div>
+        <h2 class="section-title">水電工程<br><span class="blue">實績展示</span></h2>
+      </div>
+      <a href="gallery.html" class="btn-outline">查看全部相冊 →</a>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="商辦大樓全棟水電更新" data-meta="新北市・680坪・2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/600" alt="商辦大樓水電更新" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">商辦大樓全棟水電更新</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-6/1200/800" data-title="老公寓水電全面更新" data-meta="台北市萬華區・24坪・2023.05">
+        <img src="https://picsum.photos/seed/hj06/800/600" alt="老公寓水電更新" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">老公寓水電全面更新</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-11/1200/800" data-title="社區管線整體汰換" data-meta="新北市新店區・2022.10">
+        <img src="https://picsum.photos/seed/hj11/800/600" alt="社區管線汰換" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">社區管線整體汰換</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title">水電工程免費估價<br><em>今天就聯繫我們</em></h2>
+        <p class="cta-sub">到府勘查 · 透明報價 · 二年保固</p>
+      </div>
+      <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <button class="lightbox-prev">‹</button>
+    <button class="lightbox-next">›</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE: 室內裝修 ═══ -->
+<div class="spa-page" data-page="service-interior" style="display:none;">
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">首頁</a><span class="breadcrumb-sep">›</span>
+      <a href="#">服務項目</a><span class="breadcrumb-sep">›</span>
+      <span>室內裝修</span>
+    </div>
+    <div class="label page-hero-label">SERVICE 02 / 室內裝修</div>
+    <h1 class="page-hero-title" data-cms="service-interior.html.hero.title">精緻室內<br><span class="blue">裝修工程</span></h1>
+    <p class="page-hero-desc" data-cms="service-interior.html.hero.desc">客廳、廚房、衛浴到全室翻新，融合美學設計與工藝施工，打造符合您生活品味的理想居家。</p>
+    <div class="exp-badge" data-cms="service-interior.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+  </div>
+</section>
+
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">服務範疇</div>
+        <h2 class="section-title">五大空間<br><span class="blue">裝修服務</span></h2>
+      </div>
+      <p class="section-desc">從單一空間改造到全室翻新，每個施工環節嚴格把關，呈現最高品質的完工成果。</p>
+    </div>
+    <div class="overview-grid">
+      <div class="overview-card reveal">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="6" y="10" width="36" height="28" rx="1"></rect>
+          <path d="M6 22h36M18 22v16"></path>
+        </svg>
+        <h3 data-cms="service-interior.html.card.1.title">客廳・餐廳</h3><p data-cms="service-interior.card.1.desc">天花板、地板、牆面、造型電視牆、間接照明、隔間牆施工</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-1">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="8" y="16" width="32" height="22" rx="1"></rect>
+          <path d="M8 22h32M8 28h10M32 28h8M18 28v10"></path>
+        </svg>
+        <h3 data-cms="service-interior.html.card.2.title">廚房改造</h3><p data-cms="service-interior.card.2.desc">系統廚具、流理台面材、磁磚鋪設、抽油煙機管路配合</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-2">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="10" y="12" width="28" height="26" rx="1"></rect>
+          <path d="M10 24h28M22 12v26M10 36h12"></path>
+        </svg>
+        <h3 data-cms="service-interior.html.card.3.title">衛浴改造</h3><p data-cms="service-interior.card.3.desc">防水工程、磁磚鋪設、馬桶浴缸安裝、乾濕分離施工</p>
+      </div>
+      <div class="overview-card reveal reveal-delay-3">
+        <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 40V16l16-8 16 8v24"></path><rect x="18" y="28" width="12" height="12" rx="1"></rect>
+        </svg>
+        <h3 data-cms="service-interior.html.card.4.title">全室翻新</h3><p data-cms="service-interior.card.4.desc">舊屋整建、壁癌處理、管線汰換、全室粉刷一次到位</p>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="accordion">
+        <div class="accordion-item open">
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.1.title">客廳・餐廳施工</h3><span class="accordion-icon">−</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-interior.html.acc.1.li.1">天花板輕鋼架 / 矽酸鈣板工程</li>
+              <li data-cms="service-interior.html.acc.1.li.2">造型天花板設計施作</li>
+              <li data-cms="service-interior.html.acc.1.li.3">地板鋪設（磁磚 / 木地板 / 石材）</li>
+              <li data-cms="service-interior.html.acc.1.li.4">牆面粉刷與裝飾</li>
+              <li data-cms="service-interior.html.acc.1.li.5">電視牆造型設計</li>
+              <li data-cms="service-interior.html.acc.1.li.6">間接照明施工</li>
+              <li data-cms="service-interior.html.acc.1.li.7">窗簾盒施作</li>
+              <li data-cms="service-interior.html.acc.1.li.8">隔間牆施工</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.2.title">廚房裝修工程</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-interior.html.acc.2.li.1">廚房系統廚具安裝</li>
+              <li data-cms="service-interior.html.acc.2.li.2">流理台面材鋪設</li>
+              <li data-cms="service-interior.html.acc.2.li.3">廚房磁磚拆除重鋪</li>
+              <li data-cms="service-interior.html.acc.2.li.4">抽油煙機管路配合</li>
+              <li data-cms="service-interior.html.acc.2.li.5">嵌入式廚具安裝</li>
+              <li data-cms="service-interior.html.acc.2.li.6">廚房水電配合施工</li>
+              <li data-cms="service-interior.html.acc.2.li.7">廚房防水工程</li>
+              <li data-cms="service-interior.html.acc.2.li.8">廚房門更換</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.3.title">衛浴改造工程</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-interior.html.acc.3.li.1">衛浴全室防水工程</li>
+              <li data-cms="service-interior.html.acc.3.li.2">磁磚拆除及重新鋪設</li>
+              <li data-cms="service-interior.html.acc.3.li.3">馬桶 / 浴缸 / 淋浴拉門安裝</li>
+              <li data-cms="service-interior.html.acc.3.li.4">浴室鏡櫃 / 收納安裝</li>
+              <li data-cms="service-interior.html.acc.3.li.5">乾濕分離施工</li>
+              <li data-cms="service-interior.html.acc.3.li.6">排風設備安裝</li>
+              <li data-cms="service-interior.html.acc.3.li.7">浴室暖風機安裝</li>
+              <li data-cms="service-interior.html.acc.3.li.8">五金配件更換</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.4.title">臥室・書房工程</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-interior.html.acc.4.li.1">系統衣櫃規劃安裝</li>
+              <li data-cms="service-interior.html.acc.4.li.2">書桌書架客製製作</li>
+              <li data-cms="service-interior.html.acc.4.li.3">臥室地板鋪設</li>
+              <li data-cms="service-interior.html.acc.4.li.4">滑門拉門安裝</li>
+              <li data-cms="service-interior.html.acc.4.li.5">臥室燈光規劃</li>
+              <li data-cms="service-interior.html.acc.4.li.6">更衣間規劃施作</li>
+              <li data-cms="service-interior.html.acc.4.li.7">窗戶氣密施工</li>
+              <li data-cms="service-interior.html.acc.4.li.8">窗簾軌道安裝</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.5.title">舊屋翻新整合</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-interior.html.acc.5.li.1">壁癌處理與防水補強</li>
+              <li data-cms="service-interior.html.acc.5.li.2">管線全室汰換</li>
+              <li data-cms="service-interior.html.acc.5.li.3">隔間牆調整拆除</li>
+              <li data-cms="service-interior.html.acc.5.li.4">門窗框更換</li>
+              <li data-cms="service-interior.html.acc.5.li.5">外牆防水施工</li>
+              <li data-cms="service-interior.html.acc.5.li.6">地板底層整平</li>
+              <li data-cms="service-interior.html.acc.5.li.7">全室粉刷翻新</li>
+              <li data-cms="service-interior.html.acc.5.li.8">陽台外推 / 整修</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">相關案例</div>
+        <h2 class="section-title">室內裝修<br><span class="blue">實績展示</span></h2>
+      </div>
+      <a href="gallery.html" class="btn-outline">查看全部相冊 →</a>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-1/1200/800" data-title="現代簡約三房公寓" data-meta="台北市大安區・40坪・2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/600" alt="現代簡約三房公寓" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">室內裝修</div><div class="gallery-item-title">現代簡約三房公寓</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-3/1200/800" data-title="廚房衛浴全面翻新" data-meta="台中市・28坪・2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/600" alt="廚房衛浴翻新" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">廚衛改造</div><div class="gallery-item-title">廚房衛浴全面翻新</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-7/1200/800" data-title="北歐風格兩房裝修" data-meta="新北市板橋區・32坪・2023.04">
+        <img src="https://picsum.photos/seed/hj07/800/600" alt="北歐風格裝修" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">室內裝修</div><div class="gallery-item-title">北歐風格兩房裝修</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title">室內裝修免費估價<br><em>今天就聯繫我們</em></h2>
+        <p class="cta-sub">到府勘查 · 透明報價 · 二年保固</p>
+      </div>
+      <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+    </div>
+  </div>
+</section>
+
+
+
+
+    <button class="lightbox-prev">‹</button>
+    <button class="lightbox-next">›</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE: 設計規劃 ═══ -->
+<div class="spa-page" data-page="service-design" style="display:none;">
+<section class="page-hero"><div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><a href="#">服務項目</a><span class="breadcrumb-sep">›</span><span>設計規劃</span></div>
+    <div class="label page-hero-label">SERVICE 03 / 設計規劃</div>
+    <h1 class="page-hero-title" data-cms="service-design.html.hero.title">空間設計<br><span class="blue">量身規劃</span></h1>
+    <p class="page-hero-desc" data-cms="service-design.html.hero.desc">由專業室內設計師主導，從風格定義到施工圖面，全程陪伴您完成理想空間的每一個細節。</p>
+    <div class="exp-badge" data-cms="service-design.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+  </div>
+</section>
+
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">設計流程</div>
+        <h2 class="section-title">從概念到<br><span class="blue">落地執行</span></h2>
+      </div>
+      <p class="section-desc">專業的設計規劃不只是畫圖，更是理解您的生活方式，讓空間真正為您服務。</p>
+    </div>
+
+    <div class="design-steps">
+      <div class="design-step reveal"><div class="step-badge">01</div><h3>需求訪談</h3><p>深入了解您的生活習慣、美學偏好與預算，作為所有設計決策的基礎。</p></div>
+      <div class="design-step reveal reveal-delay-1"><div class="step-badge">02</div><h3>概念規劃</h3><p>風格定義、色彩計畫、材質板製作，以視覺化方式呈現設計概念。</p></div>
+      <div class="design-step reveal reveal-delay-2"><div class="step-badge">03</div><h3>3D 效果圖</h3><p>全屋 3D 空間模擬，讓您在施工前清楚看到完成後的真實效果。</p></div>
+    </div>
+
+    <div class="reveal">
+      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="accordion">
+        <div class="accordion-item open">
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.1.title">風格定義與概念規劃</h3><span class="accordion-icon">−</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-design.html.acc.1.li.1">風格喜好分析</li><li data-cms="service-design.html.acc.1.li.2">生活動線規劃</li>
+              <li data-cms="service-design.html.acc.1.li.3">空間機能需求評估</li><li data-cms="service-design.html.acc.1.li.4">色彩計畫提案</li>
+              <li data-cms="service-design.html.acc.1.li.5">材質板製作</li><li data-cms="service-design.html.acc.1.li.6">燈光氛圍規劃</li>
+              <li data-cms="service-design.html.acc.1.li.7">家具配置建議</li><li data-cms="service-design.html.acc.1.li.8">預算分配規劃</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.2.title">平面配置與 3D 效果圖</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-design.html.acc.2.li.1">現況丈量與平面繪製</li><li data-cms="service-design.html.acc.2.li.2">平面配置方案比較</li>
+              <li data-cms="service-design.html.acc.2.li.3">3D 空間模擬效果圖</li><li data-cms="service-design.html.acc.2.li.4">材料選色 3D 呈現</li>
+              <li data-cms="service-design.html.acc.2.li.5">各場域施工透視圖</li><li data-cms="service-design.html.acc.2.li.6">視角調整與修改確認</li>
+              <li data-cms="service-design.html.acc.2.li.7">鳥瞰全室配置圖</li><li data-cms="service-design.html.acc.2.li.8">夜間燈光效果模擬</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.3.title">施工圖面與材料規格</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-design.html.acc.3.li.1">詳細施工平面圖</li><li data-cms="service-design.html.acc.3.li.2">天花板施工圖</li>
+              <li data-cms="service-design.html.acc.3.li.3">立面施工圖</li><li data-cms="service-design.html.acc.3.li.4">水電整合圖</li>
+              <li data-cms="service-design.html.acc.3.li.5">材料規格書製作</li><li data-cms="service-design.html.acc.3.li.6">建材樣品確認</li>
+              <li data-cms="service-design.html.acc.3.li.7">建材代購服務</li><li data-cms="service-design.html.acc.3.li.8">施工規格說明書</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.4.title">工程監造與施工管理</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-design.html.acc.4.li.1">工程進度排程管理</li><li data-cms="service-design.html.acc.4.li.2">施工廠商協調溝通</li>
+              <li data-cms="service-design.html.acc.4.li.3">現場施工品質監督</li><li data-cms="service-design.html.acc.4.li.4">設計變更處理</li>
+              <li data-cms="service-design.html.acc.4.li.5">驗收前品質確認</li><li data-cms="service-design.html.acc.4.li.6">完工後缺失清查</li>
+              <li data-cms="service-design.html.acc.4.li.7">材料進場驗收</li><li data-cms="service-design.html.acc.4.li.8">施工照片記錄</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-section section-gap">
+  <div class="container">
+    <div class="section-header reveal">
+      <div><div class="label" style="margin-bottom:14px;">相關案例</div><h2 class="section-title">設計規劃<br><span class="blue">實績展示</span></h2></div>
+      <a href="gallery.html" class="btn-outline">查看全部相冊 →</a>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-4/1200/800" data-title="透天厝全屋翻修設計" data-meta="台北士林・65坪・2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/600" alt="透天厝設計" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">透天厝全屋翻修設計</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-8/1200/800" data-title="小坪數機能空間設計" data-meta="台北中山・18坪・2023.03">
+        <img src="https://picsum.photos/seed/hj08/800/600" alt="小坪數設計" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">小坪數機能空間設計</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-12/1200/800" data-title="精品風格主臥套房設計" data-meta="台北大安・25坪・2022.08">
+        <img src="https://picsum.photos/seed/hj12/800/600" alt="精品主臥設計" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">精品風格主臥套房設計</div></div>
+        <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner"><div class="container"><div class="cta-inner">
+  <div><h2 class="cta-title">設計規劃免費諮詢<br><em>今天就聯繫我們</em></h2><p class="cta-sub">到府丈量 · 免費出圖 · 專業建議</p></div>
+  <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+</div></div></section>
+
+
+
+
+  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+</div></div>
+</div>
+
+<!-- ═══ PAGE: 維修保固 ═══ -->
+<div class="spa-page" data-page="service-maintenance" style="display:none;">
+<section class="page-hero"><div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><a href="#">服務項目</a><span class="breadcrumb-sep">›</span><span>維修保固</span></div>
+    <div class="label page-hero-label">SERVICE 04 / 維修保固</div>
+    <h1 class="page-hero-title" data-cms="service-maintenance.html.hero.title">完工之後<br><span class="blue">全程守護</span></h1>
+    <p class="page-hero-desc" data-cms="service-maintenance.html.hero.desc">完工不是終點，兩年保固是我們的承諾。24小時緊急維修專線，讓您安心享受理想空間。</p>
+    <div class="exp-badge" data-cms="service-maintenance.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+  </div>
+</section>
+
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">保固承諾</div>
+        <h2 class="section-title">我們的<br><span class="blue">售後保障</span></h2>
+      </div>
+      <p class="section-desc">工程品質是我們最重要的承諾，完工後的服務更能體現一個工程公司的真實水準。</p>
+    </div>
+
+    <div class="promise-grid">
+      <div class="promise-card reveal">
+        <div class="promise-num">2<span class="promise-unit">年</span></div>
+        <h3>工程保固</h3>
+        <p>水電、結構、防水工程均提供兩年保固，出現問題免費到府修繕，無需額外費用。</p>
+      </div>
+      <div class="promise-card reveal reveal-delay-1">
+        <div class="promise-num">24<span class="promise-unit">H</span></div>
+        <h3>緊急專線</h3>
+        <p>24小時緊急維修專線，漏水、跳電等緊急狀況快速響應，最快2小時到場。</p>
+      </div>
+      <div class="promise-card reveal reveal-delay-2">
+        <div class="promise-num">1<span class="promise-unit">年</span></div>
+        <h3>定期回訪</h3>
+        <p>完工後一年內主動安排回訪，確認工程品質，提前預防潛在問題。</p>
+      </div>
+    </div>
+
+    <div class="hotline-banner reveal">
+      <div>
+        <div class="hotline-label">24 小時緊急維修專線</div>
+        <div class="hotline-num">0912-345-678</div>
+        <div class="hotline-sub">漏水・跳電・緊急狀況 — 隨時撥打，快速到場</div>
+      </div>
+      <a href="contact.html" class="btn-primary">非緊急預約諮詢 →</a>
+    </div>
+
+    <div class="reveal">
+      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="accordion">
+        <div class="accordion-item open">
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.1.title">兩年工程保固服務</h3><span class="accordion-icon">−</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-maintenance.html.acc.1.li.1">水電工程保固兩年</li><li data-cms="service-maintenance.html.acc.1.li.2">結構施工保固兩年</li>
+              <li data-cms="service-maintenance.html.acc.1.li.3">防水工程保固兩年</li><li data-cms="service-maintenance.html.acc.1.li.4">系統傢具保固兩年</li>
+              <li data-cms="service-maintenance.html.acc.1.li.5">保固範圍透明說明</li><li data-cms="service-maintenance.html.acc.1.li.6">保固申請快速回應</li>
+              <li data-cms="service-maintenance.html.acc.1.li.7">到府檢修不加收費用</li><li data-cms="service-maintenance.html.acc.1.li.8">維修記錄完整建檔</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.2.title">緊急維修服務</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-maintenance.html.acc.2.li.1">24小時維修專線</li><li data-cms="service-maintenance.html.acc.2.li.2">水管漏水緊急搶修</li>
+              <li data-cms="service-maintenance.html.acc.2.li.3">電路跳電故障排除</li><li data-cms="service-maintenance.html.acc.2.li.4">排水堵塞疏通</li>
+              <li data-cms="service-maintenance.html.acc.2.li.5">緊急門窗修復</li><li data-cms="service-maintenance.html.acc.2.li.6">颱風後損害修繕</li>
+              <li data-cms="service-maintenance.html.acc.2.li.7">優先排程不等待</li><li data-cms="service-maintenance.html.acc.2.li.8">夜間假日均可出勤</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.3.title">定期維護保養</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-maintenance.html.acc.3.li.1">年度水電安全檢查</li><li data-cms="service-maintenance.html.acc.3.li.2">管線使用狀況評估</li>
+              <li data-cms="service-maintenance.html.acc.3.li.3">電氣設備安全測試</li><li data-cms="service-maintenance.html.acc.3.li.4">空調系統定期保養</li>
+              <li data-cms="service-maintenance.html.acc.3.li.5">防水層定期檢查</li><li data-cms="service-maintenance.html.acc.3.li.6">維修保養記錄建檔</li>
+              <li data-cms="service-maintenance.html.acc.3.li.7">老化零件提前更換建議</li><li data-cms="service-maintenance.html.acc.3.li.8">用電效率評估報告</li>
+            </ul>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.4.title">舊屋診斷服務</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-body">
+            <ul class="accordion-list">
+              <li data-cms="service-maintenance.html.acc.4.li.1">免費到府現況評估</li><li data-cms="service-maintenance.html.acc.4.li.2">壁癌原因診斷</li>
+              <li data-cms="service-maintenance.html.acc.4.li.3">漏水源頭追蹤</li><li data-cms="service-maintenance.html.acc.4.li.4">管線老化評估</li>
+              <li data-cms="service-maintenance.html.acc.4.li.5">用電安全檢查</li><li data-cms="service-maintenance.html.acc.4.li.6">裝修工程需求評估</li>
+              <li data-cms="service-maintenance.html.acc.4.li.7">改善方案建議</li><li data-cms="service-maintenance.html.acc.4.li.8">費用估算報告</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner"><div class="container"><div class="cta-inner">
+  <div><h2 class="cta-title">申請保固維修服務<br><em>我們快速響應</em></h2><p class="cta-sub">保固期內免費修繕 · 24小時緊急專線</p></div>
+  <a href="contact.html" class="btn-dark">立即聯絡我們 →</a>
+</div></div></section>
+
+
+
+
+  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+</div></div>
+</div>
+
+<!-- ═══ PAGE: 作品相冊 ═══ -->
+<div class="spa-page" data-page="gallery" style="display:none;">
+<!-- ── NAV ── -->
+
+
+<!-- ── MOBILE MENU ── -->
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">首頁</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>作品相冊</span>
+    </nav>
+    <div class="label page-hero-label">GALLERY / 作品相冊</div>
+    <h1 class="page-hero-title" data-cms="gallery.html.hero.title">
+      每一個空間<br><span class="orange">都是作品</span>
+    </h1>
+    <p class="page-hero-desc" data-cms="gallery.html.hero.desc">
+      從水電工程到全室裝修，我們的作品見證了每一位客戶的生活品質提升
+    </p>
+  </div>
+</section>
+
+<!-- ── GALLERY SECTION ── -->
+<section class="gallery-section section-gap">
+  <div class="container">
+
+    <!-- Stats Bar -->
+    <div class="gallery-stats reveal">
+      <div class="gallery-stat-item">
+        <div class="gs-num">12<span class="gs-unit">件</span></div>
+        <div class="gs-text">
+          <span class="gs-label">完工案例</span>
+          <span class="gs-sub">持續累積更新中</span>
+        </div>
+      </div>
+      <div class="gallery-stat-item">
+        <div class="gs-num">4<span class="gs-unit">種</span></div>
+        <div class="gs-text">
+          <span class="gs-label">工程類型</span>
+          <span class="gs-sub">水電・裝修・設計・商業</span>
+        </div>
+      </div>
+      <div class="gallery-stat-item">
+        <div class="gs-num">2<span class="gs-unit">年</span></div>
+        <div class="gs-text">
+          <span class="gs-label">工程保固</span>
+          <span class="gs-sub">完工後全面保障</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Row -->
+    <div class="gallery-filters-row reveal">
+      <div class="gallery-filters">
+        <button class="filter-btn active" data-filter="all">全部作品</button>
+        <button class="filter-btn" data-filter="water">水電工程</button>
+        <button class="filter-btn" data-filter="interior">室內裝修</button>
+        <button class="filter-btn" data-filter="design">設計規劃</button>
+        <button class="filter-btn" data-filter="commercial">商業空間</button>
+      </div>
+      <p class="filter-count">共 <span>12</span> 件作品</p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid reveal">
+
+      <!-- 01 -->
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj01/1200/800" data-title="現代簡約三房公寓" data-meta="台北市大安區・40坪・2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/600" alt="現代簡約三房公寓" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">現代簡約三房公寓</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj02/1200/800" data-title="商辦大樓全棟水電更新" data-meta="新北市・680坪・2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/600" alt="商辦大樓全棟水電更新" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">水電工程</div>
+          <div class="gallery-item-title">商辦大樓全棟水電更新</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj03/1200/800" data-title="廚房衛浴全面翻新" data-meta="台中市・28坪・2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/600" alt="廚房衛浴全面翻新" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">廚房衛浴全面翻新</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj04/1200/800" data-title="透天厝全屋翻修設計" data-meta="台北市士林區・65坪・2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/600" alt="透天厝全屋翻修設計" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">設計規劃</div>
+          <div class="gallery-item-title">透天厝全屋翻修設計</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj05/1200/800" data-title="餐飲店面空間改造" data-meta="桃園市・35坪・2023.07">
+        <img src="https://picsum.photos/seed/hj05/800/600" alt="餐飲店面空間改造" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">商業空間</div>
+          <div class="gallery-item-title">餐飲店面空間改造</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj06/1200/800" data-title="老公寓水電全面更新" data-meta="台北市萬華區・24坪・2023.05">
+        <img src="https://picsum.photos/seed/hj06/800/600" alt="老公寓水電全面更新" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">水電工程</div>
+          <div class="gallery-item-title">老公寓水電全面更新</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 07 -->
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj07/1200/800" data-title="北歐風格兩房裝修" data-meta="新北市板橋區・32坪・2023.04">
+        <img src="https://picsum.photos/seed/hj07/800/600" alt="北歐風格兩房裝修" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">北歐風格兩房裝修</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 08 -->
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj08/1200/800" data-title="小坪數機能空間設計" data-meta="台北市中山區・18坪・2023.03">
+        <img src="https://picsum.photos/seed/hj08/800/600" alt="小坪數機能空間設計" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">設計規劃</div>
+          <div class="gallery-item-title">小坪數機能空間設計</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 09 -->
+      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj09/1200/800" data-title="辦公室空間整體翻新" data-meta="台北市內湖區・80坪・2023.01">
+        <img src="https://picsum.photos/seed/hj09/800/600" alt="辦公室空間整體翻新" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">商業空間</div>
+          <div class="gallery-item-title">辦公室空間整體翻新</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj10/1200/800" data-title="電梯大廈全室裝修" data-meta="桃園市・45坪・2022.12">
+        <img src="https://picsum.photos/seed/hj10/800/600" alt="電梯大廈全室裝修" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">電梯大廈全室裝修</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj11/1200/800" data-title="社區管線整體汰換" data-meta="新北市新店區・120坪・2022.10">
+        <img src="https://picsum.photos/seed/hj11/800/600" alt="社區管線整體汰換" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">水電工程</div>
+          <div class="gallery-item-title">社區管線整體汰換</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj12/1200/800" data-title="精品風格主臥套房設計" data-meta="台北市大安區・25坪・2022.08">
+        <img src="https://picsum.photos/seed/hj12/800/600" alt="精品風格主臥套房設計" loading="lazy">
+        <div class="gallery-item-overlay">
+          <div class="gallery-item-cat">設計規劃</div>
+          <div class="gallery-item-title">精品風格主臥套房設計</div>
+        </div>
+        <div class="gallery-zoom">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+        </div>
+      </div>
+
+    </div><!-- /.gallery-grid -->
+  </div><!-- /.container -->
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div>
+        <h2 class="cta-title">您的空間，也可以<br><em>成為下一件作品</em></h2>
+        <p class="cta-sub">免費到府估價 · 透明報價 · 二年保固</p>
+      </div>
+      <a href="contact.html" class="btn-dark">
+        立即免費諮詢
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+
+
+<!-- ── LIGHTBOX ── -->
+
+    <button class="lightbox-prev">‹</button>
+    <button class="lightbox-next">›</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══ PAGE: 關於我們 ═══ -->
+<div class="spa-page" data-page="about" style="display:none;">
+<section class="page-hero"><div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><span>關於我們</span></div>
+    <div class="label page-hero-label">ABOUT / 關於我們</div>
+    <h1 class="page-hero-title" data-cms="about.html.hero.title">二十年工藝<br><span class="blue">傳承與堅持</span></h1>
+    <p class="page-hero-desc" data-cms="about.html.hero.desc">從一份對工藝的熱忱出發，鴻匠工程二十年來守護每一個家庭的居住品質。</p>
+  </div>
+</section>
+
+<!-- COMPANY STORY -->
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="story-grid">
+      <div class="reveal">
+        <div class="story-year-wrap">
+          <div class="story-year-bg">2004</div>
+          <div class="story-year-label">成立年份 · ESTABLISHED</div>
+        </div>
+        <div class="story-line"></div>
+        <p class="story-quote">「做好一件事，<br>不如把它做到無可挑剔。」</p>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="label" style="margin-bottom:18px;">公司故事</div>
+        <h2 style="font-size:clamp(30px,3.5vw,44px); font-weight:600; margin-bottom:24px; line-height:1.15;">從兩人小團隊<br><span class="blue">到三十人專業隊伍</span></h2>
+        <p class="story-text">
+          2004年，創辦人陳師傅帶著一身水電技藝與對品質的執著，在台北市成立鴻匠工程。
+          起初只有兩名師傅，靠著口碑相傳，接下了第一個全室翻新案件，以精細施工贏得客戶信賴。
+        </p>
+        <p class="story-text">
+          二十年間，我們從不在品質上妥協。每一根管線的走向、每一條電路的規劃，
+          都經過嚴謹計算與測試。正是這份堅持，讓鴻匠從小型施工隊成長為擁有三十名
+          持照技術師傅的專業工程公司。
+        </p>
+        <p class="story-text">
+          今天，我們持續以相同的精神服務每一位客戶：不論案件大小，
+          都以最高標準完成。這不只是職業，這是我們對品質生活的承諾。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="container"><div class="stats-row">
+    <div class="stat-item"><div class="stat-number" data-target="20" data-suffix="+">20<span class="stat-unit">+</span></div><div class="stat-label">年專業經驗</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="800" data-suffix="+">800<span class="stat-unit">+</span></div><div class="stat-label">完成案件</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">98<span class="stat-unit">%</span></div><div class="stat-label">客戶滿意度</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="30" data-suffix="+">30<span class="stat-unit">+</span></div><div class="stat-label">名持照師傅</div></div>
+  </div></div>
+</div>
+
+<!-- VALUES -->
+<section class="section-gap" style="background:var(--bg);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:56px;" class="reveal">
+      <div class="label" style="justify-content:center; margin-bottom:14px;">核心理念</div>
+      <h2 class="section-title">我們所堅守的<br><span class="blue">三個承諾</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">01</div>
+        <h3>品質第一</h3>
+        <p>嚴選建材，拒絕偷工減料。每道工序都有標準程序，每個細節都接受嚴格檢驗。完工品質不達標準，絕不交屋。</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <div class="value-icon">02</div>
+        <h3>透明誠信</h3>
+        <p>報價透明，所有費用逐項列清。施工過程定期回報進度，不說謊、不隱瞞、不事後加價。信任，是長久合作的基礎。</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <div class="value-icon">03</div>
+        <h3>客戶至上</h3>
+        <p>傾聽每一位客戶的需求，提供量身訂製的解決方案。完工後持續提供保固與維護服務，讓您真正安心無憂。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section-gap-sm" style="background:var(--surface);">
+  <div class="container">
+    <div class="section-header reveal">
+      <div>
+        <div class="label" style="margin-bottom:14px;">資格認證</div>
+        <h2 class="section-title">合法・<span class="blue">專業・可信賴</span></h2>
+      </div>
+      <p class="section-desc">所有師傅均持有政府頒發之專業技術士證照，工程施作符合建築法規標準。</p>
+    </div>
+    <div class="cert-list reveal">
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">乙級水電技術士證照</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">甲級室內裝修業許可</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">建築物室內裝修許可證</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">用電設備安全檢查合格</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">勞工安全衛生管理合格</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">消防安全設備施工許可</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section-gap" style="background:var(--bg);">
+  <div class="container">
+    <div style="text-align:center; margin-bottom:48px;" class="reveal">
+      <div class="label" style="justify-content:center; margin-bottom:14px;">專業團隊</div>
+      <h2 class="section-title">每一位師傅<br><span class="blue">都是品質保證</span></h2>
+    </div>
+    <div class="team-row reveal">
+      <div class="team-item"><div class="team-num">30<span class="team-unit">+</span></div><div class="team-label">持照技術師傅</div></div>
+      <div class="team-item"><div class="team-num">5<span class="team-unit">+</span></div><div class="team-label">室內設計師</div></div>
+      <div class="team-item"><div class="team-num">3<span class="team-unit">位</span></div><div class="team-label">工程監造人員</div></div>
+      <div class="team-item"><div class="team-num">24<span class="team-unit">H</span></div><div class="team-label">客服支援</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner"><div class="container"><div class="cta-inner">
+  <div><h2 class="cta-title">與我們合作<br><em>打造您的理想空間</em></h2><p class="cta-sub">免費到府諮詢 · 透明報價 · 二年保固</p></div>
+  <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+</div></div></section>
+
+
+
+
+  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+</div></div>
+</div>
+
+<!-- ═══ PAGE: 聯絡我們 ═══ -->
+<div class="spa-page" data-page="contact" style="display:none;">
+<section class="page-hero"><div class="page-hero-bg"></div>
+  <div class="container page-hero-content">
+    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><span>聯絡我們</span></div>
+    <div class="label page-hero-label">CONTACT / 聯絡我們</div>
+    <h1 class="page-hero-title" data-cms="contact.html.hero.title">開始您的<br><span class="blue">裝修計畫</span></h1>
+    <p class="page-hero-desc" data-cms="contact.html.hero.desc">歡迎透過電話、LINE 或填寫表單與我們聯繫，免費到府估價，透明合理收費。</p>
+  </div>
+</section>
+
+<section class="section-gap" style="background:var(--surface);">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- LEFT: Contact info -->
+      <div class="reveal">
+        <div class="label" style="margin-bottom:20px;">聯絡資訊</div>
+        <h2 style="font-size:clamp(28px,3vw,40px); font-weight:600; margin-bottom:12px; line-height:1.15;">立即與我們<br><span class="blue">展開對話</span></h2>
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.8; font-weight:300; margin-bottom:32px;">
+          我們將在一個工作日內回覆，並安排免費到府勘查服務。
+        </p>
+
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.97 2.18 2 2 0 012.95 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"></path></svg>
+            </div>
+            <div><div class="c-label">電話 / LINE</div><div class="c-value">(02) 2345-6789<br>0912-345-678</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div><div class="c-label">電子郵件</div><div class="c-value">service@hongjiang.com.tw</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div><div class="c-label">服務地區</div><div class="c-value">台北・新北・桃園・台中・全台接洽</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="c-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </div>
+            <div><div class="c-label">服務時間</div><div class="c-value">週一至週六 08:00 — 18:00</div></div>
+          </div>
+        </div>
+
+        <div class="highlights">
+          <div class="highlight-item"><div class="hl-icon">免費</div><div class="hl-label">到府估價</div></div>
+          <div class="highlight-item"><div class="hl-icon">透明</div><div class="hl-label">公開報價</div></div>
+          <div class="highlight-item"><div class="hl-icon">2年</div><div class="hl-label">工程保固</div></div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="reveal reveal-delay-2">
+        <div class="label" style="margin-bottom:20px;">填寫諮詢表單</div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">姓名 *</label>
+              <input type="text" class="form-input" placeholder="王先生 / 陳小姐" required="">
+            </div>
+            <div class="form-group">
+              <label class="form-label">聯絡電話 *</label>
+              <input type="tel" class="form-input" placeholder="0912-345-678" required="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">電子郵件</label>
+            <input type="email" class="form-input" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">服務需求 *</label>
+            <select class="form-select form-input" required="">
+              <option value="">請選擇服務類型</option>
+              <option>水電工程</option>
+              <option>室內裝修</option>
+              <option>設計規劃</option>
+              <option>維修保固</option>
+              <option>廚房改造</option>
+              <option>衛浴改造</option>
+              <option>全室翻新</option>
+              <option>商業空間</option>
+              <option>其他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">地址 / 坪數</label>
+            <input type="text" class="form-input" placeholder="例：台北市大安區，約 35 坪">
+          </div>
+          <div class="form-group">
+            <label class="form-label">詳細需求說明</label>
+            <textarea class="form-textarea" placeholder="請描述您的裝修需求，例如想要的風格、特別注意事項、施工時程等…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">送出諮詢申請 →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+</div></div>
+</div>
+
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo">鴻匠<span>工程</span></a>
+        <p class="footer-tagline">二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">fb</a>
+          <a href="#" class="social-btn">L</a>
+          <a href="#" class="social-btn">ig</a>
+        </div>
+      </div>
+      <div>
+        <h4>服務項目</h4>
+        <ul class="footer-links">
+          <li><a href="service-water.html">水電工程</a></li>
+          <li><a href="service-interior.html">室內裝修</a></li>
+          <li><a href="service-design.html">設計規劃</a></li>
+          <li><a href="service-maintenance.html">維修保固</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>快速連結</h4>
+        <ul class="footer-links">
+          <li><a href="gallery.html">作品相冊</a></li>
+          <li><a href="about.html">關於我們</a></li>
+          <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>聯絡資訊</h4>
+        <ul class="footer-links">
+          <li><a href="tel:0223456789">(02) 2345-6789</a></li>
+          <li><a href="tel:0912345678">0912-345-678</a></li>
+          <li><a href="mailto:service@hongjiang.com.tw">service@hongjiang.com.tw</a></li>
+          <li><a href="#">台北・新北・桃園・台中</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 鴻匠工程有限公司 · 統一編號：12345678</p>
+      <ul class="footer-legal">
+        <li><a href="#">隱私政策</a></li>
+        <li><a href="#">服務條款</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<div id="lightbox" class="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close">✕</button>
+    <img class="lightbox-img" src="" alt="">
+    <div class="lightbox-info">
+      <div class="lightbox-meta"><strong class="lb-title"></strong><span class="lb-meta"></span></div>
+      <div class="lightbox-counter"></div>
+    </div>
+
+<script>
+
+/* ═══════════════════════════════════════════
+   SPA Router for Demo
+   ═══════════════════════════════════════════ */
+(function() {
+  'use strict';
+
+  // Page mapping: link href → page id
+  var PAGE_MAP = {
+    'index.html':              'index',
+    'service-water.html':      'service-water',
+    'service-interior.html':   'service-interior',
+    'service-design.html':     'service-design',
+    'service-maintenance.html':'service-maintenance',
+    'gallery.html':            'gallery',
+    'about.html':              'about',
+    'contact.html':            'contact',
+  };
+
+  function getPageFromHash() {
+    var h = location.hash.replace('#', '') || 'index';
+    return h;
+  }
+
+  function showPage(pageId) {
+    var allPages = document.querySelectorAll('.spa-page');
+    allPages.forEach(function(p) { p.style.display = 'none'; });
+
+    var target = document.querySelector('.spa-page[data-page="' + pageId + '"]');
+    if (target) {
+      target.style.display = 'block';
+    } else {
+      // fallback to index
+      var idx = document.querySelector('.spa-page[data-page="index"]');
+      if (idx) idx.style.display = 'block';
+      pageId = 'index';
+    }
+
+    // Update nav active state
+    document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(function(a) {
+      a.classList.remove('active');
+      var href = a.getAttribute('href') || '';
+      var mapped = PAGE_MAP[href];
+      if (mapped === pageId) {
+        a.classList.add('active');
+      }
+    });
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // Re-trigger reveal animations
+    var reveals = document.querySelectorAll('.spa-page[data-page="' + pageId + '"] .reveal');
+    reveals.forEach(function(el) {
+      el.classList.remove('visible');
+    });
+    setTimeout(function() {
+      reveals.forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }, 50);
+
+    // Re-bind gallery items if on gallery page
+    if (pageId === 'gallery' || pageId === 'index') {
+      setTimeout(function() {
+        bindDemoGalleryItems();
+        bindDemoFilterBtns();
+      }, 100);
+    }
+
+    // Re-bind accordion if needed
+    setTimeout(function() { bindDemoAccordion(); }, 100);
+
+    // Re-trigger counter animation on stats
+    setTimeout(function() {
+      var statsEl = document.querySelector('.spa-page[data-page="' + pageId + '"] .stats-row');
+      if (statsEl) {
+        statsEl.querySelectorAll('.stat-number[data-target]').forEach(function(el) {
+          animateDemoCounter(el);
+        });
+      }
+    }, 300);
+  }
+
+  // Counter animation
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function animateDemoCounter(el) {
+    var target = parseFloat(el.dataset.target);
+    var isFloat = String(el.dataset.target).indexOf('.') !== -1;
+    var suffix = el.dataset.suffix || '';
+    var duration = 1600;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var elapsed = Math.min(ts - start, duration);
+      var progress = easeOutCubic(elapsed / duration);
+      var value = target * progress;
+      var display = isFloat ? value.toFixed(1) : Math.round(value);
+      el.innerHTML = display + '<span class="stat-unit">' + suffix + '</span>';
+      if (elapsed < duration) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Accordion binding
+  function bindDemoAccordion() {
+    document.querySelectorAll('.accordion-head').forEach(function(head) {
+      if (head._demoBound) return;
+      head._demoBound = true;
+      head.addEventListener('click', function() {
+        var item = head.closest('.accordion-item');
+        var icon = head.querySelector('.accordion-icon');
+        var isOpen = item.classList.contains('open');
+        // Close all in this accordion
+        var accordion = item.closest('.accordion');
+        if (accordion) {
+          accordion.querySelectorAll('.accordion-item.open').forEach(function(oi) {
+            oi.classList.remove('open');
+            var ic = oi.querySelector('.accordion-icon');
+            if (ic) ic.textContent = '+';
+          });
+        }
+        if (!isOpen) {
+          item.classList.add('open');
+          if (icon) icon.textContent = String.fromCharCode(8722); // −
+        }
+      });
+    });
+  }
+
+  // Gallery items binding
+  function bindDemoGalleryItems() {
+    document.querySelectorAll('.gallery-item').forEach(function(item) {
+      if (item._demoBound) return;
+      item._demoBound = true;
+      item.addEventListener('click', function() {
+        var img = item.querySelector('img');
+        if (!img) return;
+        var lightbox = document.getElementById('lightbox');
+        if (!lightbox) return;
+
+        var visibleItems = Array.from(document.querySelectorAll('.spa-page[style*="block"] .gallery-item'))
+          .filter(function(el) { return !el.classList.contains('is-hiding') && !el.classList.contains('is-hidden'); });
+
+        var clickedIdx = visibleItems.indexOf(item);
+        var data = visibleItems.map(function(el) {
+          return {
+            src:   el.dataset.full || (el.querySelector('img') || {}).src || '',
+            title: el.dataset.title || (el.querySelector('.gallery-item-title') || {}).textContent || '',
+            meta:  el.dataset.meta  || (el.querySelector('.gallery-item-cat') || {}).textContent || '',
+          };
+        });
+
+        // Use the global lightbox functions from main.js (they should be available)
+        window.__demoLightboxData = data;
+        window.__demoLightboxIdx = Math.max(clickedIdx, 0);
+
+        var lbImg = lightbox.querySelector('.lightbox-img');
+        var lbTitle = lightbox.querySelector('.lb-title');
+        var lbMeta = lightbox.querySelector('.lb-meta');
+        var lbCounter = lightbox.querySelector('.lightbox-counter');
+
+        function renderLB() {
+          var d = window.__demoLightboxData;
+          var i = window.__demoLightboxIdx;
+          if (!d || !d.length) return;
+          var cur = d[i];
+          if (lbImg) { lbImg.src = cur.src; lbImg.alt = cur.title || ''; }
+          if (lbTitle) lbTitle.textContent = cur.title || '';
+          if (lbMeta) lbMeta.textContent = cur.meta || '';
+          if (lbCounter) lbCounter.textContent = (i + 1) + ' / ' + d.length;
+        }
+
+        renderLB();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+
+        // Override lightbox nav temporarily
+        window.__demoRenderLB = renderLB;
+      });
+    });
+  }
+
+  // Filter buttons binding
+  function bindDemoFilterBtns() {
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      if (btn._demoBound) return;
+      btn._demoBound = true;
+      btn.addEventListener('click', function() {
+        if (btn.classList.contains('active')) return;
+
+        // Find all filter buttons in same container
+        var container = btn.closest('.gallery-filters, .gallery-filters-row');
+        if (container) {
+          container.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        }
+        btn.classList.add('active');
+
+        var filter = btn.dataset.filter;
+        // Find gallery items in same page
+        var page = btn.closest('.spa-page');
+        if (!page) return;
+        var items = page.querySelectorAll('.gallery-item');
+
+        items.forEach(function(item) {
+          var cat = item.dataset.category || item.dataset.cat;
+          var show = filter === 'all' || cat === filter;
+          if (!show) {
+            item.classList.remove('is-showing');
+            item.classList.add('is-hiding');
+            clearTimeout(item._hideTimer);
+            item._hideTimer = setTimeout(function() {
+              item.classList.add('is-hidden');
+              item.classList.remove('is-hiding');
+            }, 320);
+          } else {
+            clearTimeout(item._hideTimer);
+            item.classList.remove('is-hidden', 'is-hiding');
+            void item.offsetHeight;
+            item.classList.add('is-showing');
+            setTimeout(function() { item.classList.remove('is-showing'); }, 380);
+          }
+        });
+      });
+    });
+  }
+
+  // Intercept all internal link clicks
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a');
+    if (!a) return;
+
+    var href = a.getAttribute('href');
+    if (!href) return;
+
+    // Skip external links, anchors, tel, mailto
+    if (href.indexOf('://') !== -1 || href.indexOf('tel:') === 0 || href.indexOf('mailto:') === 0) return;
+    if (href.charAt(0) === '#' && href.length > 1 && !href.startsWith('#!')) return;
+    if (a.getAttribute('target') === '_blank') return;
+
+    // Check if it maps to a page
+    var cleanHref = href.split('?')[0].split('#')[0];
+    // Handle admin links - skip
+    if (cleanHref.indexOf('admin/') !== -1) return;
+
+    var pageId = PAGE_MAP[cleanHref];
+    if (pageId) {
+      e.preventDefault();
+      location.hash = pageId;
+    }
+  }, true);
+
+  // Hash change handler
+  window.addEventListener('hashchange', function() {
+    showPage(getPageFromHash());
+  });
+
+  // Initial load
+  document.addEventListener('DOMContentLoaded', function() {
+    showPage(getPageFromHash());
+  });
+
+  // Lightbox nav override for SPA
+  document.addEventListener('DOMContentLoaded', function() {
+    var lb = document.getElementById('lightbox');
+    if (!lb) return;
+
+    var prevBtn = lb.querySelector('.lightbox-prev');
+    var nextBtn = lb.querySelector('.lightbox-next');
+    var closeBtn = lb.querySelector('.lightbox-close');
+
+    function closeLB() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (closeBtn) closeBtn.addEventListener('click', closeLB);
+    lb.addEventListener('click', function(e) { if (e.target === lb) closeLB(); });
+
+    if (prevBtn) prevBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (!window.__demoLightboxData || !window.__demoLightboxData.length) return;
+      window.__demoLightboxIdx = (window.__demoLightboxIdx - 1 + window.__demoLightboxData.length) % window.__demoLightboxData.length;
+      if (window.__demoRenderLB) window.__demoRenderLB();
+    });
+
+    if (nextBtn) nextBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (!window.__demoLightboxData || !window.__demoLightboxData.length) return;
+      window.__demoLightboxIdx = (window.__demoLightboxIdx + 1) % window.__demoLightboxData.length;
+      if (window.__demoRenderLB) window.__demoRenderLB();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLB();
+      if (e.key === 'ArrowLeft' && prevBtn) prevBtn.click();
+      if (e.key === 'ArrowRight' && nextBtn) nextBtn.click();
+    });
+  });
+
+})();
+
+</script>
+
+</body>
+</html>

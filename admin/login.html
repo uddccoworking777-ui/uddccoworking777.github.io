@@ -178,21 +178,47 @@
 </div>
 
 <div class="login-footer">
-  <a href="../index.html">← 返回網站前台</a>
+  <a href="#" id="back-link" onclick="goBack(event)">← 返回網站前台</a>
   <br /><br />
   © 2024 鴻匠工程有限公司 · 後台管理系統
 </div>
 
 <script>
-  const AUTH_KEY    = 'hj_auth_v2';
-  const SESSION_KEY = 'hj_session';
+  var AUTH_KEY    = 'hj_auth_v2';
+  var SESSION_KEY = 'hj_session';
+  var storageAvailable = true;
+
+  // Check if localStorage & sessionStorage are available
+  (function testStorage() {
+    try {
+      var testKey = '__hj_storage_test__';
+      localStorage.setItem(testKey, '1');
+      localStorage.removeItem(testKey);
+      sessionStorage.setItem(testKey, '1');
+      sessionStorage.removeItem(testKey);
+    } catch (e) {
+      storageAvailable = false;
+    }
+  })();
+
+  // Show storage error if blocked
+  if (!storageAvailable) {
+    document.addEventListener('DOMContentLoaded', function() {
+      var errEl = document.getElementById('error-msg');
+      var errText = document.getElementById('error-text');
+      if (errText) errText.textContent = '瀏覽器已封鎖本地儲存功能。請改用 Chrome 開啟，或透過本機 HTTP 伺服器（如 Live Server）存取此頁面。';
+      if (errEl) errEl.classList.add('show');
+      var btn = document.getElementById('login-btn');
+      if (btn) btn.disabled = true;
+    });
+  }
 
   // Pure-JS password hash (no crypto.subtle required — works on any protocol)
   function hashPwd(str) {
-    const input = 'hj2024:' + str;
-    let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
-    for (let i = 0; i < input.length; i++) {
-      const c = input.charCodeAt(i);
+    var input = 'hj2024:' + str;
+    var h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (var i = 0; i < input.length; i++) {
+      var c = input.charCodeAt(i);
       h1 = Math.imul(h1 ^ c, 0x9e3779b9);
       h2 = Math.imul(h2 ^ c, 0x5f4a0bc5);
     }
@@ -202,10 +228,23 @@
     return (h1 >>> 0).toString(16).padStart(8,'0') + (h2 >>> 0).toString(16).padStart(8,'0');
   }
 
+  // "返回前台" — detect referrer to decide where to go back
+  function goBack(e) {
+    e.preventDefault();
+    // If there is browser history (came from demo or other page), go back
+    if (document.referrer && document.referrer.length > 0) {
+      history.back();
+    } else {
+      // Fallback: go to index.html
+      location.href = '../index.html';
+    }
+  }
+
   // If already logged in, redirect to dashboard
   (function checkSession() {
+    if (!storageAvailable) return;
     try {
-      const s = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+      var s = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
       if (s && s.email && Date.now() - s.ts < 8 * 60 * 60 * 1000) {
         location.replace('dashboard.html');
       }
@@ -213,13 +252,19 @@
   })();
 
   // Seed default admin account on first run
-  (function seedAuth() {
-    if (!localStorage.getItem(AUTH_KEY)) {
-      localStorage.setItem(AUTH_KEY, JSON.stringify({
-        users: [{ email: 'admin@hongjiang.com', name: '系統管理員', hash: hashPwd('HongJiang2024'), role: 'admin' }]
-      }));
+  function seedAuth() {
+    if (!storageAvailable) return;
+    try {
+      if (!localStorage.getItem(AUTH_KEY)) {
+        localStorage.setItem(AUTH_KEY, JSON.stringify({
+          users: [{ email: 'admin@hongjiang.com', name: '系統管理員', hash: hashPwd('HongJiang2024'), role: 'admin' }]
+        }));
+      }
+    } catch (e) {
+      showError('無法寫入本地儲存，請確認瀏覽器設定。');
     }
-  })();
+  }
+  seedAuth();
 
   function showError(msg) {
     const el = document.getElementById('error-msg');
@@ -234,9 +279,14 @@
     e.preventDefault();
     hideError();
 
-    const btn      = document.getElementById('login-btn');
-    const email    = document.getElementById('email').value.trim().toLowerCase();
-    const password = document.getElementById('password').value;
+    if (!storageAvailable) {
+      showError('瀏覽器已封鎖本地儲存功能。請改用 Chrome 或透過本機伺服器開啟。');
+      return;
+    }
+
+    var btn      = document.getElementById('login-btn');
+    var email    = document.getElementById('email').value.trim().toLowerCase();
+    var password = document.getElementById('password').value;
 
     if (!email || !password) { showError('請填寫帳號與密碼'); return; }
 
@@ -244,7 +294,7 @@
     btn.disabled = true;
 
     try {
-      const authRaw = localStorage.getItem(AUTH_KEY);
+      var authRaw = localStorage.getItem(AUTH_KEY);
       if (!authRaw) {
         // Re-seed and retry
         seedAuth();
@@ -253,9 +303,9 @@
         return;
       }
 
-      const auth = JSON.parse(authRaw);
-      const hash = hashPwd(password);
-      const user = auth.users.find(function(u) {
+      var auth = JSON.parse(authRaw);
+      var hash = hashPwd(password);
+      var user = auth.users.find(function(u) {
         return u.email.toLowerCase() === email && u.hash === hash;
       });
 
