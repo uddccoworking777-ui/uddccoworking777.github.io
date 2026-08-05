@@ -27,9 +27,9 @@
       border-radius: 50%;
       filter: blur(60px);
     }
-    .blob-1 { width: 500px; height: 500px; background: rgba(26,115,232,0.08); top: -100px; right: -100px; }
-    .blob-2 { width: 300px; height: 300px; background: rgba(232,116,0,0.06); bottom: 50px; right: 200px; }
-    .blob-3 { width: 200px; height: 200px; background: rgba(30,142,62,0.05); top: 200px; right: 400px; }
+    .blob-1 { width: 700px; height: 700px; background: rgba(26,115,232,0.06); top: -150px; left: -200px; }
+    .blob-2 { width: 500px; height: 500px; background: rgba(232,116,0,0.05); bottom: -100px; right: -100px; }
+    .blob-3 { width: 400px; height: 400px; background: rgba(30,142,62,0.04); top: 30%; left: 70%; transform: translate(-50%, -50%); }
     /* Dot grid */
     .hero-dots {
       position: absolute; inset: 0;
@@ -41,21 +41,23 @@
 
     .hero-inner {
       position: relative; z-index: 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      padding: 80px 0;
+      text-align: center;
+      padding: 100px 0 120px;
+      max-width: 960px;
+      margin: 0 auto;
     }
 
     /* Left content */
     .hero-eyebrow {
-      display: flex; align-items: center; gap: 8px;
-      margin-bottom: 20px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-bottom: 24px;
       opacity: 0; animation: fadeUp 0.6s 0.1s forwards;
     }
     .hero-title {
-      font-size: clamp(42px, 5.5vw, 72px);
+      font-size: clamp(48px, 6vw, 84px);
       font-weight: 800;
       line-height: 1.05;
       letter-spacing: -0.03em;
@@ -67,78 +69,41 @@
     .hero-title .orange { color: var(--accent); }
 
     .hero-sub {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--text-muted);
       line-height: 1.7;
-      margin-bottom: 36px;
-      max-width: 460px;
+      margin: 0 auto 40px;
+      max-width: 640px;
       opacity: 0; animation: fadeUp 0.6s 0.4s forwards;
     }
 
     .hero-actions {
-      display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
-      margin-bottom: 48px;
+      display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+      margin-bottom: 64px;
       opacity: 0; animation: fadeUp 0.6s 0.55s forwards;
     }
 
     /* Hero stats chips */
     .hero-stats {
-      display: flex; gap: 12px; flex-wrap: wrap;
+      display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; width: 100%;
       opacity: 0; animation: fadeUp 0.6s 0.7s forwards;
     }
     .hero-stat-chip {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-pill);
-      padding: 8px 16px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: var(--radius-xl);
+      padding: 32px 24px;
+      box-shadow: var(--shadow-2);
+      flex: 1;
+      min-width: 220px;
     }
-    .hero-stat-num { font-size: 18px; font-weight: 800; color: var(--primary); }
-    .hero-stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+    .hero-stat-num { font-size: 40px; font-weight: 800; color: var(--primary); line-height: 1.1; }
+    .hero-stat-label { font-size: 16px; color: var(--text-secondary); font-weight: 600; }
 
     /* Right visual */
-    .hero-visual {
-      position: relative;
-      opacity: 0; animation: fadeIn 0.8s 0.4s forwards;
-    }
-    .hero-image-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4/5;
-    }
-    .hero-img-main {
-      width: 85%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-4);
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: 2;
-    }
-    .hero-img-sub {
-      width: 55%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-4);
-      position: absolute;
-      left: 0;
-      bottom: 12%;
-      z-index: 3;
-      border: 8px solid #fff;
-    }
-    .hero-decor-circle {
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background: var(--primary-light);
-      top: -30px;
-      right: -20px;
-      z-index: 1;
-    }
+    .hero-visual { display: none; }
     .hmc-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
     .hmc-icon {
       width: 44px; height: 44px;
@@ -415,11 +380,6 @@
 
       <!-- Right: Dashboard Card -->
       <div class="hero-visual">
-        <div class="hero-image-wrapper">
-          <img src="https://picsum.photos/seed/hj01/800/1000" alt="室內裝修設計" class="hero-img-main" loading="lazy">
-          <img src="https://picsum.photos/seed/hj04/600/400" alt="室內設計細節" class="hero-img-sub" loading="lazy">
-          <div class="hero-decor-circle"></div>
-        </div>
       </div>
     </div>
   </div>
