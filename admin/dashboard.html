@@ -1540,19 +1540,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Realtime Preview Sync for Contact
-  document.getElementById('ctab-contact').addEventListener('input', function(e) {
-    if (e.target.tagName === 'INPUT') {
-      cmsData.contact = {
-        phone1: document.getElementById('c-phone1').value.trim(),
-        phone2: document.getElementById('c-phone2').value.trim(),
-        email:  document.getElementById('c-email').value.trim(),
-        region: document.getElementById('c-region').value.trim(),
-        hours:  document.getElementById('c-hours').value.trim()
-      };
-      saveData();
-    }
-  });
+
 
   // Initialize Page Nav clicks (mimics frontpage top navbar)
   document.querySelectorAll('.admin-page-nav-links button').forEach(btn => {
