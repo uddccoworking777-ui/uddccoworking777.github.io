@@ -1315,16 +1315,7 @@
                 "label": "條列 8",
                 "type": "text",
                 "default": "費用估算報告"
-            },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.tagline", "label": "品牌標語 / 鴻匠工程下方介紹", "type": "textarea", "default": "二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.phone1", "label": "聯絡電話 1 (主)", "type": "text", "default": "(02) 2345-6789" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.phone2", "label": "聯絡電話 2 (手機)", "type": "text", "default": "0912-345-678" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.email", "label": "電子郵件", "type": "text", "default": "service@hongjiang.com.tw" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.address", "label": "服務區域", "type": "text", "default": "台北・新北・桃園・台中・全台接洽" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.hours", "label": "服務時間", "type": "text", "default": "週一至週六 08:00 — 18:00" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.copyright", "label": "版權與統一編號", "type": "text", "default": "© 2024 鴻匠工程有限公司 · 統一編號：12345678" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.privacy", "label": "隱私政策文字", "type": "text", "default": "隱私政策" },
-            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.terms", "label": "服務條款文字", "type": "text", "default": "服務條款" }
+            }
         ]
     }
 ,
@@ -1548,7 +1539,16 @@
                 "label": "CTA 按鈕文字",
                 "type": "text",
                 "default": "立即免費諮詢"
-            }
+            },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.tagline", "label": "品牌標語 / 鴻匠工程下方介紹", "type": "textarea", "default": "二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.phone1", "label": "聯絡電話 1 (主)", "type": "text", "default": "(02) 2345-6789" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.phone2", "label": "聯絡電話 2 (手機)", "type": "text", "default": "0912-345-678" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.email", "label": "電子郵件", "type": "text", "default": "service@hongjiang.com.tw" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.address", "label": "服務區域", "type": "text", "default": "台北・新北・桃園・台中・全台接洽" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.hours", "label": "服務時間", "type": "text", "default": "週一至週六 08:00 — 18:00" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.copyright", "label": "版權與統一編號", "type": "text", "default": "© 2024 鴻匠工程有限公司 · 統一編號：12345678" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.privacy", "label": "隱私政策文字", "type": "text", "default": "隱私政策" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.terms", "label": "服務條款文字", "type": "text", "default": "服務條款" }
         ]
     },
     "about.html": {
