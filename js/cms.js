@@ -3130,6 +3130,12 @@
             }
           }
         });
+        
+        // Apply footer tagline manually since it doesn't have data-cms
+        if (d.pages['global'] && d.pages['global']['footer.tagline']) {
+          const taglineEl = document.querySelector('.footer-tagline');
+          if (taglineEl) taglineEl.innerHTML = esc(d.pages['global']['footer.tagline']).replace(/\n/g, '<br />');
+        }
       }
 
       /* contact.html — contact info */
