@@ -29,19 +29,7 @@
 
   const CMS_SCHEMA = {
 
-    "global": {
-        "name": "全站共用設定",
-        "items": [
-            { "group": "頁尾 (Footer)", "key": "footer.tagline", "label": "品牌標語", "type": "textarea", "default": "二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。" },
-            { "group": "頁尾 (Footer)", "key": "footer.phone1", "label": "聯絡電話 1", "type": "text", "default": "(02) 2345-6789" },
-            { "group": "頁尾 (Footer)", "key": "footer.phone2", "label": "聯絡電話 2", "type": "text", "default": "0912-345-678" },
-            { "group": "頁尾 (Footer)", "key": "footer.email", "label": "電子郵件", "type": "text", "default": "service@hongjiang.com.tw" },
-            { "group": "頁尾 (Footer)", "key": "footer.address", "label": "服務區域", "type": "text", "default": "台北・新北・桃園・台中" },
-            { "group": "頁尾 (Footer)", "key": "footer.copyright", "label": "版權宣告", "type": "text", "default": "© 2024 鴻匠工程有限公司 · 統一編號：12345678" },
-            { "group": "頁尾 (Footer)", "key": "footer.privacy", "label": "隱私政策文字", "type": "text", "default": "隱私政策" },
-            { "group": "頁尾 (Footer)", "key": "footer.terms", "label": "服務條款文字", "type": "text", "default": "服務條款" }
-        ]
-    },
+
 
     "service-water.html": {
         "name": "服務：水電工程",
@@ -1327,7 +1315,16 @@
                 "label": "條列 8",
                 "type": "text",
                 "default": "費用估算報告"
-            }
+            },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.tagline", "label": "品牌標語 / 鴻匠工程下方介紹", "type": "textarea", "default": "二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.phone1", "label": "聯絡電話 1 (主)", "type": "text", "default": "(02) 2345-6789" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.phone2", "label": "聯絡電話 2 (手機)", "type": "text", "default": "0912-345-678" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.email", "label": "電子郵件", "type": "text", "default": "service@hongjiang.com.tw" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.address", "label": "服務區域", "type": "text", "default": "台北・新北・桃園・台中・全台接洽" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.hours", "label": "服務時間", "type": "text", "default": "週一至週六 08:00 — 18:00" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.copyright", "label": "版權與統一編號", "type": "text", "default": "© 2024 鴻匠工程有限公司 · 統一編號：12345678" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.privacy", "label": "隱私政策文字", "type": "text", "default": "隱私政策" },
+            { "group": "頁尾與聯絡資訊 (Footer)", "key": "footer.terms", "label": "服務條款文字", "type": "text", "default": "服務條款" }
         ]
     }
 ,
@@ -3118,7 +3115,7 @@
               pageData = d.pages[page];
             } else if (attr.startsWith('global.')) {
               key = attr.slice(7);
-              pageData = d.pages['global'];
+              pageData = d.pages['index.html'];
             }
             
             if (key && pageData && pageData[key] !== undefined) {
@@ -3132,24 +3129,24 @@
         });
         
         // Apply footer tagline manually since it doesn't have data-cms
-        if (d.pages['global'] && d.pages['global']['footer.tagline']) {
+        if (d.pages['index.html'] && d.pages['index.html']['footer.tagline']) {
           const taglineEl = document.querySelector('.footer-tagline');
-          if (taglineEl) taglineEl.innerHTML = esc(d.pages['global']['footer.tagline']).replace(/\n/g, '<br />');
+          if (taglineEl) taglineEl.innerHTML = esc(d.pages['index.html']['footer.tagline']).replace(/\n/g, '<br />');
         }
       }
 
       /* contact.html — contact info */
-      if (page === 'contact.html' && d.contact) {
-        this._applyContact(d.contact);
+      if (page === 'contact.html' && d.pages && d.pages['index.html']) {
+        this._applyContact(d.pages['index.html']);
       }
     },
 
     _applyContact(c) {
       const vals = document.querySelectorAll('.c-value');
-      if (vals[0]) vals[0].innerHTML = `${esc(c.phone1)}<br />${esc(c.phone2)}`;
-      if (vals[1]) vals[1].textContent = c.email   || '';
-      if (vals[2]) vals[2].textContent = c.region  || '';
-      if (vals[3]) vals[3].textContent = c.hours   || '';
+      if (vals[0]) vals[0].innerHTML = `${esc(c['footer.phone1'])}<br />${esc(c['footer.phone2'])}`;
+      if (vals[1]) vals[1].textContent = c['footer.email']   || '';
+      if (vals[2]) vals[2].textContent = c['footer.address'] || '';
+      if (vals[3]) vals[3].textContent = c['footer.hours']   || '';
     },
 
     _applyNews(news) {

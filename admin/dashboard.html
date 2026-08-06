@@ -930,7 +930,7 @@
           <div class="quick-card" onclick="switchPanel('content')">
             <div class="quick-card-icon">✏️</div>
             <div class="quick-card-label">編輯內容</div>
-            <div class="quick-card-sub">修改聯絡資訊</div>
+            <div class="quick-card-sub">修改各頁面與頁尾</div>
           </div>
           <div class="quick-card" onclick="togglePreviewPane()">
             <div class="quick-card-icon">👁</div>
@@ -1001,51 +1001,12 @@
           </div>
           <div class="card-body">
             <div class="content-tabs">
-              <button class="ctab active" onclick="switchCtab('contact', this)">聯絡資訊</button>
-              <button class="ctab" onclick="switchCtab('pages', this)">各頁面文字</button>
+              <button class="ctab active" onclick="switchCtab('pages', this)">各頁面文字</button>
               <button class="ctab" onclick="switchCtab('gallery-count', this)">作品相冊</button>
             </div>
 
-            <!-- Contact Tab -->
-            <div class="ctab-panel active" id="ctab-contact">
-              <div class="f-row">
-                <div class="f-group">
-                  <label class="f-label">電話 / LINE（主）</label>
-                  <input type="text" class="f-input" id="c-phone1" placeholder="(02) 2345-6789" />
-                </div>
-                <div class="f-group">
-                  <label class="f-label">手機號碼</label>
-                  <input type="text" class="f-input" id="c-phone2" placeholder="0912-345-678" />
-                </div>
-              </div>
-              <div class="f-group">
-                <label class="f-label">電子郵件</label>
-                <input type="email" class="f-input" id="c-email" placeholder="service@hongjiang.com.tw" />
-              </div>
-              <div class="f-group">
-                <label class="f-label">服務地區</label>
-                <input type="text" class="f-input" id="c-region" placeholder="台北・新北・桃園・台中・全台接洽" />
-              </div>
-              <div class="f-group">
-                <label class="f-label">服務時間</label>
-                <input type="text" class="f-input" id="c-hours" placeholder="週一至週六 08:00 — 18:00" />
-              </div>
-              <div class="f-group">
-                <label class="f-label">鴻匠工程下方介紹</label>
-                <textarea class="f-textarea" id="c-tagline" placeholder="二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。"></textarea>
-              </div>
-              <div class="f-group">
-                <label class="f-label">版權與統一編號</label>
-                <input type="text" class="f-input" id="c-copyright" placeholder="© 2024 鴻匠工程有限公司 · 統一編號：12345678" />
-              </div>
-              <button class="save-btn" onclick="saveContact()">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                儲存聯絡資訊
-              </button>
-            </div>
-
             <!-- Pages Tab -->
-            <div class="ctab-panel" id="ctab-pages">
+            <div class="ctab-panel active" id="ctab-pages">
               <div class="f-group" style="display: none;">
                 <label class="f-label">選擇要編輯的頁面</label>
                 <select class="f-select" id="page-select" onchange="loadPageContentForm()"></select>
@@ -2235,48 +2196,7 @@ function savePageContent(event) {
   showToast('頁面文字已儲存');
 }
 
-function loadContactForm() {
-  const c = cmsData.contact || {};
-  const g = (cmsData.pages && cmsData.pages['global']) || {};
-  document.getElementById('c-phone1').value  = c.phone1  || '(02) 2345-6789';
-  document.getElementById('c-phone2').value  = c.phone2  || '0912-345-678';
-  document.getElementById('c-email').value   = c.email   || 'service@hongjiang.com.tw';
-  document.getElementById('c-region').value  = c.region  || '台北・新北・桃園・台中・全台接洽';
-  document.getElementById('c-hours').value   = c.hours   || '週一至週六 08:00 — 18:00';
-  document.getElementById('c-tagline').value = c.tagline || g['footer.tagline'] || '二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。';
-  document.getElementById('c-copyright').value = c.copyright || g['footer.copyright'] || '© 2024 鴻匠工程有限公司 · 統一編號：12345678';
-}
 
-function saveContact() {
-  const contactInfo = {
-    phone1:  document.getElementById('c-phone1').value.trim(),
-    phone2:  document.getElementById('c-phone2').value.trim(),
-    email:   document.getElementById('c-email').value.trim(),
-    region:  document.getElementById('c-region').value.trim(),
-    hours:   document.getElementById('c-hours').value.trim(),
-    tagline: document.getElementById('c-tagline').value.trim(),
-    copyright: document.getElementById('c-copyright').value.trim()
-  };
-  cmsData.contact = contactInfo;
-  
-  if (!cmsData.pages) cmsData.pages = {};
-  if (!cmsData.pages['global']) cmsData.pages['global'] = {};
-  cmsData.pages['global']['footer.phone1'] = contactInfo.phone1;
-  cmsData.pages['global']['footer.phone2'] = contactInfo.phone2;
-  cmsData.pages['global']['footer.email'] = contactInfo.email;
-  cmsData.pages['global']['footer.address'] = contactInfo.region;
-  cmsData.pages['global']['footer.tagline'] = contactInfo.tagline;
-  cmsData.pages['global']['footer.copyright'] = contactInfo.copyright;
-  saveData();
-  const btn = event.target;
-  btn.classList.add('saved');
-  btn.textContent = '✓ 已儲存';
-  setTimeout(() => {
-    btn.classList.remove('saved');
-    btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 儲存聯絡資訊`;
-  }, 2000);
-  showToast('聯絡資訊已儲存');
-}
 
 function switchCtab(name, btn) {
   document.querySelectorAll('.ctab').forEach(t => t.classList.remove('active'));
