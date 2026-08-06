@@ -1,27 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>鴻匠工程 — 完整展示 Demo</title>
+  <title>暾餃?撌亦? ??摰撅內 Demo</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-/* ═══ Global CSS (style.css) ═══ */
-/* ═══════════════════════════════════════════════════
-   鴻匠工程 — Design System v2.0
-   ═══════════════════════════════════════════════════ */
+/* ????Global CSS (style.css) ????*/
+/* ????????????????????????????????????????????????????
+   暾餃?撌亦? ??Design System v2.0
+   ????????????????????????????????????????????????????*/
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap');
 
-/* ── Reset ── */
+/* ?? Reset ?? */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 img, video { max-width: 100%; display: block; }
 button { cursor: pointer; font: inherit; }
 a { text-decoration: none; }
 
-/* ── Design Tokens ── */
+/* ?? Design Tokens ?? */
 :root {
   --primary:         #1a73e8;
   --primary-dark:    #1250c4;
@@ -50,7 +50,7 @@ a { text-decoration: none; }
   --text-subtle:     #9aa0a6;
   --text-blue:       #1a73e8;
 
-  /* Layered shadows — more depth than before */
+  /* Layered shadows ??more depth than before */
   --shadow-1:   0 1px 2px rgba(60,64,67,.15), 0 1px 3px rgba(60,64,67,.1);
   --shadow-2:   0 2px 6px rgba(60,64,67,.12), 0 1px 2px rgba(60,64,67,.08);
   --shadow-3:   0 4px 12px rgba(60,64,67,.12), 0 2px 4px rgba(60,64,67,.08);
@@ -77,7 +77,7 @@ a { text-decoration: none; }
   --nav-h: 64px;
 }
 
-/* ── Base ── */
+/* ?? Base ?? */
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Plus Jakarta Sans', 'Roboto', -apple-system, sans-serif;
@@ -92,7 +92,7 @@ body {
 ::selection { background: var(--primary-light); color: var(--primary-dark); }
 :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; border-radius: var(--radius-sm); }
 
-/* ── Typography ── */
+/* ?? Typography ?? */
 h1,h2,h3,h4 {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 800;
@@ -101,12 +101,12 @@ h1,h2,h3,h4 {
   color: var(--text);
 }
 
-/* ── Layout ── */
+/* ?? Layout ?? */
 .container      { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 .section-gap    { padding: 96px 0; }
 .section-gap-sm { padding: 64px 0; }
 
-/* ── Label ── */
+/* ?? Label ?? */
 .label {
   display: inline-flex;
   align-items: center;
@@ -125,7 +125,7 @@ h1,h2,h3,h4 {
   flex-shrink: 0;
 }
 
-/* ── Section Divider ── */
+/* ?? Section Divider ?? */
 .section-divider {
   width: 40px; height: 3px;
   background: linear-gradient(90deg, var(--primary), #4285f4);
@@ -133,7 +133,7 @@ h1,h2,h3,h4 {
   margin: 14px 0;
 }
 
-/* ── Chips ── */
+/* ?? Chips ?? */
 .chip {
   display: inline-flex;
   align-items: center;
@@ -149,7 +149,7 @@ h1,h2,h3,h4 {
 .chip-orange { background: var(--accent-light);  color: var(--accent-dark); }
 .chip-green  { background: var(--green-light);   color: var(--green); }
 
-/* ── Tags ── */
+/* ?? Tags ?? */
 .tag {
   display: inline-flex;
   padding: 4px 12px;
@@ -161,9 +161,9 @@ h1,h2,h3,h4 {
   border: 1px solid var(--border);
 }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    SCROLL PROGRESS
-══════════════════════════════ */
+?????????????????????????????? */
 #scroll-progress {
   position: fixed;
   top: 0; left: 0;
@@ -175,9 +175,9 @@ h1,h2,h3,h4 {
   border-radius: 0 3px 3px 0;
 }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    BUTTONS
-══════════════════════════════ */
+?????????????????????????????? */
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--primary); color: #fff;
@@ -224,9 +224,9 @@ h1,h2,h3,h4 {
 }
 .btn-white:hover { box-shadow: var(--shadow-3); transform: translateY(-1px); }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    CARDS
-══════════════════════════════ */
+?????????????????????????????? */
 .card {
   background: var(--card);
   border-radius: var(--radius-lg);
@@ -239,9 +239,9 @@ h1,h2,h3,h4 {
   border-color: var(--border-mid);
 }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    NAVIGATION
-══════════════════════════════ */
+?????????????????????????????? */
 #main-nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -428,9 +428,9 @@ h1,h2,h3,h4 {
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ══════════════════════════════
-   MOBILE MENU — slide in from right
-══════════════════════════════ */
+/* ??????????????????????????????
+   MOBILE MENU ??slide in from right
+?????????????????????????????? */
 .mobile-overlay {
   position: fixed; inset: 0;
   background: rgba(0,0,0,.35);
@@ -487,9 +487,9 @@ h1,h2,h3,h4 {
 }
 .mobile-close:hover { background: var(--surface-2); border-color: var(--border-mid); }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    PAGE HERO (sub-pages)
-══════════════════════════════ */
+?????????????????????????????? */
 .page-hero {
   padding-top: calc(var(--nav-h) + 72px);
   padding-bottom: 72px;
@@ -537,9 +537,9 @@ h1,h2,h3,h4 {
   max-width: 560px; line-height: 1.75;
 }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    SECTION HEADER
-══════════════════════════════ */
+?????????????????????????????? */
 .section-header {
   display: flex; justify-content: space-between; align-items: flex-end;
   margin-bottom: 52px; gap: 32px; flex-wrap: wrap;
@@ -553,9 +553,9 @@ h1,h2,h3,h4 {
 .section-title .gold   { color: var(--accent); }
 .section-desc { max-width: 380px; color: var(--text-muted); font-size: 15px; line-height: 1.75; }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    STATS BAR
-══════════════════════════════ */
+?????????????????????????????? */
 .stats-bar {
   background: linear-gradient(135deg, #1a73e8 0%, #1250c4 100%);
   position: relative; overflow: hidden;
@@ -589,9 +589,9 @@ h1,h2,h3,h4 {
   font-weight: 700; margin-top: 10px;
 }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    FOOTER
-══════════════════════════════ */
+?????????????????????????????? */
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 72px 0 40px; }
 .footer-top {
   display: grid; grid-template-columns: 2.5fr 1fr 1fr 1.2fr;
@@ -642,9 +642,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .footer-legal a { font-size: 13px; color: var(--text-subtle); transition: color var(--ease-fast); }
 .footer-legal a:hover { color: var(--primary); }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    GALLERY
-══════════════════════════════ */
+?????????????????????????????? */
 .gallery-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
 .filter-btn {
   padding: 8px 20px; font-size: 13px; font-weight: 700;
@@ -712,9 +712,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 }
 .gallery-item:hover .gallery-zoom { opacity: 1; transform: scale(1); }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    LIGHTBOX
-══════════════════════════════ */
+?????????????????????????????? */
 .lightbox {
   position: fixed; inset: 0;
   background: rgba(17,24,39,.95);
@@ -769,9 +769,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .lightbox-prev { left: -68px; }
 .lightbox-next { right: -68px; }
 
-/* ══════════════════════════════
-   ACCORDION — smooth animation
-══════════════════════════════ */
+/* ??????????????????????????????
+   ACCORDION ??smooth animation
+?????????????????????????????? */
 .accordion { border-top: 1px solid var(--border); }
 .accordion-item { border-bottom: 1px solid var(--border); }
 
@@ -827,9 +827,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   margin-top: 8px; flex-shrink: 0;
 }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    ANIMATIONS & REVEAL
-══════════════════════════════ */
+?????????????????????????????? */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -849,9 +849,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .reveal-delay-3 { transition-delay: .3s; }
 .reveal-delay-4 { transition-delay: .4s; }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    CTA BANNER (shared)
-══════════════════════════════ */
+?????????????????????????????? */
 .cta-banner {
   background: linear-gradient(135deg, var(--primary) 0%, #4285f4 50%, #1557b0 100%);
   padding: 80px 0; position: relative; overflow: hidden;
@@ -884,9 +884,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 }
 .btn-dark:hover { box-shadow: 0 4px 16px rgba(0,0,0,.2); transform: translateY(-1px); }
 
-/* ══════════════════════════════
+/* ??????????????????????????????
    RESPONSIVE
-══════════════════════════════ */
+?????????????????????????????? */
 @media (max-width: 1024px) {
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); }
@@ -917,21 +917,21 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   .stats-row { grid-template-columns: 1fr; }
 }
 
-/* ── Admin Preview Mode (?pv=1) ──────────────────
+/* ?? Admin Preview Mode (?pv=1) ??????????????????
    Force desktop nav when viewed inside admin preview pane.
    Triggered by main.js adding .pv-mode to <html>.
-─────────────────────────────────────────────────── */
+??????????????????????????????????????????????????? */
 html.pv-mode #main-nav .nav-links { display: flex !important; }
 html.pv-mode #main-nav .hamburger { display: none !important; }
 html.pv-mode .mobile-menu        { display: none !important; }
 html.pv-mode .mobile-overlay     { display: none !important; }
 
 
-/* ═══ Page-specific CSS ═══ */
+/* ????Page-specific CSS ????*/
 
-/* ── 首頁 (index.html) ── */
+/* ?? 擐? (index.html) ?? */
 
-    /* ── HERO ── */
+    /* ?? HERO ?? */
     #hero {
       min-height: 100vh;
       display: flex;
@@ -1072,7 +1072,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     .fc-num { font-size: 18px; font-weight: 800; color: var(--text); line-height: 1; }
     .fc-label { font-size: 12px; color: var(--text-muted); }
 
-    /* ── SERVICE CARDS ── */
+    /* ?? SERVICE CARDS ?? */
     .services-section { background: var(--surface); }
     .services-grid {
       display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
@@ -1107,7 +1107,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     .svc-link { font-size: 13px; font-weight: 600; color: var(--primary); display: flex; align-items: center; gap: 4px; margin-top: auto; }
     .svc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
 
-    /* ── GALLERY PREVIEW ── */
+    /* ?? GALLERY PREVIEW ?? */
     .gallery-preview { background: #fff; }
     .gallery-preview-grid {
       display: grid;
@@ -1122,7 +1122,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     }
     .gallery-cta-text { font-size: 15px; color: var(--text-muted); }
 
-    /* ── ABOUT TEASER ── */
+    /* ?? ABOUT TEASER ?? */
     .about-teaser { background: var(--surface); }
     .about-teaser-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
     .about-visual-wrap {
@@ -1174,7 +1174,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     }
     .feat-check svg { width: 10px; height: 10px; color: var(--primary); }
 
-    /* ── TESTIMONIALS ── */
+    /* ?? TESTIMONIALS ?? */
     .testi-section { background: #fff; }
     .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .testi-card {
@@ -1202,7 +1202,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     .testi-name { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
     .testi-role { font-size: 12px; color: var(--text-muted); }
 
-    /* ── RESPONSIVE ── */
+    /* ?? RESPONSIVE ?? */
     @media (max-width: 1024px) {
       .hero-inner { grid-template-columns: 1fr; gap: 48px; }
       .hero-visual { display: none; }
@@ -1220,7 +1220,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     }
   
 
-/* ── 水電工程 (service-water.html) ── */
+/* ?? 瘞湧撌亦? (service-water.html) ?? */
 
     .overview-grid {
       display: grid;
@@ -1251,7 +1251,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     }
   
 
-/* ── 室內裝修 (service-interior.html) ── */
+/* ?? 摰文鋆耨 (service-interior.html) ?? */
 
     .overview-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -1275,7 +1275,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     }
   
 
-/* ── 設計規劃 (service-design.html) ── */
+/* ?? 閮剛?閬? (service-design.html) ?? */
 
     .design-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 72px; }
     .design-step { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 36px 28px; transition: box-shadow 0.2s, transform 0.2s; }
@@ -1289,7 +1289,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     @media (max-width: 768px) { .design-steps { grid-template-columns: 1fr; } .gallery-section .gallery-grid { grid-template-columns: 1fr; } }
   
 
-/* ── 維修保固 (service-maintenance.html) ── */
+/* ?? 蝬凋耨靽 (service-maintenance.html) ?? */
 
     .promise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 72px; }
     .promise-card { background: var(--card); border-radius: var(--radius-lg); border: 1px solid var(--border); padding: 40px 28px; transition: box-shadow 0.2s, transform 0.2s; }
@@ -1305,9 +1305,9 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     @media (max-width: 768px) { .promise-grid { grid-template-columns: 1fr; } }
   
 
-/* ── 作品相冊 (gallery.html) ── */
+/* ?? 雿??詨? (gallery.html) ?? */
 
-    /* ── Gallery Stats Bar ── */
+    /* ?? Gallery Stats Bar ?? */
     .gallery-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1355,7 +1355,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       color: var(--text-subtle);
     }
 
-    /* ── Filter row ── */
+    /* ?? Filter row ?? */
     .gallery-filters-row {
       display: flex;
       align-items: center;
@@ -1374,10 +1374,10 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       font-weight: 600;
     }
 
-    /* ── Gallery section bg ── */
+    /* ?? Gallery section bg ?? */
     .gallery-section { background: var(--bg); }
 
-    /* ── Responsive adjustments ── */
+    /* ?? Responsive adjustments ?? */
     @media (max-width: 768px) {
       .gallery-stats { grid-template-columns: 1fr; }
       .gallery-stat-item { padding: 20px 24px; }
@@ -1386,7 +1386,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     }
   
 
-/* ── 關於我們 (about.html) ── */
+/* ?? ???(about.html) ?? */
 
     .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .story-year-wrap { position: relative; }
@@ -1434,7 +1434,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     @media (max-width: 768px) { .values-grid { grid-template-columns: 1fr; } .cert-list { grid-template-columns: 1fr; } .team-row { grid-template-columns: 1fr 1fr; } }
   
 
-/* ── 聯絡我們 (contact.html) ── */
+/* ?? ?舐窗??(contact.html) ?? */
 
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 
@@ -1490,7 +1490,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   
 
 
-/* ═══ SPA Page Container ═══ */
+/* ????SPA Page Container ????*/
 .spa-page { min-height: 0; }
   </style>
 </head>
@@ -1499,24 +1499,24 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 <nav id="main-nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="logo">鴻匠<span>工程</span></a>
+      <a href="index.html" class="logo">暾餃?<span>撌亦?</span></a>
       <ul class="nav-links">
-        <li><a href="index.html" class="active">首頁</a></li>
+        <li><a href="index.html" class="active">擐?</a></li>
         <li class="has-dropdown">
-          <a href="#">服務項目</a>
+          <a href="#">???</a>
           <ul class="dropdown">
-            <li><a href="service-water.html">水電工程</a></li>
-            <li><a href="service-interior.html">室內裝修</a></li>
-            <li><a href="service-design.html">設計規劃</a></li>
-            <li><a href="service-maintenance.html">維修保固</a></li>
+            <li><a href="service-water.html">瘞湧撌亦?</a></li>
+            <li><a href="service-interior.html">摰文鋆耨</a></li>
+            <li><a href="service-design.html">閮剛?閬?</a></li>
+            <li><a href="service-maintenance.html">蝬凋耨靽</a></li>
           </ul>
         </li>
-        <li><a href="gallery.html">作品相冊</a></li>
-        <li><a href="about.html">關於我們</a></li>
-        <li class="nav-cta"><a href="contact.html">免費諮詢</a></li>
-        <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>員工登入</a></li>
+        <li><a href="gallery.html">雿??詨?</a></li>
+        <li><a href="about.html">???/a></li>
+        <li class="nav-cta"><a href="contact.html">?祥隢株岷</a></li>
+        <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>?∪極?餃</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="選單">
+      <button class="hamburger" id="hamburger" aria-label="?詨">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -1524,29 +1524,29 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <button class="mobile-close" id="mobile-close">✕</button>
-  <a href="index.html" class="active">首頁</a>
-  <a href="service-water.html" class="mobile-sub">水電工程</a>
-  <a href="service-interior.html" class="mobile-sub">室內裝修</a>
-  <a href="service-design.html" class="mobile-sub">設計規劃</a>
-  <a href="service-maintenance.html" class="mobile-sub">維修保固</a>
-  <a href="gallery.html">作品相冊</a>
-  <a href="about.html">關於我們</a>
-  <a href="contact.html">免費諮詢</a>
-  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>員工後台登入</a>
+  <button class="mobile-close" id="mobile-close">??/button>
+  <a href="index.html" class="active">擐?</a>
+  <a href="service-water.html" class="mobile-sub">瘞湧撌亦?</a>
+  <a href="service-interior.html" class="mobile-sub">摰文鋆耨</a>
+  <a href="service-design.html" class="mobile-sub">閮剛?閬?</a>
+  <a href="service-maintenance.html" class="mobile-sub">蝬凋耨靽</a>
+  <a href="gallery.html">雿??詨?</a>
+  <a href="about.html">???/a>
+  <a href="contact.html">?祥隢株岷</a>
+  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>?∪極敺?餃</a>
 </div>
 
 
 
-<!-- ═══ SPA Page Containers ═══ -->
+<!-- ????SPA Page Containers ????-->
 
-<!-- ═══ PAGE: 首頁 ═══ -->
+<!-- ????PAGE: 擐? ????-->
 <div class="spa-page" data-page="index" style="display:block;">
-<!-- ── NAV ── -->
+<!-- ?? NAV ?? -->
 
 
 <!-- Mobile Menu -->
-<!-- ── HERO ── -->
+<!-- ?? HERO ?? -->
 <section id="hero">
   <div class="hero-bg">
     <div class="hero-blob blob-1"></div>
@@ -1559,36 +1559,36 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       <!-- Left -->
       <div>
         <div class="hero-eyebrow">
-          <span class="chip chip-blue">台灣水電・室內裝修專家</span>
+          <span class="chip chip-blue">?啁瘞湧?餃恕?扯?靽桀?摰?/span>
         </div>
         <h1 class="hero-title" data-cms="index.html.hero.title">
-          打造您的<br>
-          <span class="blue">理想空間</span><br>
-          <span style="font-weight:300; font-size:0.65em; color:var(--text-muted); letter-spacing:-0.01em;">水電・裝修・設計 一站搞定</span>
+          ???br>
+          <span class="blue">?蝛粹?</span><br>
+          <span style="font-weight:300; font-size:0.65em; color:var(--text-muted); letter-spacing:-0.01em;">瘞湧?餉?靽柴閮剛? 銝蝡?摰?/span>
         </h1>
         <p class="hero-sub" data-cms="index.html.hero.desc">
-          專業水電配管、全室裝修、室內設計，二十年工藝傳承，
-          每一細節精工打造，讓您安心託付。
+          撠平瘞湧?恣?摰方?靽柴恕?扯身閮?鈭?撟游極??選?
+          瘥?蝝啁?蝎曉極??霈摰?閮???
         </p>
         <div class="hero-actions">
           <a href="contact.html" class="btn-primary">
-            <span data-cms="index.html.cta.btn">立即免費諮詢</span>
+            <span data-cms="index.html.cta.btn">蝡?祥隢株岷</span>
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
           </a>
-          <a href="gallery.html" class="btn-outline">瀏覽作品相冊</a>
+          <a href="gallery.html" class="btn-outline">?汗雿??詨?</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat-chip">
             <div class="hero-stat-num">20+</div>
-            <div class="hero-stat-label">年專業經驗</div>
+            <div class="hero-stat-label">撟游?璆剔?撽?/div>
           </div>
           <div class="hero-stat-chip">
             <div class="hero-stat-num">800+</div>
-            <div class="hero-stat-label">完成案件</div>
+            <div class="hero-stat-label">摰?獢辣</div>
           </div>
           <div class="hero-stat-chip">
             <div class="hero-stat-num">98%</div>
-            <div class="hero-stat-label">客戶滿意度</div>
+            <div class="hero-stat-label">摰Ｘ皛踵?摨?/div>
           </div>
         </div>
       </div>
@@ -1602,21 +1602,21 @@ html.pv-mode .mobile-overlay     { display: none !important; }
                 <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
               </div>
               <div>
-                <div class="hmc-title">工程進度追蹤</div>
-                <div class="hmc-sub">台北市大安區 40坪 裝修案</div>
+                <div class="hmc-title">撌亦??脣漲餈質馱</div>
+                <div class="hmc-sub">?啣?撣之摰? 40??鋆耨獢?/div>
               </div>
             </div>
             <!-- Progress bars -->
-            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>水電配管</span><span style="color:var(--green);font-weight:600;">完成 100%</span></div>
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>瘞湧?恣</span><span style="color:var(--green);font-weight:600;">摰? 100%</span></div>
             <div class="hmc-bar"><div class="hmc-bar-fill" style="width:100%;background:var(--green);"></div></div>
-            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>泥作工程</span><span style="color:var(--primary);font-weight:600;">進行中 75%</span></div>
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>瘜乩?撌亦?</span><span style="color:var(--primary);font-weight:600;">?脰?銝?75%</span></div>
             <div class="hmc-bar"><div class="hmc-bar-fill" style="width:75%;background:var(--primary);"></div></div>
-            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>木作工程</span><span style="color:var(--text-subtle);font-weight:600;">待開工 0%</span></div>
+            <div style="margin-bottom:4px;font-size:12px;color:var(--text-muted);display:flex;justify-content:space-between;"><span>?其?撌亦?</span><span style="color:var(--text-subtle);font-weight:600;">敺?撌?0%</span></div>
             <div class="hmc-bar"><div class="hmc-bar-fill" style="width:0%;background:var(--border);"></div></div>
             <div class="hmc-tag-row">
-              <span class="chip chip-green" style="font-size:11px;">準時交屋</span>
-              <span class="chip chip-blue" style="font-size:11px;">透明報價</span>
-              <span class="chip chip-orange" style="font-size:11px;">二年保固</span>
+              <span class="chip chip-green" style="font-size:11px;">皞?鈭文?</span>
+              <span class="chip chip-blue" style="font-size:11px;">???勗</span>
+              <span class="chip chip-orange" style="font-size:11px;">鈭僑靽</span>
             </div>
           </div>
           <!-- Float cards -->
@@ -1624,13 +1624,13 @@ html.pv-mode .mobile-overlay     { display: none !important; }
             <div class="fc-icon" style="background:var(--green-light);">
               <svg width="18" height="18" fill="none" stroke="var(--green)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
             </div>
-            <div><div class="fc-num">98%</div><div class="fc-label">客戶滿意</div></div>
+            <div><div class="fc-num">98%</div><div class="fc-label">摰Ｘ皛踵?</div></div>
           </div>
           <div class="float-card fc-2">
             <div class="fc-icon" style="background:var(--primary-light);">
               <svg width="18" height="18" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
             </div>
-            <div><div class="fc-num">2年</div><div class="fc-label">工程保固</div></div>
+            <div><div class="fc-num">2撟?/div><div class="fc-label">撌亦?靽</div></div>
           </div>
         </div>
       </div>
@@ -1638,16 +1638,16 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
+<!-- ?? SERVICES ?? -->
 <section class="services-section section-gap">
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:12px;">專業服務</div>
+        <div class="label" style="margin-bottom:12px;">撠平??</div>
         <div class="section-divider"></div>
-        <h2 class="section-title" data-cms="index.html.about.title">完整的工程<br><span class="blue">解決方案</span></h2>
+        <h2 class="section-title" data-cms="index.html.about.title">摰?極蝔?br><span class="blue">閫?捱?寞?</span></h2>
       </div>
-      <p class="section-desc" data-cms="index.html.about.desc">從基礎水電到精緻裝修，提供全方位的居家工程服務，讓您的空間煥然一新。</p>
+      <p class="section-desc" data-cms="index.html.about.desc">敺蝷偌?餃蝎曄溶鋆耨嚗?靘?嫣???摰嗅極蝔???霈?征??嗡??啜?/p>
     </div>
     <div class="services-grid">
       <a href="service-water.html" class="svc-card reveal">
@@ -1657,11 +1657,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
           </svg>
         </div>
         <div class="svc-num">01</div>
-        <h3 class="svc-title">水電工程</h3>
-        <p class="svc-desc">給排水系統規劃、電氣配線、弱電佈設，確保管線安全耐用，符合法規標準。</p>
-        <span class="svc-link">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <h3 class="svc-title">瘞湧撌亦?</h3>
+        <p class="svc-desc">蝯行?瘞渡頂蝯梯??瘞??蝺摹?颱?閮哨?蝣箔?蝞∠?摰?嚗泵??閬?皞?/p>
+        <span class="svc-link">鈭圾閰單? <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
         <div class="svc-tags">
-          <span class="tag">給排水</span><span class="tag">電氣配線</span><span class="tag">弱電系統</span>
+          <span class="tag">蝯行?瘞?/span><span class="tag">?餅除??</span><span class="tag">撘梢蝟餌絞</span>
         </div>
       </a>
       <a href="service-interior.html" class="svc-card reveal reveal-delay-1">
@@ -1671,11 +1671,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
           </svg>
         </div>
         <div class="svc-num">02</div>
-        <h3 class="svc-title">室內裝修</h3>
-        <p class="svc-desc">客廳、廚房、衛浴全室翻新，結合美觀與實用，打造符合生活需求的理想空間。</p>
-        <span class="svc-link" style="color:var(--accent);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <h3 class="svc-title">摰文鋆耨</h3>
+        <p class="svc-desc">摰Ｗ輒???踴?瘚游摰斤蕃?堆?蝯?蝢??祕?剁??泵??瘣駁?瘙??蝛粹???/p>
+        <span class="svc-link" style="color:var(--accent);">鈭圾閰單? <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
         <div class="svc-tags">
-          <span class="tag">全室翻新</span><span class="tag">廚衛改造</span><span class="tag">舊屋整建</span>
+          <span class="tag">?典恕蝧餅</span><span class="tag">撱??寥?/span><span class="tag">???游遣</span>
         </div>
       </a>
       <a href="service-design.html" class="svc-card reveal reveal-delay-2">
@@ -1685,11 +1685,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
           </svg>
         </div>
         <div class="svc-num">03</div>
-        <h3 class="svc-title">設計規劃</h3>
-        <p class="svc-desc">專業室內設計師量身訂製空間規劃，3D效果圖呈現，施工前掌握完整藍圖。</p>
-        <span class="svc-link" style="color:var(--green);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <h3 class="svc-title">閮剛?閬?</h3>
+        <p class="svc-desc">撠平摰文閮剛?撣恍?頨怨?鋆賜征????3D?????橘??賢極???∪??渲???/p>
+        <span class="svc-link" style="color:var(--green);">鈭圾閰單? <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
         <div class="svc-tags">
-          <span class="tag">平面規劃</span><span class="tag">3D 效果圖</span><span class="tag">材料建議</span>
+          <span class="tag">撟喲閬?</span><span class="tag">3D ????/span><span class="tag">??撱箄降</span>
         </div>
       </a>
       <a href="service-maintenance.html" class="svc-card reveal reveal-delay-3">
@@ -1699,75 +1699,75 @@ html.pv-mode .mobile-overlay     { display: none !important; }
           </svg>
         </div>
         <div class="svc-num">04</div>
-        <h3 class="svc-title">維修保固</h3>
-        <p class="svc-desc">完工後提供兩年工程保固，24小時緊急維修專線，售後問題快速回應處理。</p>
-        <span class="svc-link" style="color:var(--red);">了解詳情 <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
+        <h3 class="svc-title">蝬凋耨靽</h3>
+        <p class="svc-desc">摰極敺?靘撟游極蝔??綽?24撠?蝺亦雁靽桀?蝺??桀???敹恍?????/p>
+        <span class="svc-link" style="color:var(--red);">鈭圾閰單? <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg></span>
         <div class="svc-tags">
-          <span class="tag">兩年保固</span><span class="tag">緊急維修</span><span class="tag">定期檢查</span>
+          <span class="tag">?拙僑靽</span><span class="tag">蝺亦雁靽?/span><span class="tag">摰?瑼Ｘ</span>
         </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ── STATS ── -->
+<!-- ?? STATS ?? -->
 <div class="stats-bar">
   <div class="container">
     <div class="stats-row">
-      <div class="stat-item"><div class="stat-number" data-target="20" data-suffix="+">20<span class="stat-unit">+</span></div><div class="stat-label">年專業經驗</div></div>
-      <div class="stat-item"><div class="stat-number" data-target="800" data-suffix="+">800<span class="stat-unit">+</span></div><div class="stat-label">完成案件</div></div>
-      <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">98<span class="stat-unit">%</span></div><div class="stat-label">客戶滿意度</div></div>
-      <div class="stat-item"><div class="stat-number" data-target="2" data-suffix="年">2<span class="stat-unit">年</span></div><div class="stat-label">工程保固</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="20" data-suffix="+">20<span class="stat-unit">+</span></div><div class="stat-label">撟游?璆剔?撽?/div></div>
+      <div class="stat-item"><div class="stat-number" data-target="800" data-suffix="+">800<span class="stat-unit">+</span></div><div class="stat-label">摰?獢辣</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">98<span class="stat-unit">%</span></div><div class="stat-label">摰Ｘ皛踵?摨?/div></div>
+      <div class="stat-item"><div class="stat-number" data-target="2" data-suffix="撟?>2<span class="stat-unit">撟?/span></div><div class="stat-label">撌亦?靽</div></div>
     </div>
   </div>
 </div>
 
-<!-- ── GALLERY PREVIEW ── -->
+<!-- ?? GALLERY PREVIEW ?? -->
 <section class="gallery-preview section-gap">
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:12px;">作品相冊</div>
+        <div class="label" style="margin-bottom:12px;">雿??詨?</div>
         <div class="section-divider" style="background:linear-gradient(90deg,var(--accent),#fbbc04);"></div>
-        <h2 class="section-title">精選案例<br><span class="orange">實景展示</span></h2>
+        <h2 class="section-title">蝎暸獢?<br><span class="orange">撖行撅內</span></h2>
       </div>
-      <p class="section-desc">每個案件都是我們用心投入的成果，見證空間轉變的無限可能。</p>
+      <p class="section-desc">瘥?隞園?舀??敹??亦???嚗?霅征??霈??⊿??航??/p>
     </div>
     <div class="gallery-preview-grid reveal">
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-1/1200/800" data-title="現代簡約三房公寓" data-meta="台北市大安區・40坪・2024.03">
-        <img src="https://picsum.photos/seed/hj01/800/540" alt="現代簡約公寓" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">室內裝修</div><div class="gallery-item-title">現代簡約三房公寓</div></div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-1/1200/800" data-title="?曆誨蝪∠?銝?砍?" data-meta="?啣?撣之摰???0?芥2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/540" alt="?曆誨蝪∠??砍?" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">摰文鋆耨</div><div class="gallery-item-title">?曆誨蝪∠?銝?砍?</div></div>
         <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="商辦大樓水電更新" data-meta="新北市・680坪・2024.01">
-        <img src="https://picsum.photos/seed/hj02/800/540" alt="商辦水電" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">商辦大樓水電更新</div></div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="?齒憭扳?瘞湧?湔" data-meta="?啣?撣680?芥2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/540" alt="?齒瘞湧" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">瘞湧撌亦?</div><div class="gallery-item-title">?齒憭扳?瘞湧?湔</div></div>
         <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-3/1200/800" data-title="廚房衛浴全面翻新" data-meta="台中市・28坪・2023.11">
-        <img src="https://picsum.photos/seed/hj03/800/540" alt="廚衛翻新" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">廚衛改造</div><div class="gallery-item-title">廚房衛浴全面翻新</div></div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-3/1200/800" data-title="撱銵絕?券蝧餅" data-meta="?唬葉撣28?芥2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/540" alt="撱?蝧餅" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">撱??寥?/div><div class="gallery-item-title">撱銵絕?券蝧餅</div></div>
         <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-4/1200/800" data-title="透天厝全屋設計翻修" data-meta="台北士林・65坪・2023.09">
-        <img src="https://picsum.photos/seed/hj04/800/540" alt="透天厝設計" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">透天厝全屋設計翻修</div></div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-4/1200/800" data-title="?予?撅身閮蕃靽? data-meta="?啣?憯急???5?芥2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/540" alt="?予?身閮? loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">閮剛?閬?</div><div class="gallery-item-title">?予?撅身閮蕃靽?/div></div>
         <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj-full-5/1200/800" data-title="餐飲店面空間改造" data-meta="桃園市・35坪・2023.07">
-        <img src="https://picsum.photos/seed/hj05/800/540" alt="餐飲改造" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">商業空間</div><div class="gallery-item-title">餐飲店面空間改造</div></div>
+      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj-full-5/1200/800" data-title="擗ㄡ摨蝛粹??寥? data-meta="獢?撣35?芥2023.07">
+        <img src="https://picsum.photos/seed/hj05/800/540" alt="擗ㄡ?寥? loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">?平蝛粹?</div><div class="gallery-item-title">擗ㄡ摨蝛粹??寥?/div></div>
         <div class="gallery-zoom"><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
     </div>
     <div class="gallery-cta-row reveal">
-      <p class="gallery-cta-text">已有 <strong style="color:var(--text);">800+</strong> 件完工案例等您探索</p>
-      <a href="gallery.html" class="btn-primary">查看全部相冊 →</a>
+      <p class="gallery-cta-text">撌脫? <strong style="color:var(--text);">800+</strong> 隞嗅?撌交?靘??冽蝝?/p>
+      <a href="gallery.html" class="btn-primary">?亦??券?詨? ??/a>
     </div>
   </div>
 </section>
 
-<!-- ── ABOUT TEASER ── -->
+<!-- ?? ABOUT TEASER ?? -->
 <section class="about-teaser section-gap">
   <div class="container">
     <div class="about-teaser-grid">
@@ -1777,126 +1777,126 @@ html.pv-mode .mobile-overlay     { display: none !important; }
           <div class="about-big-num">20</div>
           <div class="about-badge">
             <div class="ab-num">20</div>
-            <div class="ab-text">年工藝傳承</div>
+            <div class="ab-text">撟游極???/div>
           </div>
           <div class="about-visual-content">
-            <h3>鴻匠工程</h3>
-            <p>成立於 2004 年・台北市<br>持牌水電 + 室內裝修工程公司</p>
+            <h3>暾餃?撌亦?</h3>
+            <p>????2004 撟氬?啣?撣?br>??瘞湧 + 摰文鋆耨撌亦??砍</p>
             <div style="margin-top:20px;display:flex;gap:8px;flex-wrap:wrap;">
-              <span class="chip chip-blue" style="font-size:11px;">乙級水電技術士</span>
-              <span class="chip chip-green" style="font-size:11px;">甲級室內裝修</span>
-              <span class="chip chip-orange" style="font-size:11px;">30+ 名師傅</span>
+              <span class="chip chip-blue" style="font-size:11px;">銋?瘞湧?銵ㄚ</span>
+              <span class="chip chip-green" style="font-size:11px;">?脩?摰文鋆耨</span>
+              <span class="chip chip-orange" style="font-size:11px;">30+ ?葦??/span>
             </div>
           </div>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="label" style="margin-bottom:12px;">關於鴻匠工程</div>
+        <div class="label" style="margin-bottom:12px;">?暾餃?撌亦?</div>
         <div class="section-divider"></div>
         <h2 style="font-size:clamp(26px,3vw,40px); font-weight:800; letter-spacing:-0.03em; line-height:1.15; margin-bottom:16px;">
-          精工細作<br><span class="blue">每一細節皆是承諾</span>
+          蝎曉極蝝唬?<br><span class="blue">瘥?蝝啁???輯姥</span>
         </h2>
         <p style="font-size:15px; color:var(--text-muted); line-height:1.85; margin-bottom:24px;">
-          鴻匠工程成立於 2004 年，專注住宅及商業空間的水電工程與室內裝修服務。
-          我們擁有一支由資深師傅組成的施工團隊，秉持「品質第一、客戶至上」的核心理念，
-          二十年來累積逾八百件完成案例，深獲客戶信賴。
+          暾餃?撌亦?????2004 撟湛?撠釣雿???璆剔征??瘞湧撌亦??恕?扯?靽格???
+          ?????舐鞈楛撣怠?蝯??撌亙???蝘???鞈芰洵銝?恥?嗉銝??詨??艙嚗?
+          鈭?撟港?蝝舐??曉?曆辣摰?獢?嚗楛?脣恥?嗡縑鞈氬?
         </p>
         <div class="about-feats">
           <div class="about-feat">
             <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
-            <span>政府認證乙級技術士證照</span>
+            <span>?踹?隤?銋??銵ㄚ霅</span>
           </div>
           <div class="about-feat">
             <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
-            <span>全程施工透明化進度回報</span>
+            <span>?函??賢極???脣漲?</span>
           </div>
           <div class="about-feat">
             <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
-            <span data-cms="index.html.about.feat3">優質建材嚴選，拒絕偷工減料</span>
+            <span data-cms="index.html.about.feat3">?芾釭撱箸??湧嚗?蝯撌交???/span>
           </div>
           <div class="about-feat">
             <div class="feat-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 6l3 3 5-5"></path></svg></div>
-            <span data-cms="index.html.about.feat4">完工後兩年工程品質保固</span>
+            <span data-cms="index.html.about.feat4">摰極敺撟游極蝔?鞈芯???/span>
           </div>
         </div>
-        <a href="about.html" class="btn-primary">深入了解我們 →</a>
+        <a href="about.html" class="btn-primary">瘛勗鈭圾????/a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
+<!-- ?? TESTIMONIALS ?? -->
 <section class="testi-section section-gap">
   <div class="container">
     <div style="text-align:center; margin-bottom:48px;" class="reveal">
-      <div class="label" style="justify-content:center; margin-bottom:12px;">客戶見證</div>
+      <div class="label" style="justify-content:center; margin-bottom:12px;">摰Ｘ閬?</div>
       <div class="section-divider" style="margin:12px auto 0; background:linear-gradient(90deg,#fbbc04,var(--accent));"></div>
-      <h2 class="section-title" style="margin-top:16px;">口碑，是最好的<span class="blue"> 名片</span></h2>
+      <h2 class="section-title" style="margin-top:16px;">???嚗?憟賜?<span class="blue"> ??</span></h2>
     </div>
     <div class="testi-grid">
       <div class="testi-card reveal">
-        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text" data-cms="index.html.testi.1.text">鴻匠的師傅非常專業，施工期間整潔有序，完全不影響正常生活作息。完工後效果遠超預期！</p>
-        <div class="testi-author"><div class="testi-avatar">陳</div><div><div class="testi-name" data-cms="index.html.testi.1.author">陳小姐</div><div class="testi-role" data-cms="index.html.testi.1.role">台北市・全室裝修客戶</div></div></div>
+        <div class="stars"><span class="star">??/span><span class="star">??/span><span class="star">??/span><span class="star">??/span><span class="star">??/span></div>
+        <p class="testi-text" data-cms="index.html.testi.1.text">暾餃??葦??撣詨?璆哨??賢極???湔???嚗??其?敶梢甇?虜?暑雿??撌亙???????嚗?/p>
+        <div class="testi-author"><div class="testi-avatar">??/div><div><div class="testi-name" data-cms="index.html.testi.1.author">?喳?憪?/div><div class="testi-role" data-cms="index.html.testi.1.role">?啣?撣?典恕鋆耨摰Ｘ</div></div></div>
       </div>
       <div class="testi-card reveal reveal-delay-1">
-        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text" data-cms="index.html.testi.2.text">水電工程做得非常仔細，配管走線整齊美觀，師傅還主動提醒了幾個安全隱患，令人放心。</p>
-        <div class="testi-author"><div class="testi-avatar">林</div><div><div class="testi-name" data-cms="index.html.testi.2.author">林先生</div><div class="testi-role" data-cms="index.html.testi.2.role">新北市・水電工程客戶</div></div></div>
+        <div class="stars"><span class="star">??/span><span class="star">??/span><span class="star">??/span><span class="star">??/span><span class="star">??/span></div>
+        <p class="testi-text" data-cms="index.html.testi.2.text">瘞湧撌亦????虜隞敦嚗?蝞∟粥蝺朣?閫嚗葦??銝餃???鈭嗾???券???隞支犖?曉???/p>
+        <div class="testi-author"><div class="testi-avatar">??/div><div><div class="testi-name" data-cms="index.html.testi.2.author">????/div><div class="testi-role" data-cms="index.html.testi.2.role">?啣?撣瘞湧撌亦?摰Ｘ</div></div></div>
       </div>
       <div class="testi-card reveal reveal-delay-2">
-        <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-        <p class="testi-text" data-cms="index.html.testi.3.text">報價透明，沒有隱藏費用，施工過程全程拍照回報。完工後小問題，立刻安排師傅回來處理。</p>
-        <div class="testi-author"><div class="testi-avatar">王</div><div><div class="testi-name" data-cms="index.html.testi.3.author">王先生</div><div class="testi-role" data-cms="index.html.testi.3.role">台中市・廚衛改造客戶</div></div></div>
+        <div class="stars"><span class="star">??/span><span class="star">??/span><span class="star">??/span><span class="star">??/span><span class="star">??/span></div>
+        <p class="testi-text" data-cms="index.html.testi.3.text">?勗??嚗???祥?剁??賢極???函?????撌亙?撠?憿?蝡摰?撣怠???????/p>
+        <div class="testi-author"><div class="testi-avatar">??/div><div><div class="testi-name" data-cms="index.html.testi.3.author">????/div><div class="testi-role" data-cms="index.html.testi.3.role">?唬葉撣撱??寥恥??/div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ── -->
+<!-- ?? CTA ?? -->
 <section class="cta-banner">
   <div class="container">
     <div class="cta-inner">
       <div>
-        <h2 class="cta-title" data-cms="index.html.cta.title">開始您的裝修計畫<br>今天就聯繫我們</h2>
-        <p class="cta-sub">免費到府估價 · 透明報價 · 二年保固 · 全台服務</p>
+        <h2 class="cta-title" data-cms="index.html.cta.title">???函?鋆耨閮<br>隞予撠梯蝜急???/h2>
+        <p class="cta-sub">?祥?啣?隡啣 繚 ???勗 繚 鈭僑靽 繚 ?典??</p>
       </div>
       <a href="contact.html" class="btn-white">
-        <span data-cms="index.html.cta.btn">立即免費諮詢</span>
+        <span data-cms="index.html.cta.btn">蝡?祥隢株岷</span>
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- ?? FOOTER ?? -->
 
 
 <!-- Lightbox -->
 
-    <button class="lightbox-prev">‹</button>
-    <button class="lightbox-next">›</button>
+    <button class="lightbox-prev">??/button>
+    <button class="lightbox-next">??/button>
   </div>
 </div>
 </div>
 
-<!-- ═══ PAGE: 水電工程 ═══ -->
+<!-- ????PAGE: 瘞湧撌亦? ????-->
 <div class="spa-page" data-page="service-water" style="display:none;">
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="container page-hero-content">
     <div class="breadcrumb">
-      <a href="index.html">首頁</a>
-      <span class="breadcrumb-sep">›</span>
-      <a href="#">服務項目</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>水電工程</span>
+      <a href="index.html">擐?</a>
+      <span class="breadcrumb-sep">??/span>
+      <a href="#">???</a>
+      <span class="breadcrumb-sep">??/span>
+      <span>瘞湧撌亦?</span>
     </div>
-    <div class="label page-hero-label">SERVICE 01 / 水電工程</div>
-    <h1 class="page-hero-title" data-cms="service-water.html.hero.title">專業水電<br><span class="blue">配管工程</span></h1>
-    <p class="page-hero-desc" data-cms="service-water.html.hero.desc">給排水系統規劃配管、電氣迴路設計、弱電系統整合，確保每一處管線安全耐用、符合建築法規標準。</p>
-    <div class="exp-badge" data-cms="service-water.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+    <div class="label page-hero-label">SERVICE 01 / 瘞湧撌亦?</div>
+    <h1 class="page-hero-title" data-cms="service-water.html.hero.title">撠平瘞湧<br><span class="blue">?恣撌亦?</span></h1>
+    <p class="page-hero-desc" data-cms="service-water.html.hero.desc">蝯行?瘞渡頂蝯梯???蝞～瘞?艘頝航身閮摹?餌頂蝯望??蝣箔?瘥??恣蝺??刻?泵?遣蝭?閬?皞?/p>
+    <div class="exp-badge" data-cms="service-water.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20撟游?璆剔?撽?/div>
   </div>
 </section>
 
@@ -1905,18 +1905,18 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:14px;">服務範疇</div>
-        <h2 class="section-title">四大核心<br><span class="blue">水電服務</span></h2>
+        <div class="label" style="margin-bottom:14px;">??蝭?</div>
+        <h2 class="section-title">?之?詨?<br><span class="blue">瘞湧??</span></h2>
       </div>
-      <p class="section-desc">從規劃、施工到驗收，提供完整的水電工程解決方案，確保每一處細節安全可靠。</p>
+      <p class="section-desc">敺??撌亙撽嚗?靘??渡?瘞湧撌亦?閫?捱?寞?嚗Ⅱ靽?銝?敦蝭摰?舫???/p>
     </div>
     <div class="overview-grid">
       <div class="overview-card reveal">
         <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M12 40V24a12 12 0 1124 0v16M12 32h24M18 40v-8M30 40v-8"></path>
         </svg>
-        <h3 data-cms="service-water.html.card.1.title">給排水配管</h3>
-        <p data-cms="service-water.card.1.desc">自來水管全室更換、熱水管路安裝、廚衛排水配管、管路防漏處理</p>
+        <h3 data-cms="service-water.html.card.1.title">蝯行?瘞湧?蝞?/h3>
+        <p data-cms="service-water.card.1.desc">?芯?瘞渡恣?典恕?湔??瘞渡恣頝臬?鋆?銵?瘞湧?蝞～恣頝舫瞍???/p>
       </div>
       <div class="overview-card reveal reveal-delay-1">
         <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1924,99 +1924,99 @@ html.pv-mode .mobile-overlay     { display: none !important; }
           <circle cx="24" cy="24" r="8"></circle>
           <path d="M14 14l6 6M28 28l6 6M14 34l6-6M28 14l6-6"></path>
         </svg>
-        <h3 data-cms="service-water.html.card.2.title">電氣迴路配線</h3>
-        <p data-cms="service-water.card.2.desc">全室電氣迴路設計、配電箱更換、插座開關更新、照明迴路安裝</p>
+        <h3 data-cms="service-water.html.card.2.title">?餅除餈渲楝??</h3>
+        <p data-cms="service-water.card.2.desc">?典恕?餅除餈渲楝閮剛????餌拳?湔???摨折???啜?艘頝臬?鋆?/p>
       </div>
       <div class="overview-card reveal reveal-delay-2">
         <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="8" y="8" width="32" height="32" rx="2"></rect>
           <path d="M8 20h32M20 20v20M8 32h12"></path>
         </svg>
-        <h3 data-cms="service-water.html.card.3.title">弱電系統整合</h3>
-        <p data-cms="service-water.card.3.desc">網路線佈設、電視天線、門禁對講機、監視系統、智能家居配線</p>
+        <h3 data-cms="service-water.html.card.3.title">撘梢蝟餌絞?游?</h3>
+        <p data-cms="service-water.card.3.desc">蝬脰楝蝺?閮准閬予蝺?蝳?雓??閬頂蝯晞?賢振撅?蝺?/p>
       </div>
       <div class="overview-card reveal reveal-delay-3">
         <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M24 8l4 8h8l-6 6 2 10-8-4-8 4 2-10-6-6h8z"></path>
         </svg>
-        <h3 data-cms="service-water.html.card.4.title">消防緊急系統</h3>
-        <p data-cms="service-water.card.4.desc">消防灑水管配管、緊急照明配線、火警感知器、避雷針接地工程</p>
+        <h3 data-cms="service-water.html.card.4.title">瘨蝺亦頂蝯?/h3>
+        <p data-cms="service-water.card.4.desc">瘨?偌蝞⊿?蝞～??亦??蝺霅行??亙??琿??亙撌亦?</p>
       </div>
     </div>
 
     <!-- ACCORDION -->
     <div class="reveal">
-      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="label" style="margin-bottom:24px;">閰喟敦???</div>
       <div class="accordion">
         <div class="accordion-item open">
           <div class="accordion-head">
-            <h3 data-cms="service-water.html.acc.1.title">給水排水系統規劃與配管</h3>
-            <span class="accordion-icon">−</span>
+            <h3 data-cms="service-water.html.acc.1.title">蝯行偌?偌蝟餌絞閬???蝞?/h3>
+            <span class="accordion-icon">??/span>
           </div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-water.html.acc.1.li.1">自來水管全室更換（PPR / PVC 管材）</li>
-              <li data-cms="service-water.html.acc.1.li.2">熱水器管路安裝與更新</li>
-              <li data-cms="service-water.html.acc.1.li.3">廚房廁所排水配管</li>
-              <li data-cms="service-water.html.acc.1.li.4">管路防漏處理與測試</li>
-              <li data-cms="service-water.html.acc.1.li.5">水壓測試與品質驗收</li>
-              <li data-cms="service-water.html.acc.1.li.6">給水加壓馬達安裝</li>
-              <li data-cms="service-water.html.acc.1.li.7">衛生設備安裝（馬桶/浴缸/洗手台）</li>
-              <li data-cms="service-water.html.acc.1.li.8">鑄鐵管汰換為新式管材</li>
+              <li data-cms="service-water.html.acc.1.li.1">?芯?瘞渡恣?典恕?湔?嚗PR / PVC 蝞⊥?嚗?/li>
+              <li data-cms="service-water.html.acc.1.li.2">?望偌?函恣頝臬?鋆??湔</li>
+              <li data-cms="service-water.html.acc.1.li.3">撱撱??偌?恣</li>
+              <li data-cms="service-water.html.acc.1.li.4">蝞∟楝?脫????葫閰?/li>
+              <li data-cms="service-water.html.acc.1.li.5">瘞游?皜祈岫??鞈芷???/li>
+              <li data-cms="service-water.html.acc.1.li.6">蝯行偌??擐祇?摰?</li>
+              <li data-cms="service-water.html.acc.1.li.7">銵?閮剖?摰?嚗收獢?瘚渡撓/瘣??堆?</li>
+              <li data-cms="service-water.html.acc.1.li.8">?蝞⊥掠??啣?蝞⊥?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-head">
-            <h3 data-cms="service-water.html.acc.2.title">電氣迴路規劃與配線</h3>
+            <h3 data-cms="service-water.html.acc.2.title">?餅除餈渲楝閬???蝺?/h3>
             <span class="accordion-icon">+</span>
           </div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-water.html.acc.2.li.1">全室電氣迴路設計規劃</li>
-              <li data-cms="service-water.html.acc.2.li.2">配電箱更換（無熔絲開關）</li>
-              <li data-cms="service-water.html.acc.2.li.3">插座 / 開關全室更新</li>
-              <li data-cms="service-water.html.acc.2.li.4">照明迴路規劃安裝</li>
-              <li data-cms="service-water.html.acc.2.li.5">空調電源迴路配線</li>
-              <li data-cms="service-water.html.acc.2.li.6">廚房大功率設備迴路</li>
-              <li data-cms="service-water.html.acc.2.li.7">接地線施工</li>
-              <li data-cms="service-water.html.acc.2.li.8">用電安全檢查報告</li>
+              <li data-cms="service-water.html.acc.2.li.1">?典恕?餅除餈渲楝閮剛?閬?</li>
+              <li data-cms="service-water.html.acc.2.li.2">?蝞望???∠?蝯脤???</li>
+              <li data-cms="service-water.html.acc.2.li.3">?漣 / ???典恕?湔</li>
+              <li data-cms="service-water.html.acc.2.li.4">?扳?餈渲楝閬?摰?</li>
+              <li data-cms="service-water.html.acc.2.li.5">蝛箄矽?餅?餈渲楝??</li>
+              <li data-cms="service-water.html.acc.2.li.6">撱憭批??身?艘頝?/li>
+              <li data-cms="service-water.html.acc.2.li.7">?亙蝺撌?/li>
+              <li data-cms="service-water.html.acc.2.li.8">?券摰瑼Ｘ?勗?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-head">
-            <h3 data-cms="service-water.html.acc.3.title">弱電系統整合佈設</h3>
+            <h3 data-cms="service-water.html.acc.3.title">撘梢蝟餌絞?游?雿身</h3>
             <span class="accordion-icon">+</span>
           </div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-water.html.acc.3.li.1">網路線（Cat6）全室佈設</li>
-              <li data-cms="service-water.html.acc.3.li.2">電視天線 / 有線電視</li>
-              <li data-cms="service-water.html.acc.3.li.3">門禁對講機系統</li>
-              <li data-cms="service-water.html.acc.3.li.4">保全監視系統配線</li>
-              <li data-cms="service-water.html.acc.3.li.5">智能家居系統整合</li>
-              <li data-cms="service-water.html.acc.3.li.6">音響系統佈線</li>
-              <li data-cms="service-water.html.acc.3.li.7">弱電箱彙整美化</li>
-              <li data-cms="service-water.html.acc.3.li.8">光纖入戶配線</li>
+              <li data-cms="service-water.html.acc.3.li.1">蝬脰楝蝺?Cat6嚗摰支?閮?/li>
+              <li data-cms="service-water.html.acc.3.li.2">?餉?憭拍? / ???餉?</li>
+              <li data-cms="service-water.html.acc.3.li.3">?蝳?雓?蝟餌絞</li>
+              <li data-cms="service-water.html.acc.3.li.4">靽???蝟餌絞??</li>
+              <li data-cms="service-water.html.acc.3.li.5">?箄摰嗅?蝟餌絞?游?</li>
+              <li data-cms="service-water.html.acc.3.li.6">?喲蝟餌絞雿?</li>
+              <li data-cms="service-water.html.acc.3.li.7">撘梢蝞勗??渡???/li>
+              <li data-cms="service-water.html.acc.3.li.8">???交??</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
           <div class="accordion-head">
-            <h3 data-cms="service-water.html.acc.4.title">消防與緊急系統</h3>
+            <h3 data-cms="service-water.html.acc.4.title">瘨???亦頂蝯?/h3>
             <span class="accordion-icon">+</span>
           </div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-water.html.acc.4.li.1">消防灑水頭配管</li>
-              <li data-cms="service-water.html.acc.4.li.2">緊急照明電源配線</li>
-              <li data-cms="service-water.html.acc.4.li.3">消防廣播系統</li>
-              <li data-cms="service-water.html.acc.4.li.4">火警感知器安裝</li>
-              <li data-cms="service-water.html.acc.4.li.5">避雷針接地工程</li>
-              <li data-cms="service-water.html.acc.4.li.6">備用電源 UPS 配置</li>
-              <li data-cms="service-water.html.acc.4.li.7">緊急出口指示燈</li>
-              <li data-cms="service-water.html.acc.4.li.8">消防系統年度維護</li>
+              <li data-cms="service-water.html.acc.4.li.1">瘨?偌?剝?蝞?/li>
+              <li data-cms="service-water.html.acc.4.li.2">蝺亦?皞?蝺?/li>
+              <li data-cms="service-water.html.acc.4.li.3">瘨撱?蝟餌絞</li>
+              <li data-cms="service-water.html.acc.4.li.4">?怨郎??典?鋆?/li>
+              <li data-cms="service-water.html.acc.4.li.5">?輸??啣極蝔?/li>
+              <li data-cms="service-water.html.acc.4.li.6">??餅? UPS ?蔭</li>
+              <li data-cms="service-water.html.acc.4.li.7">蝺亙???蝷箇?</li>
+              <li data-cms="service-water.html.acc.4.li.8">瘨蝟餌絞撟游漲蝬剛風</li>
             </ul>
           </div>
         </div>
@@ -2030,25 +2030,25 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:14px;">相關案例</div>
-        <h2 class="section-title">水電工程<br><span class="blue">實績展示</span></h2>
+        <div class="label" style="margin-bottom:14px;">?賊?獢?</div>
+        <h2 class="section-title">瘞湧撌亦?<br><span class="blue">撖衣蜀撅內</span></h2>
       </div>
-      <a href="gallery.html" class="btn-outline">查看全部相冊 →</a>
+      <a href="gallery.html" class="btn-outline">?亦??券?詨? ??/a>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="商辦大樓全棟水電更新" data-meta="新北市・680坪・2024.01">
-        <img src="https://picsum.photos/seed/hj02/800/600" alt="商辦大樓水電更新" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">商辦大樓全棟水電更新</div></div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-2/1200/800" data-title="?齒憭扳??冽?瘞湧?湔" data-meta="?啣?撣680?芥2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/600" alt="?齒憭扳?瘞湧?湔" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">瘞湧撌亦?</div><div class="gallery-item-title">?齒憭扳??冽?瘞湧?湔</div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-6/1200/800" data-title="老公寓水電全面更新" data-meta="台北市萬華區・24坪・2023.05">
-        <img src="https://picsum.photos/seed/hj06/800/600" alt="老公寓水電更新" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">老公寓水電全面更新</div></div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-6/1200/800" data-title="?撖偌?餃?Ｘ?? data-meta="?啣?撣?臬???4?芥2023.05">
+        <img src="https://picsum.photos/seed/hj06/800/600" alt="?撖偌?餅?? loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">瘞湧撌亦?</div><div class="gallery-item-title">?撖偌?餃?Ｘ??/div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-11/1200/800" data-title="社區管線整體汰換" data-meta="新北市新店區・2022.10">
-        <img src="https://picsum.photos/seed/hj11/800/600" alt="社區管線汰換" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">水電工程</div><div class="gallery-item-title">社區管線整體汰換</div></div>
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj-full-11/1200/800" data-title="蝷曉?蝞∠??湧?瘙唳?" data-meta="?啣?撣摨???022.10">
+        <img src="https://picsum.photos/seed/hj11/800/600" alt="蝷曉?蝞∠?瘙唳?" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">瘞湧撌亦?</div><div class="gallery-item-title">蝷曉?蝞∠??湧?瘙唳?</div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
     </div>
@@ -2060,10 +2060,10 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="cta-inner">
       <div>
-        <h2 class="cta-title">水電工程免費估價<br><em>今天就聯繫我們</em></h2>
-        <p class="cta-sub">到府勘查 · 透明報價 · 二年保固</p>
+        <h2 class="cta-title">瘞湧撌亦??祥隡啣<br><em>隞予撠梯蝜急???/em></h2>
+        <p class="cta-sub">?啣?? 繚 ???勗 繚 鈭僑靽</p>
       </div>
-      <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+      <a href="contact.html" class="btn-dark">蝡?祥隢株岷 ??/a>
     </div>
   </div>
 </section>
@@ -2071,26 +2071,26 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 
 
 
-    <button class="lightbox-prev">‹</button>
-    <button class="lightbox-next">›</button>
+    <button class="lightbox-prev">??/button>
+    <button class="lightbox-next">??/button>
   </div>
 </div>
 </div>
 
-<!-- ═══ PAGE: 室內裝修 ═══ -->
+<!-- ????PAGE: 摰文鋆耨 ????-->
 <div class="spa-page" data-page="service-interior" style="display:none;">
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="container page-hero-content">
     <div class="breadcrumb">
-      <a href="index.html">首頁</a><span class="breadcrumb-sep">›</span>
-      <a href="#">服務項目</a><span class="breadcrumb-sep">›</span>
-      <span>室內裝修</span>
+      <a href="index.html">擐?</a><span class="breadcrumb-sep">??/span>
+      <a href="#">???</a><span class="breadcrumb-sep">??/span>
+      <span>摰文鋆耨</span>
     </div>
-    <div class="label page-hero-label">SERVICE 02 / 室內裝修</div>
-    <h1 class="page-hero-title" data-cms="service-interior.html.hero.title">精緻室內<br><span class="blue">裝修工程</span></h1>
-    <p class="page-hero-desc" data-cms="service-interior.html.hero.desc">客廳、廚房、衛浴到全室翻新，融合美學設計與工藝施工，打造符合您生活品味的理想居家。</p>
-    <div class="exp-badge" data-cms="service-interior.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+    <div class="label page-hero-label">SERVICE 02 / 摰文鋆耨</div>
+    <h1 class="page-hero-title" data-cms="service-interior.html.hero.title">蝎曄溶摰文<br><span class="blue">鋆耨撌亦?</span></h1>
+    <p class="page-hero-desc" data-cms="service-interior.html.hero.desc">摰Ｗ輒???踴?瘚游?典恕蝧餅嚗???摮貉身閮?撌亥??賢極嚗??泵??暑????喳?摰嗚?/p>
+    <div class="exp-badge" data-cms="service-interior.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20撟游?璆剔?撽?/div>
   </div>
 </section>
 
@@ -2098,10 +2098,10 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:14px;">服務範疇</div>
-        <h2 class="section-title">五大空間<br><span class="blue">裝修服務</span></h2>
+        <div class="label" style="margin-bottom:14px;">??蝭?</div>
+        <h2 class="section-title">鈭之蝛粹?<br><span class="blue">鋆耨??</span></h2>
       </div>
-      <p class="section-desc">從單一空間改造到全室翻新，每個施工環節嚴格把關，呈現最高品質的完工成果。</p>
+      <p class="section-desc">敺銝蝛粹??寥?典恕蝧餅嚗??撌亦蝭?湔??嚗??暹?擃?鞈芰?摰極????/p>
     </div>
     <div class="overview-grid">
       <div class="overview-card reveal">
@@ -2109,105 +2109,105 @@ html.pv-mode .mobile-overlay     { display: none !important; }
           <rect x="6" y="10" width="36" height="28" rx="1"></rect>
           <path d="M6 22h36M18 22v16"></path>
         </svg>
-        <h3 data-cms="service-interior.html.card.1.title">客廳・餐廳</h3><p data-cms="service-interior.card.1.desc">天花板、地板、牆面、造型電視牆、間接照明、隔間牆施工</p>
+        <h3 data-cms="service-interior.html.card.1.title">摰Ｗ輒?駁?撱?/h3><p data-cms="service-interior.card.1.desc">憭抵?踴?踴??Ｕ??餉????亦?????賢極</p>
       </div>
       <div class="overview-card reveal reveal-delay-1">
         <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="8" y="16" width="32" height="22" rx="1"></rect>
           <path d="M8 22h32M8 28h10M32 28h8M18 28v10"></path>
         </svg>
-        <h3 data-cms="service-interior.html.card.2.title">廚房改造</h3><p data-cms="service-interior.card.2.desc">系統廚具、流理台面材、磁磚鋪設、抽油煙機管路配合</p>
+        <h3 data-cms="service-interior.html.card.2.title">撱?寥?/h3><p data-cms="service-interior.card.2.desc">蝟餌絞撱????Ｘ???蝤閮准瘝寧?璈恣頝舫???/p>
       </div>
       <div class="overview-card reveal reveal-delay-2">
         <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <rect x="10" y="12" width="28" height="26" rx="1"></rect>
           <path d="M10 24h28M22 12v26M10 36h12"></path>
         </svg>
-        <h3 data-cms="service-interior.html.card.3.title">衛浴改造</h3><p data-cms="service-interior.card.3.desc">防水工程、磁磚鋪設、馬桶浴缸安裝、乾濕分離施工</p>
+        <h3 data-cms="service-interior.html.card.3.title">銵絕?寥?/h3><p data-cms="service-interior.card.3.desc">?脫偌撌亦???蝤閮准收獢嗆絕蝻詨?鋆嗾瞈??Ｘ撌?/p>
       </div>
       <div class="overview-card reveal reveal-delay-3">
         <svg class="overview-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
           <path d="M8 40V16l16-8 16 8v24"></path><rect x="18" y="28" width="12" height="12" rx="1"></rect>
         </svg>
-        <h3 data-cms="service-interior.html.card.4.title">全室翻新</h3><p data-cms="service-interior.card.4.desc">舊屋整建、壁癌處理、管線汰換、全室粉刷一次到位</p>
+        <h3 data-cms="service-interior.html.card.4.title">?典恕蝧餅</h3><p data-cms="service-interior.card.4.desc">???游遣?????恣蝺掠?摰斤??瑚?甈∪雿?/p>
       </div>
     </div>
 
     <div class="reveal">
-      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="label" style="margin-bottom:24px;">閰喟敦???</div>
       <div class="accordion">
         <div class="accordion-item open">
-          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.1.title">客廳・餐廳施工</h3><span class="accordion-icon">−</span></div>
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.1.title">摰Ｗ輒?駁?撱單撌?/h3><span class="accordion-icon">??/span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-interior.html.acc.1.li.1">天花板輕鋼架 / 矽酸鈣板工程</li>
-              <li data-cms="service-interior.html.acc.1.li.2">造型天花板設計施作</li>
-              <li data-cms="service-interior.html.acc.1.li.3">地板鋪設（磁磚 / 木地板 / 石材）</li>
-              <li data-cms="service-interior.html.acc.1.li.4">牆面粉刷與裝飾</li>
-              <li data-cms="service-interior.html.acc.1.li.5">電視牆造型設計</li>
-              <li data-cms="service-interior.html.acc.1.li.6">間接照明施工</li>
-              <li data-cms="service-interior.html.acc.1.li.7">窗簾盒施作</li>
-              <li data-cms="service-interior.html.acc.1.li.8">隔間牆施工</li>
+              <li data-cms="service-interior.html.acc.1.li.1">憭抵?輯??潭 / ?賡??撌亦?</li>
+              <li data-cms="service-interior.html.acc.1.li.2">??憭抵?輯身閮雿?/li>
+              <li data-cms="service-interior.html.acc.1.li.3">?唳?芾身嚗?蝤?/ ?典??/ ?單?嚗?/li>
+              <li data-cms="service-interior.html.acc.1.li.4">?蝎??憌?/li>
+              <li data-cms="service-interior.html.acc.1.li.5">?餉???閮剛?</li>
+              <li data-cms="service-interior.html.acc.1.li.6">??扳??賢極</li>
+              <li data-cms="service-interior.html.acc.1.li.7">蝒偏?雿?/li>
+              <li data-cms="service-interior.html.acc.1.li.8">???撌?/li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.2.title">廚房裝修工程</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.2.title">撱鋆耨撌亦?</h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-interior.html.acc.2.li.1">廚房系統廚具安裝</li>
-              <li data-cms="service-interior.html.acc.2.li.2">流理台面材鋪設</li>
-              <li data-cms="service-interior.html.acc.2.li.3">廚房磁磚拆除重鋪</li>
-              <li data-cms="service-interior.html.acc.2.li.4">抽油煙機管路配合</li>
-              <li data-cms="service-interior.html.acc.2.li.5">嵌入式廚具安裝</li>
-              <li data-cms="service-interior.html.acc.2.li.6">廚房水電配合施工</li>
-              <li data-cms="service-interior.html.acc.2.li.7">廚房防水工程</li>
-              <li data-cms="service-interior.html.acc.2.li.8">廚房門更換</li>
+              <li data-cms="service-interior.html.acc.2.li.1">撱蝟餌絞撱摰?</li>
+              <li data-cms="service-interior.html.acc.2.li.2">瘚??圈?閮?/li>
+              <li data-cms="service-interior.html.acc.2.li.3">撱蝤???</li>
+              <li data-cms="service-interior.html.acc.2.li.4">?賣硃??蝞∟楝??</li>
+              <li data-cms="service-interior.html.acc.2.li.5">撋撘??瑕?鋆?/li>
+              <li data-cms="service-interior.html.acc.2.li.6">撱瘞湧???賢極</li>
+              <li data-cms="service-interior.html.acc.2.li.7">撱?脫偌撌亦?</li>
+              <li data-cms="service-interior.html.acc.2.li.8">撱??湔?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.3.title">衛浴改造工程</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.3.title">銵絕?寥極蝔?/h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-interior.html.acc.3.li.1">衛浴全室防水工程</li>
-              <li data-cms="service-interior.html.acc.3.li.2">磁磚拆除及重新鋪設</li>
-              <li data-cms="service-interior.html.acc.3.li.3">馬桶 / 浴缸 / 淋浴拉門安裝</li>
-              <li data-cms="service-interior.html.acc.3.li.4">浴室鏡櫃 / 收納安裝</li>
-              <li data-cms="service-interior.html.acc.3.li.5">乾濕分離施工</li>
-              <li data-cms="service-interior.html.acc.3.li.6">排風設備安裝</li>
-              <li data-cms="service-interior.html.acc.3.li.7">浴室暖風機安裝</li>
-              <li data-cms="service-interior.html.acc.3.li.8">五金配件更換</li>
+              <li data-cms="service-interior.html.acc.3.li.1">銵絕?典恕?脫偌撌亦?</li>
+              <li data-cms="service-interior.html.acc.3.li.2">蝤?????圈閮?/li>
+              <li data-cms="service-interior.html.acc.3.li.3">擐祆▲ / 瘚渡撓 / 瘛絕??摰?</li>
+              <li data-cms="service-interior.html.acc.3.li.4">瘚游恕?⊥? / ?嗥?摰?</li>
+              <li data-cms="service-interior.html.acc.3.li.5">銋暹???賢極</li>
+              <li data-cms="service-interior.html.acc.3.li.6">?◢閮剖?摰?</li>
+              <li data-cms="service-interior.html.acc.3.li.7">瘚游恕?◢璈?鋆?/li>
+              <li data-cms="service-interior.html.acc.3.li.8">鈭??辣?湔?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.4.title">臥室・書房工程</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.4.title">?亙恕?餅?踹極蝔?/h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-interior.html.acc.4.li.1">系統衣櫃規劃安裝</li>
-              <li data-cms="service-interior.html.acc.4.li.2">書桌書架客製製作</li>
-              <li data-cms="service-interior.html.acc.4.li.3">臥室地板鋪設</li>
-              <li data-cms="service-interior.html.acc.4.li.4">滑門拉門安裝</li>
-              <li data-cms="service-interior.html.acc.4.li.5">臥室燈光規劃</li>
-              <li data-cms="service-interior.html.acc.4.li.6">更衣間規劃施作</li>
-              <li data-cms="service-interior.html.acc.4.li.7">窗戶氣密施工</li>
-              <li data-cms="service-interior.html.acc.4.li.8">窗簾軌道安裝</li>
+              <li data-cms="service-interior.html.acc.4.li.1">蝟餌絞銵??閬?摰?</li>
+              <li data-cms="service-interior.html.acc.4.li.2">?豢??豢摰Ｚˊ鋆賭?</li>
+              <li data-cms="service-interior.html.acc.4.li.3">?亙恕?唳?芾身</li>
+              <li data-cms="service-interior.html.acc.4.li.4">皛???摰?</li>
+              <li data-cms="service-interior.html.acc.4.li.5">?亙恕??閬?</li>
+              <li data-cms="service-interior.html.acc.4.li.6">?渲﹝???雿?/li>
+              <li data-cms="service-interior.html.acc.4.li.7">蝒瘞???賢極</li>
+              <li data-cms="service-interior.html.acc.4.li.8">蝒偏頠?摰?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.5.title">舊屋翻新整合</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-interior.html.acc.5.title">??蝧餅?游?</h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-interior.html.acc.5.li.1">壁癌處理與防水補強</li>
-              <li data-cms="service-interior.html.acc.5.li.2">管線全室汰換</li>
-              <li data-cms="service-interior.html.acc.5.li.3">隔間牆調整拆除</li>
-              <li data-cms="service-interior.html.acc.5.li.4">門窗框更換</li>
-              <li data-cms="service-interior.html.acc.5.li.5">外牆防水施工</li>
-              <li data-cms="service-interior.html.acc.5.li.6">地板底層整平</li>
-              <li data-cms="service-interior.html.acc.5.li.7">全室粉刷翻新</li>
-              <li data-cms="service-interior.html.acc.5.li.8">陽台外推 / 整修</li>
+              <li data-cms="service-interior.html.acc.5.li.1">憯????瘞渲?撘?/li>
+              <li data-cms="service-interior.html.acc.5.li.2">蝞∠??典恕瘙唳?</li>
+              <li data-cms="service-interior.html.acc.5.li.3">???矽?湔???/li>
+              <li data-cms="service-interior.html.acc.5.li.4">?蝒??湔?</li>
+              <li data-cms="service-interior.html.acc.5.li.5">憭??脫偌?賢極</li>
+              <li data-cms="service-interior.html.acc.5.li.6">?唳摨惜?游像</li>
+              <li data-cms="service-interior.html.acc.5.li.7">?典恕蝎蝧餅</li>
+              <li data-cms="service-interior.html.acc.5.li.8">?賢憭 / ?港耨</li>
             </ul>
           </div>
         </div>
@@ -2220,25 +2220,25 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:14px;">相關案例</div>
-        <h2 class="section-title">室內裝修<br><span class="blue">實績展示</span></h2>
+        <div class="label" style="margin-bottom:14px;">?賊?獢?</div>
+        <h2 class="section-title">摰文鋆耨<br><span class="blue">撖衣蜀撅內</span></h2>
       </div>
-      <a href="gallery.html" class="btn-outline">查看全部相冊 →</a>
+      <a href="gallery.html" class="btn-outline">?亦??券?詨? ??/a>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-1/1200/800" data-title="現代簡約三房公寓" data-meta="台北市大安區・40坪・2024.03">
-        <img src="https://picsum.photos/seed/hj01/800/600" alt="現代簡約三房公寓" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">室內裝修</div><div class="gallery-item-title">現代簡約三房公寓</div></div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-1/1200/800" data-title="?曆誨蝪∠?銝?砍?" data-meta="?啣?撣之摰???0?芥2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/600" alt="?曆誨蝪∠?銝?砍?" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">摰文鋆耨</div><div class="gallery-item-title">?曆誨蝪∠?銝?砍?</div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-3/1200/800" data-title="廚房衛浴全面翻新" data-meta="台中市・28坪・2023.11">
-        <img src="https://picsum.photos/seed/hj03/800/600" alt="廚房衛浴翻新" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">廚衛改造</div><div class="gallery-item-title">廚房衛浴全面翻新</div></div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-3/1200/800" data-title="撱銵絕?券蝧餅" data-meta="?唬葉撣28?芥2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/600" alt="撱銵絕蝧餅" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">撱??寥?/div><div class="gallery-item-title">撱銵絕?券蝧餅</div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-7/1200/800" data-title="北歐風格兩房裝修" data-meta="新北市板橋區・32坪・2023.04">
-        <img src="https://picsum.photos/seed/hj07/800/600" alt="北歐風格裝修" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">室內裝修</div><div class="gallery-item-title">北歐風格兩房裝修</div></div>
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj-full-7/1200/800" data-title="??憸冽?拇鋆耨" data-meta="?啣?撣璈???2?芥2023.04">
+        <img src="https://picsum.photos/seed/hj07/800/600" alt="??憸冽鋆耨" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">摰文鋆耨</div><div class="gallery-item-title">??憸冽?拇鋆耨</div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
     </div>
@@ -2249,10 +2249,10 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="cta-inner">
       <div>
-        <h2 class="cta-title">室內裝修免費估價<br><em>今天就聯繫我們</em></h2>
-        <p class="cta-sub">到府勘查 · 透明報價 · 二年保固</p>
+        <h2 class="cta-title">摰文鋆耨?祥隡啣<br><em>隞予撠梯蝜急???/em></h2>
+        <p class="cta-sub">?啣?? 繚 ???勗 繚 鈭僑靽</p>
       </div>
-      <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+      <a href="contact.html" class="btn-dark">蝡?祥隢株岷 ??/a>
     </div>
   </div>
 </section>
@@ -2260,21 +2260,21 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 
 
 
-    <button class="lightbox-prev">‹</button>
-    <button class="lightbox-next">›</button>
+    <button class="lightbox-prev">??/button>
+    <button class="lightbox-next">??/button>
   </div>
 </div>
 </div>
 
-<!-- ═══ PAGE: 設計規劃 ═══ -->
+<!-- ????PAGE: 閮剛?閬? ????-->
 <div class="spa-page" data-page="service-design" style="display:none;">
 <section class="page-hero"><div class="page-hero-bg"></div>
   <div class="container page-hero-content">
-    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><a href="#">服務項目</a><span class="breadcrumb-sep">›</span><span>設計規劃</span></div>
-    <div class="label page-hero-label">SERVICE 03 / 設計規劃</div>
-    <h1 class="page-hero-title" data-cms="service-design.html.hero.title">空間設計<br><span class="blue">量身規劃</span></h1>
-    <p class="page-hero-desc" data-cms="service-design.html.hero.desc">由專業室內設計師主導，從風格定義到施工圖面，全程陪伴您完成理想空間的每一個細節。</p>
-    <div class="exp-badge" data-cms="service-design.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+    <div class="breadcrumb"><a href="index.html">擐?</a><span class="breadcrumb-sep">??/span><a href="#">???</a><span class="breadcrumb-sep">??/span><span>閮剛?閬?</span></div>
+    <div class="label page-hero-label">SERVICE 03 / 閮剛?閬?</div>
+    <h1 class="page-hero-title" data-cms="service-design.html.hero.title">蝛粹?閮剛?<br><span class="blue">?澈閬?</span></h1>
+    <p class="page-hero-desc" data-cms="service-design.html.hero.desc">?勗?璆剖恕?扯身閮葦銝餃?嚗?憸冽摰儔?唳撌亙??ｇ??函??芯撈?典????喟征??瘥??敦蝭??/p>
+    <div class="exp-badge" data-cms="service-design.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20撟游?璆剔?撽?/div>
   </div>
 </section>
 
@@ -2282,62 +2282,62 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:14px;">設計流程</div>
-        <h2 class="section-title">從概念到<br><span class="blue">落地執行</span></h2>
+        <div class="label" style="margin-bottom:14px;">閮剛?瘚?</div>
+        <h2 class="section-title">敺?敹萄<br><span class="blue">?賢?瑁?</span></h2>
       </div>
-      <p class="section-desc">專業的設計規劃不只是畫圖，更是理解您的生活方式，讓空間真正為您服務。</p>
+      <p class="section-desc">撠平?身閮????芣?怠?嚗?舐?閫???瘣餅撘?霈征??甇??冽???/p>
     </div>
 
     <div class="design-steps">
-      <div class="design-step reveal"><div class="step-badge">01</div><h3>需求訪談</h3><p>深入了解您的生活習慣、美學偏好與預算，作為所有設計決策的基礎。</p></div>
-      <div class="design-step reveal reveal-delay-1"><div class="step-badge">02</div><h3>概念規劃</h3><p>風格定義、色彩計畫、材質板製作，以視覺化方式呈現設計概念。</p></div>
-      <div class="design-step reveal reveal-delay-2"><div class="step-badge">03</div><h3>3D 效果圖</h3><p>全屋 3D 空間模擬，讓您在施工前清楚看到完成後的真實效果。</p></div>
+      <div class="design-step reveal"><div class="step-badge">01</div><h3>?瘙赤隢?/h3><p>瘛勗鈭圾?函??暑蝧??摮詨?憟質???嚗??箸??身閮捱蝑??箇???/p></div>
+      <div class="design-step reveal reveal-delay-1"><div class="step-badge">02</div><h3>璁艙閬?</h3><p>憸冽摰儔?敶抵??怒?鞈芣鋆賭?嚗誑閬死?撘??曇身閮?敹萸?/p></div>
+      <div class="design-step reveal reveal-delay-2"><div class="step-badge">03</div><h3>3D ????/h3><p>?典? 3D 蝛粹?璅⊥嚗??典?賢極??璆??啣?????撖行???/p></div>
     </div>
 
     <div class="reveal">
-      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="label" style="margin-bottom:24px;">閰喟敦???</div>
       <div class="accordion">
         <div class="accordion-item open">
-          <div class="accordion-head"><h3 data-cms="service-design.html.acc.1.title">風格定義與概念規劃</h3><span class="accordion-icon">−</span></div>
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.1.title">憸冽摰儔??敹菔???/h3><span class="accordion-icon">??/span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-design.html.acc.1.li.1">風格喜好分析</li><li data-cms="service-design.html.acc.1.li.2">生活動線規劃</li>
-              <li data-cms="service-design.html.acc.1.li.3">空間機能需求評估</li><li data-cms="service-design.html.acc.1.li.4">色彩計畫提案</li>
-              <li data-cms="service-design.html.acc.1.li.5">材質板製作</li><li data-cms="service-design.html.acc.1.li.6">燈光氛圍規劃</li>
-              <li data-cms="service-design.html.acc.1.li.7">家具配置建議</li><li data-cms="service-design.html.acc.1.li.8">預算分配規劃</li>
+              <li data-cms="service-design.html.acc.1.li.1">憸冽?末??</li><li data-cms="service-design.html.acc.1.li.2">?暑??閬?</li>
+              <li data-cms="service-design.html.acc.1.li.3">蝛粹?璈?瘙?隡?/li><li data-cms="service-design.html.acc.1.li.4">?脣蔗閮??</li>
+              <li data-cms="service-design.html.acc.1.li.5">?釭?輯ˊ雿?/li><li data-cms="service-design.html.acc.1.li.6">??瘞?閬?</li>
+              <li data-cms="service-design.html.acc.1.li.7">摰嗅?蔭撱箄降</li><li data-cms="service-design.html.acc.1.li.8">????閬?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-design.html.acc.2.title">平面配置與 3D 效果圖</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.2.title">撟喲?蔭??3D ????/h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-design.html.acc.2.li.1">現況丈量與平面繪製</li><li data-cms="service-design.html.acc.2.li.2">平面配置方案比較</li>
-              <li data-cms="service-design.html.acc.2.li.3">3D 空間模擬效果圖</li><li data-cms="service-design.html.acc.2.li.4">材料選色 3D 呈現</li>
-              <li data-cms="service-design.html.acc.2.li.5">各場域施工透視圖</li><li data-cms="service-design.html.acc.2.li.6">視角調整與修改確認</li>
-              <li data-cms="service-design.html.acc.2.li.7">鳥瞰全室配置圖</li><li data-cms="service-design.html.acc.2.li.8">夜間燈光效果模擬</li>
+              <li data-cms="service-design.html.acc.2.li.1">?暹?銝??像?Ｙ鼓鋆?/li><li data-cms="service-design.html.acc.2.li.2">撟喲?蔭?寞?瘥?</li>
+              <li data-cms="service-design.html.acc.2.li.3">3D 蝛粹?璅⊥????/li><li data-cms="service-design.html.acc.2.li.4">???貉 3D ?</li>
+              <li data-cms="service-design.html.acc.2.li.5">??撌仿???/li><li data-cms="service-design.html.acc.2.li.6">閬?隤踵?耨?寧Ⅱ隤?/li>
+              <li data-cms="service-design.html.acc.2.li.7">曈亦?典恕?蔭??/li><li data-cms="service-design.html.acc.2.li.8">憭?????璅⊥</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-design.html.acc.3.title">施工圖面與材料規格</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.3.title">?賢極???????/h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-design.html.acc.3.li.1">詳細施工平面圖</li><li data-cms="service-design.html.acc.3.li.2">天花板施工圖</li>
-              <li data-cms="service-design.html.acc.3.li.3">立面施工圖</li><li data-cms="service-design.html.acc.3.li.4">水電整合圖</li>
-              <li data-cms="service-design.html.acc.3.li.5">材料規格書製作</li><li data-cms="service-design.html.acc.3.li.6">建材樣品確認</li>
-              <li data-cms="service-design.html.acc.3.li.7">建材代購服務</li><li data-cms="service-design.html.acc.3.li.8">施工規格說明書</li>
+              <li data-cms="service-design.html.acc.3.li.1">閰喟敦?賢極撟喲??/li><li data-cms="service-design.html.acc.3.li.2">憭抵?踵撌亙?</li>
+              <li data-cms="service-design.html.acc.3.li.3">蝡?賢極??/li><li data-cms="service-design.html.acc.3.li.4">瘞湧?游???/li>
+              <li data-cms="service-design.html.acc.3.li.5">??閬?貉ˊ雿?/li><li data-cms="service-design.html.acc.3.li.6">撱箸?璅??蝣箄?</li>
+              <li data-cms="service-design.html.acc.3.li.7">撱箸?隞?頃??</li><li data-cms="service-design.html.acc.3.li.8">?賢極閬隤芣???/li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-design.html.acc.4.title">工程監造與施工管理</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-design.html.acc.4.title">撌亦?????賢極蝞∠?</h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-design.html.acc.4.li.1">工程進度排程管理</li><li data-cms="service-design.html.acc.4.li.2">施工廠商協調溝通</li>
-              <li data-cms="service-design.html.acc.4.li.3">現場施工品質監督</li><li data-cms="service-design.html.acc.4.li.4">設計變更處理</li>
-              <li data-cms="service-design.html.acc.4.li.5">驗收前品質確認</li><li data-cms="service-design.html.acc.4.li.6">完工後缺失清查</li>
-              <li data-cms="service-design.html.acc.4.li.7">材料進場驗收</li><li data-cms="service-design.html.acc.4.li.8">施工照片記錄</li>
+              <li data-cms="service-design.html.acc.4.li.1">撌亦??脣漲??蝞∠?</li><li data-cms="service-design.html.acc.4.li.2">?賢極撱??矽皞?/li>
+              <li data-cms="service-design.html.acc.4.li.3">?曉?賢極?釭??</li><li data-cms="service-design.html.acc.4.li.4">閮剛?霈??</li>
+              <li data-cms="service-design.html.acc.4.li.5">撽??鞈芰Ⅱ隤?/li><li data-cms="service-design.html.acc.4.li.6">摰極敺撩憭望???/li>
+              <li data-cms="service-design.html.acc.4.li.7">???脣撽</li><li data-cms="service-design.html.acc.4.li.8">?賢極?抒?閮?</li>
             </ul>
           </div>
         </div>
@@ -2349,23 +2349,23 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 <section class="gallery-section section-gap">
   <div class="container">
     <div class="section-header reveal">
-      <div><div class="label" style="margin-bottom:14px;">相關案例</div><h2 class="section-title">設計規劃<br><span class="blue">實績展示</span></h2></div>
-      <a href="gallery.html" class="btn-outline">查看全部相冊 →</a>
+      <div><div class="label" style="margin-bottom:14px;">?賊?獢?</div><h2 class="section-title">閮剛?閬?<br><span class="blue">撖衣蜀撅內</span></h2></div>
+      <a href="gallery.html" class="btn-outline">?亦??券?詨? ??/a>
     </div>
     <div class="gallery-grid reveal">
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-4/1200/800" data-title="透天厝全屋翻修設計" data-meta="台北士林・65坪・2023.09">
-        <img src="https://picsum.photos/seed/hj04/800/600" alt="透天厝設計" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">透天厝全屋翻修設計</div></div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-4/1200/800" data-title="?予?撅蕃靽株身閮? data-meta="?啣?憯急???5?芥2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/600" alt="?予?身閮? loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">閮剛?閬?</div><div class="gallery-item-title">?予?撅蕃靽株身閮?/div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-8/1200/800" data-title="小坪數機能空間設計" data-meta="台北中山・18坪・2023.03">
-        <img src="https://picsum.photos/seed/hj08/800/600" alt="小坪數設計" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">小坪數機能空間設計</div></div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-8/1200/800" data-title="撠?豢??賜征?身閮? data-meta="?啣?銝剖控??8?芥2023.03">
+        <img src="https://picsum.photos/seed/hj08/800/600" alt="撠?貉身閮? loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">閮剛?閬?</div><div class="gallery-item-title">撠?豢??賜征?身閮?/div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-12/1200/800" data-title="精品風格主臥套房設計" data-meta="台北大安・25坪・2022.08">
-        <img src="https://picsum.photos/seed/hj12/800/600" alt="精品主臥設計" loading="lazy">
-        <div class="gallery-item-overlay"><div class="gallery-item-cat">設計規劃</div><div class="gallery-item-title">精品風格主臥套房設計</div></div>
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj-full-12/1200/800" data-title="蝎曉?憸冽銝餉憟閮剛?" data-meta="?啣?憭批???5?芥2022.08">
+        <img src="https://picsum.photos/seed/hj12/800/600" alt="蝎曉?銝餉閮剛?" loading="lazy">
+        <div class="gallery-item-overlay"><div class="gallery-item-cat">閮剛?閬?</div><div class="gallery-item-title">蝎曉?憸冽銝餉憟閮剛?</div></div>
         <div class="gallery-zoom"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></div>
       </div>
     </div>
@@ -2373,26 +2373,26 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 </section>
 
 <section class="cta-banner"><div class="container"><div class="cta-inner">
-  <div><h2 class="cta-title">設計規劃免費諮詢<br><em>今天就聯繫我們</em></h2><p class="cta-sub">到府丈量 · 免費出圖 · 專業建議</p></div>
-  <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+  <div><h2 class="cta-title">閮剛?閬??祥隢株岷<br><em>隞予撠梯蝜急???/em></h2><p class="cta-sub">?啣?銝? 繚 ?祥?箏? 繚 撠平撱箄降</p></div>
+  <a href="contact.html" class="btn-dark">蝡?祥隢株岷 ??/a>
 </div></div></section>
 
 
 
 
-  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+  <button class="lightbox-prev">??/button><button class="lightbox-next">??/button>
 </div></div>
 </div>
 
-<!-- ═══ PAGE: 維修保固 ═══ -->
+<!-- ????PAGE: 蝬凋耨靽 ????-->
 <div class="spa-page" data-page="service-maintenance" style="display:none;">
 <section class="page-hero"><div class="page-hero-bg"></div>
   <div class="container page-hero-content">
-    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><a href="#">服務項目</a><span class="breadcrumb-sep">›</span><span>維修保固</span></div>
-    <div class="label page-hero-label">SERVICE 04 / 維修保固</div>
-    <h1 class="page-hero-title" data-cms="service-maintenance.html.hero.title">完工之後<br><span class="blue">全程守護</span></h1>
-    <p class="page-hero-desc" data-cms="service-maintenance.html.hero.desc">完工不是終點，兩年保固是我們的承諾。24小時緊急維修專線，讓您安心享受理想空間。</p>
-    <div class="exp-badge" data-cms="service-maintenance.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20年專業經驗</div>
+    <div class="breadcrumb"><a href="index.html">擐?</a><span class="breadcrumb-sep">??/span><a href="#">???</a><span class="breadcrumb-sep">??/span><span>蝬凋耨靽</span></div>
+    <div class="label page-hero-label">SERVICE 04 / 蝬凋耨靽</div>
+    <h1 class="page-hero-title" data-cms="service-maintenance.html.hero.title">摰極銋?<br><span class="blue">?函?摰風</span></h1>
+    <p class="page-hero-desc" data-cms="service-maintenance.html.hero.desc">摰極銝蝯?嚗撟港??箸???輯姥??4撠?蝺亦雁靽桀?蝺?霈摰?鈭怠??蝛粹???/p>
+    <div class="exp-badge" data-cms="service-maintenance.html.hero.experience" style="display:inline-block; margin-top:20px; padding:6px 16px; background:rgba(0,200,200,0.15); border:1px solid rgba(0,200,200,0.3); border-radius:20px; color:#00c8c8; font-size:14px; font-weight:700; letter-spacing:0.05em;">20撟游?璆剔?撽?/div>
   </div>
 </section>
 
@@ -2400,83 +2400,83 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:14px;">保固承諾</div>
-        <h2 class="section-title">我們的<br><span class="blue">售後保障</span></h2>
+        <div class="label" style="margin-bottom:14px;">靽?輯姥</div>
+        <h2 class="section-title">??<br><span class="blue">?桀?靽?</span></h2>
       </div>
-      <p class="section-desc">工程品質是我們最重要的承諾，完工後的服務更能體現一個工程公司的真實水準。</p>
+      <p class="section-desc">撌亦??釭?舀??????隢橘?摰極敺????渲擃銝?極蝔?貊??祕瘞湔???/p>
     </div>
 
     <div class="promise-grid">
       <div class="promise-card reveal">
-        <div class="promise-num">2<span class="promise-unit">年</span></div>
-        <h3>工程保固</h3>
-        <p>水電、結構、防水工程均提供兩年保固，出現問題免費到府修繕，無需額外費用。</p>
+        <div class="promise-num">2<span class="promise-unit">撟?/span></div>
+        <h3>撌亦?靽</h3>
+        <p>瘞湧??瑽瘞游極蝔????拙僑靽嚗?曉?憿?鞎餃摨耨蝜??⊿?憿?鞎餌??/p>
       </div>
       <div class="promise-card reveal reveal-delay-1">
         <div class="promise-num">24<span class="promise-unit">H</span></div>
-        <h3>緊急專線</h3>
-        <p>24小時緊急維修專線，漏水、跳電等緊急狀況快速響應，最快2小時到場。</p>
+        <h3>蝺亙?蝺?/h3>
+        <p>24撠?蝺亦雁靽桀?蝺?瞍偌?歲?餌?蝺亦?瘜翰????敹?撠??啣??/p>
       </div>
       <div class="promise-card reveal reveal-delay-2">
-        <div class="promise-num">1<span class="promise-unit">年</span></div>
-        <h3>定期回訪</h3>
-        <p>完工後一年內主動安排回訪，確認工程品質，提前預防潛在問題。</p>
+        <div class="promise-num">1<span class="promise-unit">撟?/span></div>
+        <h3>摰??赤</h3>
+        <p>摰極敺?撟游銝餃?摰??赤嚗Ⅱ隤極蝔?鞈迎????瞏????/p>
       </div>
     </div>
 
     <div class="hotline-banner reveal">
       <div>
-        <div class="hotline-label">24 小時緊急維修專線</div>
+        <div class="hotline-label">24 撠?蝺亦雁靽桀?蝺?/div>
         <div class="hotline-num">0912-345-678</div>
-        <div class="hotline-sub">漏水・跳電・緊急狀況 — 隨時撥打，快速到場</div>
+        <div class="hotline-sub">瞍偌?餉歲?颯蝺亦?瘜????冽??交?嚗翰???/div>
       </div>
-      <a href="contact.html" class="btn-primary">非緊急預約諮詢 →</a>
+      <a href="contact.html" class="btn-primary">???仿?蝝垣閰???/a>
     </div>
 
     <div class="reveal">
-      <div class="label" style="margin-bottom:24px;">詳細服務項目</div>
+      <div class="label" style="margin-bottom:24px;">閰喟敦???</div>
       <div class="accordion">
         <div class="accordion-item open">
-          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.1.title">兩年工程保固服務</h3><span class="accordion-icon">−</span></div>
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.1.title">?拙僑撌亦?靽??</h3><span class="accordion-icon">??/span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-maintenance.html.acc.1.li.1">水電工程保固兩年</li><li data-cms="service-maintenance.html.acc.1.li.2">結構施工保固兩年</li>
-              <li data-cms="service-maintenance.html.acc.1.li.3">防水工程保固兩年</li><li data-cms="service-maintenance.html.acc.1.li.4">系統傢具保固兩年</li>
-              <li data-cms="service-maintenance.html.acc.1.li.5">保固範圍透明說明</li><li data-cms="service-maintenance.html.acc.1.li.6">保固申請快速回應</li>
-              <li data-cms="service-maintenance.html.acc.1.li.7">到府檢修不加收費用</li><li data-cms="service-maintenance.html.acc.1.li.8">維修記錄完整建檔</li>
+              <li data-cms="service-maintenance.html.acc.1.li.1">瘞湧撌亦?靽?拙僑</li><li data-cms="service-maintenance.html.acc.1.li.2">蝯??賢極靽?拙僑</li>
+              <li data-cms="service-maintenance.html.acc.1.li.3">?脫偌撌亦?靽?拙僑</li><li data-cms="service-maintenance.html.acc.1.li.4">蝟餌絞?Ｗ靽?拙僑</li>
+              <li data-cms="service-maintenance.html.acc.1.li.5">靽蝭???隤芣?</li><li data-cms="service-maintenance.html.acc.1.li.6">靽?唾?敹恍???/li>
+              <li data-cms="service-maintenance.html.acc.1.li.7">?啣?瑼Ｖ耨銝??嗉祥??/li><li data-cms="service-maintenance.html.acc.1.li.8">蝬凋耨閮?摰撱箸?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.2.title">緊急維修服務</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.2.title">蝺亦雁靽格???/h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-maintenance.html.acc.2.li.1">24小時維修專線</li><li data-cms="service-maintenance.html.acc.2.li.2">水管漏水緊急搶修</li>
-              <li data-cms="service-maintenance.html.acc.2.li.3">電路跳電故障排除</li><li data-cms="service-maintenance.html.acc.2.li.4">排水堵塞疏通</li>
-              <li data-cms="service-maintenance.html.acc.2.li.5">緊急門窗修復</li><li data-cms="service-maintenance.html.acc.2.li.6">颱風後損害修繕</li>
-              <li data-cms="service-maintenance.html.acc.2.li.7">優先排程不等待</li><li data-cms="service-maintenance.html.acc.2.li.8">夜間假日均可出勤</li>
+              <li data-cms="service-maintenance.html.acc.2.li.1">24撠?蝬凋耨撠?</li><li data-cms="service-maintenance.html.acc.2.li.2">瘞渡恣瞍偌蝺交靽?/li>
+              <li data-cms="service-maintenance.html.acc.2.li.3">?餉楝頝喲???</li><li data-cms="service-maintenance.html.acc.2.li.4">?偌?萄???/li>
+              <li data-cms="service-maintenance.html.acc.2.li.5">蝺仿?蝒耨敺?/li><li data-cms="service-maintenance.html.acc.2.li.6">憸梢◢敺?摰喃耨蝜?/li>
+              <li data-cms="service-maintenance.html.acc.2.li.7">?芸???銝?敺?/li><li data-cms="service-maintenance.html.acc.2.li.8">憭????箏</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.3.title">定期維護保養</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.3.title">摰?蝬剛風靽?</h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-maintenance.html.acc.3.li.1">年度水電安全檢查</li><li data-cms="service-maintenance.html.acc.3.li.2">管線使用狀況評估</li>
-              <li data-cms="service-maintenance.html.acc.3.li.3">電氣設備安全測試</li><li data-cms="service-maintenance.html.acc.3.li.4">空調系統定期保養</li>
-              <li data-cms="service-maintenance.html.acc.3.li.5">防水層定期檢查</li><li data-cms="service-maintenance.html.acc.3.li.6">維修保養記錄建檔</li>
-              <li data-cms="service-maintenance.html.acc.3.li.7">老化零件提前更換建議</li><li data-cms="service-maintenance.html.acc.3.li.8">用電效率評估報告</li>
+              <li data-cms="service-maintenance.html.acc.3.li.1">撟游漲瘞湧摰瑼Ｘ</li><li data-cms="service-maintenance.html.acc.3.li.2">蝞∠?雿輻?瘜?隡?/li>
+              <li data-cms="service-maintenance.html.acc.3.li.3">?餅除閮剖?摰皜祈岫</li><li data-cms="service-maintenance.html.acc.3.li.4">蝛箄矽蝟餌絞摰?靽?</li>
+              <li data-cms="service-maintenance.html.acc.3.li.5">?脫偌撅文??炎??/li><li data-cms="service-maintenance.html.acc.3.li.6">蝬凋耨靽?閮?撱箸?</li>
+              <li data-cms="service-maintenance.html.acc.3.li.7">???嗡辣???湔?撱箄降</li><li data-cms="service-maintenance.html.acc.3.li.8">?券??閰摯?勗?</li>
             </ul>
           </div>
         </div>
         <div class="accordion-item">
-          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.4.title">舊屋診斷服務</h3><span class="accordion-icon">+</span></div>
+          <div class="accordion-head"><h3 data-cms="service-maintenance.html.acc.4.title">??閮箸??</h3><span class="accordion-icon">+</span></div>
           <div class="accordion-body">
             <ul class="accordion-list">
-              <li data-cms="service-maintenance.html.acc.4.li.1">免費到府現況評估</li><li data-cms="service-maintenance.html.acc.4.li.2">壁癌原因診斷</li>
-              <li data-cms="service-maintenance.html.acc.4.li.3">漏水源頭追蹤</li><li data-cms="service-maintenance.html.acc.4.li.4">管線老化評估</li>
-              <li data-cms="service-maintenance.html.acc.4.li.5">用電安全檢查</li><li data-cms="service-maintenance.html.acc.4.li.6">裝修工程需求評估</li>
-              <li data-cms="service-maintenance.html.acc.4.li.7">改善方案建議</li><li data-cms="service-maintenance.html.acc.4.li.8">費用估算報告</li>
+              <li data-cms="service-maintenance.html.acc.4.li.1">?祥?啣??暹?閰摯</li><li data-cms="service-maintenance.html.acc.4.li.2">憯???閮箸</li>
+              <li data-cms="service-maintenance.html.acc.4.li.3">瞍偌皞餈質馱</li><li data-cms="service-maintenance.html.acc.4.li.4">蝞∠???閰摯</li>
+              <li data-cms="service-maintenance.html.acc.4.li.5">?券摰瑼Ｘ</li><li data-cms="service-maintenance.html.acc.4.li.6">鋆耨撌亦??瘙?隡?/li>
+              <li data-cms="service-maintenance.html.acc.4.li.7">?孵??寞?撱箄降</li><li data-cms="service-maintenance.html.acc.4.li.8">鞎餌隡啁??勗?</li>
             </ul>
           </div>
         </div>
@@ -2486,67 +2486,67 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 </section>
 
 <section class="cta-banner"><div class="container"><div class="cta-inner">
-  <div><h2 class="cta-title">申請保固維修服務<br><em>我們快速響應</em></h2><p class="cta-sub">保固期內免費修繕 · 24小時緊急專線</p></div>
-  <a href="contact.html" class="btn-dark">立即聯絡我們 →</a>
+  <div><h2 class="cta-title">?唾?靽蝬凋耨??<br><em>?翰???/em></h2><p class="cta-sub">靽??祥靽桃? 繚 24撠?蝺亙?蝺?/p></div>
+  <a href="contact.html" class="btn-dark">蝡?舐窗????/a>
 </div></div></section>
 
 
 
 
-  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+  <button class="lightbox-prev">??/button><button class="lightbox-next">??/button>
 </div></div>
 </div>
 
-<!-- ═══ PAGE: 作品相冊 ═══ -->
+<!-- ????PAGE: 雿??詨? ????-->
 <div class="spa-page" data-page="gallery" style="display:none;">
-<!-- ── NAV ── -->
+<!-- ?? NAV ?? -->
 
 
-<!-- ── MOBILE MENU ── -->
-<!-- ── PAGE HERO ── -->
+<!-- ?? MOBILE MENU ?? -->
+<!-- ?? PAGE HERO ?? -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="container page-hero-content">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">首頁</a>
-      <span class="breadcrumb-sep">›</span>
-      <span>作品相冊</span>
+      <a href="index.html">擐?</a>
+      <span class="breadcrumb-sep">??/span>
+      <span>雿??詨?</span>
     </nav>
-    <div class="label page-hero-label">GALLERY / 作品相冊</div>
+    <div class="label page-hero-label">GALLERY / 雿??詨?</div>
     <h1 class="page-hero-title" data-cms="gallery.html.hero.title">
-      每一個空間<br><span class="orange">都是作品</span>
+      瘥??征??br><span class="orange">?賣雿?</span>
     </h1>
     <p class="page-hero-desc" data-cms="gallery.html.hero.desc">
-      從水電工程到全室裝修，我們的作品見證了每一位客戶的生活品質提升
+      敺偌?餃極蝔?典恕鋆耨嚗???雿?閬?鈭?銝雿恥?嗥??暑?釭??
     </p>
   </div>
 </section>
 
-<!-- ── GALLERY SECTION ── -->
+<!-- ?? GALLERY SECTION ?? -->
 <section class="gallery-section section-gap">
   <div class="container">
 
     <!-- Stats Bar -->
     <div class="gallery-stats reveal">
       <div class="gallery-stat-item">
-        <div class="gs-num">12<span class="gs-unit">件</span></div>
+        <div class="gs-num">12<span class="gs-unit">隞?/span></div>
         <div class="gs-text">
-          <span class="gs-label">完工案例</span>
-          <span class="gs-sub">持續累積更新中</span>
+          <span class="gs-label">摰極獢?</span>
+          <span class="gs-sub">??蝝舐??湔銝?/span>
         </div>
       </div>
       <div class="gallery-stat-item">
-        <div class="gs-num">4<span class="gs-unit">種</span></div>
+        <div class="gs-num">4<span class="gs-unit">蝔?/span></div>
         <div class="gs-text">
-          <span class="gs-label">工程類型</span>
-          <span class="gs-sub">水電・裝修・設計・商業</span>
+          <span class="gs-label">撌亦?憿?</span>
+          <span class="gs-sub">瘞湧?餉?靽柴閮剛??餃?璆?/span>
         </div>
       </div>
       <div class="gallery-stat-item">
-        <div class="gs-num">2<span class="gs-unit">年</span></div>
+        <div class="gs-num">2<span class="gs-unit">撟?/span></div>
         <div class="gs-text">
-          <span class="gs-label">工程保固</span>
-          <span class="gs-sub">完工後全面保障</span>
+          <span class="gs-label">撌亦?靽</span>
+          <span class="gs-sub">摰極敺?Ｖ???/span>
         </div>
       </div>
     </div>
@@ -2554,24 +2554,24 @@ html.pv-mode .mobile-overlay     { display: none !important; }
     <!-- Filter Row -->
     <div class="gallery-filters-row reveal">
       <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">全部作品</button>
-        <button class="filter-btn" data-filter="water">水電工程</button>
-        <button class="filter-btn" data-filter="interior">室內裝修</button>
-        <button class="filter-btn" data-filter="design">設計規劃</button>
-        <button class="filter-btn" data-filter="commercial">商業空間</button>
+        <button class="filter-btn active" data-filter="all">?券雿?</button>
+        <button class="filter-btn" data-filter="water">瘞湧撌亦?</button>
+        <button class="filter-btn" data-filter="interior">摰文鋆耨</button>
+        <button class="filter-btn" data-filter="design">閮剛?閬?</button>
+        <button class="filter-btn" data-filter="commercial">?平蝛粹?</button>
       </div>
-      <p class="filter-count">共 <span>12</span> 件作品</p>
+      <p class="filter-count">??<span>12</span> 隞嗡???/p>
     </div>
 
     <!-- Gallery Grid -->
     <div class="gallery-grid reveal">
 
       <!-- 01 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj01/1200/800" data-title="現代簡約三房公寓" data-meta="台北市大安區・40坪・2024.03">
-        <img src="https://picsum.photos/seed/hj01/800/600" alt="現代簡約三房公寓" loading="lazy">
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj01/1200/800" data-title="?曆誨蝪∠?銝?砍?" data-meta="?啣?撣之摰???0?芥2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/600" alt="?曆誨蝪∠?銝?砍?" loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">室內裝修</div>
-          <div class="gallery-item-title">現代簡約三房公寓</div>
+          <div class="gallery-item-cat">摰文鋆耨</div>
+          <div class="gallery-item-title">?曆誨蝪∠?銝?砍?</div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2579,11 +2579,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 02 -->
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj02/1200/800" data-title="商辦大樓全棟水電更新" data-meta="新北市・680坪・2024.01">
-        <img src="https://picsum.photos/seed/hj02/800/600" alt="商辦大樓全棟水電更新" loading="lazy">
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj02/1200/800" data-title="?齒憭扳??冽?瘞湧?湔" data-meta="?啣?撣680?芥2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/600" alt="?齒憭扳??冽?瘞湧?湔" loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">水電工程</div>
-          <div class="gallery-item-title">商辦大樓全棟水電更新</div>
+          <div class="gallery-item-cat">瘞湧撌亦?</div>
+          <div class="gallery-item-title">?齒憭扳??冽?瘞湧?湔</div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2591,11 +2591,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 03 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj03/1200/800" data-title="廚房衛浴全面翻新" data-meta="台中市・28坪・2023.11">
-        <img src="https://picsum.photos/seed/hj03/800/600" alt="廚房衛浴全面翻新" loading="lazy">
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj03/1200/800" data-title="撱銵絕?券蝧餅" data-meta="?唬葉撣28?芥2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/600" alt="撱銵絕?券蝧餅" loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">室內裝修</div>
-          <div class="gallery-item-title">廚房衛浴全面翻新</div>
+          <div class="gallery-item-cat">摰文鋆耨</div>
+          <div class="gallery-item-title">撱銵絕?券蝧餅</div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2603,11 +2603,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 04 -->
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj04/1200/800" data-title="透天厝全屋翻修設計" data-meta="台北市士林區・65坪・2023.09">
-        <img src="https://picsum.photos/seed/hj04/800/600" alt="透天厝全屋翻修設計" loading="lazy">
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj04/1200/800" data-title="?予?撅蕃靽株身閮? data-meta="?啣?撣ㄚ????5?芥2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/600" alt="?予?撅蕃靽株身閮? loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">設計規劃</div>
-          <div class="gallery-item-title">透天厝全屋翻修設計</div>
+          <div class="gallery-item-cat">閮剛?閬?</div>
+          <div class="gallery-item-title">?予?撅蕃靽株身閮?/div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2615,11 +2615,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 05 -->
-      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj05/1200/800" data-title="餐飲店面空間改造" data-meta="桃園市・35坪・2023.07">
-        <img src="https://picsum.photos/seed/hj05/800/600" alt="餐飲店面空間改造" loading="lazy">
+      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj05/1200/800" data-title="擗ㄡ摨蝛粹??寥? data-meta="獢?撣35?芥2023.07">
+        <img src="https://picsum.photos/seed/hj05/800/600" alt="擗ㄡ摨蝛粹??寥? loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">商業空間</div>
-          <div class="gallery-item-title">餐飲店面空間改造</div>
+          <div class="gallery-item-cat">?平蝛粹?</div>
+          <div class="gallery-item-title">擗ㄡ摨蝛粹??寥?/div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2627,11 +2627,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 06 -->
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj06/1200/800" data-title="老公寓水電全面更新" data-meta="台北市萬華區・24坪・2023.05">
-        <img src="https://picsum.photos/seed/hj06/800/600" alt="老公寓水電全面更新" loading="lazy">
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj06/1200/800" data-title="?撖偌?餃?Ｘ?? data-meta="?啣?撣?臬???4?芥2023.05">
+        <img src="https://picsum.photos/seed/hj06/800/600" alt="?撖偌?餃?Ｘ?? loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">水電工程</div>
-          <div class="gallery-item-title">老公寓水電全面更新</div>
+          <div class="gallery-item-cat">瘞湧撌亦?</div>
+          <div class="gallery-item-title">?撖偌?餃?Ｘ??/div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2639,11 +2639,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 07 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj07/1200/800" data-title="北歐風格兩房裝修" data-meta="新北市板橋區・32坪・2023.04">
-        <img src="https://picsum.photos/seed/hj07/800/600" alt="北歐風格兩房裝修" loading="lazy">
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj07/1200/800" data-title="??憸冽?拇鋆耨" data-meta="?啣?撣璈???2?芥2023.04">
+        <img src="https://picsum.photos/seed/hj07/800/600" alt="??憸冽?拇鋆耨" loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">室內裝修</div>
-          <div class="gallery-item-title">北歐風格兩房裝修</div>
+          <div class="gallery-item-cat">摰文鋆耨</div>
+          <div class="gallery-item-title">??憸冽?拇鋆耨</div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2651,11 +2651,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 08 -->
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj08/1200/800" data-title="小坪數機能空間設計" data-meta="台北市中山區・18坪・2023.03">
-        <img src="https://picsum.photos/seed/hj08/800/600" alt="小坪數機能空間設計" loading="lazy">
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj08/1200/800" data-title="撠?豢??賜征?身閮? data-meta="?啣?撣葉撅勗???8?芥2023.03">
+        <img src="https://picsum.photos/seed/hj08/800/600" alt="撠?豢??賜征?身閮? loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">設計規劃</div>
-          <div class="gallery-item-title">小坪數機能空間設計</div>
+          <div class="gallery-item-cat">閮剛?閬?</div>
+          <div class="gallery-item-title">撠?豢??賜征?身閮?/div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2663,11 +2663,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 09 -->
-      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj09/1200/800" data-title="辦公室空間整體翻新" data-meta="台北市內湖區・80坪・2023.01">
-        <img src="https://picsum.photos/seed/hj09/800/600" alt="辦公室空間整體翻新" loading="lazy">
+      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj09/1200/800" data-title="颲血摰斤征?擃蕃?? data-meta="?啣?撣皝???0?芥2023.01">
+        <img src="https://picsum.photos/seed/hj09/800/600" alt="颲血摰斤征?擃蕃?? loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">商業空間</div>
-          <div class="gallery-item-title">辦公室空間整體翻新</div>
+          <div class="gallery-item-cat">?平蝛粹?</div>
+          <div class="gallery-item-title">颲血摰斤征?擃蕃??/div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2675,11 +2675,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 10 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj10/1200/800" data-title="電梯大廈全室裝修" data-meta="桃園市・45坪・2022.12">
-        <img src="https://picsum.photos/seed/hj10/800/600" alt="電梯大廈全室裝修" loading="lazy">
+      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj10/1200/800" data-title="?餅０憭批??典恕鋆耨" data-meta="獢?撣45?芥2022.12">
+        <img src="https://picsum.photos/seed/hj10/800/600" alt="?餅０憭批??典恕鋆耨" loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">室內裝修</div>
-          <div class="gallery-item-title">電梯大廈全室裝修</div>
+          <div class="gallery-item-cat">摰文鋆耨</div>
+          <div class="gallery-item-title">?餅０憭批??典恕鋆耨</div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2687,11 +2687,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 11 -->
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj11/1200/800" data-title="社區管線整體汰換" data-meta="新北市新店區・120坪・2022.10">
-        <img src="https://picsum.photos/seed/hj11/800/600" alt="社區管線整體汰換" loading="lazy">
+      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj11/1200/800" data-title="蝷曉?蝞∠??湧?瘙唳?" data-meta="?啣?撣摨???20?芥2022.10">
+        <img src="https://picsum.photos/seed/hj11/800/600" alt="蝷曉?蝞∠??湧?瘙唳?" loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">水電工程</div>
-          <div class="gallery-item-title">社區管線整體汰換</div>
+          <div class="gallery-item-cat">瘞湧撌亦?</div>
+          <div class="gallery-item-title">蝷曉?蝞∠??湧?瘙唳?</div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2699,11 +2699,11 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       </div>
 
       <!-- 12 -->
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj12/1200/800" data-title="精品風格主臥套房設計" data-meta="台北市大安區・25坪・2022.08">
-        <img src="https://picsum.photos/seed/hj12/800/600" alt="精品風格主臥套房設計" loading="lazy">
+      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj12/1200/800" data-title="蝎曉?憸冽銝餉憟閮剛?" data-meta="?啣?撣之摰???5?芥2022.08">
+        <img src="https://picsum.photos/seed/hj12/800/600" alt="蝎曉?憸冽銝餉憟閮剛?" loading="lazy">
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">設計規劃</div>
-          <div class="gallery-item-title">精品風格主臥套房設計</div>
+          <div class="gallery-item-cat">閮剛?閬?</div>
+          <div class="gallery-item-title">蝎曉?憸冽銝餉憟閮剛?</div>
         </div>
         <div class="gallery-zoom">
           <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
@@ -2714,41 +2714,41 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   </div><!-- /.container -->
 </section>
 
-<!-- ── CTA BANNER ── -->
+<!-- ?? CTA BANNER ?? -->
 <section class="cta-banner">
   <div class="container">
     <div class="cta-inner">
       <div>
-        <h2 class="cta-title">您的空間，也可以<br><em>成為下一件作品</em></h2>
-        <p class="cta-sub">免費到府估價 · 透明報價 · 二年保固</p>
+        <h2 class="cta-title">?函?蝛粹?嚗??臭誑<br><em>?銝?隞嗡???/em></h2>
+        <p class="cta-sub">?祥?啣?隡啣 繚 ???勗 繚 鈭僑靽</p>
       </div>
       <a href="contact.html" class="btn-dark">
-        立即免費諮詢
+        蝡?祥隢株岷
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- ?? FOOTER ?? -->
 
 
-<!-- ── LIGHTBOX ── -->
+<!-- ?? LIGHTBOX ?? -->
 
-    <button class="lightbox-prev">‹</button>
-    <button class="lightbox-next">›</button>
+    <button class="lightbox-prev">??/button>
+    <button class="lightbox-next">??/button>
   </div>
 </div>
 </div>
 
-<!-- ═══ PAGE: 關於我們 ═══ -->
+<!-- ????PAGE: ???????-->
 <div class="spa-page" data-page="about" style="display:none;">
 <section class="page-hero"><div class="page-hero-bg"></div>
   <div class="container page-hero-content">
-    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><span>關於我們</span></div>
-    <div class="label page-hero-label">ABOUT / 關於我們</div>
-    <h1 class="page-hero-title" data-cms="about.html.hero.title">二十年工藝<br><span class="blue">傳承與堅持</span></h1>
-    <p class="page-hero-desc" data-cms="about.html.hero.desc">從一份對工藝的熱忱出發，鴻匠工程二十年來守護每一個家庭的居住品質。</p>
+    <div class="breadcrumb"><a href="index.html">擐?</a><span class="breadcrumb-sep">??/span><span>???/span></div>
+    <div class="label page-hero-label">ABOUT / ???/div>
+    <h1 class="page-hero-title" data-cms="about.html.hero.title">鈭?撟游極??br><span class="blue">?單????/span></h1>
+    <p class="page-hero-desc" data-cms="about.html.hero.desc">敺?隞賢?撌亥??敹勗?潘?暾餃?撌亦?鈭?撟港?摰風瘥??振摨剔?撅??釭??/p>
   </div>
 </section>
 
@@ -2759,26 +2759,26 @@ html.pv-mode .mobile-overlay     { display: none !important; }
       <div class="reveal">
         <div class="story-year-wrap">
           <div class="story-year-bg">2004</div>
-          <div class="story-year-label">成立年份 · ESTABLISHED</div>
+          <div class="story-year-label">??撟港遢 繚 ESTABLISHED</div>
         </div>
         <div class="story-line"></div>
-        <p class="story-quote">「做好一件事，<br>不如把它做到無可挑剔。」</p>
+        <p class="story-quote">??憟賭?隞嗡?嚗?br>銝?????∪????/p>
       </div>
       <div class="reveal reveal-delay-2">
-        <div class="label" style="margin-bottom:18px;">公司故事</div>
-        <h2 style="font-size:clamp(30px,3.5vw,44px); font-weight:600; margin-bottom:24px; line-height:1.15;">從兩人小團隊<br><span class="blue">到三十人專業隊伍</span></h2>
+        <div class="label" style="margin-bottom:18px;">?砍??</div>
+        <h2 style="font-size:clamp(30px,3.5vw,44px); font-weight:600; margin-bottom:24px; line-height:1.15;">敺鈭箏???<br><span class="blue">?唬??犖撠平??</span></h2>
         <p class="story-text">
-          2004年，創辦人陳師傅帶著一身水電技藝與對品質的執著，在台北市成立鴻匠工程。
-          起初只有兩名師傅，靠著口碑相傳，接下了第一個全室翻新案件，以精細施工贏得客戶信賴。
+          2004撟湛??菔齒鈭粹撣怠?撣嗉?銝頨急偌?餅???撠?鞈芰??瑁?嚗?啣?撣?蝡暑?極蝔?
+          韏瑕??芣??拙?撣怠?嚗??蝣?喉??乩?鈭洵銝?摰斤蕃?唳?隞塚?隞亦移蝝唳撌亥?敺恥?嗡縑鞈氬?
         </p>
         <p class="story-text">
-          二十年間，我們從不在品質上妥協。每一根管線的走向、每一條電路的規劃，
-          都經過嚴謹計算與測試。正是這份堅持，讓鴻匠從小型施工隊成長為擁有三十名
-          持照技術師傅的專業工程公司。
+          鈭?撟湧?嚗???銝?釭銝戎??銝?寧恣蝺?韏啣???銝璇頝舐?閬?嚗?
+          ?賜??雓寡?蝞?皜祈岫?迤?舫遢??嚗?暾餃?敺??撌仿???箸?????
+          ??銵葦??撠平撌亦??砍??
         </p>
         <p class="story-text">
-          今天，我們持續以相同的精神服務每一位客戶：不論案件大小，
-          都以最高標準完成。這不只是職業，這是我們對品質生活的承諾。
+          隞予嚗???蝥誑?詨??移蟡???銝雿恥?塚?銝?獢辣憭批?嚗?
+          ?賭誑?擃?皞????芣?瑟平嚗???釭?暑?隢整?
         </p>
       </div>
     </div>
@@ -2788,10 +2788,10 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 <!-- STATS -->
 <div class="stats-bar">
   <div class="container"><div class="stats-row">
-    <div class="stat-item"><div class="stat-number" data-target="20" data-suffix="+">20<span class="stat-unit">+</span></div><div class="stat-label">年專業經驗</div></div>
-    <div class="stat-item"><div class="stat-number" data-target="800" data-suffix="+">800<span class="stat-unit">+</span></div><div class="stat-label">完成案件</div></div>
-    <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">98<span class="stat-unit">%</span></div><div class="stat-label">客戶滿意度</div></div>
-    <div class="stat-item"><div class="stat-number" data-target="30" data-suffix="+">30<span class="stat-unit">+</span></div><div class="stat-label">名持照師傅</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="20" data-suffix="+">20<span class="stat-unit">+</span></div><div class="stat-label">撟游?璆剔?撽?/div></div>
+    <div class="stat-item"><div class="stat-number" data-target="800" data-suffix="+">800<span class="stat-unit">+</span></div><div class="stat-label">摰?獢辣</div></div>
+    <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">98<span class="stat-unit">%</span></div><div class="stat-label">摰Ｘ皛踵?摨?/div></div>
+    <div class="stat-item"><div class="stat-number" data-target="30" data-suffix="+">30<span class="stat-unit">+</span></div><div class="stat-label">???批葦??/div></div>
   </div></div>
 </div>
 
@@ -2799,24 +2799,24 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 <section class="section-gap" style="background:var(--bg);">
   <div class="container">
     <div style="text-align:center; margin-bottom:56px;" class="reveal">
-      <div class="label" style="justify-content:center; margin-bottom:14px;">核心理念</div>
-      <h2 class="section-title">我們所堅守的<br><span class="blue">三個承諾</span></h2>
+      <div class="label" style="justify-content:center; margin-bottom:14px;">?詨??艙</div>
+      <h2 class="section-title">??????br><span class="blue">銝隢?/span></h2>
     </div>
     <div class="values-grid">
       <div class="value-card reveal">
         <div class="value-icon">01</div>
-        <h3>品質第一</h3>
-        <p>嚴選建材，拒絕偷工減料。每道工序都有標準程序，每個細節都接受嚴格檢驗。完工品質不達標準，絕不交屋。</p>
+        <h3>?釭蝚砌?</h3>
+        <p>?湧撱箸?嚗?蝯撌交????極摨??皞?摨?瘥敦蝭?賣??潭炎撽?撌亙?鞈芯???皞?蝯?鈭文???/p>
       </div>
       <div class="value-card reveal reveal-delay-1">
         <div class="value-icon">02</div>
-        <h3>透明誠信</h3>
-        <p>報價透明，所有費用逐項列清。施工過程定期回報進度，不說謊、不隱瞞、不事後加價。信任，是長久合作的基礎。</p>
+        <h3>??隤縑</h3>
+        <p>?勗??嚗??祥?券????撌仿?蝔????梢脣漲嚗?隤芾????梁???鈭???縑隞鳴??舫銋?雿??箇???/p>
       </div>
       <div class="value-card reveal reveal-delay-2">
         <div class="value-icon">03</div>
-        <h3>客戶至上</h3>
-        <p>傾聽每一位客戶的需求，提供量身訂製的解決方案。完工後持續提供保固與維護服務，讓您真正安心無憂。</p>
+        <h3>摰Ｘ?喃?</h3>
+        <p>?曇瘥?雿恥?嗥??瘙????澈閮ˊ?圾瘙箸獢?撌亙?????靽?雁霅瑟???霈?迤摰??⊥???/p>
       </div>
     </div>
   </div>
@@ -2827,18 +2827,18 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="section-header reveal">
       <div>
-        <div class="label" style="margin-bottom:14px;">資格認證</div>
-        <h2 class="section-title">合法・<span class="blue">專業・可信賴</span></h2>
+        <div class="label" style="margin-bottom:14px;">鞈隤?</div>
+        <h2 class="section-title">????span class="blue">撠平?餃靽∟陷</span></h2>
       </div>
-      <p class="section-desc">所有師傅均持有政府頒發之專業技術士證照，工程施作符合建築法規標準。</p>
+      <p class="section-desc">??葦?????踹??銋?璆剜?銵ㄚ霅嚗極蝔雿泵?遣蝭?閬?皞?/p>
     </div>
     <div class="cert-list reveal">
-      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">乙級水電技術士證照</span></div>
-      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">甲級室內裝修業許可</span></div>
-      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">建築物室內裝修許可證</span></div>
-      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">用電設備安全檢查合格</span></div>
-      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">勞工安全衛生管理合格</span></div>
-      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">消防安全設備施工許可</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">銋?瘞湧?銵ㄚ霅</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">?脩?摰文鋆耨璆剛迂??/span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">撱箇??拙恕?扯?靽株迂?航?</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">?券閮剖?摰瑼Ｘ?</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">?極摰銵?蝞∠??</span></div>
+      <div class="cert-item"><div class="cert-dot"></div><span class="cert-text">瘨摰閮剖??賢極閮勗</span></div>
     </div>
   </div>
 </section>
@@ -2847,38 +2847,38 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 <section class="section-gap" style="background:var(--bg);">
   <div class="container">
     <div style="text-align:center; margin-bottom:48px;" class="reveal">
-      <div class="label" style="justify-content:center; margin-bottom:14px;">專業團隊</div>
-      <h2 class="section-title">每一位師傅<br><span class="blue">都是品質保證</span></h2>
+      <div class="label" style="justify-content:center; margin-bottom:14px;">撠平??</div>
+      <h2 class="section-title">瘥?雿葦??br><span class="blue">?賣?釭靽?</span></h2>
     </div>
     <div class="team-row reveal">
-      <div class="team-item"><div class="team-num">30<span class="team-unit">+</span></div><div class="team-label">持照技術師傅</div></div>
-      <div class="team-item"><div class="team-num">5<span class="team-unit">+</span></div><div class="team-label">室內設計師</div></div>
-      <div class="team-item"><div class="team-num">3<span class="team-unit">位</span></div><div class="team-label">工程監造人員</div></div>
-      <div class="team-item"><div class="team-num">24<span class="team-unit">H</span></div><div class="team-label">客服支援</div></div>
+      <div class="team-item"><div class="team-num">30<span class="team-unit">+</span></div><div class="team-label">??銵葦??/div></div>
+      <div class="team-item"><div class="team-num">5<span class="team-unit">+</span></div><div class="team-label">摰文閮剛?撣?/div></div>
+      <div class="team-item"><div class="team-num">3<span class="team-unit">雿?/span></div><div class="team-label">撌亦???犖??/div></div>
+      <div class="team-item"><div class="team-num">24<span class="team-unit">H</span></div><div class="team-label">摰Ｘ??舀</div></div>
     </div>
   </div>
 </section>
 
 <section class="cta-banner"><div class="container"><div class="cta-inner">
-  <div><h2 class="cta-title">與我們合作<br><em>打造您的理想空間</em></h2><p class="cta-sub">免費到府諮詢 · 透明報價 · 二年保固</p></div>
-  <a href="contact.html" class="btn-dark">立即免費諮詢 →</a>
+  <div><h2 class="cta-title">????雿?br><em>????喟征??/em></h2><p class="cta-sub">?祥?啣?隢株岷 繚 ???勗 繚 鈭僑靽</p></div>
+  <a href="contact.html" class="btn-dark">蝡?祥隢株岷 ??/a>
 </div></div></section>
 
 
 
 
-  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+  <button class="lightbox-prev">??/button><button class="lightbox-next">??/button>
 </div></div>
 </div>
 
-<!-- ═══ PAGE: 聯絡我們 ═══ -->
+<!-- ????PAGE: ?舐窗??????-->
 <div class="spa-page" data-page="contact" style="display:none;">
 <section class="page-hero"><div class="page-hero-bg"></div>
   <div class="container page-hero-content">
-    <div class="breadcrumb"><a href="index.html">首頁</a><span class="breadcrumb-sep">›</span><span>聯絡我們</span></div>
-    <div class="label page-hero-label">CONTACT / 聯絡我們</div>
-    <h1 class="page-hero-title" data-cms="contact.html.hero.title">開始您的<br><span class="blue">裝修計畫</span></h1>
-    <p class="page-hero-desc" data-cms="contact.html.hero.desc">歡迎透過電話、LINE 或填寫表單與我們聯繫，免費到府估價，透明合理收費。</p>
+    <div class="breadcrumb"><a href="index.html">擐?</a><span class="breadcrumb-sep">??/span><span>?舐窗??/span></div>
+    <div class="label page-hero-label">CONTACT / ?舐窗??/div>
+    <h1 class="page-hero-title" data-cms="contact.html.hero.title">???函?<br><span class="blue">鋆耨閮</span></h1>
+    <p class="page-hero-desc" data-cms="contact.html.hero.desc">甇∟????餉店?INE ?‵撖怨”?株??蝜恬??祥?啣?隡啣嚗????嗉祥??/p>
   </div>
 </section>
 
@@ -2888,10 +2888,10 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 
       <!-- LEFT: Contact info -->
       <div class="reveal">
-        <div class="label" style="margin-bottom:20px;">聯絡資訊</div>
-        <h2 style="font-size:clamp(28px,3vw,40px); font-weight:600; margin-bottom:12px; line-height:1.15;">立即與我們<br><span class="blue">展開對話</span></h2>
+        <div class="label" style="margin-bottom:20px;">?舐窗鞈?</div>
+        <h2 style="font-size:clamp(28px,3vw,40px); font-weight:600; margin-bottom:12px; line-height:1.15;">蝡????br><span class="blue">撅?撠店</span></h2>
         <p style="font-size:15px; color:var(--text-muted); line-height:1.8; font-weight:300; margin-bottom:32px;">
-          我們將在一個工作日內回覆，並安排免費到府勘查服務。
+          ???其??極雿?批?閬?銝血???鞎餃摨??交???
         </p>
 
         <div class="contact-items">
@@ -2899,77 +2899,77 @@ html.pv-mode .mobile-overlay     { display: none !important; }
             <div class="c-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 01.97 2.18 2 2 0 012.95 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"></path></svg>
             </div>
-            <div><div class="c-label">電話 / LINE</div><div class="c-value">(02) 2345-6789<br>0912-345-678</div></div>
+            <div><div class="c-label">?餉店 / LINE</div><div class="c-value">(02) 2345-6789<br>0912-345-678</div></div>
           </div>
           <div class="contact-item">
             <div class="c-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
-            <div><div class="c-label">電子郵件</div><div class="c-value">service@hongjiang.com.tw</div></div>
+            <div><div class="c-label">?餃??萎辣</div><div class="c-value">service@hongjiang.com.tw</div></div>
           </div>
           <div class="contact-item">
             <div class="c-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </div>
-            <div><div class="c-label">服務地區</div><div class="c-value">台北・新北・桃園・台中・全台接洽</div></div>
+            <div><div class="c-label">???啣?</div><div class="c-value">?啣??餅?獢??餃銝准?典?交晾</div></div>
           </div>
           <div class="contact-item">
             <div class="c-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
             </div>
-            <div><div class="c-label">服務時間</div><div class="c-value">週一至週六 08:00 — 18:00</div></div>
+            <div><div class="c-label">????</div><div class="c-value">?曹??喲勗 08:00 ??18:00</div></div>
           </div>
         </div>
 
         <div class="highlights">
-          <div class="highlight-item"><div class="hl-icon">免費</div><div class="hl-label">到府估價</div></div>
-          <div class="highlight-item"><div class="hl-icon">透明</div><div class="hl-label">公開報價</div></div>
-          <div class="highlight-item"><div class="hl-icon">2年</div><div class="hl-label">工程保固</div></div>
+          <div class="highlight-item"><div class="hl-icon">?祥</div><div class="hl-label">?啣?隡啣</div></div>
+          <div class="highlight-item"><div class="hl-icon">??</div><div class="hl-label">?祇??勗</div></div>
+          <div class="highlight-item"><div class="hl-icon">2撟?/div><div class="hl-label">撌亦?靽</div></div>
         </div>
       </div>
 
       <!-- RIGHT: Form -->
       <div class="reveal reveal-delay-2">
-        <div class="label" style="margin-bottom:20px;">填寫諮詢表單</div>
+        <div class="label" style="margin-bottom:20px;">憛怠神隢株岷銵典</div>
         <form class="contact-form" id="contact-form">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">姓名 *</label>
-              <input type="text" class="form-input" placeholder="王先生 / 陳小姐" required="">
+              <label class="form-label">憪? *</label>
+              <input type="text" class="form-input" placeholder="????/ ?喳?憪? required="">
             </div>
             <div class="form-group">
-              <label class="form-label">聯絡電話 *</label>
+              <label class="form-label">?舐窗?餉店 *</label>
               <input type="tel" class="form-input" placeholder="0912-345-678" required="">
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label">電子郵件</label>
+            <label class="form-label">?餃??萎辣</label>
             <input type="email" class="form-input" placeholder="your@email.com">
           </div>
           <div class="form-group">
-            <label class="form-label">服務需求 *</label>
+            <label class="form-label">???瘙?*</label>
             <select class="form-select form-input" required="">
-              <option value="">請選擇服務類型</option>
-              <option>水電工程</option>
-              <option>室內裝修</option>
-              <option>設計規劃</option>
-              <option>維修保固</option>
-              <option>廚房改造</option>
-              <option>衛浴改造</option>
-              <option>全室翻新</option>
-              <option>商業空間</option>
-              <option>其他</option>
+              <option value="">隢??????/option>
+              <option>瘞湧撌亦?</option>
+              <option>摰文鋆耨</option>
+              <option>閮剛?閬?</option>
+              <option>蝬凋耨靽</option>
+              <option>撱?寥?/option>
+              <option>銵絕?寥?/option>
+              <option>?典恕蝧餅</option>
+              <option>?平蝛粹?</option>
+              <option>?嗡?</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="form-label">地址 / 坪數</label>
-            <input type="text" class="form-input" placeholder="例：台北市大安區，約 35 坪">
+            <label class="form-label">?啣? / ?芣</label>
+            <input type="text" class="form-input" placeholder="靘??啣?撣之摰?嚗? 35 ??>
           </div>
           <div class="form-group">
-            <label class="form-label">詳細需求說明</label>
-            <textarea class="form-textarea" placeholder="請描述您的裝修需求，例如想要的風格、特別注意事項、施工時程等…"></textarea>
+            <label class="form-label">閰喟敦?瘙牧??/label>
+            <textarea class="form-textarea" placeholder="隢?餈唳??靽桅?瘙?靘??唾??◢?潦?交釣???撌交?蝔???></textarea>
           </div>
-          <button type="submit" class="form-submit">送出諮詢申請 →</button>
+          <button type="submit" class="form-submit">?隢株岷?唾? ??/button>
         </form>
       </div>
     </div>
@@ -2979,7 +2979,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 
 
 
-  <button class="lightbox-prev">‹</button><button class="lightbox-next">›</button>
+  <button class="lightbox-prev">??/button><button class="lightbox-next">??/button>
 </div></div>
 </div>
 
@@ -2988,8 +2988,8 @@ html.pv-mode .mobile-overlay     { display: none !important; }
   <div class="container">
     <div class="footer-top">
       <div>
-        <a href="index.html" class="footer-logo">鴻匠<span>工程</span></a>
-        <p class="footer-tagline">二十年工藝傳承，讓每一個空間都成為值得驕傲的作品。</p>
+        <a href="index.html" class="footer-logo">暾餃?<span>撌亦?</span></a>
+        <p class="footer-tagline">鈭?撟游極??選?霈?銝?征???澆?撽????/p>
         <div class="footer-social">
           <a href="#" class="social-btn">fb</a>
           <a href="#" class="social-btn">L</a>
@@ -2997,37 +2997,37 @@ html.pv-mode .mobile-overlay     { display: none !important; }
         </div>
       </div>
       <div>
-        <h4>服務項目</h4>
+        <h4>???</h4>
         <ul class="footer-links">
-          <li><a href="service-water.html">水電工程</a></li>
-          <li><a href="service-interior.html">室內裝修</a></li>
-          <li><a href="service-design.html">設計規劃</a></li>
-          <li><a href="service-maintenance.html">維修保固</a></li>
+          <li><a href="service-water.html">瘞湧撌亦?</a></li>
+          <li><a href="service-interior.html">摰文鋆耨</a></li>
+          <li><a href="service-design.html">閮剛?閬?</a></li>
+          <li><a href="service-maintenance.html">蝬凋耨靽</a></li>
         </ul>
       </div>
       <div>
-        <h4>快速連結</h4>
+        <h4>敹恍??</h4>
         <ul class="footer-links">
-          <li><a href="gallery.html">作品相冊</a></li>
-          <li><a href="about.html">關於我們</a></li>
-          <li><a href="contact.html">聯絡我們</a></li>
+          <li><a href="gallery.html">雿??詨?</a></li>
+          <li><a href="about.html">???/a></li>
+          <li><a href="contact.html">?舐窗??/a></li>
         </ul>
       </div>
       <div>
-        <h4>聯絡資訊</h4>
+        <h4>?舐窗鞈?</h4>
         <ul class="footer-links">
           <li><a href="tel:0223456789"><span data-cms="global.footer.phone1">(02) 2345-6789</span></a></li>
           <li><a href="tel:0912345678"><span data-cms="global.footer.phone2">0912-345-678</span></a></li>
           <li><a href="mailto:service@hongjiang.com.tw"><span data-cms="global.footer.email">service@hongjiang.com.tw</span></a></li>
-          <li><a href="#"><span data-cms="global.footer.address">台北・新北・桃園・台中</span></a></li>
+          <li><a href="#"><span data-cms="global.footer.address">?啣??餅?獢??餃銝?/span></a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy"><span data-cms="global.footer.copyright">© 2024 鴻匠工程有限公司 · 統一編號：12345678</span></p>
+      <p class="footer-copy"><span data-cms="global.footer.copyright">穢 2024 暾餃?撌亦????砍 繚 蝯曹?蝺刻?嚗?2345678</span></p>
       <ul class="footer-legal">
-        <li><a href="#"><span data-cms="global.footer.privacy">隱私政策</span></a></li>
-        <li><a href="#"><span data-cms="global.footer.terms">服務條款</span></a></li>
+        <li><a href="#"><span data-cms="global.footer.privacy">?梁??輻?</span></a></li>
+        <li><a href="#"><span data-cms="global.footer.terms">??璇狡</span></a></li>
       </ul>
     </div>
   </div>
@@ -3035,7 +3035,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 
 <div id="lightbox" class="lightbox">
   <div class="lightbox-inner">
-    <button class="lightbox-close">✕</button>
+    <button class="lightbox-close">??/button>
     <img class="lightbox-img" src="" alt="">
     <div class="lightbox-info">
       <div class="lightbox-meta"><strong class="lb-title"></strong><span class="lb-meta"></span></div>
@@ -3044,13 +3044,13 @@ html.pv-mode .mobile-overlay     { display: none !important; }
 
 <script>
 
-/* ═══════════════════════════════════════════
+/* ????????????????????????????????????????????
    SPA Router for Demo
-   ═══════════════════════════════════════════ */
+   ????????????????????????????????????????????*/
 (function() {
   'use strict';
 
-  // Page mapping: link href → page id
+  // Page mapping: link href ??page id
   var PAGE_MAP = {
     'index.html':              'index',
     'service-water.html':      'service-water',
@@ -3167,7 +3167,7 @@ html.pv-mode .mobile-overlay     { display: none !important; }
         }
         if (!isOpen) {
           item.classList.add('open');
-          if (icon) icon.textContent = String.fromCharCode(8722); // −
+          if (icon) icon.textContent = String.fromCharCode(8722); // ??
         }
       });
     });
