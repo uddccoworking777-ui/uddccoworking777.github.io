@@ -1,13 +1,15 @@
-﻿<!DOCTYPE html><html lang="zh-TW"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>雿??詨? ??暾餃?撌亦?</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Roboto:wght@300;400;500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>作品相冊 — 鴻匠工程</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* ?? Gallery Stats Bar ?? */
+    /* ── Gallery Stats Bar ── */
     .gallery-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -55,7 +57,7 @@
       color: var(--text-subtle);
     }
 
-    /* ?? Filter row ?? */
+    /* ── Filter row ── */
     .gallery-filters-row {
       display: flex;
       align-items: center;
@@ -74,10 +76,10 @@
       font-weight: 600;
     }
 
-    /* ?? Gallery section bg ?? */
+    /* ── Gallery section bg ── */
     .gallery-section { background: var(--bg); }
 
-    /* ?? Responsive adjustments ?? */
+    /* ── Responsive adjustments ── */
     @media (max-width: 768px) {
       .gallery-stats { grid-template-columns: 1fr; }
       .gallery-stat-item { padding: 20px 24px; }
@@ -88,92 +90,92 @@
 </head>
 <body>
 
-<!-- ?? NAV ?? -->
+<!-- ── NAV ── -->
 <nav id="main-nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="index.html" class="logo">暾餃?<span>撌亦?</span></a>
+      <a href="index.html" class="logo">鴻匠<span>工程</span></a>
       <ul class="nav-links">
-        <li><a href="index.html">擐?</a></li>
+        <li><a href="index.html">首頁</a></li>
         <li class="has-dropdown">
-          <a href="#">???</a>
+          <a href="#">服務項目</a>
           <ul class="dropdown">
-            <li><a href="service-water.html">瘞湧撌亦?</a></li>
-            <li><a href="service-interior.html">摰文鋆耨</a></li>
-            <li><a href="service-design.html">閮剛?閬?</a></li>
-            <li><a href="service-maintenance.html">蝬凋耨靽</a></li>
+            <li><a href="service-water.html">水電工程</a></li>
+            <li><a href="service-interior.html">室內裝修</a></li>
+            <li><a href="service-design.html">設計規劃</a></li>
+            <li><a href="service-maintenance.html">維修保固</a></li>
           </ul>
         </li>
-        <li><a href="gallery.html" class="active">雿??詨?</a></li>
-        <li><a href="about.html">???/a></li>
-        <li class="nav-cta"><a href="contact.html">?祥隢株岷</a></li>
-        <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>?∪極?餃</a></li>
+        <li><a href="gallery.html" class="active">作品相冊</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li class="nav-cta"><a href="contact.html">免費諮詢</a></li>
+        <li class="nav-login"><a href="admin/login.html" target="_blank" rel="noopener noreferrer"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工登入</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="?詨">
+      <button class="hamburger" id="hamburger" aria-label="選單">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
 
-<!-- ?? MOBILE MENU ?? -->
+<!-- ── MOBILE MENU ── -->
 <div class="mobile-menu" id="mobile-menu">
-  <button class="mobile-close" id="mobile-close">??/button>
-  <a href="index.html">擐?</a>
-  <a href="service-water.html" class="mobile-sub">瘞湧撌亦?</a>
-  <a href="service-interior.html" class="mobile-sub">摰文鋆耨</a>
-  <a href="service-design.html" class="mobile-sub">閮剛?閬?</a>
-  <a href="service-maintenance.html" class="mobile-sub">蝬凋耨靽</a>
-  <a href="gallery.html" class="active">雿??詨?</a>
-  <a href="about.html">???/a>
-  <a href="contact.html">?祥隢株岷</a>
-  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0110 0v4"></path></svg>?∪極敺?餃</a>
+  <button class="mobile-close" id="mobile-close">✕</button>
+  <a href="index.html">首頁</a>
+  <a href="service-water.html" class="mobile-sub">水電工程</a>
+  <a href="service-interior.html" class="mobile-sub">室內裝修</a>
+  <a href="service-design.html" class="mobile-sub">設計規劃</a>
+  <a href="service-maintenance.html" class="mobile-sub">維修保固</a>
+  <a href="gallery.html" class="active">作品相冊</a>
+  <a href="about.html">關於我們</a>
+  <a href="contact.html">免費諮詢</a>
+  <a href="admin/login.html" target="_blank" rel="noopener noreferrer" class="mobile-login"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>員工後台登入</a>
 </div>
 
-<!-- ?? PAGE HERO ?? -->
+<!-- ── PAGE HERO ── -->
 <section class="page-hero">
   <div class="page-hero-bg"></div>
   <div class="container page-hero-content">
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href="index.html">擐?</a>
-      <span class="breadcrumb-sep">??/span>
-      <span>雿??詨?</span>
+      <a href="index.html">首頁</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>作品相冊</span>
     </nav>
-    <div class="label page-hero-label">GALLERY / 雿??詨?</div>
-    <h1 class="page-hero-title" data-cms="gallery.html.hero.title">
-      瘥??征??br><span class="orange">?賣雿?</span>
+    <div class="label page-hero-label">GALLERY / 作品相冊</div>
+    <h1 class="page-hero-title">
+      每一個空間<br /><span class="orange">都是作品</span>
     </h1>
-    <p class="page-hero-desc" data-cms="gallery.html.hero.desc">
-      敺偌?餃極蝔?典恕鋆耨嚗???雿?閬?鈭?銝雿恥?嗥??暑?釭??
+    <p class="page-hero-desc">
+      從水電工程到全室裝修，我們的作品見證了每一位客戶的生活品質提升
     </p>
   </div>
 </section>
 
-<!-- ?? GALLERY SECTION ?? -->
+<!-- ── GALLERY SECTION ── -->
 <section class="gallery-section section-gap">
   <div class="container">
 
     <!-- Stats Bar -->
     <div class="gallery-stats reveal">
       <div class="gallery-stat-item">
-        <div class="gs-num">12<span class="gs-unit">隞?/span></div>
+        <div class="gs-num">12<span class="gs-unit">件</span></div>
         <div class="gs-text">
-          <span class="gs-label">摰極獢?</span>
-          <span class="gs-sub">??蝝舐??湔銝?/span>
+          <span class="gs-label">完工案例</span>
+          <span class="gs-sub">持續累積更新中</span>
         </div>
       </div>
       <div class="gallery-stat-item">
-        <div class="gs-num">4<span class="gs-unit">蝔?/span></div>
+        <div class="gs-num">4<span class="gs-unit">種</span></div>
         <div class="gs-text">
-          <span class="gs-label">撌亦?憿?</span>
-          <span class="gs-sub">瘞湧?餉?靽柴閮剛??餃?璆?/span>
+          <span class="gs-label">工程類型</span>
+          <span class="gs-sub">水電・裝修・設計・商業</span>
         </div>
       </div>
       <div class="gallery-stat-item">
-        <div class="gs-num">2<span class="gs-unit">撟?/span></div>
+        <div class="gs-num">2<span class="gs-unit">年</span></div>
         <div class="gs-text">
-          <span class="gs-label">撌亦?靽</span>
-          <span class="gs-sub">摰極敺?Ｖ???/span>
+          <span class="gs-label">工程保固</span>
+          <span class="gs-sub">完工後全面保障</span>
         </div>
       </div>
     </div>
@@ -181,159 +183,207 @@
     <!-- Filter Row -->
     <div class="gallery-filters-row reveal">
       <div class="gallery-filters">
-        <button class="filter-btn active" data-filter="all">?券雿?</button>
-        <button class="filter-btn" data-filter="water">瘞湧撌亦?</button>
-        <button class="filter-btn" data-filter="interior">摰文鋆耨</button>
-        <button class="filter-btn" data-filter="design">閮剛?閬?</button>
-        <button class="filter-btn" data-filter="commercial">?平蝛粹?</button>
+        <button class="filter-btn active" data-filter="all">全部作品</button>
+        <button class="filter-btn" data-filter="water">水電工程</button>
+        <button class="filter-btn" data-filter="interior">室內裝修</button>
+        <button class="filter-btn" data-filter="design">設計規劃</button>
+        <button class="filter-btn" data-filter="commercial">商業空間</button>
       </div>
-      <p class="filter-count">??<span>12</span> 隞嗡???/p>
+      <p class="filter-count">共 <span>12</span> 件作品</p>
     </div>
 
     <!-- Gallery Grid -->
     <div class="gallery-grid reveal">
 
       <!-- 01 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj01/1200/800" data-title="?曆誨蝪∠?銝?砍?" data-meta="?啣?撣之摰???0?芥2024.03">
-        <img src="https://picsum.photos/seed/hj01/800/600" alt="?曆誨蝪∠?銝?砍?" loading="lazy">
+      <div class="gallery-item"
+           data-cat="interior"
+           data-full="https://picsum.photos/seed/hj01/1200/800"
+           data-title="現代簡約三房公寓"
+           data-meta="台北市大安區・40坪・2024.03">
+        <img src="https://picsum.photos/seed/hj01/800/600" alt="現代簡約三房公寓" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">摰文鋆耨</div>
-          <div class="gallery-item-title">?曆誨蝪∠?銝?砍?</div>
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">現代簡約三房公寓</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 02 -->
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj02/1200/800" data-title="?齒憭扳??冽?瘞湧?湔" data-meta="?啣?撣680?芥2024.01">
-        <img src="https://picsum.photos/seed/hj02/800/600" alt="?齒憭扳??冽?瘞湧?湔" loading="lazy">
+      <div class="gallery-item"
+           data-cat="water"
+           data-full="https://picsum.photos/seed/hj02/1200/800"
+           data-title="商辦大樓全棟水電更新"
+           data-meta="新北市・680坪・2024.01">
+        <img src="https://picsum.photos/seed/hj02/800/600" alt="商辦大樓全棟水電更新" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">瘞湧撌亦?</div>
-          <div class="gallery-item-title">?齒憭扳??冽?瘞湧?湔</div>
+          <div class="gallery-item-cat">水電工程</div>
+          <div class="gallery-item-title">商辦大樓全棟水電更新</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 03 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj03/1200/800" data-title="撱銵絕?券蝧餅" data-meta="?唬葉撣28?芥2023.11">
-        <img src="https://picsum.photos/seed/hj03/800/600" alt="撱銵絕?券蝧餅" loading="lazy">
+      <div class="gallery-item"
+           data-cat="interior"
+           data-full="https://picsum.photos/seed/hj03/1200/800"
+           data-title="廚房衛浴全面翻新"
+           data-meta="台中市・28坪・2023.11">
+        <img src="https://picsum.photos/seed/hj03/800/600" alt="廚房衛浴全面翻新" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">摰文鋆耨</div>
-          <div class="gallery-item-title">撱銵絕?券蝧餅</div>
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">廚房衛浴全面翻新</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 04 -->
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj04/1200/800" data-title="?予?撅蕃靽株身閮? data-meta="?啣?撣ㄚ????5?芥2023.09">
-        <img src="https://picsum.photos/seed/hj04/800/600" alt="?予?撅蕃靽株身閮? loading="lazy">
+      <div class="gallery-item"
+           data-cat="design"
+           data-full="https://picsum.photos/seed/hj04/1200/800"
+           data-title="透天厝全屋翻修設計"
+           data-meta="台北市士林區・65坪・2023.09">
+        <img src="https://picsum.photos/seed/hj04/800/600" alt="透天厝全屋翻修設計" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">閮剛?閬?</div>
-          <div class="gallery-item-title">?予?撅蕃靽株身閮?/div>
+          <div class="gallery-item-cat">設計規劃</div>
+          <div class="gallery-item-title">透天厝全屋翻修設計</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 05 -->
-      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj05/1200/800" data-title="擗ㄡ摨蝛粹??寥? data-meta="獢?撣35?芥2023.07">
-        <img src="https://picsum.photos/seed/hj05/800/600" alt="擗ㄡ摨蝛粹??寥? loading="lazy">
+      <div class="gallery-item"
+           data-cat="commercial"
+           data-full="https://picsum.photos/seed/hj05/1200/800"
+           data-title="餐飲店面空間改造"
+           data-meta="桃園市・35坪・2023.07">
+        <img src="https://picsum.photos/seed/hj05/800/600" alt="餐飲店面空間改造" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">?平蝛粹?</div>
-          <div class="gallery-item-title">擗ㄡ摨蝛粹??寥?/div>
+          <div class="gallery-item-cat">商業空間</div>
+          <div class="gallery-item-title">餐飲店面空間改造</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 06 -->
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj06/1200/800" data-title="?撖偌?餃?Ｘ?? data-meta="?啣?撣?臬???4?芥2023.05">
-        <img src="https://picsum.photos/seed/hj06/800/600" alt="?撖偌?餃?Ｘ?? loading="lazy">
+      <div class="gallery-item"
+           data-cat="water"
+           data-full="https://picsum.photos/seed/hj06/1200/800"
+           data-title="老公寓水電全面更新"
+           data-meta="台北市萬華區・24坪・2023.05">
+        <img src="https://picsum.photos/seed/hj06/800/600" alt="老公寓水電全面更新" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">瘞湧撌亦?</div>
-          <div class="gallery-item-title">?撖偌?餃?Ｘ??/div>
+          <div class="gallery-item-cat">水電工程</div>
+          <div class="gallery-item-title">老公寓水電全面更新</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 07 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj07/1200/800" data-title="??憸冽?拇鋆耨" data-meta="?啣?撣璈???2?芥2023.04">
-        <img src="https://picsum.photos/seed/hj07/800/600" alt="??憸冽?拇鋆耨" loading="lazy">
+      <div class="gallery-item"
+           data-cat="interior"
+           data-full="https://picsum.photos/seed/hj07/1200/800"
+           data-title="北歐風格兩房裝修"
+           data-meta="新北市板橋區・32坪・2023.04">
+        <img src="https://picsum.photos/seed/hj07/800/600" alt="北歐風格兩房裝修" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">摰文鋆耨</div>
-          <div class="gallery-item-title">??憸冽?拇鋆耨</div>
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">北歐風格兩房裝修</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 08 -->
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj08/1200/800" data-title="撠?豢??賜征?身閮? data-meta="?啣?撣葉撅勗???8?芥2023.03">
-        <img src="https://picsum.photos/seed/hj08/800/600" alt="撠?豢??賜征?身閮? loading="lazy">
+      <div class="gallery-item"
+           data-cat="design"
+           data-full="https://picsum.photos/seed/hj08/1200/800"
+           data-title="小坪數機能空間設計"
+           data-meta="台北市中山區・18坪・2023.03">
+        <img src="https://picsum.photos/seed/hj08/800/600" alt="小坪數機能空間設計" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">閮剛?閬?</div>
-          <div class="gallery-item-title">撠?豢??賜征?身閮?/div>
+          <div class="gallery-item-cat">設計規劃</div>
+          <div class="gallery-item-title">小坪數機能空間設計</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 09 -->
-      <div class="gallery-item" data-cat="commercial" data-full="https://picsum.photos/seed/hj09/1200/800" data-title="颲血摰斤征?擃蕃?? data-meta="?啣?撣皝???0?芥2023.01">
-        <img src="https://picsum.photos/seed/hj09/800/600" alt="颲血摰斤征?擃蕃?? loading="lazy">
+      <div class="gallery-item"
+           data-cat="commercial"
+           data-full="https://picsum.photos/seed/hj09/1200/800"
+           data-title="辦公室空間整體翻新"
+           data-meta="台北市內湖區・80坪・2023.01">
+        <img src="https://picsum.photos/seed/hj09/800/600" alt="辦公室空間整體翻新" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">?平蝛粹?</div>
-          <div class="gallery-item-title">颲血摰斤征?擃蕃??/div>
+          <div class="gallery-item-cat">商業空間</div>
+          <div class="gallery-item-title">辦公室空間整體翻新</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 10 -->
-      <div class="gallery-item" data-cat="interior" data-full="https://picsum.photos/seed/hj10/1200/800" data-title="?餅０憭批??典恕鋆耨" data-meta="獢?撣45?芥2022.12">
-        <img src="https://picsum.photos/seed/hj10/800/600" alt="?餅０憭批??典恕鋆耨" loading="lazy">
+      <div class="gallery-item"
+           data-cat="interior"
+           data-full="https://picsum.photos/seed/hj10/1200/800"
+           data-title="電梯大廈全室裝修"
+           data-meta="桃園市・45坪・2022.12">
+        <img src="https://picsum.photos/seed/hj10/800/600" alt="電梯大廈全室裝修" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">摰文鋆耨</div>
-          <div class="gallery-item-title">?餅０憭批??典恕鋆耨</div>
+          <div class="gallery-item-cat">室內裝修</div>
+          <div class="gallery-item-title">電梯大廈全室裝修</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 11 -->
-      <div class="gallery-item" data-cat="water" data-full="https://picsum.photos/seed/hj11/1200/800" data-title="蝷曉?蝞∠??湧?瘙唳?" data-meta="?啣?撣摨???20?芥2022.10">
-        <img src="https://picsum.photos/seed/hj11/800/600" alt="蝷曉?蝞∠??湧?瘙唳?" loading="lazy">
+      <div class="gallery-item"
+           data-cat="water"
+           data-full="https://picsum.photos/seed/hj11/1200/800"
+           data-title="社區管線整體汰換"
+           data-meta="新北市新店區・120坪・2022.10">
+        <img src="https://picsum.photos/seed/hj11/800/600" alt="社區管線整體汰換" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">瘞湧撌亦?</div>
-          <div class="gallery-item-title">蝷曉?蝞∠??湧?瘙唳?</div>
+          <div class="gallery-item-cat">水電工程</div>
+          <div class="gallery-item-title">社區管線整體汰換</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
       <!-- 12 -->
-      <div class="gallery-item" data-cat="design" data-full="https://picsum.photos/seed/hj12/1200/800" data-title="蝎曉?憸冽銝餉憟閮剛?" data-meta="?啣?撣之摰???5?芥2022.08">
-        <img src="https://picsum.photos/seed/hj12/800/600" alt="蝎曉?憸冽銝餉憟閮剛?" loading="lazy">
+      <div class="gallery-item"
+           data-cat="design"
+           data-full="https://picsum.photos/seed/hj12/1200/800"
+           data-title="精品風格主臥套房設計"
+           data-meta="台北市大安區・25坪・2022.08">
+        <img src="https://picsum.photos/seed/hj12/800/600" alt="精品風格主臥套房設計" loading="lazy" />
         <div class="gallery-item-overlay">
-          <div class="gallery-item-cat">閮剛?閬?</div>
-          <div class="gallery-item-title">蝎曉?憸冽銝餉憟閮剛?</div>
+          <div class="gallery-item-cat">設計規劃</div>
+          <div class="gallery-item-title">精品風格主臥套房設計</div>
         </div>
         <div class="gallery-zoom">
-          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
         </div>
       </div>
 
@@ -341,29 +391,29 @@
   </div><!-- /.container -->
 </section>
 
-<!-- ?? CTA BANNER ?? -->
+<!-- ── CTA BANNER ── -->
 <section class="cta-banner">
   <div class="container">
     <div class="cta-inner">
       <div>
-        <h2 class="cta-title">?函?蝛粹?嚗??臭誑<br><em>?銝?隞嗡???/em></h2>
-        <p class="cta-sub">?祥?啣?隡啣 繚 ???勗 繚 鈭僑靽</p>
+        <h2 class="cta-title">您的空間，也可以<br /><em>成為下一件作品</em></h2>
+        <p class="cta-sub">免費到府估價 · 透明報價 · 二年保固</p>
       </div>
       <a href="contact.html" class="btn-dark">
-        蝡?祥隢株岷
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        立即免費諮詢
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
 </section>
 
-<!-- ?? FOOTER ?? -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="container">
     <div class="footer-top">
       <div>
-        <a href="index.html" class="footer-logo">暾餃?<span>撌亦?</span></a>
-        <p class="footer-tagline">鈭?撟游極??選?霈?銝?征???澆?撽????/p>
+        <a href="index.html" class="footer-logo">鴻匠<span>工程</span></a>
+        <p class="footer-tagline">二十年工藝傳承，專注水電與室內裝修工程。讓每一個空間，都成為值得驕傲的作品。</p>
         <div class="footer-social">
           <a href="#" class="social-btn">fb</a>
           <a href="#" class="social-btn">L</a>
@@ -371,60 +421,57 @@
         </div>
       </div>
       <div>
-        <h4>???</h4>
+        <h4>服務項目</h4>
         <ul class="footer-links">
-          <li><a href="service-water.html">瘞湧撌亦?</a></li>
-          <li><a href="service-interior.html">摰文鋆耨</a></li>
-          <li><a href="service-design.html">閮剛?閬?</a></li>
-          <li><a href="service-maintenance.html">蝬凋耨靽</a></li>
+          <li><a href="service-water.html">水電工程</a></li>
+          <li><a href="service-interior.html">室內裝修</a></li>
+          <li><a href="service-design.html">設計規劃</a></li>
+          <li><a href="service-maintenance.html">維修保固</a></li>
         </ul>
       </div>
       <div>
-        <h4>敹恍??</h4>
+        <h4>快速連結</h4>
         <ul class="footer-links">
-          <li><a href="gallery.html">雿??詨?</a></li>
-          <li><a href="about.html">???/a></li>
-          <li><a href="contact.html">?舐窗??/a></li>
+          <li><a href="gallery.html">作品相冊</a></li>
+          <li><a href="about.html">關於我們</a></li>
+          <li><a href="contact.html">聯絡我們</a></li>
         </ul>
       </div>
       <div>
-        <h4>?舐窗鞈?</h4>
+        <h4>聯絡資訊</h4>
         <ul class="footer-links">
-          <li><a href="tel:0223456789"><span data-cms="global.footer.phone1">(02) 2345-6789</span></a></li>
-          <li><a href="tel:0912345678"><span data-cms="global.footer.phone2">0912-345-678</span></a></li>
-          <li><a href="mailto:service@hongjiang.com.tw"><span data-cms="global.footer.email">service@hongjiang.com.tw</span></a></li>
-          <li><a href="#"><span data-cms="global.footer.address">?啣??餅?獢??餃銝?/span></a></li>
+          <li><a href="tel:0223456789">(02) 2345-6789</a></li>
+          <li><a href="tel:0912345678">0912-345-678</a></li>
+          <li><a href="mailto:service@hongjiang.com.tw">service@hongjiang.com.tw</a></li>
+          <li><a href="#">台北・新北・桃園・台中</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy"><span data-cms="global.footer.copyright">穢 2024 暾餃?撌亦????砍 繚 蝯曹?蝺刻?嚗?2345678</span></p>
+      <p class="footer-copy">© 2024 鴻匠工程有限公司 · 統一編號：12345678</p>
       <ul class="footer-legal">
-        <li><a href="#"><span data-cms="global.footer.privacy">?梁??輻?</span></a></li>
-        <li><a href="#"><span data-cms="global.footer.terms">??璇狡</span></a></li>
+        <li><a href="privacy.html">隱私政策</a></li>
+        <li><a href="terms.html">服務條款</a></li>
       </ul>
     </div>
   </div>
 </footer>
 
-<!-- ?? LIGHTBOX ?? -->
+<!-- ── LIGHTBOX ── -->
 <div id="lightbox" class="lightbox">
   <div class="lightbox-inner">
-    <button class="lightbox-close">??/button>
-    <img class="lightbox-img" src="" alt="">
+    <button class="lightbox-close">✕</button>
+    <img class="lightbox-img" src="" alt="" />
     <div class="lightbox-info">
       <div class="lightbox-meta"><strong class="lb-title"></strong><span class="lb-meta"></span></div>
       <div class="lightbox-counter"></div>
     </div>
-    <button class="lightbox-prev">??/button>
-    <button class="lightbox-next">??/button>
+    <button class="lightbox-prev">‹</button>
+    <button class="lightbox-next">›</button>
   </div>
 </div>
 
-
-
-
-
-  
-  <script src="js/main.js"></script>
-</body></html>
+<script src="js/cms.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
