@@ -3161,16 +3161,22 @@
           const brandName = d.pages['index.html']['brand.name'];
           if (brandName && brandName !== '鴻匠工程') {
             const safeBrand = esc(brandName);
-            if (document.title.includes('鴻匠工程')) {
-              document.title = document.title.replace(/鴻匠工程/g, safeBrand);
+            if (document.title.includes('鴻匠工程') || document.title.includes('鴻匠')) {
+              document.title = document.title.replace(/鴻匠(?:工程)?/g, safeBrand);
             }
-            document.querySelectorAll('.header-logo, .footer-logo').forEach(el => {
+            document.querySelectorAll('.logo, .footer-logo').forEach(el => {
               el.innerHTML = safeBrand;
             });
-            const copyEl = document.querySelector('.footer-copy');
-            if (copyEl) {
-              copyEl.innerHTML = copyEl.innerHTML.replace(/鴻匠工程/g, safeBrand);
-            }
+            const walk = (node) => {
+              if (node.nodeType === 3) {
+                if (node.nodeValue.includes('鴻匠')) {
+                  node.nodeValue = node.nodeValue.replace(/鴻匠(?:工程)?/g, brandName);
+                }
+              } else if (node.nodeType === 1 && !['SCRIPT','STYLE','TEXTAREA'].includes(node.nodeName)) {
+                for (let child of node.childNodes) walk(child);
+              }
+            };
+            walk(document.body);
           }
 
           // Apply footer tagline manually since it doesn't have data-cms
