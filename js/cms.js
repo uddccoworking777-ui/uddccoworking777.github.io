@@ -1324,6 +1324,13 @@
         "name": "首頁",
         "items": [
             {
+                "group": "全站設定 (Global)",
+                "key": "brand.name",
+                "label": "網站大標題 / 品牌名稱",
+                "type": "text",
+                "default": "鴻匠工程"
+            },
+            {
                 "group": "主視覺 (Hero)",
                 "key": "hero.title",
                 "label": "大標題",
@@ -3150,10 +3157,27 @@
           }
         });
         
-        // Apply footer tagline manually since it doesn't have data-cms
-        if (d.pages['index.html'] && d.pages['index.html']['footer.tagline']) {
-          const taglineEl = document.querySelector('.footer-tagline');
-          if (taglineEl) taglineEl.innerHTML = esc(d.pages['index.html']['footer.tagline']).replace(/\n/g, '<br />');
+        if (d.pages['index.html']) {
+          const brandName = d.pages['index.html']['brand.name'];
+          if (brandName && brandName !== '鴻匠工程') {
+            const safeBrand = esc(brandName);
+            if (document.title.includes('鴻匠工程')) {
+              document.title = document.title.replace(/鴻匠工程/g, safeBrand);
+            }
+            document.querySelectorAll('.header-logo, .footer-logo').forEach(el => {
+              el.innerHTML = safeBrand;
+            });
+            const copyEl = document.querySelector('.footer-copy');
+            if (copyEl) {
+              copyEl.innerHTML = copyEl.innerHTML.replace(/鴻匠工程/g, safeBrand);
+            }
+          }
+
+          // Apply footer tagline manually since it doesn't have data-cms
+          if (d.pages['index.html']['footer.tagline']) {
+            const taglineEl = document.querySelector('.footer-tagline');
+            if (taglineEl) taglineEl.innerHTML = esc(d.pages['index.html']['footer.tagline']).replace(/\n/g, '<br />');
+          }
         }
       }
 
