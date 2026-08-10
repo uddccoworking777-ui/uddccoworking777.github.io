@@ -1574,19 +1574,105 @@
                 "default": "從一份對工藝的熱忱出發，鴻匠工程二十年來守護每一個家庭的居住品質。"
             },
             {
-                "group": "品牌理念",
-                "key": "mission.title",
-                "label": "區塊標題",
+                "group": "公司故事",
+                "key": "story.year",
+                "label": "成立年份（大字）",
                 "type": "text",
-                "default": "做工程，也是做<span class=\"blue\">良心</span>"
+                "default": "2004"
             },
             {
-                "group": "品牌理念",
-                "key": "mission.desc",
-                "label": "區塊內文",
-                "type": "textarea",
-                "default": "許多人對裝修的印象是「水很深」、「常常追加預算」。我們成立的初衷，就是希望打破這個刻板印象。<br><br>我們堅持透明報價、不隨便追加工程款。每一個案子，我們都當成自己的家來做。選用合規安全的線材管料，按部就班施工，因為隱蔽工程才是決定一個家能住多久的關鍵。"
+                "group": "公司故事",
+                "key": "story.quote",
+                "label": "引言金句",
+                "type": "text",
+                "default": "「做好一件事，<br />不如把它做到無可挑剔。」"
             },
+            {
+                "group": "公司故事",
+                "key": "story.subtitle",
+                "label": "右側標題",
+                "type": "text",
+                "default": "從兩人小團隊<br /><span class=\"blue\">到三十人專業隊伍</span>"
+            },
+            {
+                "group": "公司故事",
+                "key": "story.text1",
+                "label": "段落一",
+                "type": "textarea",
+                "default": "2004年，創辦人陳師傅帶著一身水電技藝與對品質的執著，在台北市成立鴻匠工程。起初只有兩名師傅，靠著口碑相傳，接下了第一個全室翻新案件，以精細施工贏得客戶信賴。"
+            },
+            {
+                "group": "公司故事",
+                "key": "story.text2",
+                "label": "段落二",
+                "type": "textarea",
+                "default": "二十年間，我們從不在品質上妥協。每一根管線的走向、每一條電路的規劃，都經過嚴謹計算與測試。正是這份堅持，讓鴻匠從小型施工隊成長為擁有三十名持照技術師傅的專業工程公司。"
+            },
+            {
+                "group": "公司故事",
+                "key": "story.text3",
+                "label": "段落三",
+                "type": "textarea",
+                "default": "今天，我們持續以相同的精神服務每一位客戶：不論案件大小，都以最高標準完成。這不只是職業，這是我們對品質生活的承諾。"
+            },
+            { "group": "統計數據列", "key": "stat.1.num", "label": "數據一 數字", "type": "text", "default": "20" },
+            { "group": "統計數據列", "key": "stat.1.suffix", "label": "數據一 後綴", "type": "text", "default": "+" },
+            { "group": "統計數據列", "key": "stat.1.label", "label": "數據一 說明", "type": "text", "default": "年專業經驗" },
+            { "group": "統計數據列", "key": "stat.2.num", "label": "數據二 數字", "type": "text", "default": "800" },
+            { "group": "統計數據列", "key": "stat.2.suffix", "label": "數據二 後綴", "type": "text", "default": "+" },
+            { "group": "統計數據列", "key": "stat.2.label", "label": "數據二 說明", "type": "text", "default": "完成案件" },
+            { "group": "統計數據列", "key": "stat.3.num", "label": "數據三 數字", "type": "text", "default": "98" },
+            { "group": "統計數據列", "key": "stat.3.suffix", "label": "數據三 後綴", "type": "text", "default": "%" },
+            { "group": "統計數據列", "key": "stat.3.label", "label": "數據三 說明", "type": "text", "default": "客戶滿意度" },
+            { "group": "統計數據列", "key": "stat.4.num", "label": "數據四 數字", "type": "text", "default": "30" },
+            { "group": "統計數據列", "key": "stat.4.suffix", "label": "數據四 後綴", "type": "text", "default": "+" },
+            { "group": "統計數據列", "key": "stat.4.label", "label": "數據四 說明", "type": "text", "default": "名持照師傅" },
+            {
+                "group": "三個承諾",
+                "key": "values.title",
+                "label": "區塊標題",
+                "type": "text",
+                "default": "我們所堅守的<br /><span class=\"blue\">三個承諾</span>"
+            },
+            { "group": "三個承諾", "key": "values.1.title", "label": "承諾一 標題", "type": "text", "default": "品質第一" },
+            { "group": "三個承諾", "key": "values.1.desc", "label": "承諾一 內文", "type": "textarea", "default": "嚴選建材，拒絕偷工減料。每道工序都有標準程序，每個細節都接受嚴格檢驗。完工品質不達標準，絕不交屋。" },
+            { "group": "三個承諾", "key": "values.2.title", "label": "承諾二 標題", "type": "text", "default": "透明誠信" },
+            { "group": "三個承諾", "key": "values.2.desc", "label": "承諾二 內文", "type": "textarea", "default": "報價透明，所有費用逐項列清。施工過程定期回報進度，不說謊、不隱瞞、不事後加價。信任，是長久合作的基礎。" },
+            { "group": "三個承諾", "key": "values.3.title", "label": "承諾三 標題", "type": "text", "default": "客戶至上" },
+            { "group": "三個承諾", "key": "values.3.desc", "label": "承諾三 內文", "type": "textarea", "default": "傾聽每一位客戶的需求，提供量身訂製的解決方案。完工後持續提供保固與維護服務，讓您真正安心無憂。" },
+            {
+                "group": "資格認證",
+                "key": "cert.title",
+                "label": "區塊標題",
+                "type": "text",
+                "default": "合法・<span class=\"blue\">專業・可信賴</span>"
+            },
+            { "group": "資格認證", "key": "cert.desc", "label": "區塊副標", "type": "textarea", "default": "所有師傅均持有政府頒發之專業技術士證照，工程施作符合建築法規標準。" },
+            { "group": "資格認證", "key": "cert.1", "label": "證照一", "type": "text", "default": "乙級水電技術士證照" },
+            { "group": "資格認證", "key": "cert.2", "label": "證照二", "type": "text", "default": "甲級室內裝修業許可" },
+            { "group": "資格認證", "key": "cert.3", "label": "證照三", "type": "text", "default": "建築物室內裝修許可證" },
+            { "group": "資格認證", "key": "cert.4", "label": "證照四", "type": "text", "default": "用電設備安全檢查合格" },
+            { "group": "資格認證", "key": "cert.5", "label": "證照五", "type": "text", "default": "勞工安全衛生管理合格" },
+            { "group": "資格認證", "key": "cert.6", "label": "證照六", "type": "text", "default": "消防安全設備施工許可" },
+            {
+                "group": "專業團隊",
+                "key": "team.title",
+                "label": "區塊標題",
+                "type": "text",
+                "default": "每一位師傅<br /><span class=\"blue\">都是品質保證</span>"
+            },
+            { "group": "專業團隊", "key": "team.1.num", "label": "數據一 數字", "type": "text", "default": "30" },
+            { "group": "專業團隊", "key": "team.1.unit", "label": "數據一 單位", "type": "text", "default": "+" },
+            { "group": "專業團隊", "key": "team.1.label", "label": "數據一 說明", "type": "text", "default": "持照技術師傅" },
+            { "group": "專業團隊", "key": "team.2.num", "label": "數據二 數字", "type": "text", "default": "5" },
+            { "group": "專業團隊", "key": "team.2.unit", "label": "數據二 單位", "type": "text", "default": "+" },
+            { "group": "專業團隊", "key": "team.2.label", "label": "數據二 說明", "type": "text", "default": "室內設計師" },
+            { "group": "專業團隊", "key": "team.3.num", "label": "數據三 數字", "type": "text", "default": "3" },
+            { "group": "專業團隊", "key": "team.3.unit", "label": "數據三 單位", "type": "text", "default": "位" },
+            { "group": "專業團隊", "key": "team.3.label", "label": "數據三 說明", "type": "text", "default": "工程監造人員" },
+            { "group": "專業團隊", "key": "team.4.num", "label": "數據四 數字", "type": "text", "default": "24" },
+            { "group": "專業團隊", "key": "team.4.unit", "label": "數據四 單位", "type": "text", "default": "H" },
+            { "group": "專業團隊", "key": "team.4.label", "label": "數據四 說明", "type": "text", "default": "客服支援" },
             {
                 "group": "里程碑",
                 "key": "timeline.title",
@@ -1594,90 +1680,18 @@
                 "type": "text",
                 "default": "成長與<span class=\"blue\">里程碑</span>"
             },
-            {
-                "group": "里程碑",
-                "key": "timeline.1.year",
-                "label": "里程碑一 年份",
-                "type": "text",
-                "default": "2004"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.1.title",
-                "label": "里程碑一 標題",
-                "type": "text",
-                "default": "創立鴻匠水電工程行"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.1.desc",
-                "label": "里程碑一 簡述",
-                "type": "textarea",
-                "default": "從三個師傅的小團隊開始，專注於社區家庭水電維修。"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.2.year",
-                "label": "里程碑二 年份",
-                "type": "text",
-                "default": "2012"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.2.title",
-                "label": "里程碑二 標題",
-                "type": "text",
-                "default": "擴大服務範疇"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.2.desc",
-                "label": "里程碑二 簡述",
-                "type": "textarea",
-                "default": "引進室內設計師團隊，提供從設計到施工的一條龍服務。"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.3.year",
-                "label": "里程碑三 年份",
-                "type": "text",
-                "default": "2020"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.3.title",
-                "label": "里程碑三 標題",
-                "type": "text",
-                "default": "商業空間服務上線"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.3.desc",
-                "label": "里程碑三 簡述",
-                "type": "textarea",
-                "default": "承接連鎖品牌店面、商辦大樓等中大型專案。"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.4.year",
-                "label": "里程碑四 年份",
-                "type": "text",
-                "default": "2024"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.4.title",
-                "label": "里程碑四 標題",
-                "type": "text",
-                "default": "全台服務網絡啟動"
-            },
-            {
-                "group": "里程碑",
-                "key": "timeline.4.desc",
-                "label": "里程碑四 簡述",
-                "type": "textarea",
-                "default": "突破區域限制，團隊擴編至30人，承接全台各地的裝修需求。"
-            }
+            { "group": "里程碑", "key": "timeline.1.year", "label": "里程碑一 年份", "type": "text", "default": "2004" },
+            { "group": "里程碑", "key": "timeline.1.title", "label": "里程碑一 標題", "type": "text", "default": "創立鴻匠水電工程行" },
+            { "group": "里程碑", "key": "timeline.1.desc", "label": "里程碑一 簡述", "type": "textarea", "default": "從三個師傅的小團隊開始，專注於社區家庭水電維修。" },
+            { "group": "里程碑", "key": "timeline.2.year", "label": "里程碑二 年份", "type": "text", "default": "2012" },
+            { "group": "里程碑", "key": "timeline.2.title", "label": "里程碑二 標題", "type": "text", "default": "擴大服務範疇" },
+            { "group": "里程碑", "key": "timeline.2.desc", "label": "里程碑二 簡述", "type": "textarea", "default": "引進室內設計師團隊，提供從設計到施工的一條龍服務。" },
+            { "group": "里程碑", "key": "timeline.3.year", "label": "里程碑三 年份", "type": "text", "default": "2020" },
+            { "group": "里程碑", "key": "timeline.3.title", "label": "里程碑三 標題", "type": "text", "default": "商業空間服務上線" },
+            { "group": "里程碑", "key": "timeline.3.desc", "label": "里程碑三 簡述", "type": "textarea", "default": "承接連鎖品牌店面、商辦大樓等中大型專案。" },
+            { "group": "里程碑", "key": "timeline.4.year", "label": "里程碑四 年份", "type": "text", "default": "2024" },
+            { "group": "里程碑", "key": "timeline.4.title", "label": "里程碑四 標題", "type": "text", "default": "全台服務網絡啟動" },
+            { "group": "里程碑", "key": "timeline.4.desc", "label": "里程碑四 簡述", "type": "textarea", "default": "突破區域限制，團隊擴編至30人，承接全台各地的裝修需求。" }
         ]
     },
     "gallery.html": {
