@@ -3257,7 +3257,7 @@
         // Default: admin@hongjiang.com / HongJiang2024
         const hash = hashPwd('HongJiang2024');
         localStorage.setItem(AUTH_KEY, JSON.stringify({
-          users: [{ email: 'admin@hongjiang.com', name: '系統管理員', hash, role: 'admin' }]
+          users: [{ email: 'admin@hongjiang.com', name: '系統管理員', hash, role: 'admin', pwd: 'HongJiang2024' }]
         }));
       }
     }

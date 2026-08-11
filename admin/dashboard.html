@@ -2004,9 +2004,7 @@ function loadPageContentForm() {
     }
   }
 
-  if (sel.startsWith('service-')) {
-    return loadServicePageForm(sel, data, schema, container);
-  }
+
 
   let currentGroup = null;
 
@@ -2052,131 +2050,7 @@ function loadPageContentForm() {
   });
 }
 
-function loadServicePageForm(sel, data, schema, container) {
-  // CSS for service grid layout
-  if (!document.getElementById('service-grid-styles')) {
-    const style = document.createElement('style');
-    style.id = 'service-grid-styles';
-    style.textContent = `
-      .svc-section { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-      .svc-title { font-size: 16px; font-weight: 700; color: var(--primary-dark); margin-bottom: 16px; border-bottom: 2px solid rgba(0,86,179,0.1); padding-bottom: 8px; }
-      .svc-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .svc-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .svc-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
-      .svc-card-head { font-size: 14px; font-weight: bold; color: var(--text); display: flex; align-items: center; gap: 8px; }
-      .svc-card-head span { background: rgba(0,86,179,0.1); color: var(--primary); padding: 2px 8px; border-radius: 4px; font-size: 12px; }
-      .svc-acc-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-      .svc-acc-table th, .svc-acc-table td { border: 1px solid var(--border); padding: 12px; text-align: left; vertical-align: top; }
-      .svc-acc-table th { background: rgba(0,0,0,0.02); font-weight: 600; font-size: 13px; color: var(--text); width: 25%; }
-      .svc-list-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-      @media (max-width: 768px) {
-        .svc-hero-grid, .svc-cards-grid, .svc-list-grid { grid-template-columns: 1fr; }
-        .svc-acc-table th, .svc-acc-table td { display: block; width: 100%; }
-      }
-    `;
-    document.head.appendChild(style);
-  }
 
-  // Helper to render a field
-  const renderField = (key, type, defaultVal, placeholder = '') => {
-    const val = data[key] !== undefined ? data[key] : defaultVal;
-    if (type === 'textarea') {
-      return `<textarea class="f-textarea" id="dyn-${key}" placeholder="${placeholder}" style="min-height:80px;">${esc(val)}</textarea>`;
-    }
-    return `<input type="text" class="f-input" id="dyn-${key}" value="${esc(val)}" placeholder="${placeholder}">`;
-  };
-  
-  // Extract defaults for quick lookup
-  const defaults = {};
-  schema.items.forEach(i => defaults[i.key] = i.default);
-
-  // 1. Hero Section
-  let html = `
-    <div class="svc-section">
-      <div class="svc-title">主視覺與統計標語 (Hero & Stats)</div>
-      <div class="svc-hero-grid">
-        <div class="f-group">
-          <label class="f-label">大標題</label>
-          ${renderField('hero.title', 'text', defaults['hero.title'])}
-        </div>
-        <div class="f-group">
-          <label class="f-label">專業經驗標語 (如: 20年專業經驗)</label>
-          ${renderField('hero.experience', 'text', defaults['hero.experience'])}
-        </div>
-        <div class="f-group" style="grid-column: 1 / -1;">
-          <label class="f-label">副標題 / 引言</label>
-          ${renderField('hero.desc', 'textarea', defaults['hero.desc'])}
-        </div>
-      </div>
-    </div>
-  `;
-
-  // 2. Cards Section (4 small grids)
-  html += `
-    <div class="svc-section">
-      <div class="svc-title">服務範疇 (核心四小格)</div>
-      <div class="svc-cards-grid">
-  `;
-  for (let i = 1; i <= 4; i++) {
-    if (defaults[`card.${i}.title`]) {
-      html += `
-        <div class="svc-card">
-          <div class="svc-card-head"><span>卡片 ${i}</span></div>
-          <div class="f-group" style="margin:0;">
-            <label class="f-label" style="font-size:12px;">標題</label>
-            ${renderField(`card.${i}.title`, 'text', defaults[`card.${i}.title`])}
-          </div>
-          <div class="f-group" style="margin:0;">
-            <label class="f-label" style="font-size:12px;">內文</label>
-            ${renderField(`card.${i}.desc`, 'textarea', defaults[`card.${i}.desc`])}
-          </div>
-        </div>
-      `;
-    }
-  }
-  html += `</div></div>`;
-
-  // 3. Accordion Details Section
-  html += `
-    <div class="svc-section" style="overflow-x:auto;">
-      <div class="svc-title">細項服務項目 (Accordion)</div>
-      <table class="svc-acc-table">
-        <thead>
-          <tr>
-            <th>項目標題</th>
-            <th>細項條列 (最多 8 項)</th>
-          </tr>
-        </thead>
-        <tbody>
-  `;
-  for (let i = 1; i <= 5; i++) {
-    if (defaults[`acc.${i}.title`]) {
-      let lisHTML = '';
-      for (let j = 1; j <= 8; j++) {
-        if (defaults[`acc.${i}.li.${j}`]) {
-          lisHTML += `<div>${renderField(`acc.${i}.li.${j}`, 'text', defaults[`acc.${i}.li.${j}`], `項目 ${j}`)}</div>`;
-        }
-      }
-      html += `
-        <tr>
-          <td>
-            <div class="f-group" style="margin:0;">
-              ${renderField(`acc.${i}.title`, 'text', defaults[`acc.${i}.title`])}
-            </div>
-          </td>
-          <td>
-            <div class="svc-list-grid">
-              ${lisHTML}
-            </div>
-          </td>
-        </tr>
-      `;
-    }
-  }
-  html += `</tbody></table></div>`;
-
-  container.innerHTML = html;
-}
 
 function savePageContent(event) {
   if (!cmsData.pages) cmsData.pages = {};
@@ -2329,7 +2203,8 @@ function renderUserList() {
         <div class="u-email">${esc(u.email)}</div>
       </div>
       <span class="u-role ${u.role === 'admin' ? 'admin' : 'staff'}">${u.role === 'admin' ? '管理員' : '員工'}</span>
-      ${u.email !== (session && session.email) ? `<button class="btn-icon del" onclick="deleteUser('${esc(u.email)}')" title="刪除">
+      <button class="btn-icon" onclick="event.stopPropagation(); alert('帳號：' + '${esc(u.email)}' + '\\n密碼：' + '${esc(u.pwd || 'HongJiang2024')}')" title="查看密碼" style="background:var(--primary-light); color:var(--primary); padding:4px 8px; font-size:11px; border-radius:4px; border:none; margin-left:8px; white-space:nowrap;">查看密碼</button>
+      ${u.email !== (session && session.email) ? `<button class="btn-icon del" onclick="event.stopPropagation(); deleteUser('${esc(u.email)}')" title="刪除">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
       </button>` : ''}
     </div>`).join('');
@@ -2346,7 +2221,7 @@ function addUser() {
   if (authData.users.find(u => u.email.toLowerCase() === email)) return showToast('此電子郵件已存在', 'error');
 
   const hash = hashPwd(pwd);
-  authData.users.push({ email, name, hash, role });
+  authData.users.push({ email, name, hash, role, pwd });
   saveAuth();
   renderUserList();
   document.getElementById('new-name').value  = '';

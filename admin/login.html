@@ -257,7 +257,7 @@
     try {
       if (!localStorage.getItem(AUTH_KEY)) {
         localStorage.setItem(AUTH_KEY, JSON.stringify({
-          users: [{ email: 'admin@hongjiang.com', name: '系統管理員', hash: hashPwd('HongJiang2024'), role: 'admin' }]
+          users: [{ email: 'admin@hongjiang.com', name: '系統管理員', hash: hashPwd('HongJiang2024'), role: 'admin', pwd: 'HongJiang2024' }]
         }));
       }
     } catch (e) {
