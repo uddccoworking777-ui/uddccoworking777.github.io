@@ -159,6 +159,62 @@
                 "label": "特色 4",
                 "type": "text",
                 "default": "完工後兩年工程品質保固"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.bignum",
+                "label": "大背景數字",
+                "type": "text",
+                "default": "20"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.badgenum",
+                "label": "徽章數字",
+                "type": "text",
+                "default": "20"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.badgetext",
+                "label": "徽章文字",
+                "type": "text",
+                "default": "年工藝傳承"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.title",
+                "label": "標題",
+                "type": "text",
+                "default": "鴻匠工程"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.desc",
+                "label": "描述",
+                "type": "textarea",
+                "default": "成立於 2004 年・台北市<br />持牌水電 + 室內裝修工程公司"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.chip1",
+                "label": "標籤 1",
+                "type": "text",
+                "default": "乙級水電技術士"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.chip2",
+                "label": "標籤 2",
+                "type": "text",
+                "default": "甲級室內裝修"
+            },
+            {
+                "group": "關於我們 (左側視覺卡片)",
+                "key": "about.visual.chip3",
+                "label": "標籤 3",
+                "type": "text",
+                "default": "30+ 名師傅"
             }
         ]
     },
