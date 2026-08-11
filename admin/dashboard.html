@@ -2203,9 +2203,9 @@ function renderUserList() {
         <div class="u-email">${esc(u.email)}</div>
       </div>
       <span class="u-role ${u.role === 'admin' ? 'admin' : 'staff'}">${u.role === 'admin' ? '管理員' : '員工'}</span>
-      <button class="btn-icon" onclick="event.stopPropagation(); alert('帳號：' + '${esc(u.email)}' + '\\n密碼：' + '${esc(u.pwd || 'HongJiang2024')}')" title="查看密碼" style="background:var(--primary-light); color:var(--primary); padding:4px 8px; font-size:11px; border-radius:4px; border:none; margin-left:8px; white-space:nowrap;">查看密碼</button>
-      <button class="btn-icon" onclick="event.stopPropagation(); quickChangePwd('${esc(u.email)}')" title="修改密碼" style="background:var(--orange-light); color:var(--orange); padding:4px 8px; font-size:11px; border-radius:4px; border:none; margin-left:8px; white-space:nowrap;">修改密碼</button>
-      ${u.email !== (session && session.email) ? `<button class="btn-icon del" onclick="event.stopPropagation(); deleteUser('${esc(u.email)}')" title="刪除">
+      <button onclick="event.stopPropagation(); alert('帳號：' + '${esc(u.email)}' + '\\n密碼：' + '${esc(u.pwd || 'HongJiang2024')}')" title="查看密碼" style="background:var(--primary-light); color:var(--primary); padding:6px 10px; font-size:11px; font-weight:700; border-radius:6px; border:none; margin-left:8px; white-space:nowrap; cursor:pointer; transition: opacity 0.2s;">查看密碼</button>
+      <button onclick="event.stopPropagation(); quickChangePwd('${esc(u.email)}')" title="修改密碼" style="background:var(--orange-light); color:var(--orange); padding:6px 10px; font-size:11px; font-weight:700; border-radius:6px; border:none; margin-left:6px; white-space:nowrap; cursor:pointer; transition: opacity 0.2s;">修改密碼</button>
+      ${u.email !== (session && session.email) ? `<button class="btn-icon del" onclick="event.stopPropagation(); deleteUser('${esc(u.email)}')" title="刪除" style="margin-left:6px;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg>
       </button>` : ''}
     </div>`).join('');
