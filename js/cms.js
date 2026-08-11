@@ -31,6 +31,137 @@
 
 
 
+    "index.html": {
+        "name": "首頁",
+        "items": [
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.title",
+                "label": "大標題",
+                "type": "text",
+                "default": "打造您的<br /><span class=\"blue\">理想空間</span><br /><span style=\"font-weight:300; font-size:0.65em; color:var(--text-muted); letter-spacing:-0.01em;\">水電・裝修・設計 一站搞定</span>"
+            },
+            {
+                "group": "主視覺 (Hero)",
+                "key": "hero.sub",
+                "label": "副標題/引言",
+                "type": "textarea",
+                "default": "專業水電配管、全室裝修、室內設計，二十年工藝傳承，每一細節精工打造，讓您安心託付。"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat1.num",
+                "label": "統計 1 數字",
+                "type": "text",
+                "default": "20+"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat1.label",
+                "label": "統計 1 標籤",
+                "type": "text",
+                "default": "年專業經驗"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat2.num",
+                "label": "統計 2 數字",
+                "type": "text",
+                "default": "800+"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat2.label",
+                "label": "統計 2 標籤",
+                "type": "text",
+                "default": "完成案件"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat3.num",
+                "label": "統計 3 數字",
+                "type": "text",
+                "default": "98%"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat3.label",
+                "label": "統計 3 標籤",
+                "type": "text",
+                "default": "客戶滿意度"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat4.num",
+                "label": "統計 4 數字",
+                "type": "text",
+                "default": "2年"
+            },
+            {
+                "group": "數據統計 (Stats)",
+                "key": "stat4.label",
+                "label": "統計 4 標籤",
+                "type": "text",
+                "default": "工程保固"
+            },
+            {
+                "group": "精選案例標題",
+                "key": "gallery.title",
+                "label": "標題",
+                "type": "text",
+                "default": "精選案例<br /><span class=\"orange\">實景展示</span>"
+            },
+            {
+                "group": "精選案例標題",
+                "key": "gallery.desc",
+                "label": "副標題",
+                "type": "textarea",
+                "default": "每個案件都是我們用心投入的成果，見證空間轉變的無限可能。"
+            },
+            {
+                "group": "關於我們 (Teaser)",
+                "key": "about.title",
+                "label": "大標題",
+                "type": "text",
+                "default": "精工細作<br /><span class=\"blue\">每一細節皆是承諾</span>"
+            },
+            {
+                "group": "關於我們 (Teaser)",
+                "key": "about.desc",
+                "label": "內文",
+                "type": "textarea",
+                "default": "鴻匠工程成立於 2004 年，專注住宅及商業空間的水電工程與室內裝修服務。我們擁有一支由資深師傅組成的施工團隊，秉持「品質第一、客戶至上」的核心理念，二十年來累積逾八百件完成案例，深獲客戶信賴。"
+            },
+            {
+                "group": "關於我們 (Teaser)",
+                "key": "about.li.1",
+                "label": "特色 1",
+                "type": "text",
+                "default": "政府認證乙級技術士證照"
+            },
+            {
+                "group": "關於我們 (Teaser)",
+                "key": "about.li.2",
+                "label": "特色 2",
+                "type": "text",
+                "default": "全程施工透明化進度回報"
+            },
+            {
+                "group": "關於我們 (Teaser)",
+                "key": "about.li.3",
+                "label": "特色 3",
+                "type": "text",
+                "default": "優質建材嚴選，拒絕偷工減料"
+            },
+            {
+                "group": "關於我們 (Teaser)",
+                "key": "about.li.4",
+                "label": "特色 4",
+                "type": "text",
+                "default": "完工後兩年工程品質保固"
+            }
+        ]
+    },
     "service-water.html": {
         "name": "服務：水電工程",
         "items": [
@@ -3166,6 +3297,13 @@
                 el.value = pageData[key];
               } else {
                 el.innerHTML = pageData[key];
+                if (el.hasAttribute('data-target')) {
+                  const val = String(pageData[key]);
+                  const num = parseFloat(val);
+                  if (!isNaN(num)) el.setAttribute('data-target', num);
+                  const suffix = val.replace(/[0-9.]/g, '');
+                  el.setAttribute('data-suffix', suffix.trim());
+                }
               }
             }
           }
