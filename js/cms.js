@@ -1651,25 +1651,6 @@
             { "group": "里程碑", "key": "timeline.4.desc", "label": "里程碑四 簡述", "type": "textarea", "default": "突破區域限制，團隊擴編至30人，承接全台各地的裝修需求。" }
         ]
     },
-    "gallery.html": {
-        "name": "作品相冊",
-        "items": [
-            {
-                "group": "主視覺 (Hero)",
-                "key": "hero.title",
-                "label": "大標題",
-                "type": "text",
-                "default": "為每個空間<br /><span class=\"orange\">留下紀錄</span>"
-            },
-            {
-                "group": "主視覺 (Hero)",
-                "key": "hero.desc",
-                "label": "副標題/引言",
-                "type": "textarea",
-                "default": "看看我們如何將客戶的想法化為真實的質感空間。"
-            }
-        ]
-    },
     "contact.html": {
         "name": "聯絡我們",
         "items": [

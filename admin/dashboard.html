@@ -949,29 +949,6 @@
         </div>
       </div>
 
-      <!-- ── Panel: Gallery ── -->
-      <div class="panel" id="panel-gallery">
-        <div class="toolbar">
-          <div class="toolbar-left">
-            <button class="filter-chip active" data-cat="all" onclick="filterGallery('all', this)">全部</button>
-            <button class="filter-chip" data-cat="interior" onclick="filterGallery('interior', this)">室內裝修</button>
-            <button class="filter-chip" data-cat="water"    onclick="filterGallery('water', this)">水電工程</button>
-            <button class="filter-chip" data-cat="design"   onclick="filterGallery('design', this)">設計規劃</button>
-            <button class="filter-chip" data-cat="commercial" onclick="filterGallery('commercial', this)">商業空間</button>
-            <div class="search-box">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-              <input type="text" placeholder="搜尋標題…" id="gallery-search" oninput="renderGallery()" />
-            </div>
-          </div>
-          <div class="toolbar-right">
-            <button class="btn-add" onclick="openGalleryModal()">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              新增圖片
-            </button>
-          </div>
-        </div>
-        <div class="admin-gallery" id="gallery-grid"></div>
-      </div>
 
       <!-- ── Panel: News ── -->
       <div class="panel" id="panel-news">
@@ -1001,7 +978,6 @@
           <div class="card-body">
             <div class="content-tabs">
               <button class="ctab active" onclick="switchCtab('pages', this)">各頁面文字</button>
-              <button class="ctab" onclick="switchCtab('gallery-count', this)">作品相冊</button>
             </div>
 
             <!-- Pages Tab -->
@@ -1053,11 +1029,7 @@
                     </ul>
                   </div>
                   
-                  <!-- Item: 作品相冊 -->
-                  <div class="nav-item-wrap">
-                    <button type="button" class="nav-link-item" data-page="gallery.html">作品相冊</button>
-                  </div>
-                  
+
                   <!-- Item: 關於我們 -->
                   <div class="nav-item-wrap">
                     <button type="button" class="nav-link-item" data-page="about.html">關於我們</button>
@@ -1097,13 +1069,7 @@
               </button>
             </div>
 
-            <!-- Gallery Count Tab -->
-            <div class="ctab-panel" id="ctab-gallery-count">
-              <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:16px;">
-                相冊頁面顯示的圖片數量及篩選標籤，由「相冊管理」面板中各項目的顯示/隱藏狀態自動決定。請前往「相冊管理」新增、編輯或隱藏圖片。
-              </p>
-              <button class="btn-add" onclick="switchPanel('gallery')">前往相冊管理 →</button>
-            </div>
+
           </div>
         </div>
 

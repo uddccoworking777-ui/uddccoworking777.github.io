@@ -65,7 +65,7 @@ const pages = [
   { id: 'service-interior',    file: 'service-interior.html',   label: '室內裝修' },
   { id: 'service-design',      file: 'service-design.html',     label: '設計規劃' },
   { id: 'service-maintenance', file: 'service-maintenance.html',label: '維修保固' },
-  { id: 'gallery',             file: 'gallery.html',            label: '作品相冊' },
+
   { id: 'about',               file: 'about.html',              label: '關於我們' },
   { id: 'contact',             file: 'contact.html',            label: '聯絡我們' },
 ];
