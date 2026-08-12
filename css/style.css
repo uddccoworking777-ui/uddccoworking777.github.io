@@ -908,10 +908,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 }
 
 /* ── Admin Preview Mode (?pv=1) ──────────────────
-   Force desktop nav when viewed inside admin preview pane.
-   Triggered by main.js adding .pv-mode to <html>.
+   Removed. The iframe will naturally fall back to mobile
+   responsive layout when previewing in narrow spaces.
 ─────────────────────────────────────────────────── */
-html.pv-mode #main-nav .nav-links { display: flex !important; }
-html.pv-mode #main-nav .hamburger { display: none !important; }
-html.pv-mode .mobile-menu        { display: none !important; }
-html.pv-mode .mobile-overlay     { display: none !important; }

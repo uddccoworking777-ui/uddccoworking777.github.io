@@ -225,17 +225,6 @@
       transform: none;
     }
 
-    /* Desktop mode scaling (simulating 1280px screen) */
-    .preview-pane:not(.mobile-mode) .preview-iframe-wrap {
-      overflow: hidden;
-    }
-    .preview-pane:not(.mobile-mode) #preview-iframe {
-      width: 1280px;
-      height: calc(100% / 0.328125);
-      transform: scale(0.328125);
-      transform-origin: top left;
-    }
-
 
     /* ── Panel System ── */
     .panel { display: none; animation: panelIn .2s ease; }
@@ -931,11 +920,7 @@
         </div>
 
         <div class="quick-grid">
-          <div class="quick-card" onclick="switchPanel('gallery'); openGalleryModal()">
-            <div class="quick-card-icon">🖼</div>
-            <div class="quick-card-label">新增圖片</div>
-            <div class="quick-card-sub">上傳至相冊</div>
-          </div>
+          <!-- Gallery quick card removed -->
           <div class="quick-card" onclick="switchPanel('news'); openNewsModal()">
             <div class="quick-card-icon">📝</div>
             <div class="quick-card-label">發布消息</div>
@@ -1229,7 +1214,6 @@
         <label>預覽</label>
         <select id="preview-page" onchange="loadPreview()">
           <option value="../index.html">首頁</option>
-          <option value="../gallery.html">作品相冊</option>
           <option value="../service-water.html">水電工程</option>
           <option value="../service-interior.html">室內裝修</option>
           <option value="../service-design.html">設計規劃</option>
