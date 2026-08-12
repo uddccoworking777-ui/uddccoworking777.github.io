@@ -281,6 +281,7 @@ h1,h2,h3,h4 {
   border-radius: var(--radius);
   transition: color var(--ease-fast), background var(--ease-fast);
   position: relative;
+  white-space: nowrap;
 }
 .nav-links > li > a::after {
   content: '';
