@@ -920,7 +920,11 @@
         </div>
 
         <div class="quick-grid">
-          <!-- Gallery quick card removed -->
+          <div class="quick-card" onclick="switchPanel('gallery'); openUploadModal()">
+            <div class="quick-card-icon">🖼️</div>
+            <div class="quick-card-label">上傳圖片</div>
+            <div class="quick-card-sub">新增相冊作品</div>
+          </div>
           <div class="quick-card" onclick="switchPanel('news'); openNewsModal()">
             <div class="quick-card-icon">📝</div>
             <div class="quick-card-label">發布消息</div>
@@ -949,6 +953,30 @@
         </div>
       </div>
 
+
+      <!-- ── Panel: Gallery ── -->
+      <div class="panel" id="panel-gallery">
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button class="filter-chip active" data-cat="all" onclick="filterGallery('all', this)">全部</button>
+            <button class="filter-chip" data-cat="interior" onclick="filterGallery('interior', this)">室內裝修</button>
+            <button class="filter-chip" data-cat="water"    onclick="filterGallery('water', this)">水電工程</button>
+            <button class="filter-chip" data-cat="design"   onclick="filterGallery('design', this)">設計規劃</button>
+            <button class="filter-chip" data-cat="commercial" onclick="filterGallery('commercial', this)">商業空間</button>
+            <div class="search-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" placeholder="搜尋標題…" id="gallery-search" oninput="renderGallery()" />
+            </div>
+          </div>
+          <div class="toolbar-right">
+            <button class="btn-add" onclick="openGalleryModal()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              新增圖片
+            </button>
+          </div>
+        </div>
+        <div class="admin-gallery" id="gallery-grid"></div>
+      </div>
 
       <!-- ── Panel: News ── -->
       <div class="panel" id="panel-news">
